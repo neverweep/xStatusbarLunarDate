@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">X 状态栏农历日期</string>
+    <string name="settings">设置</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="display_category">显示</string>
+    <string name="breakline">换行显示</string>
+    <string name="breakline_summary_on">另起一行显示农历日期</string>
+    <string name="breakline_summay_off">在同一行显示农历日期</string>
+    <string name="description">"在下拉状态栏上显示农历日期、节日和节气。
+[点击这里进入设置界面，重启设备后生效]"</string>
+    <string name="content_category">内容</string>
+    <string name="term">二十四节气</string>
+    <string name="term_summray_on">在农历日期后显示二十四节气</string>
+    <string name="term_summray_off">不显示二十四节气</string>
+    <string name="fest">农历节日</string>
+    <string name="fest_summary_on">在农历日期后显示农历节日</string>
+    <string name="fest_summary_off">不显示农历节日</string>
+    <string name="minor">小年日期选项</string>
+    <string name="minor_dialogue_title">选择符合习俗的小年日期</string>
+    <string name="minor_year_option_1">腊月廿三（大部分北方地区）</string>
+    <string name="minor_year_option_2">腊月廿四（大部分南方地区）</string>
+    <string name="minor_year_option_3">腊月廿五（个别地区）</string>
+    <string name="about_category">关于</string>
+    <string name="about">关于 X 状态栏农历日期</string>
+    <string name="about_msg">"<b>欢迎使用这个 Xposed 模块\n希望能给你带来一点方便：）</b>\n\n我的博客: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n报告错误: <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
+    <string name="minor_current">当前选项：</string>
+</resources>

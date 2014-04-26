@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:orderingFromXml="true" android:key="@string/settings" android:title="@string/settings" android:enabled="true">
+  
+	<PreferenceCategory android:key="@string/display_category" android:title="@string/display_category" android:order="1">
+	    <CheckBoxPreference android:title="@string/breakline" android:key="breakline" android:summaryOn="@string/breakline_summary_on" android:summaryOff="@string/breakline_summay_off" android:defaultValue="true" />
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:key="@string/content_category" android:title="@string/content_category" android:order="2">
+    	<CheckBoxPreference android:summaryOff="@string/term_summray_off" android:summaryOn="@string/term_summray_on" android:title="@string/term" android:key="term" android:defaultValue="true"/>
+    	<CheckBoxPreference android:summaryOff="@string/fest_summary_off" android:summaryOn="@string/fest_summary_on" android:title="@string/fest" android:key="fest" android:defaultValue="true"/>
+    	<ListPreference android:defaultValue="1" android:key="minor" android:title="@string/minor" android:dialogTitle="@string/minor_dialogue_title" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:entries="@array/minor_year_options" android:entryValues="@array/minor_year_values" android:dependency="fest"/>
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:key="@string/about_category" android:title="@string/about_category" android:order="3">
+	    <ListPreference android:key="about" android:title="@string/about" android:dialogTitle="@string/about" android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:dialogMessage="@string/about_msg" android:entryValues="@array/about_value" android:entries="@array/about_options" android:dialogLayout="@layout/about" android:dialogIcon="@drawable/ic_launcher"/>
+	</PreferenceCategory>
+
+</PreferenceScreen>

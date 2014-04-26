@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">X Statusbar Lunar Date</string>
+    <string name="settings">Settings</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="display_category">Display</string>
+    <string name="breakline">Breakline</string>
+    <string name="breakline_summary_on">Display the lunar date in a new line</string>
+    <string name="breakline_summay_off">Display the lunar date in the last line</string>
+    <string name="description">"Display Chinese lunar calendar date, festivals and solar terms in drop-down statusbar.
+[Touch here for settings. Reboot to apply.]</string>
+    <string name="content_category">Content</string>
+    <string name="term">Solar terms</string>
+    <string name="term_summray_on">Show 24 solar terms after lunar date</string>
+    <string name="term_summray_off">Hide 24 solar terms</string>
+    <string name="fest">Lunar festivals</string>
+    <string name="fest_summary_on">Show lunar festivals after lunar date</string>
+    <string name="fest_summary_off">Hide lunar fesivals</string>
+    <string name="minor">Date of the minor year</string>
+    <string name="minor_dialogue_title">Set prefer date of the minor year</string>
+    <string name="minor_year_option_1">12.23 (Most of Northern China)</string>
+    <string name="minor_year_option_2">12.24 (Most of Southern China)</string>
+    <string name="minor_year_option_3">12.25 (Minority areas of China)</string>
+    <string name="about_category">About</string>
+    <string name="about">About X Statusbar Lunar Date</string>
+    <string name="about_msg">"<b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\nReport: <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
+    <string name="minor_current">Current option: </string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>    
+    <string-array name="minor_year_options">    
+        <item>@string/minor_year_option_1</item>
+        <item>@string/minor_year_option_2</item>
+        <item>@string/minor_year_option_3</item> 
+    </string-array>    
+    <string-array name="minor_year_values">    
+        <item>1</item>    
+        <item>2</item>
+        <item>3</item>   
+    </string-array>
+    <string-array name="about_options">
+    </string-array>
+    <string-array name="about_value">
+    </string-array>      
+</resources> 
