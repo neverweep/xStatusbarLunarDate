@@ -12,6 +12,14 @@
     </string-array>
     <string-array name="about_options">
     </string-array>
-    <string-array name="about_value">
+    <string-array name="about_values">
+    </string-array>
+    <string-array name="lang_options">
+        <item>@string/lang_option_1</item>
+        <item>@string/lang_option_2</item>
+    </string-array>
+    <string-array name="lang_values">
+        <item>1</item>
+        <item>2</item>
     </string-array>      
 </resources> 

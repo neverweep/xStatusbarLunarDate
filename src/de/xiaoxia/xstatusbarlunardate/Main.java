@@ -1,5 +1,8 @@
 package de.xiaoxia.xstatusbarlunardate;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.widget.TextView;
 
 //导入xposed基本类
@@ -17,18 +20,22 @@ public class Main implements IXposedHookLoadPackage {
     private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
     private String breaklineText = "\n"; //是否换行的文本
     private String lDate = ""; //上次记录的日期
+    private String finalText;
+    private Pattern reg = Pattern.compile("\\n");
 
     /* 读取设置 */
     //使用xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
     private XSharedPreferences prefs = new XSharedPreferences(Main.class.getPackage().getName());
 
     //设置变量记录读取设置
-    private Boolean _term = prefs.getBoolean("term", true);
-    private Boolean _fest = prefs.getBoolean("fest", true);
-    private String _minor = prefs.getString("minor", "1");
+    private final Boolean _remove = prefs.getBoolean("remove", true);
+    private final Boolean _term = prefs.getBoolean("term", true);
+    private final Boolean _fest = prefs.getBoolean("fest", true);
+    private final String _minor = prefs.getString("minor", "1");
 
     //初始话Lunar类
     private Lunar lunar = new Lunar();
+    
 
     public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
         if (!lpparam.packageName.equals("com.android.systemui"))
@@ -37,6 +44,13 @@ public class Main implements IXposedHookLoadPackage {
         //将决定是否换行的文本输出到字符串中
         if(prefs.getBoolean("breakline", true) == false){
             breaklineText = "  ";
+        }
+        
+        //设置语言
+        if(prefs.getString("lang", "1").equals("1")){
+            lunar.changeLocale(false);
+        }else{
+        	lunar.changeLocale(true);
         }
 
         //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
@@ -83,9 +97,16 @@ public class Main implements IXposedHookLoadPackage {
                         lunarText = lunar.getAnimalString() + "年" + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term;
                         //更新记录的日期
                         lDate = nDate;
+                        //输出到最终字符串
+                        finalText = nDate + breaklineText + lunarText;
+                        //如果需要去换行
+                        if(_remove){
+                        	Matcher mat = reg.matcher(finalText);
+                        	finalText = mat.replaceFirst(" ");
+                        }
                     }
                     //更新TextView
-                    textview.setText(nDate + breaklineText + lunarText);
+                    textview.setText(finalText);
                 }
             }
         });

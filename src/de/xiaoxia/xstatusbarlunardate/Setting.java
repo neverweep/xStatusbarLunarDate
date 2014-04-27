@@ -17,10 +17,13 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting);
 
-        //找到minor设置，并将其概括修改为strings.xml中的value加当前设置option_name
+        //找到设置，并将其概括修改为当前设置option_name
         lp = (ListPreference)findPreference("minor");
-        lp.setSummary(this.getString(R.string.minor_current) + lp.getEntry());
+        lp.setSummary(lp.getEntry());
 
+        lp = (ListPreference)findPreference("lang");
+        lp.setSummary(lp.getEntry());
+        
         //监听sharedPreferences变化
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
@@ -30,7 +33,10 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
     	//设置发生变化时，如果键值等于minor就将其概括修改为strings.xml中的value加当前设置option_name
         if(key.equals("minor")){
-            lp.setSummary(this.getString(R.string.minor_current) + lp.getEntry());
+            lp.setSummary(lp.getEntry());
+        }
+        if(key.equals("lang")){
+            lp.setSummary(lp.getEntry());
         }
         return;
     }

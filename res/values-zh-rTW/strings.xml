@@ -1,0 +1,35 @@
+<resources>
+
+    <string name="app_name">X 狀態列農曆日期</string>
+    <string name="settings">偏好設置</string>
+    <string name="ok">確定</string>
+    <string name="cancel">取消</string>
+    <string name="display_category">顯示</string>
+    <string name="breakline">換行顯示</string>
+    <string name="breakline_summary_on">另起一行顯示農曆日期</string>
+    <string name="breakline_summay_off">在同一行顯示農曆日期</string>
+    <string name="description">"在下拉狀態列上顯示農曆日期、節日和節氣。
+[點擊這裡進入設置介面，重啟裝置後生效]"</string>
+    <string name="content_category">內容</string>
+    <string name="term">二十四節氣</string>
+    <string name="term_summray_on">在農曆日期後顯示二十四節氣</string>
+    <string name="term_summray_off">不顯示二十四節氣</string>
+    <string name="fest">農曆節日</string>
+    <string name="fest_summary_on">在農曆日期後顯示農曆節日</string>
+    <string name="fest_summary_off">不顯示農曆節日</string>
+    <string name="minor">小年日期選項</string>
+    <string name="minor_dialogue_title">選擇符合習俗的小年日期</string>
+    <string name="minor_year_option_1">臘月廿三（大部分北方地區）</string>
+    <string name="minor_year_option_2">臘月廿四（大部分南方地區）</string>
+    <string name="minor_year_option_3">臘月廿五（個別地區）</string>
+    <string name="about_category">關於</string>
+    <string name="about">關於 X 狀態列農曆日期</string>
+    <string name="about_msg">"<b>歡迎使用這個 Xposed 模組\n希望能給你帶來一點方便：）</b>\n\n我的部落格: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n報錯和建議: <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
+    <string name="remove">移除換行</string>
+    <string name="remove_summary_on">移除原日期中的換行</string>
+    <string name="remove_summary_off">保留原日期中的換行</string>
+    <string name="lang">顯示語言</string>
+    <string name="lang_option_1">简体中文</string>
+    <string name="lang_option_2">繁體中文</string>
+    <string name="lang_dialogue_title">選擇顯示的語言</string>
+</resources>

@@ -3,6 +3,8 @@
   
 	<PreferenceCategory android:key="@string/display_category" android:title="@string/display_category" android:order="1">
 	    <CheckBoxPreference android:title="@string/breakline" android:key="breakline" android:summaryOn="@string/breakline_summary_on" android:summaryOff="@string/breakline_summay_off" android:defaultValue="true" />
+	    <CheckBoxPreference android:title="@string/remove" android:summaryOn="@string/remove_summary_on" android:defaultValue="false" android:key="remove" android:summaryOff="@string/remove_summary_off"/>
+	    <ListPreference android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:key="lang" android:dialogTitle="@string/lang_dialogue_title" android:defaultValue="1" android:title="@string/lang" android:entries="@array/lang_options" android:entryValues="@array/lang_values"/>
 	</PreferenceCategory>
 	
 	<PreferenceCategory android:key="@string/content_category" android:title="@string/content_category" android:order="2">
@@ -12,7 +14,7 @@
 	</PreferenceCategory>
 	
 	<PreferenceCategory android:key="@string/about_category" android:title="@string/about_category" android:order="3">
-	    <ListPreference android:key="about" android:title="@string/about" android:dialogTitle="@string/about" android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:dialogMessage="@string/about_msg" android:entryValues="@array/about_value" android:entries="@array/about_options" android:dialogLayout="@layout/about" android:dialogIcon="@drawable/ic_launcher"/>
+	    <ListPreference android:key="about" android:title="@string/about" android:dialogTitle="@string/about" android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:dialogMessage="@string/about_msg" android:entryValues="@array/about_values" android:entries="@array/about_options" android:dialogLayout="@layout/about" android:dialogIcon="@drawable/ic_launcher"/>
 	</PreferenceCategory>
 
 </PreferenceScreen>

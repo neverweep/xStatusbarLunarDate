@@ -25,5 +25,11 @@
     <string name="about_category">About</string>
     <string name="about">About X Statusbar Lunar Date</string>
     <string name="about_msg">"<b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\nReport: <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
-    <string name="minor_current">Current option: </string>
+    <string name="remove">Remove original line feed</string>
+    <string name="remove_summary_on">Remove line feed in original date</string>
+    <string name="remove_summary_off">Keep line feed original</string>
+    <string name="lang">Language</string>
+    <string name="lang_option_1">Simplified Chinese</string>
+    <string name="lang_option_2">Traditional Chinese</string>
+    <string name="lang_dialogue_title">Set prefer language to display</string>
 </resources>

@@ -10,7 +10,9 @@ package de.xiaoxia.xstatusbarlunardate;
 public final class R {
     public static final class array {
         public static final int about_options=0x7f050002;
-        public static final int about_value=0x7f050003;
+        public static final int about_values=0x7f050003;
+        public static final int lang_options=0x7f050004;
+        public static final int lang_values=0x7f050005;
         public static final int minor_year_options=0x7f050000;
         public static final int minor_year_values=0x7f050001;
     }
@@ -40,13 +42,19 @@ public final class R {
         public static final int fest=0x7f06000d;
         public static final int fest_summary_off=0x7f06000f;
         public static final int fest_summary_on=0x7f06000e;
+        public static final int lang=0x7f06001b;
+        public static final int lang_dialogue_title=0x7f06001e;
+        public static final int lang_option_1=0x7f06001c;
+        public static final int lang_option_2=0x7f06001d;
         public static final int minor=0x7f060010;
-        public static final int minor_current=0x7f060018;
         public static final int minor_dialogue_title=0x7f060011;
         public static final int minor_year_option_1=0x7f060012;
         public static final int minor_year_option_2=0x7f060013;
         public static final int minor_year_option_3=0x7f060014;
         public static final int ok=0x7f060002;
+        public static final int remove=0x7f060018;
+        public static final int remove_summary_off=0x7f06001a;
+        public static final int remove_summary_on=0x7f060019;
         public static final int settings=0x7f060001;
         public static final int term=0x7f06000a;
         public static final int term_summray_off=0x7f06000c;
