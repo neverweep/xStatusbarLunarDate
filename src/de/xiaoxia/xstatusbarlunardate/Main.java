@@ -14,14 +14,16 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 import de.xiaoxia.xstatusbarlunardate.Lunar;
 
 /* Main */
-public class Main implements IXposedHookLoadPackage {
+public class Main implements IXposedHookLoadPackage{
 
     /* 初始变量 */
     private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
     private String breaklineText = "\n"; //是否换行的文本
     private String lDate = ""; //上次记录的日期
-    private String finalText;
-    private Pattern reg = Pattern.compile("\\n");
+    private String finalText; //最终输出文本
+    private String year; //记录年份
+    private Boolean _layout_run = false; //判断是否设置过singleLine属性
+    private final static Pattern reg = Pattern.compile("\\n");
 
     /* 读取设置 */
     //使用xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
@@ -32,11 +34,13 @@ public class Main implements IXposedHookLoadPackage {
     private final Boolean _term = prefs.getBoolean("term", true);
     private final Boolean _fest = prefs.getBoolean("fest", true);
     private final String _minor = prefs.getString("minor", "1");
+    private final String _year = prefs.getString("year", "1");
 
-    //初始话Lunar类
-    private Lunar lunar = new Lunar();
+    //初始化Lunar类
+    private Lunar lunar = new Lunar(prefs.getString("lang", "1"));
     
-
+  
+    //替换日期函数
     public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
         if (!lpparam.packageName.equals("com.android.systemui"))
             return;
@@ -46,11 +50,8 @@ public class Main implements IXposedHookLoadPackage {
             breaklineText = "  ";
         }
         
-        //设置语言
-        if(prefs.getString("lang", "1").equals("1")){
-            lunar.changeLocale(false);
-        }else{
-        	lunar.changeLocale(true);
+        if(!prefs.getBoolean("layout", false)){
+        	_layout_run = true;
         }
 
         //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
@@ -59,6 +60,7 @@ public class Main implements IXposedHookLoadPackage {
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 //获取原文字
                 TextView textview = (TextView) param.thisObject;
+                              
                 String nDate = textview.getText().toString();
 
                 /* 判断当前日期栏是否包含上次更新后的日期文本
@@ -72,6 +74,12 @@ public class Main implements IXposedHookLoadPackage {
                         //获取时间
                         lunar.init(System.currentTimeMillis());
 
+                        //修正layout的singleLine属性
+                        if(_layout_run == false){
+                        	textview.setSingleLine(false);
+                        	_layout_run = true;
+                        }
+                        
                         //判断是否是农历节日
                         String fest = " " + lunar.getLFestivalName();
                         if ((_fest == true) && (!"".equals(fest))){
@@ -93,8 +101,17 @@ public class Main implements IXposedHookLoadPackage {
                             term = " ";
                         }
 
+                        //根据设置设置年份
+                        if(_year.equals("1")){
+                        	year = lunar.getAnimalString() + "年";
+                        }else if(_year.equals("2")){
+                        	year = lunar.getLunarYearString() + "年";
+                        }else{
+                        	year = "";
+                        }
+
                         //组合农历文本
-                        lunarText = lunar.getAnimalString() + "年" + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term;
+                        lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term;
                         //更新记录的日期
                         lDate = nDate;
                         //输出到最终字符串

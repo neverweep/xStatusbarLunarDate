@@ -32,4 +32,12 @@
     <string name="lang_option_1">Simplified Chinese</string>
     <string name="lang_option_2">Traditional Chinese</string>
     <string name="lang_dialogue_title">Set prefer language to display</string>
+    <string name="year">Year options</string>
+    <string name="year_option_1">Show in animal</string>
+    <string name="year_option_2">Show in Chinese era</string>
+    <string name="year_option_3">Hide</string>
+    <string name="year_dialogue_title">Set prefer year option</string>
+    <string name="layout">Textview layout</string>
+    <string name="layout_summary_on">Change textview layout property for some Nexus devices</string>
+    <string name="layout_summary_off">Only check if date cannot be displayed in two lines</string>
 </resources>

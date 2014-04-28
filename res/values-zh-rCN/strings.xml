@@ -32,4 +32,12 @@
     <string name="lang_option_1">简体中文</string>
     <string name="lang_option_2">繁體中文</string>
     <string name="lang_dialogue_title">选择显示的语言</string>
+    <string name="year">年份选项</string>
+    <string name="year_option_1">显示为属相纪年</string>
+    <string name="year_option_2">显示为天干地支纪年</string>
+    <string name="year_option_3">隐藏</string>
+    <string name="year_dialogue_title">选择符合喜好的年份选项</string>
+    <string name="layout">日期文字布局（BETA）</string>
+    <string name="layout_summary_on">为某些机型 ROM 的日期文字更改输出布局</string>
+    <string name="layout_summary_off">仅在机型 ROM 无法输出多行日期文字时打开</string>
 </resources>
