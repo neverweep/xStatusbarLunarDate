@@ -4,7 +4,8 @@
 	<PreferenceCategory android:key="@string/display_category" android:title="@string/display_category" android:order="1">
 	    <CheckBoxPreference android:title="@string/breakline" android:key="breakline" android:summaryOn="@string/breakline_summary_on" android:summaryOff="@string/breakline_summay_off" android:defaultValue="true" />
 	    <CheckBoxPreference android:title="@string/remove" android:summaryOn="@string/remove_summary_on" android:defaultValue="false" android:key="remove" android:summaryOff="@string/remove_summary_off"/>
-	    <CheckBoxPreference android:defaultValue="false" android:key="layout" android:summaryOff="@string/layout_summary_off" android:summaryOn="@string/layout_summary_on" android:title="@string/layout"/>
+	    
+	    
 	    
 	</PreferenceCategory>
 	
@@ -17,7 +18,14 @@
     	
 	</PreferenceCategory>
 	
-	<PreferenceCategory android:key="@string/about_category" android:title="@string/about_category" android:order="3">
+	<PreferenceCategory android:key="@string/layout" android:title="@string/layout" android:order="3">
+	    <CheckBoxPreference android:key="layout_enable" android:title="@string/layout_enable" android:defaultValue="false" android:summaryOff="@string/layout_enable_summary_off" android:summaryOn="@string/layout_enable_summary_on"/>
+		<CheckBoxPreference android:defaultValue="false" android:key="layout_line" android:summaryOff="@string/layout_line_summary_off" android:summaryOn="@string/layout_line_summary_on" android:title="@string/layout_line" android:dependency="layout_enable"/>
+		<CheckBoxPreference android:key="layout_align" android:summaryOff="@string/layout_align_summary_off" android:title="@string/layout_align" android:summaryOn="@string/layout_align_summary_on" android:dependency="layout_enable" android:defaultValue="false"/>
+		<CheckBoxPreference android:key="layout_width" android:title="@string/layout_width" android:summaryOff="@string/layout_width_summary_off" android:summaryOn="@string/layout_width_summary_on" android:defaultValue="false" android:dependency="layout_enable"/>
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:key="@string/about_category" android:title="@string/about_category" android:order="4">
 	    <ListPreference android:key="about" android:title="@string/about" android:dialogTitle="@string/about" android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:dialogMessage="@string/about_msg" android:entryValues="@array/about_values" android:entries="@array/about_options" android:dialogLayout="@layout/about" android:dialogIcon="@drawable/ic_launcher"/>
 	</PreferenceCategory>
 

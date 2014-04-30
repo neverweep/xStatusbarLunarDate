@@ -48,9 +48,19 @@ public final class R {
         public static final int lang_dialogue_title=0x7f06001e;
         public static final int lang_option_1=0x7f06001c;
         public static final int lang_option_2=0x7f06001d;
-        public static final int layout=0x7f060024;
-        public static final int layout_summary_off=0x7f060026;
-        public static final int layout_summary_on=0x7f060025;
+        public static final int layout=0x7f060025;
+        public static final int layout_align=0x7f06002c;
+        public static final int layout_align_summary_off=0x7f06002e;
+        public static final int layout_align_summary_on=0x7f06002d;
+        public static final int layout_enable=0x7f060026;
+        public static final int layout_enable_summary_off=0x7f060028;
+        public static final int layout_enable_summary_on=0x7f060027;
+        public static final int layout_line=0x7f060029;
+        public static final int layout_line_summary_off=0x7f06002b;
+        public static final int layout_line_summary_on=0x7f06002a;
+        public static final int layout_width=0x7f06002f;
+        public static final int layout_width_summary_off=0x7f060031;
+        public static final int layout_width_summary_on=0x7f060030;
         public static final int minor=0x7f060010;
         public static final int minor_dialogue_title=0x7f060011;
         public static final int minor_year_option_1=0x7f060012;
@@ -65,10 +75,11 @@ public final class R {
         public static final int term_summray_off=0x7f06000c;
         public static final int term_summray_on=0x7f06000b;
         public static final int year=0x7f06001f;
-        public static final int year_dialogue_title=0x7f060023;
+        public static final int year_dialogue_title=0x7f060024;
         public static final int year_option_1=0x7f060020;
         public static final int year_option_2=0x7f060021;
         public static final int year_option_3=0x7f060022;
+        public static final int year_option_4=0x7f060023;
     }
     public static final class style {
         /** 

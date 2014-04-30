@@ -3,6 +3,7 @@ package de.xiaoxia.xstatusbarlunardate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 //导入xposed基本类
@@ -11,7 +12,6 @@ import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
-import de.xiaoxia.xstatusbarlunardate.Lunar;
 
 /* Main */
 public class Main implements IXposedHookLoadPackage{
@@ -34,7 +34,7 @@ public class Main implements IXposedHookLoadPackage{
     private final Boolean _term = prefs.getBoolean("term", true);
     private final Boolean _fest = prefs.getBoolean("fest", true);
     private final String _minor = prefs.getString("minor", "1");
-    private final String _year = prefs.getString("year", "1");
+    private final int _year = Integer.valueOf(prefs.getString("year", "1")).intValue();
 
     //初始化Lunar类
     private Lunar lunar = new Lunar(prefs.getString("lang", "1"));
@@ -50,8 +50,8 @@ public class Main implements IXposedHookLoadPackage{
             breaklineText = "  ";
         }
         
-        if(!prefs.getBoolean("layout", false)){
-        	_layout_run = true;
+        if(!prefs.getBoolean("layout_enable", false)){
+            _layout_run = true;
         }
 
         //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
@@ -76,8 +76,24 @@ public class Main implements IXposedHookLoadPackage{
 
                         //修正layout的singleLine属性
                         if(_layout_run == false){
-                        	textview.setSingleLine(false);
-                        	_layout_run = true;
+                            //去掉singleLine属性
+                            if(prefs.getBoolean("layout_line", false)){
+                                textview.setSingleLine(false);
+                            }
+                            //去掉align_baseline，并将其设置为center_vertical
+                            if(prefs.getBoolean("layout_align", false)){
+                                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
+                                layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0);
+                                layoutParams.addRule(RelativeLayout.CENTER_VERTICAL);
+                                textview.setLayoutParams(layoutParams); 
+                            }
+                            //设置宽度为fill_parent
+                            if(prefs.getBoolean("layout_width", false)){
+                                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
+                                layoutParams.width = -1;
+                                textview.setLayoutParams(layoutParams);
+                            }
+                            _layout_run = true;
                         }
                         
                         //判断是否是农历节日
@@ -102,12 +118,17 @@ public class Main implements IXposedHookLoadPackage{
                         }
 
                         //根据设置设置年份
-                        if(_year.equals("1")){
-                        	year = lunar.getAnimalString() + "年";
-                        }else if(_year.equals("2")){
-                        	year = lunar.getLunarYearString() + "年";
-                        }else{
-                        	year = "";
+                        switch(_year){
+                            case 1:  year = lunar.getAnimalString() + "年";
+                                break;
+                            case 2:  year = lunar.getLunarYearString() + "年";
+                                break;
+                            case 3:  year = "";
+                                break;
+                            case 4:  year = lunar.getLunarYearString() + "（" + lunar.getAnimalString() + "）年";
+                                break;
+                            default: year = lunar.getAnimalString() + "年";
+                        
                         }
 
                         //组合农历文本
@@ -118,8 +139,8 @@ public class Main implements IXposedHookLoadPackage{
                         finalText = nDate + breaklineText + lunarText;
                         //如果需要去换行
                         if(_remove){
-                        	Matcher mat = reg.matcher(finalText);
-                        	finalText = mat.replaceFirst(" ");
+                            Matcher mat = reg.matcher(finalText);
+                            finalText = mat.replaceFirst(" ");
                         }
                     }
                     //更新TextView

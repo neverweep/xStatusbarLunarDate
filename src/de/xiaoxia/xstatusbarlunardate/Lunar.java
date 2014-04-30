@@ -66,22 +66,14 @@ public class Lunar {
     private String[] Tianan = {
         "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"
     };
+    private String[] lunarString1 = {
+            "零", "一", "二", "三", "四", "五", "六", "七", "八", "九"
+        };
+    private String[] lunarString2;
     private String[] Deqi;
     private String[] Animals;
     private String[] solarTerm;
-    private String[] lunarString1 = {
-        "零", "一", "二", "三", "四", "五", "六", "七", "八", "九"
-    };
-    private String[] lunarString2;
-    /**
-     * 农历节日
-     */
-    private String[] lFtv = {
-        "0101 春节", "0115 元宵", "0202 龙头",
-        "0505 端午", "0707 七夕", "0715 中元",
-        "0815 中秋", "0909 重阳", "1208 腊八", 
-        "1223 小年", "1224 小年", "1225 小年", "1230 除夕"
-    };
+    private String[] lFtv;
 
     private final static Pattern sFreg = Pattern.compile("^(\\d{2})(\\d{2})\\s(.+)$");
 
@@ -247,7 +239,7 @@ public class Lunar {
             };
         }else{
             this.Deqi = new String[]{
-                    "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
+                "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
             };
             this.Animals = new String[]{
                 "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"
