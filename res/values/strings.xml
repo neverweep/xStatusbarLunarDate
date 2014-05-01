@@ -31,6 +31,7 @@
     <string name="lang">Language</string>
     <string name="lang_option_1">Simplified Chinese</string>
     <string name="lang_option_2">Traditional Chinese</string>
+    <string name="lang_option_3">English (Digits Mode)</string>
     <string name="lang_dialogue_title">Set prefer language to display</string>
     <string name="year">Year options</string>
     <string name="year_option_1">Show in animal</string>
@@ -51,4 +52,7 @@
     <string name="layout_width">Width fix</string>
     <string name="layout_width_summary_on">Change width to fill parent</string>
     <string name="layout_width_summary_off">Only check if date text displays wrong</string>
+    <string name="lockscreen">Append to lockscreen (BETA)</string>
+    <string name="lockscreen_summary_on">Append lunar date to the date in lockscreen</string>
+    <string name="lockscreen_summary_off">Do not change anything</string>
 </resources>

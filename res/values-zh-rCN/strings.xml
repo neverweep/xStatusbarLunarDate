@@ -31,6 +31,7 @@
     <string name="lang">显示语言</string>
     <string name="lang_option_1">简体中文</string>
     <string name="lang_option_2">繁體中文</string>
+    <string name="lang_option_3">English (Digits Mode)</string>
     <string name="lang_dialogue_title">选择显示的语言</string>
     <string name="year">年份显示选项</string>
     <string name="year_option_1">显示为属相纪年</string>

@@ -17,10 +17,12 @@
     <string-array name="lang_options">
         <item>@string/lang_option_1</item>
         <item>@string/lang_option_2</item>
+        <item>@string/lang_option_3</item>
     </string-array>
     <string-array name="lang_values">
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
     <string-array name="year_options">
         <item>@string/year_option_1</item>

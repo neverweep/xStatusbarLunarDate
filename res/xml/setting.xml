@@ -4,6 +4,7 @@
 	<PreferenceCategory android:key="@string/display_category" android:title="@string/display_category" android:order="1">
 	    <CheckBoxPreference android:title="@string/breakline" android:key="breakline" android:summaryOn="@string/breakline_summary_on" android:summaryOff="@string/breakline_summay_off" android:defaultValue="true" />
 	    <CheckBoxPreference android:title="@string/remove" android:summaryOn="@string/remove_summary_on" android:defaultValue="false" android:key="remove" android:summaryOff="@string/remove_summary_off"/>
+	    <CheckBoxPreference android:key="lockscreen" android:summaryOff="@string/lockscreen_summary_off" android:defaultValue="false" android:title="@string/lockscreen" android:summaryOn="@string/lockscreen_summary_on"/>
 	    
 	    
 	    

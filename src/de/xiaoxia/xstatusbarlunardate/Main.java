@@ -27,17 +27,21 @@ public class Main implements IXposedHookLoadPackage{
 
     /* 读取设置 */
     //使用xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
-    private XSharedPreferences prefs = new XSharedPreferences(Main.class.getPackage().getName());
+    private final static XSharedPreferences prefs = new XSharedPreferences(Main.class.getPackage().getName());
 
     //设置变量记录读取设置
-    private final Boolean _remove = prefs.getBoolean("remove", true);
-    private final Boolean _term = prefs.getBoolean("term", true);
-    private final Boolean _fest = prefs.getBoolean("fest", true);
-    private final String _minor = prefs.getString("minor", "1");
-    private final int _year = Integer.valueOf(prefs.getString("year", "1")).intValue();
+    public final static Boolean _remove = prefs.getBoolean("remove", true);
+    public final static Boolean _term = prefs.getBoolean("term", true);
+    public final static Boolean _fest = prefs.getBoolean("fest", true);
+    public final static Boolean _breakline = prefs.getBoolean("breakline", true);
+    public final static Boolean _layout_enable = prefs.getBoolean("layout_enable", false);
+    public final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
+    public final static String _minor = prefs.getString("minor", "1");
+    public final static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue();
+    public final static int _year = Integer.valueOf(prefs.getString("year", "1")).intValue();
 
     //初始化Lunar类
-    private Lunar lunar = new Lunar(prefs.getString("lang", "1"));
+    private Lunar lunar = new Lunar(_lang);
     
   
     //替换日期函数
@@ -46,21 +50,22 @@ public class Main implements IXposedHookLoadPackage{
             return;
 
         //将决定是否换行的文本输出到字符串中
-        if(prefs.getBoolean("breakline", true) == false){
+        if(_breakline == false){
             breaklineText = "  ";
         }
         
-        if(!prefs.getBoolean("layout_enable", false)){
+        //如果打开了调整布局，则允许进入调整布局步骤
+        if(!_layout_enable){
             _layout_run = true;
         }
+        
 
         //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
         findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "updateClock", new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 //获取原文字
-                TextView textview = (TextView) param.thisObject;
-                              
+                TextView textview = (TextView) param.thisObject;    
                 String nDate = textview.getText().toString();
 
                 /* 判断当前日期栏是否包含上次更新后的日期文本
@@ -132,7 +137,12 @@ public class Main implements IXposedHookLoadPackage{
                         }
 
                         //组合农历文本
-                        lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term;
+                        if(_lang != 3){
+                        	lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term;
+                        }else{
+                        	lunarText = "[" + lunar.getLunarDay() + "/" + lunar.getLunarMonth() + "]";
+                        }
+                        
                         //更新记录的日期
                         lDate = nDate;
                         //输出到最终字符串
