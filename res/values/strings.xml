@@ -24,7 +24,7 @@
     <string name="minor_year_option_3">12.25 (Minority areas of China)</string>
     <string name="about_category">About</string>
     <string name="about">About X Statusbar Lunar Date</string>
-    <string name="about_msg">"<b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual and bug report: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
+    <string name="about_msg">"<b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual, bug report, donate: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
     <string name="remove">Remove original line feed</string>
     <string name="remove_summary_on">Remove line feed in original date</string>
     <string name="remove_summary_off">Keep line feed original</string>
@@ -53,6 +53,6 @@
     <string name="layout_width_summary_on">Change width to fill parent</string>
     <string name="layout_width_summary_off">Only check if date text displays wrong</string>
     <string name="lockscreen">Append to lockscreen (BETA)</string>
-    <string name="lockscreen_summary_on">Append lunar date to the date in lockscreen</string>
-    <string name="lockscreen_summary_off">Do not change anything</string>
+    <string name="lockscreen_summary_on">Append lunar date to lockscreen</string>
+    <string name="lockscreen_summary_off">May only works on AOSP rom now. Tested on 4.1.2 and 4.2.2, not sure on kitkat</string>
 </resources>

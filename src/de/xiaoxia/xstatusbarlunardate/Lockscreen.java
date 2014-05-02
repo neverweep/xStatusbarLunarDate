@@ -67,7 +67,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
 
     //Ìæ»»ÈÕÆÚº¯Êý
     public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
-        if(!lpparam.packageName.equals("android") || !Main._lockscreen)
+        if(!Main._lockscreen || !lpparam.packageName.equals("android"))
             return;
 
         if(Build.VERSION.SDK_INT <= 16) {

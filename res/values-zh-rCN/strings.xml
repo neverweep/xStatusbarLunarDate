@@ -24,7 +24,7 @@
     <string name="minor_year_option_3">腊月廿五（个别地区）</string>
     <string name="about_category">关于</string>
     <string name="about">关于 X 状态栏农历日期</string>
-    <string name="about_msg">"<b>欢迎使用这个 Xposed 模块\n希望能给你带来一点方便：）</b>\n\n我的博客: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n说明、报错和建议:\n <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
+    <string name="about_msg">"<b>欢迎使用这个 Xposed 模块\n希望能给你带来一点方便：）</b>\n\n我的博客: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n说明、报错、建议还有捐赠:\n <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
     <string name="remove">删除换行</string>
     <string name="remove_summary_on">删除原日期中的换行</string>
     <string name="remove_summary_off">保留原日期中的换行</string>
