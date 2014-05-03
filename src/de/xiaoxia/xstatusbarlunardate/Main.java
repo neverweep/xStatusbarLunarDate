@@ -20,10 +20,12 @@ public class Main implements IXposedHookLoadPackage{
     private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
     private String breaklineText = "\n"; //是否换行的文本
     private String lDate = ""; //上次记录的日期
+    private String nDate;
     private String finalText; //最终输出文本
     private String year; //记录年份
     private Boolean _layout_run = false; //判断是否设置过singleLine属性
     private final static Pattern reg = Pattern.compile("\\n");
+    private TextView textview;
 
     /* 读取设置 */
     //使用xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
@@ -65,8 +67,8 @@ public class Main implements IXposedHookLoadPackage{
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 //获取原文字
-                TextView textview = (TextView) param.thisObject;    
-                String nDate = textview.getText().toString();
+                textview = (TextView) param.thisObject;    
+                nDate = textview.getText().toString();
 
                 /* 判断当前日期栏是否包含上次更新后的日期文本
                  * 1 如果包含,则说明原生updateClock()没有被执行，不用再去操作
