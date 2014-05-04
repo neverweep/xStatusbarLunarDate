@@ -32,18 +32,24 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
     	//设置发生变化时，设置summary为option_name
         if(key.equals("minor")){
+        	lp = (ListPreference)findPreference("minor");
             lp.setSummary(lp.getEntry());
+            return;
         }
         if(key.equals("lang")){
+        	lp = (ListPreference)findPreference("lang");
             lp.setSummary(lp.getEntry());
+            return;
         }
         if(key.equals("year")){
+        	lp = (ListPreference)findPreference("year");
             lp.setSummary(lp.getEntry());
+            return;
         }
-        return;
     }
 }

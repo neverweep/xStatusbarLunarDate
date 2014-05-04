@@ -132,7 +132,7 @@ public class Main implements IXposedHookLoadPackage{
                                 break;
                             case 3:  year = "";
                                 break;
-                            case 4:  year = lunar.getLunarYearString() + "£¨" + lunar.getAnimalString() + "£©Äê";
+                            case 4:  year = lunar.getLunarYearString() + lunar.getAnimalString() + "Äê";
                                 break;
                             default: year = lunar.getAnimalString() + "Äê";
                         

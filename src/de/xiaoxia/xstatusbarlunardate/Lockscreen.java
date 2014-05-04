@@ -9,7 +9,7 @@ import android.widget.TextView;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.XposedBridge;
+//import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
@@ -59,7 +59,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
 	                break;
 	            case 3:  year = "";
 	                break;
-	            case 4:  year = lunar.getLunarYearString() + "（" + lunar.getAnimalString() + "）年";
+	            case 4:  year = lunar.getLunarYearString() + lunar.getAnimalString() + "年";
 	                break;
 	            default: year = lunar.getAnimalString() + "年";
 	        
@@ -73,6 +73,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
 	        }
 	        lunarText = lunarText.trim();
 	        lDate = nDate;
+	        //XposedBridge.log("Calculating lunar date: @" + System.currentTimeMillis());
     	}
 		return lunarText;
     }
@@ -80,31 +81,35 @@ public class Lockscreen implements IXposedHookLoadPackage{
     //替换日期函数
     public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
     	if(Main._lockscreen){
-    		XposedBridge.log(lpparam.packageName);
+    		//XposedBridge.log(lpparam.packageName);
 	        if(lpparam.packageName.equals("android")){
 	        	try{
 			        if(Build.VERSION.SDK_INT <= 16) {
-			        	XposedBridge.log("SDK 1");
+			        	//XposedBridge.log("SDK 15-16");
 				        Class<?> kgStatusViewManagerClass = XposedHelpers.findClass("com.android.internal.policy.impl.KeyguardStatusViewManager", null);
 				        XposedHelpers.findAndHookMethod(kgStatusViewManagerClass, "refreshDate", new XC_MethodHook() {
+				        	//XposedBridge.log("Found 15-16");
 				
 				        	@Override
 				            protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
 				        		textview = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
 				        		nDate = (String) textview.getText().toString();
 			 	                textview.setText(nDate + " - " + returnDate(nDate));
+			 	                //XposedBridge.log("Hooking lunar date: @" + System.currentTimeMillis());
 				            }
 				        });
 			        }else if(Build.VERSION.SDK_INT <= 18){
-			        	XposedBridge.log("SDK 2");
+			        	//XposedBridge.log("SDK 17-18");
 			        	Class<?> kgStatusViewManagerClass = XposedHelpers.findClass("com.android.internal.policy.impl.keyguard.KeyguardStatusView", null);
 			 	        XposedHelpers.findAndHookMethod(kgStatusViewManagerClass, "refreshDate", new XC_MethodHook() {
+			 	        	//XposedBridge.log("Found 17-18");
 			 	
 			 	        	@Override
 			 	            protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
 				        		textview = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
 				        		nDate = (String) textview.getText().toString();
 			 	                textview.setText(nDate + " - " + returnDate(nDate));
+			 	                //XposedBridge.log("Hooking lunar date: @" + System.currentTimeMillis());
 			 	            }
 			 	        });
 			        }
@@ -113,8 +118,9 @@ public class Lockscreen implements IXposedHookLoadPackage{
 	        	}
 	        }else if(lpparam.packageName.equals("com.android.keyguard")){
 	        	try{
-	        		XposedBridge.log("SDK 3");
+	        		//XposedBridge.log("SDK 19");
 		        	findAndHookMethod("com.android.keyguard.KeyguardStatusView", lpparam.classLoader, "refresh", new XC_MethodHook() {
+		        		//XposedBridge.log("Found 19");
 		
 		        		@SuppressLint("NewApi")
 		                @Override
@@ -122,6 +128,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
 			        		textclock = (TextClock) XposedHelpers.getObjectField(param.thisObject, "mDateView");
 			        		nDate = (String) textclock.getText().toString();
 			        		textclock.setText(nDate + " - " + returnDate(nDate));
+			        		//XposedBridge.log("Hooking lunar date: @" + System.currentTimeMillis());
 		                }
 		        	});
 	        	}catch(Exception e){
