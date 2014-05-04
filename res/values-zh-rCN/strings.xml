@@ -8,7 +8,7 @@
     <string name="breakline">换行显示</string>
     <string name="breakline_summary_on">另起一行显示农历日期</string>
     <string name="breakline_summay_off">在同一行显示农历日期</string>
-    <string name="description">"在下拉状态栏上显示农历日期、节日和节气。
+    <string name="description">"在状态栏下拉和锁屏界面（目前添加至锁屏仅支持 AOSP）显示的日期处增加一行农历时间，遇到农历节日或二十四节气时也有显示。
 [点击这里进入设置界面，重启设备后生效]"</string>
     <string name="content_category">内容</string>
     <string name="term">二十四节气</string>

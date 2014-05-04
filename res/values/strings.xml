@@ -8,7 +8,7 @@
     <string name="breakline">Breakline</string>
     <string name="breakline_summary_on">Display the lunar date in a new line</string>
     <string name="breakline_summay_off">Display the lunar date in the last line</string>
-    <string name="description">"Display Chinese lunar calendar date, festivals and solar terms in drop-down statusbar.
+    <string name="description">"Display Chinese lunar calendar date, festivals and solar terms in drop-down statusbar and lockscreen (Only AOSP now).
 [Touch here for settings. Reboot to apply.]</string>
     <string name="content_category">Content</string>
     <string name="term">Solar terms</string>
@@ -54,5 +54,5 @@
     <string name="layout_width_summary_off">Only check if date text displays wrong</string>
     <string name="lockscreen">Append to lockscreen (BETA)</string>
     <string name="lockscreen_summary_on">Append lunar date to lockscreen</string>
-    <string name="lockscreen_summary_off">Only works on native AOSP rom now. Tested on 4.1.2, 4.2.2 and 4.4.2</string>
+    <string name="lockscreen_summary_off">Tested on AOSP 4.1.2, 4.2.2 and 4.4.2</string>
 </resources>

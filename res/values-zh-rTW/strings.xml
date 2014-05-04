@@ -8,7 +8,7 @@
     <string name="breakline">換行顯示</string>
     <string name="breakline_summary_on">另起一行顯示農曆日期</string>
     <string name="breakline_summay_off">在同一行顯示農曆日期</string>
-    <string name="description">"在下拉狀態列上顯示農曆日期、節日和節氣。
+    <string name="description">"在下拉狀態列和鎖定螢幕（目前添加至瑣屏僅支持 AOSP）上顯示農曆日期、節日和節氣。
 [點擊這裡進入設置介面，重啟裝置後生效]"</string>
     <string name="content_category">內容</string>
     <string name="term">二十四節氣</string>

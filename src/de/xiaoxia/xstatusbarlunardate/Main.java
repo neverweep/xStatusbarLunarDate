@@ -52,8 +52,8 @@ public class Main implements IXposedHookLoadPackage{
             return;
 
         //将决定是否换行的文本输出到字符串中
-        if(_breakline == false){
-            breaklineText = "  ";
+        if(!_breakline){
+            breaklineText = " ";
         }
         
         //如果打开了调整布局，则允许进入调整布局步骤
@@ -82,7 +82,7 @@ public class Main implements IXposedHookLoadPackage{
                         lunar.init(System.currentTimeMillis());
 
                         //修正layout的singleLine属性
-                        if(_layout_run == false){
+                        if(!_layout_run){
                             //去掉singleLine属性
                             if(prefs.getBoolean("layout_line", false)){
                                 textview.setSingleLine(false);
@@ -105,7 +105,7 @@ public class Main implements IXposedHookLoadPackage{
                         
                         //判断是否是农历节日
                         String fest = " " + lunar.getLFestivalName();
-                        if ((_fest == true) && (!"".equals(fest))){
+                        if (_fest && (!"".equals(fest))){
                             if(fest.equals(" 小年")){
                                 if((lunar.getLunarDay() == 23 && "1".equals(_minor)) || (lunar.getLunarDay() == 24 && "2".equals(_minor))  || (lunar.getLunarDay() == 25 && "3".equals(_minor))){
                                 }else{
@@ -118,7 +118,7 @@ public class Main implements IXposedHookLoadPackage{
 
                         //判断是否是二十四节气
                         String term = " " + lunar.getTermString();
-                        if ((_term == true) && (!"".equals(term))){
+                        if (_term && (!"".equals(term))){
                             term = " " + lunar.getTermString();
                         }else{
                             term = " ";

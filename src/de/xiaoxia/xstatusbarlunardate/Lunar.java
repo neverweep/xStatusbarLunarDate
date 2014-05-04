@@ -263,15 +263,15 @@ public class Lunar {
 	            };
 	            break;
 	    	case 3:
-	            this.Deqi = new String[]{};
-	            this.Animals = new String[]{};
+	            this.Deqi = new String[]{"","","","","","","","","","","",""};
+	            this.Animals = new String[]{"","","","","","","","","","","",""};
 	            this.solarTerm = new String[]{
 	                "", "", "", "", "", "",
 	                "", "", "", "", "", "",
 	                "", "", "", "", "", "",
 	                "", "", "", "", "", ""
 	            };
-	            this.lunarString2 = new String[]{};
+	            this.lunarString2 = new String[]{"","","","","","","",""};
 	            this.lFtv = new String[]{};
         }
     }
