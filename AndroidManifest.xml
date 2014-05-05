@@ -22,7 +22,5 @@
              	<category android:name="android.xposed.category.MODULE_SETTINGS" />
         	</intent-filter>
         </activity>
-        
     </application>
-
 </manifest>
