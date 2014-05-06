@@ -11,6 +11,7 @@ de.xiaoxia.xstatusbarlunardate.R$array: int year_values
 de.xiaoxia.xstatusbarlunardate.R$drawable: int ic_launcher
 de.xiaoxia.xstatusbarlunardate.R$id: int textView
 de.xiaoxia.xstatusbarlunardate.R$layout: int about
+de.xiaoxia.xstatusbarlunardate.R$layout: int setting_custom_lunar_howtodo
 de.xiaoxia.xstatusbarlunardate.R$string: int about
 de.xiaoxia.xstatusbarlunardate.R$string: int about_category
 de.xiaoxia.xstatusbarlunardate.R$string: int about_msg
@@ -20,6 +21,10 @@ de.xiaoxia.xstatusbarlunardate.R$string: int breakline_summary_on
 de.xiaoxia.xstatusbarlunardate.R$string: int breakline_summay_off
 de.xiaoxia.xstatusbarlunardate.R$string: int cancel
 de.xiaoxia.xstatusbarlunardate.R$string: int content_category
+de.xiaoxia.xstatusbarlunardate.R$string: int custom_lunar
+de.xiaoxia.xstatusbarlunardate.R$string: int custom_lunar_summary
+de.xiaoxia.xstatusbarlunardate.R$string: int custom_lunar_summary_off
+de.xiaoxia.xstatusbarlunardate.R$string: int custom_lunar_summary_on
 de.xiaoxia.xstatusbarlunardate.R$string: int description
 de.xiaoxia.xstatusbarlunardate.R$string: int display_category
 de.xiaoxia.xstatusbarlunardate.R$string: int fest
@@ -55,6 +60,11 @@ de.xiaoxia.xstatusbarlunardate.R$string: int ok
 de.xiaoxia.xstatusbarlunardate.R$string: int remove
 de.xiaoxia.xstatusbarlunardate.R$string: int remove_summary_off
 de.xiaoxia.xstatusbarlunardate.R$string: int remove_summary_on
+de.xiaoxia.xstatusbarlunardate.R$string: int setting_custom_lunar_howtodo
+de.xiaoxia.xstatusbarlunardate.R$string: int setting_custom_lunar_howtodo_msg
+de.xiaoxia.xstatusbarlunardate.R$string: int setting_custom_lunar_howtodo_summary
+de.xiaoxia.xstatusbarlunardate.R$string: int setting_custom_lunar_item
+de.xiaoxia.xstatusbarlunardate.R$string: int setting_custom_lunar_item_hint
 de.xiaoxia.xstatusbarlunardate.R$string: int settings
 de.xiaoxia.xstatusbarlunardate.R$string: int term
 de.xiaoxia.xstatusbarlunardate.R$string: int term_summray_off
@@ -67,5 +77,8 @@ de.xiaoxia.xstatusbarlunardate.R$string: int year_option_3
 de.xiaoxia.xstatusbarlunardate.R$string: int year_option_4
 de.xiaoxia.xstatusbarlunardate.R$style: int AppBaseTheme
 de.xiaoxia.xstatusbarlunardate.R$xml: int setting
+de.xiaoxia.xstatusbarlunardate.R$xml: int setting_custom_lunar
 de.xiaoxia.xstatusbarlunardate.Setting
 de.xiaoxia.xstatusbarlunardate.Setting: Setting()
+de.xiaoxia.xstatusbarlunardate.SettingCustomLunar
+de.xiaoxia.xstatusbarlunardate.SettingCustomLunar: SettingCustomLunar()

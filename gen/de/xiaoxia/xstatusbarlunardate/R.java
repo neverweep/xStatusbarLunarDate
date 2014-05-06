@@ -28,6 +28,7 @@ public final class R {
     }
     public static final class layout {
         public static final int about=0x7f030000;
+        public static final int setting_custom_lunar_howtodo=0x7f030001;
     }
     public static final class string {
         public static final int about=0x7f060016;
@@ -39,6 +40,10 @@ public final class R {
         public static final int breakline_summay_off=0x7f060007;
         public static final int cancel=0x7f060003;
         public static final int content_category=0x7f060009;
+        public static final int custom_lunar=0x7f06003b;
+        public static final int custom_lunar_summary=0x7f06003c;
+        public static final int custom_lunar_summary_off=0x7f06003e;
+        public static final int custom_lunar_summary_on=0x7f06003d;
         public static final int description=0x7f060008;
         public static final int display_category=0x7f060004;
         public static final int fest=0x7f06000d;
@@ -74,6 +79,11 @@ public final class R {
         public static final int remove=0x7f060018;
         public static final int remove_summary_off=0x7f06001a;
         public static final int remove_summary_on=0x7f060019;
+        public static final int setting_custom_lunar_howtodo=0x7f060036;
+        public static final int setting_custom_lunar_howtodo_msg=0x7f06003a;
+        public static final int setting_custom_lunar_howtodo_summary=0x7f060037;
+        public static final int setting_custom_lunar_item=0x7f060038;
+        public static final int setting_custom_lunar_item_hint=0x7f060039;
         public static final int settings=0x7f060001;
         public static final int term=0x7f06000a;
         public static final int term_summray_off=0x7f06000c;
@@ -102,5 +112,6 @@ public final class R {
     }
     public static final class xml {
         public static final int setting=0x7f040000;
+        public static final int setting_custom_lunar=0x7f040001;
     }
 }

@@ -31,7 +31,7 @@
     <string name="lang">Language</string>
     <string name="lang_option_1">Simplified Chinese</string>
     <string name="lang_option_2">Traditional Chinese</string>
-    <string name="lang_option_3">English (Digits Mode)</string>
+    <string name="lang_option_3">English (Only Digits)</string>
     <string name="lang_dialogue_title">Set prefer language to display</string>
     <string name="year">Year options</string>
     <string name="year_option_1">Show in animal</string>
@@ -55,4 +55,13 @@
     <string name="lockscreen">Append to lockscreen (BETA)</string>
     <string name="lockscreen_summary_on">Append lunar date to lockscreen</string>
     <string name="lockscreen_summary_off">Tested on AOSP 4.1.2, 4.2.2 and 4.4.2</string>
+    <string name="setting_custom_lunar_howtodo">How to do</string>
+    <string name="setting_custom_lunar_howtodo_summary">touch to see how to add your own date</string>
+    <string name="setting_custom_lunar_item">Custom date</string>
+    <string name="setting_custom_lunar_item_hint">0101Spring Festival</string>
+    <string name="setting_custom_lunar_howtodo_msg">Use \"MMDDname\" to set (eg.\"0509Birthday\").\n\nNote: The 4-digit-date is lunar date.\n\nLeave blank to turn off.</string>
+    <string name="custom_lunar">Custom date of commemoration</string>
+    <string name="custom_lunar_summary">Set your own date of commemoration</string>
+    <string name="custom_lunar_summary_on">Show your own customed date of commemoration</string>
+    <string name="custom_lunar_summary_off">Hide your own customed date of commemoration</string>
 </resources>

@@ -27,6 +27,9 @@ public class Main implements IXposedHookLoadPackage{
     private Boolean _layout_run = false; //判断是否设置过singleLine属性
     private final static Pattern reg = Pattern.compile("\\n");
     private TextView textview;
+    private String term;
+    private String fest;
+    private String custom;
 
     /* 读取设置 */
     //使用xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
@@ -36,13 +39,26 @@ public class Main implements IXposedHookLoadPackage{
     protected final static Boolean _remove = prefs.getBoolean("remove", true);
     protected final static Boolean _term = prefs.getBoolean("term", true);
     protected final static Boolean _fest = prefs.getBoolean("fest", true);
+    protected final static Boolean _custom = prefs.getBoolean("custom", false);
     protected final static Boolean _breakline = prefs.getBoolean("breakline", true);
     protected final static Boolean _layout_enable = prefs.getBoolean("layout_enable", false);
     protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
-    protected final static String _minor = prefs.getString("minor", "1");
+    protected final static int _minor = Integer.valueOf(prefs.getString("minor", "1")).intValue();
     protected final static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue();
     protected final static int _year = Integer.valueOf(prefs.getString("year", "1")).intValue();
     protected final static Boolean _miui = isMIUI();
+    protected final static String[] _clf = {
+    	prefs.getString("custom_lunar_item_0", "").trim(),
+    	prefs.getString("custom_lunar_item_1", "").trim(),
+    	prefs.getString("custom_lunar_item_2", "").trim(),
+    	prefs.getString("custom_lunar_item_3", "").trim(),
+    	prefs.getString("custom_lunar_item_4", "").trim(),
+    	prefs.getString("custom_lunar_item_5", "").trim(),
+    	prefs.getString("custom_lunar_item_6", "").trim(),
+    	prefs.getString("custom_lunar_item_7", "").trim(),
+    	prefs.getString("custom_lunar_item_8", "").trim(),
+    	prefs.getString("custom_lunar_item_9", "").trim()
+    };
 
     //初始化Lunar类
     private Lunar lunar = new Lunar(_lang);
@@ -98,24 +114,24 @@ public class Main implements IXposedHookLoadPackage{
                 }
                 
                 //判断是否是农历节日
-                String fest = " " + lunar.getLFestivalName();
-                if (_fest && (!"".equals(fest))){
-                    if(fest.equals(" 小年")){
-                        if((lunar.getLunarDay() == 23 && "1".equals(_minor)) || (lunar.getLunarDay() == 24 && "2".equals(_minor))  || (lunar.getLunarDay() == 25 && "3".equals(_minor))){
-                        }else{
-                            fest = " ";
-                        }
-                    }
+                if (_fest && (!"".equals(lunar.getLFestivalName()))){
+                	fest = " " + lunar.getLFestivalName();
                 }else{
-                    fest = " ";
+                    fest = "";
                 }
 
                 //判断是否是二十四节气
-                String term = " " + lunar.getTermString();
-                if (_term && (!"".equals(term))){
+                if (_term && (!"".equals(lunar.getTermString()))){
                     term = " " + lunar.getTermString();
                 }else{
-                    term = " ";
+                    term = "";
+                }
+                
+                //判断是否是自定义农历节日
+                if (_custom && (!"".equals(lunar.getCLFestivalName()))){
+                	custom = "，" + lunar.getCLFestivalName();
+                }else{
+                    custom = "";
                 }
 
                 //根据设置设置年份
@@ -127,14 +143,12 @@ public class Main implements IXposedHookLoadPackage{
                     case 3:  year = "";
                         break;
                     case 4:  year = lunar.getLunarYearString() + lunar.getAnimalString() + "年";
-                        break;
-                    default: year = lunar.getAnimalString() + "年";
-                
+                        break;               
                 }
 
                 //组合农历文本
                 if(_lang != 3){
-                	lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term;
+                	lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term + custom;
                 }else{
                 	lunarText = "[" + lunar.getLunarDay() + "/" + lunar.getLunarMonth() + "]";
                 }
@@ -154,7 +168,7 @@ public class Main implements IXposedHookLoadPackage{
     }
   
     //替换日期函数
-    public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
+    public void handleLoadPackage(final LoadPackageParam lpparam){
         if (!lpparam.packageName.equals("com.android.systemui"))
             return;
 
@@ -168,24 +182,27 @@ public class Main implements IXposedHookLoadPackage{
             _layout_run = true;
         }
         
-
-        //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
-        findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "updateClock", new XC_MethodHook() {
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                //获取原文字
-                textview = (TextView) param.thisObject;    
-                nDate = textview.getText().toString();
-                textview.setText(returnDate(nDate));
-            }
-        });
+	    try{
+	        //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
+	        findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "updateClock", new XC_MethodHook() {
+	            @Override
+	            protected void afterHookedMethod(MethodHookParam param){
+	                //获取原文字
+	                textview = (TextView) param.thisObject;    
+	                nDate = textview.getText().toString();
+	                textview.setText(returnDate(nDate));
+	            }
+	        });
+		}catch(Exception e){
+			//Do nothing
+		}
         
         if(_miui){
         	try{
 	        	//For Miui
 	            findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "a", new XC_MethodHook() {
 	                @Override
-	                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+	                protected void afterHookedMethod(MethodHookParam param){
 	                    //获取原文字
 	                    textview = (TextView) param.thisObject;    
 	                    nDate = textview.getText().toString();

@@ -5,14 +5,18 @@
 	    <CheckBoxPreference android:title="@string/breakline" android:key="breakline" android:summaryOn="@string/breakline_summary_on" android:summaryOff="@string/breakline_summay_off" android:defaultValue="true" />
 	    <CheckBoxPreference android:title="@string/remove" android:summaryOn="@string/remove_summary_on" android:defaultValue="false" android:key="remove" android:summaryOff="@string/remove_summary_off"/>
 	    <CheckBoxPreference android:key="lockscreen" android:summaryOff="@string/lockscreen_summary_off" android:defaultValue="false" android:title="@string/lockscreen" android:summaryOn="@string/lockscreen_summary_on"/>
+		<ListPreference android:key="year" android:title="@string/year" android:defaultValue="1" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/year_dialogue_title" android:entryValues="@array/year_values" android:entries="@array/year_options" />
+		<ListPreference android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:key="lang" android:dialogTitle="@string/lang_dialogue_title" android:defaultValue="1" android:title="@string/lang" android:entries="@array/lang_options" android:entryValues="@array/lang_values" />
 	</PreferenceCategory>
 	
 	<PreferenceCategory android:key="@string/content_category" android:title="@string/content_category" android:order="2">
     	<CheckBoxPreference android:summaryOff="@string/term_summray_off" android:summaryOn="@string/term_summray_on" android:title="@string/term" android:key="term" android:defaultValue="true"/>
     	<CheckBoxPreference android:summaryOff="@string/fest_summary_off" android:summaryOn="@string/fest_summary_on" android:title="@string/fest" android:key="fest" android:defaultValue="true"/>
-    	<ListPreference android:key="year" android:title="@string/year" android:defaultValue="1" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/year_dialogue_title" android:entryValues="@array/year_values" android:entries="@array/year_options"/>
-    	<ListPreference android:defaultValue="1" android:key="minor" android:title="@string/minor" android:dialogTitle="@string/minor_dialogue_title" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:entries="@array/minor_year_options" android:entryValues="@array/minor_year_values" android:dependency="fest"/>
-    	<ListPreference android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:key="lang" android:dialogTitle="@string/lang_dialogue_title" android:defaultValue="1" android:title="@string/lang" android:entries="@array/lang_options" android:entryValues="@array/lang_values" />
+    	<ListPreference android:defaultValue="1" android:key="minor" android:title="@string/minor" android:dialogTitle="@string/minor_dialogue_title" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:entries="@array/minor_year_options" android:entryValues="@array/minor_year_values" android:dependency="fest" />
+    	<CheckBoxPreference android:key="custom" android:title="@string/custom_lunar" android:summaryOn="@string/custom_lunar_summary_on" android:summaryOff="@string/custom_lunar_summary_off" android:defaultValue="false"/>
+    	<Preference android:key="setting_custom_lunar" android:summary="@string/custom_lunar_summary" android:title="@string/custom_lunar" android:enabled="true" android:dependency="custom">
+    	    <intent android:action="android.intent.action.VIEW" android:targetPackage="de.xiaoxia.xstatusbarlunardate" android:targetClass="de.xiaoxia.xstatusbarlunardate.SettingCustomLunar" />
+    	</Preference>
 	</PreferenceCategory>
 	
 	<PreferenceCategory android:key="@string/layout" android:title="@string/layout" android:order="3">

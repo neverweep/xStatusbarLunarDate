@@ -30,6 +30,7 @@ public class Lunar {
     
     private String lFestivalName;
     private String termString;
+    private String clFestivalName;
 
     private final static int[] lunarInfo = {
         0x4bd8, 0x4ae0, 0xa570, 0x54d5, 0xd260, 0xd950, 0x5554, 0x56af,
@@ -75,7 +76,7 @@ public class Lunar {
     private String[] solarTerm;
     private String[] lFtv;
 
-    private final static Pattern sFreg = Pattern.compile("^(\\d{2})(\\d{2})\\s(.+)$");
+    private final static Pattern sFreg = Pattern.compile("^(\\d{2})(\\d{2})(.+)$");
 
     private static GregorianCalendar utcCal = null;
     
@@ -92,6 +93,15 @@ public class Lunar {
             if (m.find()) {
                 if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
                     this.lFestivalName = m.group(3);
+                    break;
+                }
+            }
+        }
+        for (int i=0; i<Main._clf.length; i++) {
+            m = Lunar.sFreg.matcher(Main._clf[i]);
+            if (m.find()) {
+                if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
+                    this.clFestivalName = m.group(3);
                     break;
                 }
             }
@@ -233,10 +243,11 @@ public class Lunar {
 	                "初", "十", "廿", "卅", "正", "腊", "冬", "闰"
 	            };
 	            this.lFtv = new String[]{
-	                "0101 春节", "0115 元宵", "0202 龙头",
-	                "0505 端午", "0707 七夕", "0715 中元",
-	                "0815 中秋", "0909 重阳", "1208 腊八", 
-	                "1223 小年", "1224 小年", "1225 小年", "1230 除夕"
+	            	"",
+	                "0101春节", "0115元宵", "0202龙头",
+	                "0505端午", "0707七夕", "0715中元",
+	                "0815中秋", "0909重阳", "1208腊八", 
+	                "1230除夕"
 	            };
 	            break;
 	    	case 2:
@@ -256,10 +267,11 @@ public class Lunar {
 	                "初", "十", "廿", "卅", "正", "臘", "冬", "閏"
 	            };
 	            this.lFtv = new String[]{
-	                "0101 春節", "0115 元宵", "0202 龍頭",
-	                "0505 端午", "0707 七夕", "0715 中元",
-	                "0815 中秋", "0909 重陽", "1208 臘八", 
-	                "1223 小年", "1224 小年", "1225 小年", "1230 除夕"
+	                "",
+	                "0101春節", "0115元宵", "0202龍頭",
+	                "0505端午", "0707七夕", "0715中元",
+	                "0815中秋", "0909重陽", "1208臘八", 
+	                "1230除夕"
 	            };
 	            break;
 	    	case 3:
@@ -274,11 +286,19 @@ public class Lunar {
 	            this.lunarString2 = new String[]{"","","","","","","",""};
 	            this.lFtv = new String[]{};
         }
+    	if(lang != 3){
+    		switch(Main._minor){
+    			case 1: this.lFtv[0] = "1223 小年";break;
+    			case 2: this.lFtv[0] = "1224 小年";break;
+    			case 3: this.lFtv[0] = "1225 小年";break;
+    		}
+    	}
     }
 
     public void init(long TimeInMillis) {
         lFestivalName = "";
         termString = "";
+        clFestivalName = "";
         
         this.solar = Calendar.getInstance();
         this.solar.setTimeInMillis(TimeInMillis);
@@ -334,6 +354,8 @@ public class Lunar {
         this.lunarDay = (int) offset + 1;
         // 取得干支历
         this.getCyclicalData();
+        
+        findFestival();
     }
 
     /**
@@ -541,10 +563,15 @@ public class Lunar {
      * @return 农历节日名称,如果不是节日返回空串
      */
     public String getLFestivalName() {
-        if("".equals(this.lFestivalName)){
-            findFestival();
-        }
         return this.lFestivalName;
+    }
+    
+    /**
+     * 取得自定义农历节日名称
+     * @return 农历节日名称,如果不是节日返回空串
+     */
+    public String getCLFestivalName() {
+        return this.clFestivalName;
     }
 
 

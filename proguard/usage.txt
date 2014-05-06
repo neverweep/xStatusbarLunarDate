@@ -10,17 +10,17 @@ de.xiaoxia.xstatusbarlunardate.BuildProperties:
     61:61:public int size()
     65:65:public java.util.Collection values()
 de.xiaoxia.xstatusbarlunardate.Lunar:
-    408:408:public int getTiananY()
-    416:416:public int getTiananM()
-    424:424:public int getTiananD()
-    432:432:public int getDeqiY()
-    440:440:public int getDeqiM()
-    448:448:public int getDeqiD()
-    456:456:public java.lang.String getCyclicaYear()
-    464:464:public java.lang.String getCyclicaMonth()
-    472:472:public java.lang.String getCyclicaDay()
-    512:512:public boolean isLeapYear()
-    536:536:public int getLunarYear()
+    430:430:public int getTiananY()
+    438:438:public int getTiananM()
+    446:446:public int getTiananD()
+    454:454:public int getDeqiY()
+    462:462:public int getDeqiM()
+    470:470:public int getDeqiD()
+    478:478:public java.lang.String getCyclicaYear()
+    486:486:public java.lang.String getCyclicaMonth()
+    494:494:public java.lang.String getCyclicaDay()
+    534:534:public boolean isLeapYear()
+    558:558:public int getLunarYear()
 de.xiaoxia.xstatusbarlunardate.Main:
     private static final java.lang.String KEY_MIUI_VERSION_CODE
     private static final java.lang.String KEY_MIUI_VERSION_NAME

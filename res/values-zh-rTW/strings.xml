@@ -31,7 +31,7 @@
     <string name="lang">顯示語言</string>
     <string name="lang_option_1">简体中文</string>
     <string name="lang_option_2">繁體中文</string>
-    <string name="lang_option_3">English (Digits Mode)</string>
+    <string name="lang_option_3">English (Only digits)</string>
     <string name="lang_dialogue_title">選擇顯示的語言</string>
     <string name="year">年份顯示選項</string>
     <string name="year_option_1">顯示為屬相紀年</string>
@@ -52,4 +52,16 @@
     <string name="layout_width">調整寬度屬性</string>
     <string name="layout_width_summary_on">將日期文字控制項寬度調整為自動</string>
     <string name="layout_width_summary_off">僅在日期文字左右無法完整顯示時打開</string>
+    <string name="lockscreen">添加到鎖屏（BETA）</string>
+    <string name="lockscreen_summary_on">將農曆日期添加到鎖屏介面</string>
+    <string name="lockscreen_summary_off">僅在 AOSP 4.1.2、4.2.2、4.4.2 測試過</string>
+    <string name="setting_custom_lunar_howtodo">如何添加</string>
+    <string name="setting_custom_lunar_howtodo_summary">點擊查看如何向模組添加自己的農曆紀念日</string>
+    <string name="setting_custom_lunar_item">自訂農曆日期</string>
+    <string name="setting_custom_lunar_item_hint">0101春節</string>
+    <string name="setting_custom_lunar_howtodo_msg">輸入“月月日日名稱”來設置。範例：“0509生日”。\n\n注意：4 位日期是農曆日期。\n\n留空則取消此項。</string>
+    <string name="custom_lunar">自訂農曆紀念日</string>
+    <string name="custom_lunar_summary">設置自訂農曆紀念日</string>
+    <string name="custom_lunar_summary_on">顯示自訂農曆紀念日</string>
+    <string name="custom_lunar_summary_off">隱藏自訂農曆紀念日</string>
 </resources>

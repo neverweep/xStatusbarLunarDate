@@ -5,6 +5,6 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:padding="10dp"
-    android:text="@string/about_msg"
+    android:text="@string/setting_custom_lunar_howtodo_msg"
     android:autoLink="all"
     android:textSize="14sp" />

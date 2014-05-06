@@ -9,6 +9,9 @@ de.xiaoxia.xstatusbarlunardate.Lockscreen -> de.xiaoxia.xstatusbarlunardate.Lock
     de.xiaoxia.xstatusbarlunardate.Lunar lunar -> e
     android.widget.TextClock textclock -> f
     android.widget.TextView textview -> g
+    java.lang.String term -> h
+    java.lang.String fest -> i
+    java.lang.String custom -> j
     void handleLoadPackage(de.robv.android.xposed.callbacks.XC_LoadPackage$LoadPackageParam) -> handleLoadPackage
     void access$0(de.xiaoxia.xstatusbarlunardate.Lockscreen,android.widget.TextView) -> a
     android.widget.TextView access$1(de.xiaoxia.xstatusbarlunardate.Lockscreen) -> a
@@ -41,24 +44,25 @@ de.xiaoxia.xstatusbarlunardate.Lunar -> de.xiaoxia.xstatusbarlunardate.e:
     int cyclicalDay -> l
     java.lang.String lFestivalName -> m
     java.lang.String termString -> n
-    int[] lunarInfo -> o
-    int[] solarTermInfo -> p
-    java.lang.String[] Tianan -> q
-    java.lang.String[] lunarString1 -> r
-    java.lang.String[] lunarString2 -> s
-    java.lang.String[] Deqi -> t
-    java.lang.String[] Animals -> u
-    java.lang.String[] solarTerm -> v
-    java.lang.String[] lFtv -> w
-    java.util.regex.Pattern sFreg -> x
-    java.util.GregorianCalendar utcCal -> y
+    java.lang.String clFestivalName -> o
+    int[] lunarInfo -> p
+    int[] solarTermInfo -> q
+    java.lang.String[] Tianan -> r
+    java.lang.String[] lunarString1 -> s
+    java.lang.String[] lunarString2 -> t
+    java.lang.String[] Deqi -> u
+    java.lang.String[] Animals -> v
+    java.lang.String[] solarTerm -> w
+    java.lang.String[] lFtv -> x
+    java.util.regex.Pattern sFreg -> y
+    java.util.GregorianCalendar utcCal -> z
     int toInt(java.lang.String) -> a
-    void findFestival() -> i
+    void findFestival() -> j
     int getLunarLeapMonth(int) -> a
     int getLunarLeapDays(int) -> b
     int getLunarYearDays(int) -> c
     int getUTCDay(java.util.Date) -> a
-    void makeUTCCalendar() -> j
+    void makeUTCCalendar() -> k
     long UTC$6046c8c9(int,int,int,int,int) -> a
     int getSolarTermDay(int,int) -> a
     void init(long) -> a
@@ -70,28 +74,34 @@ de.xiaoxia.xstatusbarlunardate.Lunar -> de.xiaoxia.xstatusbarlunardate.e:
     int getLunarDay() -> f
     int getLunarMonth() -> g
     java.lang.String getLFestivalName() -> h
+    java.lang.String getCLFestivalName() -> i
 de.xiaoxia.xstatusbarlunardate.Main -> de.xiaoxia.xstatusbarlunardate.Main:
-    java.lang.String lunarText -> k
-    java.lang.String breaklineText -> l
-    java.lang.String lDate -> m
-    java.lang.String nDate -> n
-    java.lang.String finalText -> o
-    java.lang.String year -> p
-    java.lang.Boolean _layout_run -> q
-    java.util.regex.Pattern reg -> r
-    android.widget.TextView textview -> s
-    de.robv.android.xposed.XSharedPreferences prefs -> t
+    java.lang.String lunarText -> m
+    java.lang.String breaklineText -> n
+    java.lang.String lDate -> o
+    java.lang.String nDate -> p
+    java.lang.String finalText -> q
+    java.lang.String year -> r
+    java.lang.Boolean _layout_run -> s
+    java.util.regex.Pattern reg -> t
+    android.widget.TextView textview -> u
+    java.lang.String term -> v
+    java.lang.String fest -> w
+    java.lang.String custom -> x
+    de.robv.android.xposed.XSharedPreferences prefs -> y
     java.lang.Boolean _remove -> a
     java.lang.Boolean _term -> b
     java.lang.Boolean _fest -> c
-    java.lang.Boolean _breakline -> d
-    java.lang.Boolean _layout_enable -> e
-    java.lang.Boolean _lockscreen -> f
-    java.lang.String _minor -> g
-    int _lang -> h
-    int _year -> i
-    java.lang.Boolean _miui -> j
-    de.xiaoxia.xstatusbarlunardate.Lunar lunar -> u
+    java.lang.Boolean _custom -> d
+    java.lang.Boolean _breakline -> e
+    java.lang.Boolean _layout_enable -> f
+    java.lang.Boolean _lockscreen -> g
+    int _minor -> h
+    int _lang -> i
+    int _year -> j
+    java.lang.Boolean _miui -> k
+    java.lang.String[] _clf -> l
+    de.xiaoxia.xstatusbarlunardate.Lunar lunar -> z
     boolean isMIUI() -> a
     void handleLoadPackage(de.robv.android.xposed.callbacks.XC_LoadPackage$LoadPackageParam) -> handleLoadPackage
     void access$0(de.xiaoxia.xstatusbarlunardate.Main,android.widget.TextView) -> a
@@ -107,5 +117,9 @@ de.xiaoxia.xstatusbarlunardate.Main$2 -> de.xiaoxia.xstatusbarlunardate.g:
     void afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam) -> afterHookedMethod
 de.xiaoxia.xstatusbarlunardate.Setting -> de.xiaoxia.xstatusbarlunardate.Setting:
     android.preference.ListPreference lp -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
+de.xiaoxia.xstatusbarlunardate.SettingCustomLunar -> de.xiaoxia.xstatusbarlunardate.SettingCustomLunar:
+    android.preference.EditTextPreference lp -> a
     void onCreate(android.os.Bundle) -> onCreate
     void onSharedPreferenceChanged(android.content.SharedPreferences,java.lang.String) -> onSharedPreferenceChanged
