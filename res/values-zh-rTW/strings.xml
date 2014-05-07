@@ -9,7 +9,7 @@
     <string name="breakline_summary_on">另起一行顯示農曆日期</string>
     <string name="breakline_summay_off">在同一行顯示農曆日期</string>
     <string name="description">"在下拉狀態列和鎖定螢幕（目前添加至瑣屏僅支持 AOSP）上顯示農曆日期、節日和節氣。
-[點擊這裡進入設置介面，重啟裝置後生效]"</string>
+[點擊這裡進入設置介面，重啟後生效]"</string>
     <string name="content_category">內容</string>
     <string name="term">二十四節氣</string>
     <string name="term_summray_on">在農曆日期後顯示二十四節氣</string>
@@ -39,7 +39,7 @@
     <string name="year_option_3">隱藏年份</string>
     <string name="year_option_4">顯示為屬相和天干地支紀年</string>
     <string name="year_dialogue_title">選擇符合偏好的年份選項</string>
-    <string name="layout">佈局</string>
+    <string name="layout_category">佈局</string>
     <string name="layout_enable">佈局調整</string>
     <string name="layout_enable_summary_on">為某些 ROM 的日期文字更改輸出佈局</string>
     <string name="layout_enable_summary_off">僅在 ROM 無法正確輸出日期文字時打開</string>
@@ -57,11 +57,16 @@
     <string name="lockscreen_summary_off">僅在 AOSP 4.1.2、4.2.2、4.4.2 測試過</string>
     <string name="setting_custom_lunar_howtodo">如何添加</string>
     <string name="setting_custom_lunar_howtodo_summary">點擊查看如何向模組添加自己的農曆紀念日</string>
-    <string name="setting_custom_lunar_item">自訂農曆日期</string>
+    <string name="setting_custom_lunar_item">自訂農曆紀念日</string>
+    <string name="setting_custom_lunar_item_summary">未設置</string>
     <string name="setting_custom_lunar_item_hint">0101春節</string>
     <string name="setting_custom_lunar_howtodo_msg">輸入“月月日日名稱”來設置。範例：“0509生日”。\n\n注意：4 位日期是農曆日期。\n\n留空則取消此項。</string>
     <string name="custom_lunar">自訂農曆紀念日</string>
     <string name="custom_lunar_summary">設置自訂農曆紀念日</string>
-    <string name="custom_lunar_summary_on">顯示自訂農曆紀念日</string>
-    <string name="custom_lunar_summary_off">隱藏自訂農曆紀念日</string>
+    <string name="custom_lunar_summary_on">在農曆日期後顯示自訂農曆紀念日</string>
+    <string name="custom_lunar_summary_off">不顯示自訂農曆紀念日</string>
+    <string name="system_category">系統</string>
+    <string name="rom">選擇系統類型</string>
+    <string name="rom_option_1">大多數 Android</string>
+    <string name="rom_option_2">Miui</string>
 </resources>

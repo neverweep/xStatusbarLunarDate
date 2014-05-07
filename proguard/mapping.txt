@@ -1,6 +1,3 @@
-de.xiaoxia.xstatusbarlunardate.BuildProperties -> de.xiaoxia.xstatusbarlunardate.a:
-    java.util.Properties properties -> a
-    java.lang.String getProperty$7157d249(java.lang.String) -> a
 de.xiaoxia.xstatusbarlunardate.Lockscreen -> de.xiaoxia.xstatusbarlunardate.Lockscreen:
     java.lang.String lunarText -> a
     java.lang.String year -> b
@@ -20,16 +17,16 @@ de.xiaoxia.xstatusbarlunardate.Lockscreen -> de.xiaoxia.xstatusbarlunardate.Lock
     java.lang.String access$4(de.xiaoxia.xstatusbarlunardate.Lockscreen,java.lang.String) -> b
     void access$5(de.xiaoxia.xstatusbarlunardate.Lockscreen,android.widget.TextClock) -> a
     android.widget.TextClock access$6(de.xiaoxia.xstatusbarlunardate.Lockscreen) -> c
-de.xiaoxia.xstatusbarlunardate.Lockscreen$1 -> de.xiaoxia.xstatusbarlunardate.b:
+de.xiaoxia.xstatusbarlunardate.Lockscreen$1 -> de.xiaoxia.xstatusbarlunardate.a:
     de.xiaoxia.xstatusbarlunardate.Lockscreen this$0 -> a
     void afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam) -> afterHookedMethod
-de.xiaoxia.xstatusbarlunardate.Lockscreen$2 -> de.xiaoxia.xstatusbarlunardate.c:
+de.xiaoxia.xstatusbarlunardate.Lockscreen$2 -> de.xiaoxia.xstatusbarlunardate.b:
     de.xiaoxia.xstatusbarlunardate.Lockscreen this$0 -> a
     void afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam) -> afterHookedMethod
-de.xiaoxia.xstatusbarlunardate.Lockscreen$3 -> de.xiaoxia.xstatusbarlunardate.d:
+de.xiaoxia.xstatusbarlunardate.Lockscreen$3 -> de.xiaoxia.xstatusbarlunardate.c:
     de.xiaoxia.xstatusbarlunardate.Lockscreen this$0 -> a
     void afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam) -> afterHookedMethod
-de.xiaoxia.xstatusbarlunardate.Lunar -> de.xiaoxia.xstatusbarlunardate.e:
+de.xiaoxia.xstatusbarlunardate.Lunar -> de.xiaoxia.xstatusbarlunardate.d:
     java.util.Calendar solar -> a
     int lunarYear -> b
     int lunarMonth -> c
@@ -99,20 +96,19 @@ de.xiaoxia.xstatusbarlunardate.Main -> de.xiaoxia.xstatusbarlunardate.Main:
     int _minor -> h
     int _lang -> i
     int _year -> j
-    java.lang.Boolean _miui -> k
+    int _rom -> k
     java.lang.String[] _clf -> l
     de.xiaoxia.xstatusbarlunardate.Lunar lunar -> z
-    boolean isMIUI() -> a
     void handleLoadPackage(de.robv.android.xposed.callbacks.XC_LoadPackage$LoadPackageParam) -> handleLoadPackage
     void access$0(de.xiaoxia.xstatusbarlunardate.Main,android.widget.TextView) -> a
     android.widget.TextView access$1(de.xiaoxia.xstatusbarlunardate.Main) -> a
     void access$2(de.xiaoxia.xstatusbarlunardate.Main,java.lang.String) -> a
     java.lang.String access$3(de.xiaoxia.xstatusbarlunardate.Main) -> b
     java.lang.String access$4(de.xiaoxia.xstatusbarlunardate.Main,java.lang.String) -> b
-de.xiaoxia.xstatusbarlunardate.Main$1 -> de.xiaoxia.xstatusbarlunardate.f:
+de.xiaoxia.xstatusbarlunardate.Main$1 -> de.xiaoxia.xstatusbarlunardate.e:
     de.xiaoxia.xstatusbarlunardate.Main this$0 -> a
     void afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam) -> afterHookedMethod
-de.xiaoxia.xstatusbarlunardate.Main$2 -> de.xiaoxia.xstatusbarlunardate.g:
+de.xiaoxia.xstatusbarlunardate.Main$2 -> de.xiaoxia.xstatusbarlunardate.f:
     de.xiaoxia.xstatusbarlunardate.Main this$0 -> a
     void afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam) -> afterHookedMethod
 de.xiaoxia.xstatusbarlunardate.Setting -> de.xiaoxia.xstatusbarlunardate.Setting:

@@ -9,7 +9,7 @@
     <string name="breakline_summary_on">另起一行显示农历日期</string>
     <string name="breakline_summay_off">在同一行显示农历日期</string>
     <string name="description">"在状态栏下拉和锁屏界面（目前添加至锁屏仅支持 AOSP）显示的日期处增加一行农历时间，遇到农历节日或二十四节气时也有显示。
-[点击这里进入设置界面，重启设备后生效]"</string>
+[点击这里进入设置界面，重启后生效]"</string>
     <string name="content_category">内容</string>
     <string name="term">二十四节气</string>
     <string name="term_summray_on">在农历日期后显示二十四节气</string>
@@ -39,7 +39,7 @@
     <string name="year_option_3">隐藏年份</string>
     <string name="year_option_4">显示为属相和天干地支纪年</string>
     <string name="year_dialogue_title">选择符合喜好的年份选项</string>
-    <string name="layout">布局</string>
+    <string name="layout_category">布局</string>
     <string name="layout_enable">布局调整</string>
     <string name="layout_enable_summary_on">为某些 ROM 的日期文字更改输出布局</string>
     <string name="layout_enable_summary_off">仅在 ROM 无法正确输出日期文字时打开</string>
@@ -57,11 +57,16 @@
     <string name="lockscreen_summary_off">仅在 AOSP 4.1.2、4.2.2、4.4.2 测试过</string>
     <string name="setting_custom_lunar_howtodo">如何添加</string>
     <string name="setting_custom_lunar_howtodo_summary">点击查看如何向模块添加自己的农历纪念日</string>
-    <string name="setting_custom_lunar_item">自定义农历日期</string>
+    <string name="setting_custom_lunar_item">自定义农历纪念日</string>
+    <string name="setting_custom_lunar_item_summary">未设置</string>
     <string name="setting_custom_lunar_item_hint">0101春节</string>
     <string name="setting_custom_lunar_howtodo_msg">输入“月月日日名称”来设置。范例：“0509生日”。\n\n注意：4 位日期是农历日期。\n\n留空则取消此项。</string>
     <string name="custom_lunar">自定义农历纪念日</string>
     <string name="custom_lunar_summary">设置自定义农历纪念日</string>
-    <string name="custom_lunar_summary_on">显示自定义农历纪念日</string>
-    <string name="custom_lunar_summary_off">隐藏自定义农历纪念日</string>
+    <string name="custom_lunar_summary_on">在农历日期后显示自定义农历纪念日</string>
+    <string name="custom_lunar_summary_off">不显示自定义农历纪念日</string>
+    <string name="system_category">系统</string>
+    <string name="rom">选择系统类型</string>
+    <string name="rom_option_1">大多数 Android</string>
+    <string name="rom_option_2">Miui</string>
 </resources>

@@ -1,14 +1,4 @@
 de.xiaoxia.xstatusbarlunardate.BuildConfig
-de.xiaoxia.xstatusbarlunardate.BuildProperties:
-    29:29:public boolean containsKey(java.lang.Object)
-    33:33:public boolean containsValue(java.lang.Object)
-    37:37:public java.util.Set entrySet()
-    41:41:public java.lang.String getProperty(java.lang.String)
-    49:49:public boolean isEmpty()
-    53:53:public java.util.Enumeration keys()
-    57:57:public java.util.Set keySet()
-    61:61:public int size()
-    65:65:public java.util.Collection values()
 de.xiaoxia.xstatusbarlunardate.Lunar:
     430:430:public int getTiananY()
     438:438:public int getTiananM()
@@ -21,10 +11,6 @@ de.xiaoxia.xstatusbarlunardate.Lunar:
     494:494:public java.lang.String getCyclicaDay()
     534:534:public boolean isLeapYear()
     558:558:public int getLunarYear()
-de.xiaoxia.xstatusbarlunardate.Main:
-    private static final java.lang.String KEY_MIUI_VERSION_CODE
-    private static final java.lang.String KEY_MIUI_VERSION_NAME
-    private static final java.lang.String KEY_MIUI_INTERNAL_STORAGE
 de.xiaoxia.xstatusbarlunardate.R
 de.xiaoxia.xstatusbarlunardate.R$array
 de.xiaoxia.xstatusbarlunardate.R$attr

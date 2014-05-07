@@ -1,6 +1,5 @@
 package de.xiaoxia.xstatusbarlunardate;
 
-import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,6 +11,7 @@ import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
+//import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 /* Main */
@@ -46,7 +46,7 @@ public class Main implements IXposedHookLoadPackage{
     protected final static int _minor = Integer.valueOf(prefs.getString("minor", "1")).intValue();
     protected final static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue();
     protected final static int _year = Integer.valueOf(prefs.getString("year", "1")).intValue();
-    protected final static Boolean _miui = isMIUI();
+    protected final static int _rom = Integer.valueOf(prefs.getString("rom", "1")).intValue();
     protected final static String[] _clf = {
     	prefs.getString("custom_lunar_item_0", "").trim(),
     	prefs.getString("custom_lunar_item_1", "").trim(),
@@ -62,21 +62,6 @@ public class Main implements IXposedHookLoadPackage{
 
     //初始化Lunar类
     private Lunar lunar = new Lunar(_lang);
-    
-    //判断MIUI
-    private static final String KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code";
-    private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
-    private static final String KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage";
-    private static boolean isMIUI() {
-    	try {
-    		final BuildProperties prop = BuildProperties.newInstance();
-    		return prop.getProperty(KEY_MIUI_VERSION_CODE, null) != null
-    			|| prop.getProperty(KEY_MIUI_VERSION_NAME, null) != null
-    			|| prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, null) != null;
-    	} catch (final IOException e) {
-    		return false;
-    	}
-    }
     
     //获取农历字符串子程序
     private String returnDate(String nDate){
@@ -182,36 +167,41 @@ public class Main implements IXposedHookLoadPackage{
             _layout_run = true;
         }
         
-	    try{
-	        //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
-	        findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "updateClock", new XC_MethodHook() {
-	            @Override
-	            protected void afterHookedMethod(MethodHookParam param){
-	                //获取原文字
-	                textview = (TextView) param.thisObject;    
-	                nDate = textview.getText().toString();
-	                textview.setText(returnDate(nDate));
-	            }
-	        });
-		}catch(Exception e){
-			//Do nothing
-		}
         
-        if(_miui){
-        	try{
-	        	//For Miui
-	            findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "a", new XC_MethodHook() {
-	                @Override
-	                protected void afterHookedMethod(MethodHookParam param){
-	                    //获取原文字
-	                    textview = (TextView) param.thisObject;    
-	                    nDate = textview.getText().toString();
-	                    textview.setText(returnDate(nDate));
-	                }
-	            });
-        	}catch(Exception e){
-        		//Do nothing
-        	}
+        switch(_rom){
+        	case 1: 
+	    	    try{
+	    	    	//For most android roms
+	    	        //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
+	    	        findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "updateClock", new XC_MethodHook() {
+	    	            @Override
+	    	            protected void afterHookedMethod(MethodHookParam param){
+	    	                //获取原文字
+	    	                textview = (TextView) param.thisObject;    
+	    	                nDate = textview.getText().toString();
+	    	                textview.setText(returnDate(nDate));
+	    	            }
+	    	        });
+	    		}catch(Exception e){
+	    			//Do nothing
+	    		}
+	    	    break;
+        	case 2:
+	        	try{
+		        	//For Miui
+		            findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "a", new XC_MethodHook() {
+		                @Override
+		                protected void afterHookedMethod(MethodHookParam param){
+		                    //获取原文字
+		                    textview = (TextView) param.thisObject;    
+		                    nDate = textview.getText().toString();
+		                    textview.setText(returnDate(nDate));
+		                }
+		            });
+	        	}catch(Exception e){
+	        		//Do nothing
+	        	}
+        	break;
         }
     }
 }

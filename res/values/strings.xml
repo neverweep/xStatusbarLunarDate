@@ -39,7 +39,7 @@
     <string name="year_option_3">Hide year</string>
     <string name="year_option_4">Show animal and Chinese era</string>
     <string name="year_dialogue_title">Set prefer year option</string>
-    <string name="layout">Layout</string>
+    <string name="layout_category">Layout</string>
     <string name="layout_enable">Layout fix</string>
     <string name="layout_enable_summary_on">Fix layout for some roms</string>
     <string name="layout_enable_summary_off">Only check if date text displays wrong</string>
@@ -57,11 +57,16 @@
     <string name="lockscreen_summary_off">Tested on AOSP 4.1.2, 4.2.2 and 4.4.2</string>
     <string name="setting_custom_lunar_howtodo">How to do</string>
     <string name="setting_custom_lunar_howtodo_summary">touch to see how to add your own date</string>
-    <string name="setting_custom_lunar_item">Custom date</string>
+    <string name="setting_custom_lunar_item">Custom date of commemoration</string>
+    <string name="setting_custom_lunar_item_summary">Not set</string>
     <string name="setting_custom_lunar_item_hint">0101Spring Festival</string>
     <string name="setting_custom_lunar_howtodo_msg">Use \"MMDDname\" to set (eg.\"0509Birthday\").\n\nNote: The 4-digit-date is lunar date.\n\nLeave blank to turn off.</string>
     <string name="custom_lunar">Custom date of commemoration</string>
     <string name="custom_lunar_summary">Set your own date of commemoration</string>
     <string name="custom_lunar_summary_on">Show your own customed date of commemoration</string>
     <string name="custom_lunar_summary_off">Hide your own customed date of commemoration</string>
+    <string name="system_category">System</string>
+    <string name="rom">Select type of system</string>
+    <string name="rom_option_1">Most Android</string>
+    <string name="rom_option_2">Miui</string>
 </resources>

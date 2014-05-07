@@ -27,6 +27,9 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         lp = (ListPreference)findPreference("year");
         lp.setSummary(lp.getEntry());
         
+        lp = (ListPreference)findPreference("rom");
+        lp.setSummary(lp.getEntry());
+        
         //¼àÌýsharedPreferences±ä»¯
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
@@ -48,6 +51,11 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         }
         if(key.equals("year")){
         	lp = (ListPreference)findPreference("year");
+            lp.setSummary(lp.getEntry());
+            return;
+        }
+        if(key.equals("rom")){
+        	lp = (ListPreference)findPreference("rom");
             lp.setSummary(lp.getEntry());
             return;
         }

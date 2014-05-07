@@ -15,6 +15,8 @@ public final class R {
         public static final int lang_values=0x7f050005;
         public static final int minor_year_options=0x7f050000;
         public static final int minor_year_values=0x7f050001;
+        public static final int rom_options=0x7f050008;
+        public static final int rom_values=0x7f050009;
         public static final int year_options=0x7f050006;
         public static final int year_values=0x7f050007;
     }
@@ -40,10 +42,10 @@ public final class R {
         public static final int breakline_summay_off=0x7f060007;
         public static final int cancel=0x7f060003;
         public static final int content_category=0x7f060009;
-        public static final int custom_lunar=0x7f06003b;
-        public static final int custom_lunar_summary=0x7f06003c;
-        public static final int custom_lunar_summary_off=0x7f06003e;
-        public static final int custom_lunar_summary_on=0x7f06003d;
+        public static final int custom_lunar=0x7f06003c;
+        public static final int custom_lunar_summary=0x7f06003d;
+        public static final int custom_lunar_summary_off=0x7f06003f;
+        public static final int custom_lunar_summary_on=0x7f06003e;
         public static final int description=0x7f060008;
         public static final int display_category=0x7f060004;
         public static final int fest=0x7f06000d;
@@ -54,10 +56,10 @@ public final class R {
         public static final int lang_option_1=0x7f06001c;
         public static final int lang_option_2=0x7f06001d;
         public static final int lang_option_3=0x7f06001e;
-        public static final int layout=0x7f060026;
         public static final int layout_align=0x7f06002d;
         public static final int layout_align_summary_off=0x7f06002f;
         public static final int layout_align_summary_on=0x7f06002e;
+        public static final int layout_category=0x7f060026;
         public static final int layout_enable=0x7f060027;
         public static final int layout_enable_summary_off=0x7f060029;
         public static final int layout_enable_summary_on=0x7f060028;
@@ -79,12 +81,17 @@ public final class R {
         public static final int remove=0x7f060018;
         public static final int remove_summary_off=0x7f06001a;
         public static final int remove_summary_on=0x7f060019;
+        public static final int rom=0x7f060041;
+        public static final int rom_option_1=0x7f060042;
+        public static final int rom_option_2=0x7f060043;
         public static final int setting_custom_lunar_howtodo=0x7f060036;
-        public static final int setting_custom_lunar_howtodo_msg=0x7f06003a;
+        public static final int setting_custom_lunar_howtodo_msg=0x7f06003b;
         public static final int setting_custom_lunar_howtodo_summary=0x7f060037;
         public static final int setting_custom_lunar_item=0x7f060038;
-        public static final int setting_custom_lunar_item_hint=0x7f060039;
+        public static final int setting_custom_lunar_item_hint=0x7f06003a;
+        public static final int setting_custom_lunar_item_summary=0x7f060039;
         public static final int settings=0x7f060001;
+        public static final int system_category=0x7f060040;
         public static final int term=0x7f06000a;
         public static final int term_summray_off=0x7f06000c;
         public static final int term_summray_on=0x7f06000b;

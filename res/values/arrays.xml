@@ -35,5 +35,13 @@
         <item>2</item>
         <item>4</item>
         <item>3</item>  
-    </string-array>    
+    </string-array>
+    <string-array name="rom_options">
+        <item>@string/rom_option_1</item>
+        <item>@string/rom_option_2</item>
+    </string-array>
+    <string-array name="rom_values">    
+        <item>1</item>    
+        <item>2</item>
+    </string-array>     
 </resources> 
