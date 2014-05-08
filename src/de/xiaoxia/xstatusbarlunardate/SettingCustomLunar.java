@@ -20,10 +20,9 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
         //找到设置，并将其概括修改为当前设置option_name
         for(int i = 0; i < 10; i++){
         	lp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
-        	if(!"".equals(lp.getText()) && lp.getText() != null){
+        	if(!"".equals(lp.getText()) && lp.getText() != null)
         		lp.setSummary(lp.getText());
-        	}
-        	lp.setTitle(lp.getTitle().toString() + " " + (i + 1));
+        	lp.setTitle(getString(R.string.custom_lunar) + " " + (i + 1));
         }
         
         //监听sharedPreferences变化
@@ -38,8 +37,11 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
         for(int i = 0; i < 10; i++){
         	if(key.equals("custom_lunar_item_" + i)){
 	        	lp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
-	        	if(!"".equals(lp.getText()))
+	        	if(!"".equals(lp.getText()) && lp.getText() != null){
 	        		lp.setSummary(lp.getText());
+	        	}else{
+	        		lp.setSummary(getString(R.string.custom_lunar_summary));
+	        	}
 	        	break;
         	}
         }

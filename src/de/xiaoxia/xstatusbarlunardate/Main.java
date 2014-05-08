@@ -18,18 +18,18 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 public class Main implements IXposedHookLoadPackage{
 
     /* 初始变量 */
-    private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
-    private String breaklineText = "\n"; //是否换行的文本
-    private String lDate = ""; //上次记录的日期
-    private String nDate;
-    private String finalText; //最终输出文本
-    private String year; //记录年份
-    private Boolean _layout_run = false; //判断是否设置过singleLine属性
+    private static String lunarText = "LUNAR"; //记录最后更新时的文字字符串
+    private static String breaklineText = "\n"; //是否换行的文本
+    private static String lDate = ""; //上次记录的日期
+    private static String nDate;
+    private static String finalText; //最终输出文本
+    private static String year; //记录年份
+    private static Boolean _layout_run = false; //判断是否设置过singleLine属性
     private final static Pattern reg = Pattern.compile("\\n");
-    private TextView textview;
-    private String term;
-    private String fest;
-    private String custom;
+    private static TextView textview;
+    private static String term;
+    private static String fest;
+    private static String custom;
 
     /* 读取设置 */
     //使用xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置

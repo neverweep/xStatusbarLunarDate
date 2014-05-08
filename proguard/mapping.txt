@@ -100,11 +100,11 @@ de.xiaoxia.xstatusbarlunardate.Main -> de.xiaoxia.xstatusbarlunardate.Main:
     java.lang.String[] _clf -> l
     de.xiaoxia.xstatusbarlunardate.Lunar lunar -> z
     void handleLoadPackage(de.robv.android.xposed.callbacks.XC_LoadPackage$LoadPackageParam) -> handleLoadPackage
-    void access$0(de.xiaoxia.xstatusbarlunardate.Main,android.widget.TextView) -> a
-    android.widget.TextView access$1(de.xiaoxia.xstatusbarlunardate.Main) -> a
-    void access$2(de.xiaoxia.xstatusbarlunardate.Main,java.lang.String) -> a
-    java.lang.String access$3(de.xiaoxia.xstatusbarlunardate.Main) -> b
-    java.lang.String access$4(de.xiaoxia.xstatusbarlunardate.Main,java.lang.String) -> b
+    void access$0(android.widget.TextView) -> a
+    android.widget.TextView access$1() -> a
+    void access$2(java.lang.String) -> a
+    java.lang.String access$3() -> b
+    java.lang.String access$4(de.xiaoxia.xstatusbarlunardate.Main,java.lang.String) -> a
 de.xiaoxia.xstatusbarlunardate.Main$1 -> de.xiaoxia.xstatusbarlunardate.e:
     de.xiaoxia.xstatusbarlunardate.Main this$0 -> a
     void afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam) -> afterHookedMethod

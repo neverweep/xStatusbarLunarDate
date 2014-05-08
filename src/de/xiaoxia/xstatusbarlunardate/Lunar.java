@@ -64,17 +64,17 @@ public class Lunar {
         173149, 195551, 218072, 240693, 263343, 285989, 308563, 331033,
         353350, 375494, 397447, 419210, 440795, 462224, 483532, 504758
     };
-    private final String[] Tianan = {
+    private final static String[] Tianan = {
         "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"
     };
-    private final String[] lunarString1 = {
+    private final static String[] lunarString1 = {
         "零", "一", "二", "三", "四", "五", "六", "七", "八", "九"
     };
-    private String[] lunarString2;
-    private String[] Deqi;
-    private String[] Animals;
-    private String[] solarTerm;
-    private String[] lFtv;
+    private static String[] lunarString2;
+    private static String[] Deqi;
+    private static String[] Animals;
+    private static String[] solarTerm;
+    private static String[] lFtv;
 
     private final static Pattern sFreg = Pattern.compile("^(\\d{2})(\\d{2})(.+)$");
 
@@ -88,8 +88,8 @@ public class Lunar {
         int lM = this.getLunarMonth();
         int lD = this.getLunarDay();
         Matcher m;
-        for (int i=0; i<this.lFtv.length; i++) {
-            m = Lunar.sFreg.matcher(this.lFtv[i]);
+        for (int i=0; i<Lunar.lFtv.length; i++) {
+            m = Lunar.sFreg.matcher(Lunar.lFtv[i]);
             if (m.find()) {
                 if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
                     this.lFestivalName = m.group(3);
@@ -227,22 +227,22 @@ public class Lunar {
         //在这里设置语言
     	switch(lang){
 	    	case 1:
-	            this.Deqi = new String[]{
+	            Lunar.Deqi = new String[]{
 	                "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
 	            };
-	            this.Animals = new String[]{
+	            Lunar.Animals = new String[]{
 	                "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"
 	            };
-	            this.solarTerm = new String[]{
+	            Lunar.solarTerm = new String[]{
 	                "小寒", "大寒", "立春", "雨水", "惊蛰", "春分",
 	                "清明", "谷雨", "立夏", "小满", "芒种", "夏至",
 	                "小暑", "大暑", "立秋", "处暑", "白露", "秋分",
 	                "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
 	            };
-	            this.lunarString2 = new String[]{
+	            Lunar.lunarString2 = new String[]{
 	                "初", "十", "廿", "卅", "正", "腊", "冬", "闰"
 	            };
-	            this.lFtv = new String[]{
+	            Lunar.lFtv = new String[]{
 	            	"",
 	                "0101春节", "0115元宵", "0202龙头",
 	                "0505端午", "0707七夕", "0715中元",
@@ -251,22 +251,22 @@ public class Lunar {
 	            };
 	            break;
 	    	case 2:
-	            this.Deqi = new String[]{
+	            Lunar.Deqi = new String[]{
 	                "子", "醜", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
 	            };
-	            this.Animals = new String[]{
+	            Lunar.Animals = new String[]{
 	                "鼠", "牛", "虎", "兔", "龍", "蛇", "馬", "羊", "猴", "雞", "狗", "豬"
 	            };
-	            this.solarTerm = new String[]{
+	            Lunar.solarTerm = new String[]{
 	                "小寒", "大寒", "立春", "雨水", "驚蟄", "春分",
 	                "清明", "穀雨", "立夏", "小滿", "芒種", "夏至",
 	                "小暑", "大暑", "立秋", "處暑", "白露", "秋分",
 	                "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
 	            };
-	            this.lunarString2 = new String[]{
+	            Lunar.lunarString2 = new String[]{
 	                "初", "十", "廿", "卅", "正", "臘", "冬", "閏"
 	            };
-	            this.lFtv = new String[]{
+	            Lunar.lFtv = new String[]{
 	                "",
 	                "0101春節", "0115元宵", "0202龍頭",
 	                "0505端午", "0707七夕", "0715中元",
@@ -275,22 +275,22 @@ public class Lunar {
 	            };
 	            break;
 	    	case 3:
-	            this.Deqi = new String[]{"","","","","","","","","","","",""};
-	            this.Animals = new String[]{"","","","","","","","","","","",""};
-	            this.solarTerm = new String[]{
+	            Lunar.Deqi = new String[]{"","","","","","","","","","","",""};
+	            Lunar.Animals = new String[]{"","","","","","","","","","","",""};
+	            Lunar.solarTerm = new String[]{
 	                "", "", "", "", "", "",
 	                "", "", "", "", "", "",
 	                "", "", "", "", "", "",
 	                "", "", "", "", "", ""
 	            };
-	            this.lunarString2 = new String[]{"","","","","","","",""};
-	            this.lFtv = new String[]{};
+	            Lunar.lunarString2 = new String[]{"","","","","","","",""};
+	            Lunar.lFtv = new String[]{};
         }
     	if(lang != 3){
     		switch(Main._minor){
-    			case 1: this.lFtv[0] = "1223 小年";break;
-    			case 2: this.lFtv[0] = "1224 小年";break;
-    			case 3: this.lFtv[0] = "1225 小年";break;
+    			case 1: Lunar.lFtv[0] = "1223 小年";break;
+    			case 2: Lunar.lFtv[0] = "1224 小年";break;
+    			case 3: Lunar.lFtv[0] = "1225 小年";break;
     		}
     	}
     }
@@ -402,7 +402,7 @@ public class Lunar {
      * @return 农历年生肖(例:龙)
      */
     public String getAnimalString() {
-        return this.Animals[(this.lunarYear - 4) % 12];
+        return Lunar.Animals[(this.lunarYear - 4) % 12];
     }
 
     /**
@@ -414,9 +414,9 @@ public class Lunar {
         if("".equals(this.termString)){
             this.termString = "";
             if (Lunar.getSolarTermDay(solarYear, solarMonth * 2) == solarDay) {
-                this.termString = this.solarTerm[solarMonth * 2];
+                this.termString = Lunar.solarTerm[solarMonth * 2];
             } else if (Lunar.getSolarTermDay(solarYear, solarMonth * 2 + 1) == solarDay) {
-                this.termString = this.solarTerm[solarMonth * 2 + 1];
+                this.termString = Lunar.solarTerm[solarMonth * 2 + 1];
             }
         }
         return this.termString;
@@ -507,7 +507,7 @@ public class Lunar {
      * @return 农历日期字符串
      */
     public String getLunarMonthString() {
-        return (this.isLeap() ? "闰" : "") + this.getLunarMonthString(this.lunarMonth);
+        return (this.isLeap() ? Lunar.lunarString2[7] : "") + this.getLunarMonthString(this.lunarMonth);
     }
 
     /**
@@ -581,7 +581,7 @@ public class Lunar {
      * @return 干支字符串
      */
     private String getCyclicalString(int cyclicalNumber) {
-        return this.Tianan[Lunar.getTianan(cyclicalNumber)] + this.Deqi[Lunar.getDeqi(cyclicalNumber)];
+        return Lunar.Tianan[Lunar.getTianan(cyclicalNumber)] + Lunar.Deqi[Lunar.getDeqi(cyclicalNumber)];
     }
 
     /**
@@ -619,12 +619,12 @@ public class Lunar {
     private String getLunarMonthString(int lunarMonth) {
         String lunarMonthString = "";
         if (lunarMonth == 1) {
-            lunarMonthString = this.lunarString2[4];
+            lunarMonthString = Lunar.lunarString2[4];
         } else {
             if (lunarMonth > 9)
-                lunarMonthString += this.lunarString2[1];
+                lunarMonthString += Lunar.lunarString2[1];
             if (lunarMonth % 10 > 0)
-                lunarMonthString += this.lunarString1[lunarMonth % 10];
+                lunarMonthString += Lunar.lunarString1[lunarMonth % 10];
         }
         return lunarMonthString;
     }
@@ -638,10 +638,10 @@ public class Lunar {
         if (lunarDay<1 || lunarDay>30) return "";
         int i1 = lunarDay / 10;
         int i2 = lunarDay % 10;
-        String c1 = this.lunarString2[i1];
-        String c2 = this.lunarString1[i2];
-        if (lunarDay < 11) c1 = this.lunarString2[0];
-        if (i2 == 0) c2 = this.lunarString2[1];
+        String c1 = Lunar.lunarString2[i1];
+        String c2 = Lunar.lunarString1[i2];
+        if (lunarDay < 11) c1 = Lunar.lunarString2[0];
+        if (i2 == 0) c2 = Lunar.lunarString2[1];
         return c1 + c2;
     }
 }
