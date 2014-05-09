@@ -30,6 +30,8 @@ public class Main implements IXposedHookLoadPackage{
     private static String term;
     private static String fest;
     private static String custom;
+    private static String sfest;
+    private static String sfest_custom;
 
     /* 读取设置 */
     //使用xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
@@ -40,6 +42,8 @@ public class Main implements IXposedHookLoadPackage{
     protected final static Boolean _term = prefs.getBoolean("term", true);
     protected final static Boolean _fest = prefs.getBoolean("fest", true);
     protected final static Boolean _custom = prefs.getBoolean("custom", false);
+    protected final static Boolean _solar = prefs.getBoolean("solar", true);
+    protected final static Boolean _solar_custom = prefs.getBoolean("solar_cutom", true);
     protected final static Boolean _breakline = prefs.getBoolean("breakline", true);
     protected final static Boolean _layout_enable = prefs.getBoolean("layout_enable", false);
     protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
@@ -57,9 +61,31 @@ public class Main implements IXposedHookLoadPackage{
     	prefs.getString("custom_lunar_item_6", "").trim(),
     	prefs.getString("custom_lunar_item_7", "").trim(),
     	prefs.getString("custom_lunar_item_8", "").trim(),
-    	prefs.getString("custom_lunar_item_9", "").trim()
+    	prefs.getString("custom_lunar_item_9", "").trim(),
+    	prefs.getString("custom_lunar_item_10", "").trim(),
+    	prefs.getString("custom_lunar_item_11", "").trim(),
+    	prefs.getString("custom_lunar_item_12", "").trim(),
+    	prefs.getString("custom_lunar_item_13", "").trim(),
+    	prefs.getString("custom_lunar_item_14", "").trim(),
+    	prefs.getString("custom_lunar_item_15", "").trim()
     };
-
+    protected final static String[] _csf = {
+    	prefs.getString("custom_solar_item_0", "").trim(),
+    	prefs.getString("custom_solar_item_1", "").trim(),
+    	prefs.getString("custom_solar_item_2", "").trim(),
+    	prefs.getString("custom_solar_item_3", "").trim(),
+    	prefs.getString("custom_solar_item_4", "").trim(),
+    	prefs.getString("custom_solar_item_5", "").trim(),
+    	prefs.getString("custom_solar_item_6", "").trim(),
+    	prefs.getString("custom_solar_item_7", "").trim(),
+    	prefs.getString("custom_solar_item_8", "").trim(),
+    	prefs.getString("custom_solar_item_9", "").trim(),
+    	prefs.getString("custom_solar_item_10", "").trim(),
+    	prefs.getString("custom_solar_item_11", "").trim(),
+    	prefs.getString("custom_solar_item_12", "").trim(),
+    	prefs.getString("custom_solar_item_13", "").trim(),
+    	prefs.getString("custom_solar_item_14", "").trim()
+    };
     //初始化Lunar类
     private Lunar lunar = new Lunar(_lang);
     
@@ -98,6 +124,13 @@ public class Main implements IXposedHookLoadPackage{
                     _layout_run = true;
                 }
                 
+                //判断是否是公里节日
+                if (_solar && (!"".equals(lunar.getSFestivalName()))){
+                	sfest = " " + lunar.getSFestivalName();
+                }else{
+                    sfest = "";
+                }
+                
                 //判断是否是农历节日
                 if (_fest && (!"".equals(lunar.getLFestivalName()))){
                 	fest = " " + lunar.getLFestivalName();
@@ -118,6 +151,13 @@ public class Main implements IXposedHookLoadPackage{
                 }else{
                     custom = "";
                 }
+                
+                //判断是否是自定义公历节日
+                if (_solar_custom && (!"".equals(lunar.getCSFestivalName()))){
+                	sfest_custom = "，" + lunar.getCSFestivalName();
+                }else{
+                    sfest_custom = "";
+                }
 
                 //根据设置设置年份
                 switch(_year){
@@ -133,7 +173,7 @@ public class Main implements IXposedHookLoadPackage{
 
                 //组合农历文本
                 if(_lang != 3){
-                	lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term + custom;
+                	lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + sfest + fest + term + sfest_custom + custom;
                 }else{
                 	lunarText = "[" + lunar.getLunarDay() + "/" + lunar.getLunarMonth() + "]";
                 }

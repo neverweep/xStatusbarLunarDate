@@ -65,8 +65,21 @@
     <string name="custom_lunar_summary">設置自訂農曆紀念日</string>
     <string name="custom_lunar_summary_on">在農曆日期後顯示自訂農曆紀念日</string>
     <string name="custom_lunar_summary_off">不顯示自訂農曆紀念日</string>
+    <string name="setting_custom_solar_howtodo">如何添加</string>
+    <string name="setting_custom_solar_howtodo_summary">點擊查看如何向模組添加自己的西曆紀念日</string>
+    <string name="setting_custom_solar_item">自訂西曆紀念日</string>
+    <string name="setting_custom_solar_item_summary">未設置</string>
+    <string name="setting_custom_solar_item_hint">0101元旦</string>
+    <string name="setting_custom_solar_howtodo_msg">輸入“月月日日名稱”來設置。範例：“0509生日”。\n\n注意：4 位日期是西曆日期。\n\n留空則取消此項。</string>
+    <string name="custom_solar">自訂西曆紀念日</string>
+    <string name="custom_solar_summary">設置自訂西曆紀念日</string>
+    <string name="custom_solar_summary_on">在農曆日期後顯示自訂西曆紀念日</string>
+    <string name="custom_solar_summary_off">不顯示自訂西曆紀念日</string>
     <string name="system_category">系統</string>
     <string name="rom">選擇系統類型</string>
     <string name="rom_option_1">大多數 Android</string>
     <string name="rom_option_2">Miui</string>
+    <string name="solar">西曆節日</string>
+    <string name="solar_summary_on">在農曆日期後顯示西曆節日</string>
+    <string name="solar_summary_off">不顯示西曆節日</string>
 </resources>

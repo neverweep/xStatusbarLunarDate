@@ -27,6 +27,9 @@ public class Lockscreen implements IXposedHookLoadPackage{
     private String term;
     private String fest;
     private String custom;
+    private String sfest;
+    private String sfest_custom;
+
  
     //获取农历字符串子程序
     private String returnDate(String nDate){
@@ -34,6 +37,12 @@ public class Lockscreen implements IXposedHookLoadPackage{
     	if(!nDate.equals(lDate)){
 	    	lunar.init(System.currentTimeMillis());
 
+            if (Main._solar && (!"".equals(lunar.getSFestivalName()))){
+            	sfest = " " + lunar.getSFestivalName();
+            }else{
+                sfest = "";
+            }
+            
             //判断是否是农历节日
             if (Main._fest && (!"".equals(lunar.getLFestivalName()))){
             	fest = " " + lunar.getLFestivalName();
@@ -55,6 +64,12 @@ public class Lockscreen implements IXposedHookLoadPackage{
                 custom = "";
             }
             
+            if (Main._solar_custom && (!"".equals(lunar.getCSFestivalName()))){
+            	sfest_custom = "，" + lunar.getCSFestivalName();
+            }else{
+                sfest_custom = "";
+            }
+            
 	        //根据设置设置年份
 	        switch(Main._year){
 	            case 1:  year = lunar.getAnimalString() + "年";
@@ -69,7 +84,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
 	
 	        //组合农历文本
 	        if(Main._lang != 3){
-	            lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + fest + term + custom;
+	            lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + sfest + fest + term + sfest_custom + custom;
 	        }else{
 	            lunarText = "[" + lunar.getLunarDay() + "/" + lunar.getLunarMonth() + "]";
 	        }

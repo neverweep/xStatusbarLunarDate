@@ -31,6 +31,8 @@ public class Lunar {
     private String lFestivalName;
     private String termString;
     private String clFestivalName;
+    private String sFestivalName;
+    private String csFestivalName;
 
     private final static int[] lunarInfo = {
         0x4bd8, 0x4ae0, 0xa570, 0x54d5, 0xd260, 0xd950, 0x5554, 0x56af,
@@ -75,8 +77,11 @@ public class Lunar {
     private static String[] Animals;
     private static String[] solarTerm;
     private static String[] lFtv;
+    private static String[] sFtv;
+    private static String[] wFtv;
 
     private final static Pattern sFreg = Pattern.compile("^(\\d{2})(\\d{2})(.+)$");
+    private final static Pattern wFreg = Pattern.compile("^(\\d{2})(\\d)(\\d)(.+)$");
 
     private static GregorianCalendar utcCal = null;
     
@@ -85,27 +90,78 @@ public class Lunar {
         catch(Exception e) { return -1; }
     }
     private synchronized void findFestival() {
-        int lM = this.getLunarMonth();
-        int lD = this.getLunarDay();
-        Matcher m;
-        for (int i=0; i<Lunar.lFtv.length; i++) {
-            m = Lunar.sFreg.matcher(Lunar.lFtv[i]);
-            if (m.find()) {
-                if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
-                    this.lFestivalName = m.group(3);
-                    break;
-                }
-            }
-        }
-        for (int i=0; i<Main._clf.length; i++) {
-            m = Lunar.sFreg.matcher(Main._clf[i]);
-            if (m.find()) {
-                if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
-                    this.clFestivalName = m.group(3);
-                    break;
-                }
-            }
-        }
+		int sM = this.getSolarMonth();
+		int sD = this.getSolarDay();
+		int lM = this.getLunarMonth();
+		int lD = this.getLunarDay();
+		Matcher m;
+		
+		if(Main._solar){
+			for (int i=0; i<Lunar.sFtv.length; i++) {
+				m = Lunar.sFreg.matcher(Lunar.sFtv[i]);
+				if (m.find()) {
+					if (sM == Lunar.toInt(m.group(1)) && sD == Lunar.toInt(m.group(2))) {
+						this.sFestivalName = m.group(3);
+						break;
+					}
+				}
+			}
+		}
+		if(Main._fest){
+	        for (int i=0; i<Lunar.lFtv.length; i++) {
+	            m = Lunar.sFreg.matcher(Lunar.lFtv[i]);
+	            if (m.find()) {
+	                if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
+	                    this.lFestivalName = m.group(3);
+	                    break;
+	                }
+	    			if(lM == 12 && lD == 29 && Lunar.getLunarMonthDays(this.lunarYear, lM) == 29){
+	    				this.lFestivalName += "除夕";
+	    				break;
+	    			}
+	            }
+	        }
+		}
+		if(Main._custom){
+	        for (int i=0; i<Main._clf.length; i++) {
+	            m = Lunar.sFreg.matcher(Main._clf[i]);
+	            if (m.find()) {
+	                if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
+	                    this.clFestivalName = m.group(3);
+	                    break;
+	                }
+	            }
+	        }
+		}
+		if(Main._solar_custom){
+	        for (int i=0; i<Main._csf.length; i++) {
+	            m = Lunar.sFreg.matcher(Main._csf[i]);
+				if (m.find()) {
+					if (sM == Lunar.toInt(m.group(1)) && sD == Lunar.toInt(m.group(2))) {
+						this.csFestivalName = m.group(3);
+						break;
+					}
+				}
+	        }
+		}
+		// 月周节日
+		if(Main._solar){
+			int w, d;
+			for (int i=0; i<Lunar.wFtv.length; i++) {
+				m = Lunar.wFreg.matcher(Lunar.wFtv[i]);
+				if (m.find()) {
+					if (this.getSolarMonth() == Lunar.toInt(m.group(1))) {
+						w = Lunar.toInt(m.group(2));
+						d = Lunar.toInt(m.group(3));
+						if (this.solar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == w &&
+								this.solar.get(Calendar.DAY_OF_WEEK) == d) {
+							this.sFestivalName += " " + m.group(4);
+						}
+					}
+				}
+			}
+			this.sFestivalName = this.sFestivalName.replaceFirst("^\\s", "");
+		}
     }
     
     /**
@@ -240,7 +296,7 @@ public class Lunar {
 	                "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
 	            };
 	            Lunar.lunarString2 = new String[]{
-	                "初", "十", "廿", "卅", "正", "腊", "冬", "闰"
+	                "初", "十", "廿", "卅", "正", "冬", "腊", "闰"
 	            };
 	            Lunar.lFtv = new String[]{
 	            	"",
@@ -249,6 +305,15 @@ public class Lunar {
 	                "0815中秋", "0909重阳", "1208腊八", 
 	                "1230除夕"
 	            };
+	        	Lunar.sFtv = new String[]{
+	        		"0101元旦", "0214情人节", "0308妇女节", "0312植树节", 
+	        		"0401愚人节", "0501劳动节", "0504青年节", "0601儿童节", 
+	        		"0701建党节", "0801建军节", "0910教师节", "1001国庆节", 
+	        		"1031万圣节", "1225圣诞节"
+	        	};
+	        	Lunar.wFtv = new String[]{
+	        		"0521母亲节", "0631父亲节", "1145感恩节"
+	        	};
 	            break;
 	    	case 2:
 	            Lunar.Deqi = new String[]{
@@ -264,7 +329,7 @@ public class Lunar {
 	                "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
 	            };
 	            Lunar.lunarString2 = new String[]{
-	                "初", "十", "廿", "卅", "正", "臘", "冬", "閏"
+	                "初", "十", "廿", "卅", "正", "冬", "臘", "閏"
 	            };
 	            Lunar.lFtv = new String[]{
 	                "",
@@ -273,6 +338,10 @@ public class Lunar {
 	                "0815中秋", "0909重陽", "1208臘八", 
 	                "1230除夕"
 	            };
+	            Lunar.sFtv = new String[]{};
+	        	Lunar.wFtv = new String[]{
+		        	"0521母親節", "0631父親節", "1145感恩節"
+		        };
 	            break;
 	    	case 3:
 	            Lunar.Deqi = new String[]{"","","","","","","","","","","",""};
@@ -285,6 +354,9 @@ public class Lunar {
 	            };
 	            Lunar.lunarString2 = new String[]{"","","","","","","",""};
 	            Lunar.lFtv = new String[]{};
+	            Lunar.sFtv = new String[]{};
+	            Lunar.wFtv = new String[]{};
+	            break;
         }
     	if(lang != 3){
     		switch(Main._minor){
@@ -297,8 +369,10 @@ public class Lunar {
 
     public void init(long TimeInMillis) {
         lFestivalName = "";
+        sFestivalName = "";
         termString = "";
         clFestivalName = "";
+        csFestivalName = "";
         
         this.solar = Calendar.getInstance();
         this.solar.setTimeInMillis(TimeInMillis);
@@ -357,6 +431,14 @@ public class Lunar {
         
         findFestival();
     }
+    
+	/**
+	 * 取得公历节日名称
+	 * @return 公历节日名称,如果不是节日返回空串
+	 */
+	public String getSFestivalName() {
+		return this.sFestivalName;
+	}
 
     /**
      * 取干支历 不是历年，历月干支，而是中国的从立春节气开始的节月，是中国的太阳十二宫，阳历的。
@@ -573,7 +655,38 @@ public class Lunar {
     public String getCLFestivalName() {
         return this.clFestivalName;
     }
+    
+    /**
+     * 取得自定义公历节日名称
+     * @return 公历节日名称,如果不是节日返回空串
+     */
+    public String getCSFestivalName() {
+        return this.csFestivalName;
+    }
 
+	/**
+	 * 公历日期
+	 * @return 公历日期
+	 */
+	public int getSolarDay() {
+		return solarDay;
+	}
+
+	/**
+	 * 公历月份
+	 * @return 公历月份 (不是从0算起)
+	 */
+	public int getSolarMonth() {
+		return solarMonth+1;
+	}
+
+	/**
+	 * 公历年份
+	 * @return 公历年份
+	 */
+	public int getSolarYear() {
+		return solarYear;
+	}
 
     /**
      * 干支字符串
@@ -620,11 +733,12 @@ public class Lunar {
         String lunarMonthString = "";
         if (lunarMonth == 1) {
             lunarMonthString = Lunar.lunarString2[4];
-        } else {
-            if (lunarMonth > 9)
-                lunarMonthString += Lunar.lunarString2[1];
-            if (lunarMonth % 10 > 0)
-                lunarMonthString += Lunar.lunarString1[lunarMonth % 10];
+        }else if(lunarMonth == 10){
+			lunarMonthString += Lunar.lunarString2[1];
+		}else if(lunarMonth > 10){
+			lunarMonthString += Lunar.lunarString2[lunarMonth % 10 + 4];
+		}else if(lunarMonth % 10 > 0){
+			lunarMonthString += Lunar.lunarString1[lunarMonth % 10];
         }
         return lunarMonthString;
     }

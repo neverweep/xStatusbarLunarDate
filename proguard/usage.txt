@@ -1,16 +1,17 @@
 de.xiaoxia.xstatusbarlunardate.BuildConfig
 de.xiaoxia.xstatusbarlunardate.Lunar:
-    430:430:public int getTiananY()
-    438:438:public int getTiananM()
-    446:446:public int getTiananD()
-    454:454:public int getDeqiY()
-    462:462:public int getDeqiM()
-    470:470:public int getDeqiD()
-    478:478:public java.lang.String getCyclicaYear()
-    486:486:public java.lang.String getCyclicaMonth()
-    494:494:public java.lang.String getCyclicaDay()
-    534:534:public boolean isLeapYear()
-    558:558:public int getLunarYear()
+    496:496:public int getTiananY()
+    504:504:public int getTiananM()
+    512:512:public int getTiananD()
+    520:520:public int getDeqiY()
+    528:528:public int getDeqiM()
+    536:536:public int getDeqiD()
+    544:544:public java.lang.String getCyclicaYear()
+    552:552:public java.lang.String getCyclicaMonth()
+    560:560:public java.lang.String getCyclicaDay()
+    600:600:public boolean isLeapYear()
+    624:624:public int getLunarYear()
+    672:672:public int getSolarYear()
 de.xiaoxia.xstatusbarlunardate.R
 de.xiaoxia.xstatusbarlunardate.R$array
 de.xiaoxia.xstatusbarlunardate.R$attr

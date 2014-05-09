@@ -16,6 +16,11 @@
     	<Preference android:key="setting_custom_lunar" android:summary="@string/custom_lunar_summary" android:title="@string/custom_lunar" android:enabled="true" android:dependency="custom">
     	    <intent android:action="android.intent.action.VIEW" android:targetPackage="de.xiaoxia.xstatusbarlunardate" android:targetClass="de.xiaoxia.xstatusbarlunardate.SettingCustomLunar" />
     	</Preference>
+    	<CheckBoxPreference android:key="solar" android:summaryOn="@string/solar_summary_on" android:summaryOff="@string/solar_summary_off" android:title="@string/solar" android:defaultValue="true"/><CheckBoxPreference android:summaryOn="@string/custom_solar_summary_on" android:key="custom_solar" android:summaryOff="@string/custom_solar_summary_off" android:title="@string/custom_solar" android:defaultValue="true"/>
+    	<Preference android:key="setting_custom_solar" android:summary="@string/custom_solar_summary" android:title="@string/custom_solar" android:dependency="custom_solar">
+    	    <intent android:action="android.intent.action.VIEW" android:targetPackage="de.xiaoxia.xstatusbarlunardate" android:targetClass="de.xiaoxia.xstatusbarlunardate.SettingCustomSolar" />
+    	</Preference>
+    	
 	</PreferenceCategory>
 	
 	<PreferenceCategory android:key="@string/layout_category" android:title="@string/layout_category" android:order="3">

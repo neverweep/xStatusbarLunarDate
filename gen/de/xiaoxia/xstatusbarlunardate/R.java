@@ -31,6 +31,7 @@ public final class R {
     public static final class layout {
         public static final int about=0x7f030000;
         public static final int setting_custom_lunar_howtodo=0x7f030001;
+        public static final int setting_custom_solar_howtodo=0x7f030002;
     }
     public static final class string {
         public static final int about=0x7f060016;
@@ -46,6 +47,10 @@ public final class R {
         public static final int custom_lunar_summary=0x7f06003d;
         public static final int custom_lunar_summary_off=0x7f06003f;
         public static final int custom_lunar_summary_on=0x7f06003e;
+        public static final int custom_solar=0x7f060046;
+        public static final int custom_solar_summary=0x7f060047;
+        public static final int custom_solar_summary_off=0x7f060049;
+        public static final int custom_solar_summary_on=0x7f060048;
         public static final int description=0x7f060008;
         public static final int display_category=0x7f060004;
         public static final int fest=0x7f06000d;
@@ -81,17 +86,26 @@ public final class R {
         public static final int remove=0x7f060018;
         public static final int remove_summary_off=0x7f06001a;
         public static final int remove_summary_on=0x7f060019;
-        public static final int rom=0x7f060041;
-        public static final int rom_option_1=0x7f060042;
-        public static final int rom_option_2=0x7f060043;
+        public static final int rom=0x7f06004b;
+        public static final int rom_option_1=0x7f06004c;
+        public static final int rom_option_2=0x7f06004d;
         public static final int setting_custom_lunar_howtodo=0x7f060036;
         public static final int setting_custom_lunar_howtodo_msg=0x7f06003b;
         public static final int setting_custom_lunar_howtodo_summary=0x7f060037;
         public static final int setting_custom_lunar_item=0x7f060038;
         public static final int setting_custom_lunar_item_hint=0x7f06003a;
         public static final int setting_custom_lunar_item_summary=0x7f060039;
+        public static final int setting_custom_solar_howtodo=0x7f060040;
+        public static final int setting_custom_solar_howtodo_msg=0x7f060045;
+        public static final int setting_custom_solar_howtodo_summary=0x7f060041;
+        public static final int setting_custom_solar_item=0x7f060042;
+        public static final int setting_custom_solar_item_hint=0x7f060044;
+        public static final int setting_custom_solar_item_summary=0x7f060043;
         public static final int settings=0x7f060001;
-        public static final int system_category=0x7f060040;
+        public static final int solar=0x7f06004e;
+        public static final int solar_summary_off=0x7f060050;
+        public static final int solar_summary_on=0x7f06004f;
+        public static final int system_category=0x7f06004a;
         public static final int term=0x7f06000a;
         public static final int term_summray_off=0x7f06000c;
         public static final int term_summray_on=0x7f06000b;
@@ -120,5 +134,6 @@ public final class R {
     public static final class xml {
         public static final int setting=0x7f040000;
         public static final int setting_custom_lunar=0x7f040001;
+        public static final int setting_custom_solar=0x7f040002;
     }
 }

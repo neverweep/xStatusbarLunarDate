@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.xiaoxia.xstatusbarlunardate"
-    android:versionCode="13"
-    android:versionName="0.10.1" >
+    android:versionCode="14"
+    android:versionName="0.11.0" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -22,7 +22,7 @@
              	<category android:name="android.xposed.category.MODULE_SETTINGS" />
         	</intent-filter>
         </activity>
-        <activity android:name="SettingCustomLunar">
-        </activity>
+        <activity android:name="SettingCustomLunar"></activity>
+        <activity android:name="SettingCustomSolar"></activity>
     </application>
 </manifest>
