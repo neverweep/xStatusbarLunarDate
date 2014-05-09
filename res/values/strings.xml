@@ -24,13 +24,15 @@
     <string name="minor_year_option_3">12.25 (Minority areas of China)</string>
     <string name="about_category">About</string>
     <string name="about">About X Statusbar Lunar Date</string>
-    <string name="about_msg">"<b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual, bug report, donate: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
-    <string name="remove">Remove original line feed</string>
+	<string name="about_msg"><b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual, bug report: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\nDonate：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
+	<string name="remove">Remove original line feed</string>
     <string name="remove_summary_on">Remove line feed in original date</string>
     <string name="remove_summary_off">Keep line feed original</string>
-    <string name="lang">Language</string>
-    <string name="lang_option_1">Simplified Chinese</string>
-    <string name="lang_option_2">Traditional Chinese</string>
+    <string name="lang">Language and built-in festivals</string>
+    <string name="lang_option_1">Simp-Chinese(Mainland China)</string>
+    <string name="lang_option_2">Trad-Chinese(Taiwan)</string>
+    <string name="lang_option_4">Trad-Chinese(Hong Kong)</string>
+    <string name="lang_option_5">Trad-Chinese(Macau)</string>
     <string name="lang_option_3">English (Only Digits)</string>
     <string name="lang_dialogue_title">Set prefer language to display</string>
     <string name="year">Year options</string>
@@ -77,8 +79,8 @@
     <string name="custom_solar_summary_off">Hide your own solar customed date of commemoration</string>
     <string name="system_category">System</string>
     <string name="rom">Select type of system</string>
-    <string name="rom_option_1">Most Android</string>
-    <string name="rom_option_2">Miui</string>
+    <string name="rom_option_1">Most Android or Miui(Kitkat)</string>
+    <string name="rom_option_2">Miui(Jelly Bean or earlier)</string>
     <string name="solar">Solar festivals</string>
     <string name="solar_summary_on">Show solar festivals after lunar date</string>
     <string name="solar_summary_off">Hide solar fesivals</string>

@@ -65,10 +65,11 @@ de.xiaoxia.xstatusbarlunardate.Lunar -> de.xiaoxia.xstatusbarlunardate.d:
     int getLunarLeapMonth(int) -> a
     int getLunarLeapDays(int) -> b
     int getLunarYearDays(int) -> c
+    int getLunarMonthDays(int,int) -> a
     int getUTCDay(java.util.Date) -> a
     void makeUTCCalendar() -> m
     long UTC$6046c8c9(int,int,int,int,int) -> a
-    int getSolarTermDay(int,int) -> a
+    int getSolarTermDay(int,int) -> b
     void init(long) -> a
     java.lang.String getSFestivalName() -> a
     java.lang.String getAnimalString() -> b

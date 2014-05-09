@@ -805,8 +805,8 @@ Methods (count = 9):
       [504] invokevirtual #82
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [507] aload_0 v0
-      [508] getfield #46
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.k Ljava/lang/String;]
+      [508] getfield #43
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.h Ljava/lang/String;]
       [511] invokevirtual #82
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [514] aload_0 v0
@@ -815,18 +815,18 @@ Methods (count = 9):
       [518] invokevirtual #82
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [521] aload_0 v0
-      [522] getfield #43
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.h Ljava/lang/String;]
+      [522] getfield #45
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.j Ljava/lang/String;]
       [525] invokevirtual #82
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [528] aload_0 v0
-      [529] getfield #47
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.l Ljava/lang/String;]
+      [529] getfield #46
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.k Ljava/lang/String;]
       [532] invokevirtual #82
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [535] aload_0 v0
-      [536] getfield #45
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.j Ljava/lang/String;]
+      [536] getfield #47
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.l Ljava/lang/String;]
       [539] invokevirtual #82
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [542] invokevirtual #83
@@ -1505,7 +1505,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 629):
+Constant Pool (count = 698):
   + Integer [32768]
   + Integer [34531]
   + Integer [37584]
@@ -1620,17 +1620,25 @@ Constant Pool (count = 629):
   + Integer [504758]
   + String []
   + String [ ]
+  + String [ 復活節]
   + String [0101元旦]
   + String [0101春節]
   + String [0101春节]
   + String [0115元宵]
   + String [0202龍頭]
   + String [0202龙头]
+  + String [0214情人節]
   + String [0214情人节]
+  + String [0228和平紀念日]
   + String [0308妇女节]
+  + String [0308婦女節]
   + String [0312植树节]
+  + String [0401愚人節]
   + String [0401愚人节]
+  + String [0404兒童節]
+  + String [0408佛诞]
   + String [0501劳动节]
+  + String [0501勞動節]
   + String [0504青年节]
   + String [0505端午]
   + String [0521母亲节]
@@ -1639,21 +1647,35 @@ Constant Pool (count = 629):
   + String [0631父亲节]
   + String [0631父親節]
   + String [0701建党节]
+  + String [0701特區紀念日]
   + String [0707七夕]
   + String [0715中元]
   + String [0801建军节]
   + String [0815中秋]
+  + String [0903軍人節]
   + String [0909重阳]
   + String [0909重陽]
   + String [0910教师节]
+  + String [0910教師節]
+  + String [0928教師節]
   + String [1001国庆节]
+  + String [1001國慶日]
+  + String [1010國慶日]
   + String [1031万圣节]
+  + String [1031萬聖節]
+  + String [1102追思節]
+  + String [1145感恩節]
+  + String [1145感恩节]
+  + String [1208聖母無原罪日]
   + String [1208腊八]
   + String [1208臘八]
+  + String [1220特區紀念日]
   + String [1223 小年]
   + String [1224 小年]
   + String [1225 小年]
   + String [1225圣诞节]
+  + String [1225耶誕節]
+  + String [1225聖誕節]
   + String [1230除夕]
   + String [UTC]
   + String [^(\d{2})(\d)(\d)(.+)$]
@@ -1736,6 +1758,7 @@ Constant Pool (count = 629):
   + String [醜]
   + String [閏]
   + String [闰]
+  + String [除夕]
   + String [雞]
   + String [雨水]
   + String [零]
@@ -1749,8 +1772,10 @@ Constant Pool (count = 629):
   + String [龙]
   + Class [de/xiaoxia/xstatusbarlunardate/Main]
   + Class [de/xiaoxia/xstatusbarlunardate/d]
+  + Class [java/lang/Boolean]
   + Class [java/lang/Exception]
   + Class [java/lang/Integer]
+  + Class [java/lang/Math]
   + Class [java/lang/Object]
   + Class [java/lang/String]
   + Class [java/lang/StringBuilder]
@@ -1766,7 +1791,12 @@ Constant Pool (count = 629):
   + Long [60000]
   + Long [86400000]
   + Long [31556925974]
+  + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.c Ljava/lang/Boolean;]
+  + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.d Ljava/lang/Boolean;]
+  + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.e Ljava/lang/Boolean;]
+  + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.f Ljava/lang/Boolean;]
   + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.j I]
+  + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.k I]
   + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.n [Ljava/lang/String;]
   + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.o [Ljava/lang/String;]
   + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
@@ -1806,10 +1836,13 @@ Constant Pool (count = 629):
   + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
   + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/util/Date;)I]
   + Methodref [de/xiaoxia/xstatusbarlunardate/d.b (I)I]
+  + Methodref [de/xiaoxia/xstatusbarlunardate/d.b (II)I]
   + Methodref [de/xiaoxia/xstatusbarlunardate/d.c (I)I]
   + Methodref [de/xiaoxia/xstatusbarlunardate/d.l ()V]
   + Methodref [de/xiaoxia/xstatusbarlunardate/d.m ()V]
+  + Methodref [java/lang/Boolean.booleanValue ()Z]
   + Methodref [java/lang/Integer.parseInt (Ljava/lang/String;)I]
+  + Methodref [java/lang/Math.floor (D)D]
   + Methodref [java/lang/Object.<init> ()V]
   + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
   + Methodref [java/lang/String.replaceFirst (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
@@ -1853,16 +1886,23 @@ Constant Pool (count = 629):
   + NameAndType [a Ljava/util/Calendar;]
   + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
   + NameAndType [b (I)I]
+  + NameAndType [b (II)I]
   + NameAndType [b I]
+  + NameAndType [booleanValue ()Z]
   + NameAndType [c (I)I]
   + NameAndType [c I]
+  + NameAndType [c Ljava/lang/Boolean;]
   + NameAndType [clear ()V]
   + NameAndType [compile (Ljava/lang/String;)Ljava/util/regex/Pattern;]
   + NameAndType [d I]
+  + NameAndType [d Ljava/lang/Boolean;]
+  + NameAndType [e Ljava/lang/Boolean;]
   + NameAndType [e Z]
   + NameAndType [equals (Ljava/lang/Object;)Z]
+  + NameAndType [f Ljava/lang/Boolean;]
   + NameAndType [f Z]
   + NameAndType [find ()Z]
+  + NameAndType [floor (D)D]
   + NameAndType [g I]
   + NameAndType [get (I)I]
   + NameAndType [getInstance ()Ljava/util/Calendar;]
@@ -1902,12 +1942,14 @@ Constant Pool (count = 629):
   + NameAndType [z [Ljava/lang/String;]
   + Utf8 []
   + Utf8 [ ]
+  + Utf8 [ 復活節]
   + Utf8 [()I]
   + Utf8 [()J]
   + Utf8 [()Ljava/lang/String;]
   + Utf8 [()Ljava/util/Calendar;]
   + Utf8 [()V]
   + Utf8 [()Z]
+  + Utf8 [(D)D]
   + Utf8 [(I)I]
   + Utf8 [(I)Ljava/lang/String;]
   + Utf8 [(I)V]
@@ -1933,11 +1975,18 @@ Constant Pool (count = 629):
   + Utf8 [0115元宵]
   + Utf8 [0202龍頭]
   + Utf8 [0202龙头]
+  + Utf8 [0214情人節]
   + Utf8 [0214情人节]
+  + Utf8 [0228和平紀念日]
   + Utf8 [0308妇女节]
+  + Utf8 [0308婦女節]
   + Utf8 [0312植树节]
+  + Utf8 [0401愚人節]
   + Utf8 [0401愚人节]
+  + Utf8 [0404兒童節]
+  + Utf8 [0408佛诞]
   + Utf8 [0501劳动节]
+  + Utf8 [0501勞動節]
   + Utf8 [0504青年节]
   + Utf8 [0505端午]
   + Utf8 [0521母亲节]
@@ -1946,21 +1995,35 @@ Constant Pool (count = 629):
   + Utf8 [0631父亲节]
   + Utf8 [0631父親節]
   + Utf8 [0701建党节]
+  + Utf8 [0701特區紀念日]
   + Utf8 [0707七夕]
   + Utf8 [0715中元]
   + Utf8 [0801建军节]
   + Utf8 [0815中秋]
+  + Utf8 [0903軍人節]
   + Utf8 [0909重阳]
   + Utf8 [0909重陽]
   + Utf8 [0910教师节]
+  + Utf8 [0910教師節]
+  + Utf8 [0928教師節]
   + Utf8 [1001国庆节]
+  + Utf8 [1001國慶日]
+  + Utf8 [1010國慶日]
   + Utf8 [1031万圣节]
+  + Utf8 [1031萬聖節]
+  + Utf8 [1102追思節]
+  + Utf8 [1145感恩節]
+  + Utf8 [1145感恩节]
+  + Utf8 [1208聖母無原罪日]
   + Utf8 [1208腊八]
   + Utf8 [1208臘八]
+  + Utf8 [1220特區紀念日]
   + Utf8 [1223 小年]
   + Utf8 [1224 小年]
   + Utf8 [1225 小年]
   + Utf8 [1225圣诞节]
+  + Utf8 [1225耶誕節]
+  + Utf8 [1225聖誕節]
   + Utf8 [1230除夕]
   + Utf8 [<clinit>]
   + Utf8 [<init>]
@@ -1971,6 +2034,7 @@ Constant Pool (count = 629):
   + Utf8 [D]
   + Utf8 [E]
   + Utf8 [I]
+  + Utf8 [Ljava/lang/Boolean;]
   + Utf8 [Ljava/lang/String;]
   + Utf8 [Ljava/util/Calendar;]
   + Utf8 [Ljava/util/GregorianCalendar;]
@@ -1986,6 +2050,7 @@ Constant Pool (count = 629):
   + Utf8 [a]
   + Utf8 [append]
   + Utf8 [b]
+  + Utf8 [booleanValue]
   + Utf8 [c]
   + Utf8 [clear]
   + Utf8 [compile]
@@ -1996,6 +2061,7 @@ Constant Pool (count = 629):
   + Utf8 [equals]
   + Utf8 [f]
   + Utf8 [find]
+  + Utf8 [floor]
   + Utf8 [g]
   + Utf8 [get]
   + Utf8 [getInstance]
@@ -2006,8 +2072,10 @@ Constant Pool (count = 629):
   + Utf8 [h]
   + Utf8 [i]
   + Utf8 [j]
+  + Utf8 [java/lang/Boolean]
   + Utf8 [java/lang/Exception]
   + Utf8 [java/lang/Integer]
+  + Utf8 [java/lang/Math]
   + Utf8 [java/lang/Object]
   + Utf8 [java/lang/String]
   + Utf8 [java/lang/StringBuilder]
@@ -2118,6 +2186,7 @@ Constant Pool (count = 629):
   + Utf8 [醜]
   + Utf8 [閏]
   + Utf8 [闰]
+  + Utf8 [除夕]
   + Utf8 [雞]
   + Utf8 [雨水]
   + Utf8 [零]
@@ -2225,12 +2294,12 @@ Fields (count = 31):
     Access flags: 0xa
       = private static java.util.GregorianCalendar E
 
-Methods (count = 23):
+Methods (count = 24):
   - Method:       <clinit>()V
     Access flags: 0x8
       = static void <clinit>()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 1648, locals = 0, stack = 4):
+    + Code attribute instructions (code length = 1649, locals = 0, stack = 4):
       [0] sipush 201
       [3] newarray 10
       [5] dup
@@ -3157,7 +3226,7 @@ Methods (count = 23):
       [1356] ldc #73
         + Integer [54560]
       [1358] iastore
-      [1359] putstatic #291
+      [1359] putstatic #321
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.r [I]
       [1362] bipush 24
       [1364] newarray 10
@@ -3275,134 +3344,134 @@ Methods (count = 23):
       [1497] ldc #112
         + Integer [504758]
       [1499] iastore
-      [1500] putstatic #292
+      [1500] putstatic #322
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.s [I]
       [1503] bipush 10
-      [1505] anewarray #247
+      [1505] anewarray #272
         + Class [java/lang/String]
       [1508] dup
       [1509] iconst_0
-      [1510] ldc #205
+      [1510] ldc #227
         + String [甲]
       [1512] aastore
       [1513] dup
       [1514] iconst_1
-      [1515] ldc #160
+      [1515] ldc #182
         + String [乙]
       [1517] aastore
       [1518] dup
       [1519] iconst_2
-      [1520] ldc #159
+      [1520] ldc #181
         + String [丙]
       [1522] aastore
       [1523] dup
       [1524] iconst_3
-      [1525] ldc #155
+      [1525] ldc #177
         + String [丁]
       [1527] aastore
       [1528] dup
       [1529] iconst_4
-      [1530] ldc #195
+      [1530] ldc #217
         + String [戊]
       [1532] aastore
       [1533] dup
       [1534] iconst_5
-      [1535] ldc #190
+      [1535] ldc #212
         + String [己]
       [1537] aastore
       [1538] dup
       [1539] bipush 6
-      [1541] ldc #192
+      [1541] ldc #214
         + String [庚]
       [1543] aastore
       [1544] dup
       [1545] bipush 7
-      [1547] ldc #225
+      [1547] ldc #247
         + String [辛]
       [1549] aastore
       [1550] dup
       [1551] bipush 8
-      [1553] ldc #176
+      [1553] ldc #198
         + String [壬]
       [1555] aastore
       [1556] dup
       [1557] bipush 9
-      [1559] ldc #207
+      [1559] ldc #229
         + String [癸]
       [1561] aastore
-      [1562] putstatic #293
+      [1562] putstatic #323
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.t [Ljava/lang/String;]
       [1565] bipush 10
-      [1567] anewarray #247
+      [1567] anewarray #272
         + Class [java/lang/String]
       [1570] dup
       [1571] iconst_0
-      [1572] ldc #233
+      [1572] ldc_w #256
         + String [零]
-      [1574] aastore
-      [1575] dup
-      [1576] iconst_1
-      [1577] ldc #154
+      [1575] aastore
+      [1576] dup
+      [1577] iconst_1
+      [1578] ldc #176
         + String [一]
-      [1579] aastore
-      [1580] dup
-      [1581] iconst_2
-      [1582] ldc #162
+      [1580] aastore
+      [1581] dup
+      [1582] iconst_2
+      [1583] ldc #184
         + String [二]
-      [1584] aastore
-      [1585] dup
-      [1586] iconst_3
-      [1587] ldc #157
+      [1585] aastore
+      [1586] dup
+      [1587] iconst_3
+      [1588] ldc #179
         + String [三]
-      [1589] aastore
-      [1590] dup
-      [1591] iconst_4
-      [1592] ldc #175
+      [1590] aastore
+      [1591] dup
+      [1592] iconst_4
+      [1593] ldc #197
         + String [四]
-      [1594] aastore
-      [1595] dup
-      [1596] iconst_5
-      [1597] ldc #163
+      [1595] aastore
+      [1596] dup
+      [1597] iconst_5
+      [1598] ldc #185
         + String [五]
-      [1599] aastore
-      [1600] dup
-      [1601] bipush 6
-      [1603] ldc #167
+      [1600] aastore
+      [1601] dup
+      [1602] bipush 6
+      [1604] ldc #189
         + String [六]
-      [1605] aastore
-      [1606] dup
-      [1607] bipush 7
-      [1609] ldc #156
+      [1606] aastore
+      [1607] dup
+      [1608] bipush 7
+      [1610] ldc #178
         + String [七]
-      [1611] aastore
-      [1612] dup
-      [1613] bipush 8
-      [1615] ldc #166
+      [1612] aastore
+      [1613] dup
+      [1614] bipush 8
+      [1616] ldc #188
         + String [八]
-      [1617] aastore
-      [1618] dup
-      [1619] bipush 9
-      [1621] ldc #161
+      [1618] aastore
+      [1619] dup
+      [1620] bipush 9
+      [1622] ldc #183
         + String [九]
-      [1623] aastore
-      [1624] putstatic #294
+      [1624] aastore
+      [1625] putstatic #324
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.u [Ljava/lang/String;]
-      [1627] ldc #152
+      [1628] ldc #174
         + String [^(\d{2})(\d{2})(.+)$]
-      [1629] invokestatic #333
+      [1630] invokestatic #366
         + Methodref [java/util/regex/Pattern.compile (Ljava/lang/String;)Ljava/util/regex/Pattern;]
-      [1632] putstatic #271
+      [1633] putstatic #301
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
-      [1635] ldc #151
+      [1636] ldc #173
         + String [^(\d{2})(\d)(\d)(.+)$]
-      [1637] invokestatic #333
+      [1638] invokestatic #366
         + Methodref [java/util/regex/Pattern.compile (Ljava/lang/String;)Ljava/util/regex/Pattern;]
-      [1640] putstatic #272
+      [1641] putstatic #302
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.D Ljava/util/regex/Pattern;]
-      [1643] aconst_null
-      [1644] putstatic #273
+      [1644] aconst_null
+      [1645] putstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
-      [1647] return
+      [1648] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       a(Ljava/lang/String;)I
@@ -3411,7 +3480,7 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 8, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] invokestatic #309
+      [1] invokestatic #341
         + Methodref [java/lang/Integer.parseInt (Ljava/lang/String;)I]
       [4] ireturn
       [5] pop
@@ -3427,340 +3496,588 @@ Methods (count = 23):
     Access flags: 0x22
       = private synchronized void l()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 491, locals = 7, stack = 4):
+    + Code attribute instructions (code length = 858, locals = 11, stack = 4):
       [0] aload_0 v0
-      [1] getfield #281
+      [1] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
       [4] iconst_1
       [5] iadd
       [6] istore_1 v1
       [7] aload_0 v0
-      [8] getfield #282
+      [8] getfield #312
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.i I]
       [11] istore_2 v2
       [12] aload_0 v0
-      [13] getfield #276
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.c I]
+      [13] getfield #310
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
       [16] istore_3 v3
       [17] aload_0 v0
-      [18] getfield #277
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.d I]
+      [18] getfield #306
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.c I]
       [21] istore v4
-      [23] iconst_0
-      [24] istore v6
-      [26] goto +66 (target=92)
-      [29] getstatic #271
+      [23] aload_0 v0
+      [24] getfield #307
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.d I]
+      [27] istore v5
+      [29] getstatic #293
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.e Ljava/lang/Boolean;]
+      [32] invokevirtual #340
+        + Methodref [java/lang/Boolean.booleanValue ()Z]
+      [35] ifeq +335 (target=370)
+      [38] iconst_0
+      [39] istore v7
+      [41] goto +66 (target=107)
+      [44] getstatic #301
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
-      [32] getstatic #269
+      [47] getstatic #299
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
-      [35] iload v6
-      [37] aaload
-      [38] invokevirtual #334
+      [50] iload v7
+      [52] aaload
+      [53] invokevirtual #367
         + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [41] dup
-      [42] astore v5
-      [44] invokevirtual #331
+      [56] dup
+      [57] astore v6
+      [59] invokevirtual #364
         + Methodref [java/util/regex/Matcher.find ()Z]
-      [47] ifeq +42 (target=89)
-      [50] iload_1 v1
-      [51] aload v5
-      [53] iconst_1
-      [54] invokevirtual #332
+      [62] ifeq +42 (target=104)
+      [65] iload_1 v1
+      [66] aload v6
+      [68] iconst_1
+      [69] invokevirtual #365
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [57] invokestatic #303
+      [72] invokestatic #333
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [60] ificmpne +29 (target=89)
-      [63] iload_2 v2
-      [64] aload v5
-      [66] iconst_2
-      [67] invokevirtual #332
+      [75] ificmpne +29 (target=104)
+      [78] iload_2 v2
+      [79] aload v6
+      [81] iconst_2
+      [82] invokevirtual #365
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [70] invokestatic #303
+      [85] invokestatic #333
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [73] ificmpne +16 (target=89)
-      [76] aload_0 v0
-      [77] aload v5
-      [79] iconst_3
-      [80] invokevirtual #332
+      [88] ificmpne +16 (target=104)
+      [91] aload_0 v0
+      [92] aload v6
+      [94] iconst_3
+      [95] invokevirtual #365
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [83] putfield #289
+      [98] putfield #319
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [86] goto +15 (target=101)
-      [89] iinc v6, 1
-      [92] iload v6
-      [94] getstatic #269
+      [101] goto +15 (target=116)
+      [104] iinc v7, 1
+      [107] iload v7
+      [109] getstatic #299
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
-      [97] arraylength
-      [98] ificmplt -69 (target=29)
-      [101] iconst_0
-      [102] istore v6
-      [104] goto +67 (target=171)
-      [107] getstatic #271
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
-      [110] getstatic #299
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [113] iload v6
-      [115] aaload
-      [116] invokevirtual #334
-        + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [119] dup
-      [120] astore v5
-      [122] invokevirtual #331
-        + Methodref [java/util/regex/Matcher.find ()Z]
-      [125] ifeq +43 (target=168)
-      [128] iload_3 v3
-      [129] aload v5
-      [131] iconst_1
-      [132] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [135] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [138] ificmpne +30 (target=168)
-      [141] iload v4
-      [143] aload v5
-      [145] iconst_2
-      [146] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [149] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [152] ificmpne +16 (target=168)
-      [155] aload_0 v0
-      [156] aload v5
-      [158] iconst_3
-      [159] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [162] putfield #286
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
-      [165] goto +15 (target=180)
-      [168] iinc v6, 1
-      [171] iload v6
-      [173] getstatic #299
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [176] arraylength
-      [177] ificmplt -70 (target=107)
-      [180] iconst_0
-      [181] istore v6
-      [183] goto +67 (target=250)
-      [186] getstatic #271
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
-      [189] getstatic #267
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.n [Ljava/lang/String;]
-      [192] iload v6
-      [194] aaload
-      [195] invokevirtual #334
-        + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [198] dup
-      [199] astore v5
-      [201] invokevirtual #331
-        + Methodref [java/util/regex/Matcher.find ()Z]
-      [204] ifeq +43 (target=247)
-      [207] iload_3 v3
-      [208] aload v5
-      [210] iconst_1
-      [211] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [214] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [217] ificmpne +30 (target=247)
-      [220] iload v4
-      [222] aload v5
-      [224] iconst_2
-      [225] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [228] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [231] ificmpne +16 (target=247)
-      [234] aload_0 v0
-      [235] aload v5
-      [237] iconst_3
-      [238] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [241] putfield #288
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.o Ljava/lang/String;]
-      [244] goto +15 (target=259)
-      [247] iinc v6, 1
-      [250] iload v6
-      [252] getstatic #267
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.n [Ljava/lang/String;]
-      [255] arraylength
-      [256] ificmplt -70 (target=186)
-      [259] iconst_0
-      [260] istore v6
-      [262] goto +66 (target=328)
-      [265] getstatic #271
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
-      [268] getstatic #268
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.o [Ljava/lang/String;]
-      [271] iload v6
-      [273] aaload
-      [274] invokevirtual #334
-        + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [277] dup
-      [278] astore v5
-      [280] invokevirtual #331
-        + Methodref [java/util/regex/Matcher.find ()Z]
-      [283] ifeq +42 (target=325)
-      [286] iload_1 v1
-      [287] aload v5
-      [289] iconst_1
-      [290] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [293] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [296] ificmpne +29 (target=325)
-      [299] iload_2 v2
-      [300] aload v5
-      [302] iconst_2
-      [303] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [306] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [309] ificmpne +16 (target=325)
-      [312] aload_0 v0
-      [313] aload v5
-      [315] iconst_3
-      [316] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [319] putfield #290
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.q Ljava/lang/String;]
-      [322] goto +15 (target=337)
-      [325] iinc v6, 1
-      [328] iload v6
-      [330] getstatic #268
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.o [Ljava/lang/String;]
-      [333] arraylength
-      [334] ificmplt -69 (target=265)
-      [337] iconst_0
-      [338] istore_2 v2
-      [339] goto +128 (target=467)
-      [342] getstatic #272
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.D Ljava/util/regex/Pattern;]
-      [345] getstatic #270
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
-      [348] iload_2 v2
-      [349] aaload
-      [350] invokevirtual #334
-        + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [353] dup
-      [354] astore v5
-      [356] invokevirtual #331
-        + Methodref [java/util/regex/Matcher.find ()Z]
-      [359] ifeq +105 (target=464)
-      [362] aload_0 v0
-      [363] getfield #281
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [366] iconst_1
-      [367] iadd
-      [368] aload v5
-      [370] iconst_1
-      [371] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [374] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [377] ificmpne +87 (target=464)
-      [380] aload v5
-      [382] iconst_2
-      [383] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [386] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [389] istore v6
-      [391] aload v5
-      [393] iconst_3
-      [394] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [397] invokestatic #303
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [400] istore_1 v1
-      [401] aload_0 v0
-      [402] getfield #274
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
-      [405] bipush 8
-      [407] invokevirtual #317
-        + Methodref [java/util/Calendar.get (I)I]
-      [410] iload v6
-      [412] ificmpne +52 (target=464)
-      [415] aload_0 v0
-      [416] getfield #274
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
-      [419] bipush 7
-      [421] invokevirtual #317
-        + Methodref [java/util/Calendar.get (I)I]
-      [424] iload_1 v1
-      [425] ificmpne +39 (target=464)
-      [428] aload_0 v0
-      [429] dup
-      [430] getfield #289
+      [112] arraylength
+      [113] ificmplt -69 (target=44)
+      [116] getstatic #296
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.k I]
+      [119] iconst_4
+      [120] ificmpeq +10 (target=130)
+      [123] getstatic #296
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.k I]
+      [126] iconst_5
+      [127] ificmpne +243 (target=370)
+      [130] iload_3 v3
+      [131] bipush 19
+      [133] irem
+      [134] istore v7
+      [136] iload_3 v3
+      [137] bipush 100
+      [139] idiv
+      [140] i2d
+      [141] invokestatic #342
+        + Methodref [java/lang/Math.floor (D)D]
+      [144] d2i
+      [145] istore v8
+      [147] iload_3 v3
+      [148] bipush 100
+      [150] irem
+      [151] istore_3 v3
+      [152] iload v8
+      [154] iconst_4
+      [155] idiv
+      [156] i2d
+      [157] invokestatic #342
+        + Methodref [java/lang/Math.floor (D)D]
+      [160] d2i
+      [161] istore v6
+      [163] iload v8
+      [165] iconst_4
+      [166] irem
+      [167] istore v9
+      [169] iload v8
+      [171] bipush 8
+      [173] iadd
+      [174] bipush 25
+      [176] idiv
+      [177] i2d
+      [178] invokestatic #342
+        + Methodref [java/lang/Math.floor (D)D]
+      [181] d2i
+      [182] istore v10
+      [184] iload v8
+      [186] iload v10
+      [188] isub
+      [189] iconst_1
+      [190] iadd
+      [191] iconst_3
+      [192] idiv
+      [193] i2d
+      [194] invokestatic #342
+        + Methodref [java/lang/Math.floor (D)D]
+      [197] d2i
+      [198] istore v10
+      [200] bipush 19
+      [202] iload v7
+      [204] imul
+      [205] iload v8
+      [207] iadd
+      [208] iload v6
+      [210] isub
+      [211] iload v10
+      [213] isub
+      [214] bipush 15
+      [216] iadd
+      [217] bipush 30
+      [219] irem
+      [220] istore v6
+      [222] iload_3 v3
+      [223] iconst_4
+      [224] idiv
+      [225] i2d
+      [226] invokestatic #342
+        + Methodref [java/lang/Math.floor (D)D]
+      [229] d2i
+      [230] istore v8
+      [232] iload_3 v3
+      [233] iconst_4
+      [234] irem
+      [235] istore_3 v3
+      [236] bipush 32
+      [238] iconst_2
+      [239] iload v9
+      [241] imul
+      [242] iadd
+      [243] iconst_2
+      [244] iload v8
+      [246] imul
+      [247] iadd
+      [248] iload v6
+      [250] isub
+      [251] iload_3 v3
+      [252] isub
+      [253] bipush 7
+      [255] irem
+      [256] istore_3 v3
+      [257] iload v7
+      [259] bipush 11
+      [261] iload v6
+      [263] imul
+      [264] iadd
+      [265] bipush 22
+      [267] iload_3 v3
+      [268] imul
+      [269] iadd
+      [270] sipush 451
+      [273] idiv
+      [274] i2d
+      [275] invokestatic #342
+        + Methodref [java/lang/Math.floor (D)D]
+      [278] d2i
+      [279] istore v7
+      [281] iload_1 v1
+      [282] iload v6
+      [284] iload_3 v3
+      [285] iadd
+      [286] bipush 7
+      [288] iload v7
+      [290] imul
+      [291] isub
+      [292] bipush 114
+      [294] iadd
+      [295] bipush 31
+      [297] idiv
+      [298] i2d
+      [299] invokestatic #342
+        + Methodref [java/lang/Math.floor (D)D]
+      [302] d2i
+      [303] ificmpne +67 (target=370)
+      [306] iload_2 v2
+      [307] iload v6
+      [309] iload_3 v3
+      [310] iadd
+      [311] bipush 7
+      [313] iload v7
+      [315] imul
+      [316] isub
+      [317] bipush 114
+      [319] iadd
+      [320] bipush 31
+      [322] irem
+      [323] iconst_1
+      [324] iadd
+      [325] ificmpne +45 (target=370)
+      [328] aload_0 v0
+      [329] dup
+      [330] getfield #319
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [433] new #248
+      [333] new #273
         + Class [java/lang/StringBuilder]
-      [436] dup_x1
-      [437] swap
-      [438] invokestatic #313
+      [336] dup_x1
+      [337] swap
+      [338] invokestatic #346
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [441] invokespecial #314
+      [341] invokespecial #347
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [444] ldc #114
-        + String [ ]
-      [446] invokevirtual #315
+      [344] ldc #115
+        + String [ 復活節]
+      [346] invokevirtual #348
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [449] aload v5
-      [451] iconst_4
-      [452] invokevirtual #332
-        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [455] invokevirtual #315
-        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [458] invokevirtual #316
+      [349] invokevirtual #349
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [461] putfield #289
+      [352] putfield #319
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [464] iinc v2, 1
-      [467] iload_2 v2
-      [468] getstatic #270
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
-      [471] arraylength
-      [472] ificmplt -130 (target=342)
-      [475] aload_0 v0
-      [476] aload_0 v0
-      [477] getfield #289
+      [355] aload_0 v0
+      [356] aload_0 v0
+      [357] getfield #319
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [480] ldc #153
+      [360] ldc #175
         + String [^\s]
-      [482] ldc #113
+      [362] ldc #113
         + String []
-      [484] invokevirtual #312
+      [364] invokevirtual #345
         + Methodref [java/lang/String.replaceFirst (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [487] putfield #289
+      [367] putfield #319
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [490] return
+      [370] getstatic #291
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.c Ljava/lang/Boolean;]
+      [373] invokevirtual #340
+        + Methodref [java/lang/Boolean.booleanValue ()Z]
+      [376] ifeq +141 (target=517)
+      [379] iconst_0
+      [380] istore v7
+      [382] goto +126 (target=508)
+      [385] getstatic #301
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
+      [388] getstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [391] iload v7
+      [393] aaload
+      [394] invokevirtual #367
+        + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
+      [397] dup
+      [398] astore v6
+      [400] invokevirtual #364
+        + Methodref [java/util/regex/Matcher.find ()Z]
+      [403] ifeq +102 (target=505)
+      [406] iload v4
+      [408] aload v6
+      [410] iconst_1
+      [411] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [414] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [417] ificmpne +30 (target=447)
+      [420] iload v5
+      [422] aload v6
+      [424] iconst_2
+      [425] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [428] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [431] ificmpne +16 (target=447)
+      [434] aload_0 v0
+      [435] aload v6
+      [437] iconst_3
+      [438] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [441] putfield #316
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
+      [444] goto +73 (target=517)
+      [447] iload v4
+      [449] bipush 12
+      [451] ificmpne +54 (target=505)
+      [454] iload v5
+      [456] bipush 29
+      [458] ificmpne +47 (target=505)
+      [461] aload_0 v0
+      [462] getfield #305
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
+      [465] iload v4
+      [467] invokestatic #331
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (II)I]
+      [470] bipush 29
+      [472] ificmpne +33 (target=505)
+      [475] aload_0 v0
+      [476] dup
+      [477] getfield #316
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
+      [480] new #273
+        + Class [java/lang/StringBuilder]
+      [483] dup_x1
+      [484] swap
+      [485] invokestatic #346
+        + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
+      [488] invokespecial #347
+        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [491] ldc #253
+        + String [除夕]
+      [493] invokevirtual #348
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [496] invokevirtual #349
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [499] putfield #316
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
+      [502] goto +15 (target=517)
+      [505] iinc v7, 1
+      [508] iload v7
+      [510] getstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [513] arraylength
+      [514] ificmplt -129 (target=385)
+      [517] getstatic #292
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.d Ljava/lang/Boolean;]
+      [520] invokevirtual #340
+        + Methodref [java/lang/Boolean.booleanValue ()Z]
+      [523] ifeq +83 (target=606)
+      [526] iconst_0
+      [527] istore v7
+      [529] goto +68 (target=597)
+      [532] getstatic #301
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
+      [535] getstatic #297
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.n [Ljava/lang/String;]
+      [538] iload v7
+      [540] aaload
+      [541] invokevirtual #367
+        + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
+      [544] dup
+      [545] astore v6
+      [547] invokevirtual #364
+        + Methodref [java/util/regex/Matcher.find ()Z]
+      [550] ifeq +44 (target=594)
+      [553] iload v4
+      [555] aload v6
+      [557] iconst_1
+      [558] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [561] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [564] ificmpne +30 (target=594)
+      [567] iload v5
+      [569] aload v6
+      [571] iconst_2
+      [572] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [575] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [578] ificmpne +16 (target=594)
+      [581] aload_0 v0
+      [582] aload v6
+      [584] iconst_3
+      [585] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [588] putfield #318
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.o Ljava/lang/String;]
+      [591] goto +15 (target=606)
+      [594] iinc v7, 1
+      [597] iload v7
+      [599] getstatic #297
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.n [Ljava/lang/String;]
+      [602] arraylength
+      [603] ificmplt -71 (target=532)
+      [606] getstatic #294
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.f Ljava/lang/Boolean;]
+      [609] invokevirtual #340
+        + Methodref [java/lang/Boolean.booleanValue ()Z]
+      [612] ifeq +81 (target=693)
+      [615] iconst_0
+      [616] istore v7
+      [618] goto +66 (target=684)
+      [621] getstatic #301
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
+      [624] getstatic #298
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.o [Ljava/lang/String;]
+      [627] iload v7
+      [629] aaload
+      [630] invokevirtual #367
+        + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
+      [633] dup
+      [634] astore v6
+      [636] invokevirtual #364
+        + Methodref [java/util/regex/Matcher.find ()Z]
+      [639] ifeq +42 (target=681)
+      [642] iload_1 v1
+      [643] aload v6
+      [645] iconst_1
+      [646] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [649] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [652] ificmpne +29 (target=681)
+      [655] iload_2 v2
+      [656] aload v6
+      [658] iconst_2
+      [659] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [662] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [665] ificmpne +16 (target=681)
+      [668] aload_0 v0
+      [669] aload v6
+      [671] iconst_3
+      [672] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [675] putfield #320
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.q Ljava/lang/String;]
+      [678] goto +15 (target=693)
+      [681] iinc v7, 1
+      [684] iload v7
+      [686] getstatic #298
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.o [Ljava/lang/String;]
+      [689] arraylength
+      [690] ificmplt -69 (target=621)
+      [693] getstatic #293
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.e Ljava/lang/Boolean;]
+      [696] invokevirtual #340
+        + Methodref [java/lang/Boolean.booleanValue ()Z]
+      [699] ifeq +158 (target=857)
+      [702] iconst_0
+      [703] istore_3 v3
+      [704] goto +130 (target=834)
+      [707] getstatic #302
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.D Ljava/util/regex/Pattern;]
+      [710] getstatic #300
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
+      [713] iload_3 v3
+      [714] aaload
+      [715] invokevirtual #367
+        + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
+      [718] dup
+      [719] astore v6
+      [721] invokevirtual #364
+        + Methodref [java/util/regex/Matcher.find ()Z]
+      [724] ifeq +107 (target=831)
+      [727] aload_0 v0
+      [728] getfield #311
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
+      [731] iconst_1
+      [732] iadd
+      [733] aload v6
+      [735] iconst_1
+      [736] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [739] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [742] ificmpne +89 (target=831)
+      [745] aload v6
+      [747] iconst_2
+      [748] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [751] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [754] istore v7
+      [756] aload v6
+      [758] iconst_3
+      [759] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [762] invokestatic #333
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
+      [765] istore v8
+      [767] aload_0 v0
+      [768] getfield #304
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
+      [771] bipush 8
+      [773] invokevirtual #350
+        + Methodref [java/util/Calendar.get (I)I]
+      [776] iload v7
+      [778] ificmpne +53 (target=831)
+      [781] aload_0 v0
+      [782] getfield #304
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
+      [785] bipush 7
+      [787] invokevirtual #350
+        + Methodref [java/util/Calendar.get (I)I]
+      [790] iload v8
+      [792] ificmpne +39 (target=831)
+      [795] aload_0 v0
+      [796] dup
+      [797] getfield #319
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
+      [800] new #273
+        + Class [java/lang/StringBuilder]
+      [803] dup_x1
+      [804] swap
+      [805] invokestatic #346
+        + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
+      [808] invokespecial #347
+        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [811] ldc #114
+        + String [ ]
+      [813] invokevirtual #348
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [816] aload v6
+      [818] iconst_4
+      [819] invokevirtual #365
+        + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
+      [822] invokevirtual #348
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [825] invokevirtual #349
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [828] putfield #319
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
+      [831] iinc v3, 1
+      [834] iload_3 v3
+      [835] getstatic #300
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
+      [838] arraylength
+      [839] ificmplt -132 (target=707)
+      [842] aload_0 v0
+      [843] aload_0 v0
+      [844] getfield #319
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
+      [847] ldc #175
+        + String [^\s]
+      [849] ldc #113
+        + String []
+      [851] invokevirtual #345
+        + Methodref [java/lang/String.replaceFirst (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
+      [854] putfield #319
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
+      [857] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
-      + Stack map table attribute (count = 19):
-        - [29] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][i], Stack: 
-        - [89] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
-        - [92] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][i], Stack: 
-        - [101] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i], Stack: 
-        - [107] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][i], Stack: 
-        - [168] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
-        - [171] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][i], Stack: 
-        - [180] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i], Stack: 
-        - [186] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][i], Stack: 
-        - [247] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
-        - [250] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][i], Stack: 
-        - [259] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i], Stack: 
-        - [265] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][i], Stack: 
-        - [325] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
-        - [328] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][i], Stack: 
-        - [337] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i], Stack: 
-        - [342] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][T][T][i], Stack: 
-        - [464] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][a:java/util/regex/Matcher][T][T][i], Stack: 
-        - [467] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][T][T][T][i], Stack: 
+      + Stack map table attribute (count = 23):
+        - [44] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [104] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
+        - [107] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [116] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
+        - [130] Var: ..., Stack: (empty)
+        - [370] Var: ..., Stack: (empty)
+        - [385] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [447] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
+        - [505] Var: ..., Stack: (empty)
+        - [508] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [517] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
+        - [532] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [594] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
+        - [597] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [606] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
+        - [621] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [681] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
+        - [684] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [693] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
+        - [707] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][T][T][i], Stack: 
+        - [831] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][T][T][i], Stack: 
+        - [834] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][T][T][i], Stack: 
+        - [857] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
   + Method:       a(I)I
     Access flags: 0xa
       = private static int a(int)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 23, locals = 1, stack = 3):
-      [0] getstatic #291
+      [0] getstatic #321
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.r [I]
       [3] iload_0 v0
       [4] sipush 1900
@@ -3787,10 +4104,10 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 32, locals = 1, stack = 3):
       [0] iload_0 v0
-      [1] invokestatic #300
+      [1] invokestatic #330
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (I)I]
       [4] ifle +26 (target=30)
-      [7] getstatic #291
+      [7] getstatic #321
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.r [I]
       [10] iload_0 v0
       [11] sipush 1899
@@ -3824,7 +4141,7 @@ Methods (count = 23):
       [6] istore_2 v2
       [7] goto +29 (target=36)
       [10] iload_1 v1
-      [11] getstatic #291
+      [11] getstatic #321
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.r [I]
       [14] iload_0 v0
       [15] sipush 1900
@@ -3847,7 +4164,7 @@ Methods (count = 23):
       [39] ificmpgt -29 (target=10)
       [42] iload_1 v1
       [43] iload_0 v0
-      [44] invokestatic #305
+      [44] invokestatic #335
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.b (I)I]
       [47] iadd
       [48] ireturn
@@ -3858,33 +4175,59 @@ Methods (count = 23):
         - [29] Var: ..., Stack: [i]
         - [30] Var: [i][i][i], Stack: [i][i]
         - [36] Var: ..., Stack: (empty)
+  + Method:       a(II)I
+    Access flags: 0xa
+      = private static int a(int,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 23, locals = 2, stack = 3):
+      [0] getstatic #321
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.r [I]
+      [3] iload_0 v0
+      [4] sipush 1900
+      [7] isub
+      [8] iaload
+      [9] ldc #92
+        + Integer [65536]
+      [11] iload_1 v1
+      [12] ishr
+      [13] iand
+      [14] ifeq +6 (target=20)
+      [17] bipush 30
+      [19] ireturn
+      [20] bipush 29
+      [22] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Stack map table attribute (count = 2):
+        - [20] Var: ..., Stack: (empty)
+        - [22] Var: ..., Stack: [i]
   + Method:       a(Ljava/util/Date;)I
     Access flags: 0x2a
       = private static synchronized int a(java.util.Date)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 38, locals = 2, stack = 3):
-      [0] invokestatic #308
+      [0] invokestatic #339
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.m ()V]
-      [3] getstatic #273
+      [3] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
       [6] dup
       [7] astore_1 v1
       [8] monitorenter
-      [9] getstatic #273
+      [9] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
-      [12] invokevirtual #325
+      [12] invokevirtual #358
         + Methodref [java/util/GregorianCalendar.clear ()V]
-      [15] getstatic #273
+      [15] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
       [18] aload_0 v0
-      [19] invokevirtual #322
+      [19] invokevirtual #355
         + Methodref [java/util/Date.getTime ()J]
-      [22] invokevirtual #329
+      [22] invokevirtual #362
         + Methodref [java/util/GregorianCalendar.setTimeInMillis (J)V]
-      [25] getstatic #273
+      [25] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
       [28] iconst_5
-      [29] invokevirtual #326
+      [29] invokevirtual #359
         + Methodref [java/util/GregorianCalendar.get (I)I]
       [32] aload_1 v1
       [33] monitorexit
@@ -3902,19 +4245,19 @@ Methods (count = 23):
       = private static synchronized void m()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 22, locals = 0, stack = 3):
-      [0] getstatic #273
+      [0] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
       [3] ifnonnull +18 (target=21)
-      [6] new #252
+      [6] new #277
         + Class [java/util/GregorianCalendar]
       [9] dup
-      [10] ldc #150
+      [10] ldc #172
         + String [UTC]
-      [12] invokestatic #330
+      [12] invokestatic #363
         + Methodref [java/util/TimeZone.getTimeZone (Ljava/lang/String;)Ljava/util/TimeZone;]
-      [15] invokespecial #324
+      [15] invokespecial #357
         + Methodref [java/util/GregorianCalendar.<init> (Ljava/util/TimeZone;)V]
-      [18] putstatic #273
+      [18] putstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
       [21] return
       Code attribute exceptions (count = 0):
@@ -3926,18 +4269,18 @@ Methods (count = 23):
       = private static synchronized long a(int,int,int,int,int)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 43, locals = 6, stack = 7):
-      [0] invokestatic #308
+      [0] invokestatic #339
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.m ()V]
-      [3] getstatic #273
+      [3] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
       [6] dup
       [7] astore v5
       [9] monitorenter
-      [10] getstatic #273
+      [10] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
-      [13] invokevirtual #325
+      [13] invokevirtual #358
         + Methodref [java/util/GregorianCalendar.clear ()V]
-      [16] getstatic #273
+      [16] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
       [19] iload_0 v0
       [20] iload_1 v1
@@ -3945,11 +4288,11 @@ Methods (count = 23):
       [22] iload_3 v3
       [23] iload v4
       [25] iconst_0
-      [26] invokevirtual #328
+      [26] invokevirtual #361
         + Methodref [java/util/GregorianCalendar.set (IIIIII)V]
-      [29] getstatic #273
+      [29] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.E Ljava/util/GregorianCalendar;]
-      [32] invokevirtual #327
+      [32] invokevirtual #360
         + Methodref [java/util/GregorianCalendar.getTimeInMillis ()J]
       [35] aload v5
       [37] monitorexit
@@ -3962,24 +4305,24 @@ Methods (count = 23):
       Code attribute attributes (attribute count = 1):
       + Stack map table attribute (count = 1):
         - [39] Var: [i][i][i][i][i][i][a:java/util/GregorianCalendar], Stack: [a:java/lang/Throwable]
-  + Method:       a(II)I
+  + Method:       b(II)I
     Access flags: 0xa
-      = private static int a(int,int)
+      = private static int b(int,int)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 46, locals = 4, stack = 7):
-      [0] ldc2_w #264
+      [0] ldc2_w #289
         + Long [31556925974]
       [3] iload_0 v0
       [4] sipush 1900
       [7] isub
       [8] i2l
       [9] lmul
-      [10] getstatic #292
+      [10] getstatic #322
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.s [I]
       [13] iload_1 v1
       [14] iaload
       [15] i2l
-      [16] ldc2_w #260
+      [16] ldc2_w #285
         + Long [60000]
       [19] lmul
       [20] ladd
@@ -3988,17 +4331,17 @@ Methods (count = 23):
       [25] bipush 6
       [27] iconst_2
       [28] iconst_5
-      [29] invokestatic #302
+      [29] invokestatic #332
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (IIIII)J]
       [32] ladd
       [33] lstore_2 v2
-      [34] new #251
+      [34] new #276
         + Class [java/util/Date]
       [37] dup
       [38] lload_2 v2
-      [39] invokespecial #321
+      [39] invokespecial #354
         + Methodref [java/util/Date.<init> (J)V]
-      [42] invokestatic #304
+      [42] invokestatic #334
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/util/Date;)I]
       [45] ireturn
       Code attribute exceptions (count = 0):
@@ -4007,1279 +4350,2250 @@ Methods (count = 23):
     Access flags: 0x1
       = public d(int)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 1420, locals = 2, stack = 4):
+    + Code attribute instructions (code length = 2556, locals = 2, stack = 4):
       [0] aload_0 v0
-      [1] invokespecial #310
+      [1] invokespecial #343
         + Methodref [java/lang/Object.<init> ()V]
       [4] aload_0 v0
       [5] iconst_0
-      [6] putfield #283
+      [6] putfield #313
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.j I]
       [9] aload_0 v0
       [10] iconst_0
-      [11] putfield #284
+      [11] putfield #314
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.k I]
       [14] aload_0 v0
       [15] iconst_0
-      [16] putfield #285
+      [16] putfield #315
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.l I]
       [19] iload_1 v1
-      [20] tableswitch (3 offsets, default=1343) (target=1363)
-        1: offset = 28, target = 48
-        2: offset = 546, target = 566
-        3: offset = 985, target = 1005
-        default: offset = 1343, target = 1363
-      [48] bipush 12
-      [50] anewarray #247
+      [20] tableswitch (5 offsets, default=2477) (target=2497)
+        1: offset = 36, target = 56
+        2: offset = 564, target = 584
+        3: offset = 2112, target = 2132
+        4: offset = 1080, target = 1100
+        5: offset = 1590, target = 1610
+        default: offset = 2477, target = 2497
+      [56] bipush 12
+      [58] anewarray #272
         + Class [java/lang/String]
-      [53] dup
-      [54] iconst_0
-      [55] ldc #182
+      [61] dup
+      [62] iconst_0
+      [63] ldc #204
         + String [子]
-      [57] aastore
-      [58] dup
-      [59] iconst_1
-      [60] ldc #158
+      [65] aastore
+      [66] dup
+      [67] iconst_1
+      [68] ldc #180
         + String [丑]
-      [62] aastore
-      [63] dup
-      [64] iconst_2
-      [65] ldc #183
+      [70] aastore
+      [71] dup
+      [72] iconst_2
+      [73] ldc #205
         + String [寅]
-      [67] aastore
-      [68] dup
-      [69] iconst_3
-      [70] ldc #174
+      [75] aastore
+      [76] dup
+      [77] iconst_3
+      [78] ldc #196
         + String [卯]
-      [72] aastore
-      [73] dup
-      [74] iconst_4
-      [75] ldc #226
+      [80] aastore
+      [81] dup
+      [82] iconst_4
+      [83] ldc #248
         + String [辰]
-      [77] aastore
-      [78] dup
-      [79] iconst_5
-      [80] ldc #191
+      [85] aastore
+      [86] dup
+      [87] iconst_5
+      [88] ldc #213
         + String [巳]
-      [82] aastore
-      [83] dup
-      [84] bipush 6
-      [86] ldc #173
+      [90] aastore
+      [91] dup
+      [92] bipush 6
+      [94] ldc #195
         + String [午]
-      [88] aastore
-      [89] dup
-      [90] bipush 7
-      [92] ldc #198
+      [96] aastore
+      [97] dup
+      [98] bipush 7
+      [100] ldc #220
         + String [未]
-      [94] aastore
-      [95] dup
-      [96] bipush 8
-      [98] ldc #206
+      [102] aastore
+      [103] dup
+      [104] bipush 8
+      [106] ldc #228
         + String [申]
-      [100] aastore
-      [101] dup
-      [102] bipush 9
-      [104] ldc #227
+      [108] aastore
+      [109] dup
+      [110] bipush 9
+      [112] ldc #249
         + String [酉]
-      [106] aastore
-      [107] dup
-      [108] bipush 10
-      [110] ldc #196
+      [114] aastore
+      [115] dup
+      [116] bipush 10
+      [118] ldc #218
         + String [戌]
-      [112] aastore
-      [113] dup
-      [114] bipush 11
-      [116] ldc #164
+      [120] aastore
+      [121] dup
+      [122] bipush 11
+      [124] ldc #186
         + String [亥]
-      [118] aastore
-      [119] putstatic #296
+      [126] aastore
+      [127] putstatic #326
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.w [Ljava/lang/String;]
-      [122] bipush 12
-      [124] anewarray #247
+      [130] bipush 12
+      [132] anewarray #272
         + Class [java/lang/String]
-      [127] dup
-      [128] iconst_0
-      [129] ldc #239
+      [135] dup
+      [136] iconst_0
+      [137] ldc_w #262
         + String [鼠]
-      [131] aastore
-      [132] dup
-      [133] iconst_1
-      [134] ldc #201
+      [140] aastore
+      [141] dup
+      [142] iconst_1
+      [143] ldc #223
         + String [牛]
-      [136] aastore
-      [137] dup
-      [138] iconst_2
-      [139] ldc #220
+      [145] aastore
+      [146] dup
+      [147] iconst_2
+      [148] ldc #242
         + String [虎]
-      [141] aastore
-      [142] dup
-      [143] iconst_3
-      [144] ldc #165
+      [150] aastore
+      [151] dup
+      [152] iconst_3
+      [153] ldc #187
         + String [兔]
-      [146] aastore
-      [147] dup
-      [148] iconst_4
-      [149] ldc #241
+      [155] aastore
+      [156] dup
+      [157] iconst_4
+      [158] ldc_w #264
         + String [龙]
-      [151] aastore
-      [152] dup
-      [153] iconst_5
-      [154] ldc #222
+      [161] aastore
+      [162] dup
+      [163] iconst_5
+      [164] ldc #244
         + String [蛇]
-      [156] aastore
-      [157] dup
-      [158] bipush 6
-      [160] ldc #237
+      [166] aastore
+      [167] dup
+      [168] bipush 6
+      [170] ldc_w #260
         + String [马]
-      [162] aastore
-      [163] dup
-      [164] bipush 7
-      [166] ldc #215
+      [173] aastore
+      [174] dup
+      [175] bipush 7
+      [177] ldc #237
         + String [羊]
-      [168] aastore
-      [169] dup
-      [170] bipush 8
-      [172] ldc #204
+      [179] aastore
+      [180] dup
+      [181] bipush 8
+      [183] ldc #226
         + String [猴]
-      [174] aastore
-      [175] dup
-      [176] bipush 9
-      [178] ldc #238
+      [185] aastore
+      [186] dup
+      [187] bipush 9
+      [189] ldc_w #261
         + String [鸡]
-      [180] aastore
-      [181] dup
-      [182] bipush 10
-      [184] ldc #202
-        + String [狗]
-      [186] aastore
-      [187] dup
-      [188] bipush 11
-      [190] ldc #203
-        + String [猪]
       [192] aastore
-      [193] putstatic #297
+      [193] dup
+      [194] bipush 10
+      [196] ldc #224
+        + String [狗]
+      [198] aastore
+      [199] dup
+      [200] bipush 11
+      [202] ldc #225
+        + String [猪]
+      [204] aastore
+      [205] putstatic #327
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.x [Ljava/lang/String;]
-      [196] bipush 24
-      [198] anewarray #247
+      [208] bipush 24
+      [210] anewarray #272
         + Class [java/lang/String]
-      [201] dup
-      [202] iconst_0
-      [203] ldc #185
+      [213] dup
+      [214] iconst_0
+      [215] ldc #207
         + String [小寒]
-      [205] aastore
-      [206] dup
-      [207] iconst_1
-      [208] ldc #179
+      [217] aastore
+      [218] dup
+      [219] iconst_1
+      [220] ldc #201
         + String [大寒]
-      [210] aastore
-      [211] dup
-      [212] iconst_2
-      [213] ldc #213
+      [222] aastore
+      [223] dup
+      [224] iconst_2
+      [225] ldc #235
         + String [立春]
-      [215] aastore
-      [216] dup
-      [217] iconst_3
-      [218] ldc #232
+      [227] aastore
+      [228] dup
+      [229] iconst_3
+      [230] ldc #255
         + String [雨水]
-      [220] aastore
-      [221] dup
-      [222] iconst_4
-      [223] ldc #194
+      [232] aastore
+      [233] dup
+      [234] iconst_4
+      [235] ldc #216
         + String [惊蛰]
-      [225] aastore
-      [226] dup
-      [227] iconst_5
-      [228] ldc #197
+      [237] aastore
+      [238] dup
+      [239] iconst_5
+      [240] ldc #219
         + String [春分]
-      [230] aastore
-      [231] dup
-      [232] bipush 6
-      [234] ldc #200
-        + String [清明]
-      [236] aastore
-      [237] dup
-      [238] bipush 7
-      [240] ldc #223
-        + String [谷雨]
       [242] aastore
       [243] dup
-      [244] bipush 8
-      [246] ldc #212
-        + String [立夏]
+      [244] bipush 6
+      [246] ldc #222
+        + String [清明]
       [248] aastore
       [249] dup
-      [250] bipush 9
-      [252] ldc #187
-        + String [小满]
+      [250] bipush 7
+      [252] ldc #245
+        + String [谷雨]
       [254] aastore
       [255] dup
-      [256] bipush 10
-      [258] ldc #218
-        + String [芒种]
+      [256] bipush 8
+      [258] ldc #234
+        + String [立夏]
       [260] aastore
       [261] dup
-      [262] bipush 11
-      [264] ldc #178
-        + String [夏至]
+      [262] bipush 9
+      [264] ldc #209
+        + String [小满]
       [266] aastore
       [267] dup
-      [268] bipush 12
-      [270] ldc #186
-        + String [小暑]
+      [268] bipush 10
+      [270] ldc #240
+        + String [芒种]
       [272] aastore
       [273] dup
-      [274] bipush 13
-      [276] ldc #180
-        + String [大暑]
+      [274] bipush 11
+      [276] ldc #200
+        + String [夏至]
       [278] aastore
       [279] dup
-      [280] bipush 14
-      [282] ldc #214
-        + String [立秋]
+      [280] bipush 12
+      [282] ldc #208
+        + String [小暑]
       [284] aastore
       [285] dup
-      [286] bipush 15
-      [288] ldc #177
-        + String [处暑]
+      [286] bipush 13
+      [288] ldc #202
+        + String [大暑]
       [290] aastore
       [291] dup
-      [292] bipush 16
-      [294] ldc #208
-        + String [白露]
+      [292] bipush 14
+      [294] ldc #236
+        + String [立秋]
       [296] aastore
       [297] dup
-      [298] bipush 17
-      [300] ldc #209
-        + String [秋分]
+      [298] bipush 15
+      [300] ldc #199
+        + String [处暑]
       [302] aastore
       [303] dup
-      [304] bipush 18
-      [306] ldc #184
-        + String [寒露]
+      [304] bipush 16
+      [306] ldc #230
+        + String [白露]
       [308] aastore
       [309] dup
-      [310] bipush 19
-      [312] ldc #234
-        + String [霜降]
+      [310] bipush 17
+      [312] ldc #231
+        + String [秋分]
       [314] aastore
       [315] dup
-      [316] bipush 20
-      [318] ldc #211
-        + String [立冬]
+      [316] bipush 18
+      [318] ldc #206
+        + String [寒露]
       [320] aastore
       [321] dup
-      [322] bipush 21
-      [324] ldc #189
+      [322] bipush 19
+      [324] ldc_w #257
+        + String [霜降]
+      [327] aastore
+      [328] dup
+      [329] bipush 20
+      [331] ldc #233
+        + String [立冬]
+      [333] aastore
+      [334] dup
+      [335] bipush 21
+      [337] ldc #211
         + String [小雪]
-      [326] aastore
-      [327] dup
-      [328] bipush 22
-      [330] ldc #181
+      [339] aastore
+      [340] dup
+      [341] bipush 22
+      [343] ldc #203
         + String [大雪]
-      [332] aastore
-      [333] dup
-      [334] bipush 23
-      [336] ldc #169
+      [345] aastore
+      [346] dup
+      [347] bipush 23
+      [349] ldc #191
         + String [冬至]
-      [338] aastore
-      [339] putstatic #298
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
-      [342] bipush 8
-      [344] anewarray #247
-        + Class [java/lang/String]
-      [347] dup
-      [348] iconst_0
-      [349] ldc #170
-        + String [初]
       [351] aastore
-      [352] dup
-      [353] iconst_1
-      [354] ldc #171
+      [352] putstatic #328
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
+      [355] bipush 8
+      [357] anewarray #272
+        + Class [java/lang/String]
+      [360] dup
+      [361] iconst_0
+      [362] ldc #192
+        + String [初]
+      [364] aastore
+      [365] dup
+      [366] iconst_1
+      [367] ldc #193
         + String [十]
-      [356] aastore
-      [357] dup
-      [358] iconst_2
-      [359] ldc #193
+      [369] aastore
+      [370] dup
+      [371] iconst_2
+      [372] ldc #215
         + String [廿]
-      [361] aastore
-      [362] dup
-      [363] iconst_3
-      [364] ldc #172
+      [374] aastore
+      [375] dup
+      [376] iconst_3
+      [377] ldc #194
         + String [卅]
-      [366] aastore
-      [367] dup
-      [368] iconst_4
-      [369] ldc #199
+      [379] aastore
+      [380] dup
+      [381] iconst_4
+      [382] ldc #221
         + String [正]
-      [371] aastore
-      [372] dup
-      [373] iconst_5
-      [374] ldc #168
+      [384] aastore
+      [385] dup
+      [386] iconst_5
+      [387] ldc #190
         + String [冬]
-      [376] aastore
-      [377] dup
-      [378] bipush 6
-      [380] ldc #216
+      [389] aastore
+      [390] dup
+      [391] bipush 6
+      [393] ldc #238
         + String [腊]
-      [382] aastore
-      [383] dup
-      [384] bipush 7
-      [386] ldc #230
+      [395] aastore
+      [396] dup
+      [397] bipush 7
+      [399] ldc #252
         + String [闰]
-      [388] aastore
-      [389] putstatic #295
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
-      [392] bipush 11
-      [394] anewarray #247
-        + Class [java/lang/String]
-      [397] dup
-      [398] iconst_0
-      [399] ldc #113
-        + String []
       [401] aastore
-      [402] dup
-      [403] iconst_1
-      [404] ldc #117
+      [402] putstatic #325
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
+      [405] bipush 11
+      [407] anewarray #272
+        + Class [java/lang/String]
+      [410] dup
+      [411] iconst_0
+      [412] ldc #113
+        + String []
+      [414] aastore
+      [415] dup
+      [416] iconst_1
+      [417] ldc #118
         + String [0101春节]
-      [406] aastore
-      [407] dup
-      [408] iconst_2
-      [409] ldc #118
+      [419] aastore
+      [420] dup
+      [421] iconst_2
+      [422] ldc #119
         + String [0115元宵]
-      [411] aastore
-      [412] dup
-      [413] iconst_3
-      [414] ldc #120
+      [424] aastore
+      [425] dup
+      [426] iconst_3
+      [427] ldc #121
         + String [0202龙头]
-      [416] aastore
-      [417] dup
-      [418] iconst_4
-      [419] ldc #127
+      [429] aastore
+      [430] dup
+      [431] iconst_4
+      [432] ldc #135
         + String [0505端午]
-      [421] aastore
-      [422] dup
-      [423] iconst_5
-      [424] ldc #134
+      [434] aastore
+      [435] dup
+      [436] iconst_5
+      [437] ldc #143
         + String [0707七夕]
-      [426] aastore
-      [427] dup
-      [428] bipush 6
-      [430] ldc #135
+      [439] aastore
+      [440] dup
+      [441] bipush 6
+      [443] ldc #144
         + String [0715中元]
-      [432] aastore
-      [433] dup
-      [434] bipush 7
-      [436] ldc #137
+      [445] aastore
+      [446] dup
+      [447] bipush 7
+      [449] ldc #146
         + String [0815中秋]
-      [438] aastore
-      [439] dup
-      [440] bipush 8
-      [442] ldc #138
+      [451] aastore
+      [452] dup
+      [453] bipush 8
+      [455] ldc #148
         + String [0909重阳]
-      [444] aastore
-      [445] dup
-      [446] bipush 9
-      [448] ldc #143
+      [457] aastore
+      [458] dup
+      [459] bipush 9
+      [461] ldc #162
         + String [1208腊八]
-      [450] aastore
-      [451] dup
-      [452] bipush 10
-      [454] ldc #149
+      [463] aastore
+      [464] dup
+      [465] bipush 10
+      [467] ldc #171
         + String [1230除夕]
-      [456] aastore
-      [457] putstatic #299
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [460] bipush 14
-      [462] anewarray #247
-        + Class [java/lang/String]
-      [465] dup
-      [466] iconst_0
-      [467] ldc #115
-        + String [0101元旦]
       [469] aastore
-      [470] dup
-      [471] iconst_1
-      [472] ldc #121
+      [470] putstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [473] bipush 14
+      [475] anewarray #272
+        + Class [java/lang/String]
+      [478] dup
+      [479] iconst_0
+      [480] ldc #116
+        + String [0101元旦]
+      [482] aastore
+      [483] dup
+      [484] iconst_1
+      [485] ldc #123
         + String [0214情人节]
-      [474] aastore
-      [475] dup
-      [476] iconst_2
-      [477] ldc #122
+      [487] aastore
+      [488] dup
+      [489] iconst_2
+      [490] ldc #125
         + String [0308妇女节]
-      [479] aastore
-      [480] dup
-      [481] iconst_3
-      [482] ldc #123
+      [492] aastore
+      [493] dup
+      [494] iconst_3
+      [495] ldc #127
         + String [0312植树节]
-      [484] aastore
-      [485] dup
-      [486] iconst_4
-      [487] ldc #124
+      [497] aastore
+      [498] dup
+      [499] iconst_4
+      [500] ldc #129
         + String [0401愚人节]
-      [489] aastore
-      [490] dup
-      [491] iconst_5
-      [492] ldc #125
+      [502] aastore
+      [503] dup
+      [504] iconst_5
+      [505] ldc #132
         + String [0501劳动节]
-      [494] aastore
-      [495] dup
-      [496] bipush 6
-      [498] ldc #126
+      [507] aastore
+      [508] dup
+      [509] bipush 6
+      [511] ldc #134
         + String [0504青年节]
-      [500] aastore
-      [501] dup
-      [502] bipush 7
-      [504] ldc #130
+      [513] aastore
+      [514] dup
+      [515] bipush 7
+      [517] ldc #138
         + String [0601儿童节]
-      [506] aastore
-      [507] dup
-      [508] bipush 8
-      [510] ldc #133
+      [519] aastore
+      [520] dup
+      [521] bipush 8
+      [523] ldc #141
         + String [0701建党节]
-      [512] aastore
-      [513] dup
-      [514] bipush 9
-      [516] ldc #136
+      [525] aastore
+      [526] dup
+      [527] bipush 9
+      [529] ldc #145
         + String [0801建军节]
-      [518] aastore
-      [519] dup
-      [520] bipush 10
-      [522] ldc #140
+      [531] aastore
+      [532] dup
+      [533] bipush 10
+      [535] ldc #150
         + String [0910教师节]
-      [524] aastore
-      [525] dup
-      [526] bipush 11
-      [528] ldc #141
+      [537] aastore
+      [538] dup
+      [539] bipush 11
+      [541] ldc #153
         + String [1001国庆节]
-      [530] aastore
-      [531] dup
-      [532] bipush 12
-      [534] ldc #142
+      [543] aastore
+      [544] dup
+      [545] bipush 12
+      [547] ldc #156
         + String [1031万圣节]
-      [536] aastore
-      [537] dup
-      [538] bipush 13
-      [540] ldc #148
-        + String [1225圣诞节]
-      [542] aastore
-      [543] putstatic #269
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
-      [546] iconst_2
-      [547] anewarray #247
-        + Class [java/lang/String]
+      [549] aastore
       [550] dup
-      [551] iconst_0
-      [552] ldc #128
-        + String [0521母亲节]
-      [554] aastore
-      [555] dup
-      [556] iconst_1
-      [557] ldc #131
-        + String [0631父亲节]
-      [559] aastore
-      [560] putstatic #270
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
-      [563] goto +800 (target=1363)
-      [566] bipush 12
-      [568] anewarray #247
+      [551] bipush 13
+      [553] ldc #168
+        + String [1225圣诞节]
+      [555] aastore
+      [556] putstatic #299
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
+      [559] iconst_3
+      [560] anewarray #272
         + Class [java/lang/String]
-      [571] dup
-      [572] iconst_0
-      [573] ldc #182
+      [563] dup
+      [564] iconst_0
+      [565] ldc #136
+        + String [0521母亲节]
+      [567] aastore
+      [568] dup
+      [569] iconst_1
+      [570] ldc #139
+        + String [0631父亲节]
+      [572] aastore
+      [573] dup
+      [574] iconst_2
+      [575] ldc #160
+        + String [1145感恩节]
+      [577] aastore
+      [578] putstatic #300
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
+      [581] goto +1916 (target=2497)
+      [584] bipush 12
+      [586] anewarray #272
+        + Class [java/lang/String]
+      [589] dup
+      [590] iconst_0
+      [591] ldc #204
         + String [子]
-      [575] aastore
-      [576] dup
-      [577] iconst_1
-      [578] ldc #228
+      [593] aastore
+      [594] dup
+      [595] iconst_1
+      [596] ldc #250
         + String [醜]
-      [580] aastore
-      [581] dup
-      [582] iconst_2
-      [583] ldc #183
+      [598] aastore
+      [599] dup
+      [600] iconst_2
+      [601] ldc #205
         + String [寅]
-      [585] aastore
-      [586] dup
-      [587] iconst_3
-      [588] ldc #174
+      [603] aastore
+      [604] dup
+      [605] iconst_3
+      [606] ldc #196
         + String [卯]
-      [590] aastore
-      [591] dup
-      [592] iconst_4
-      [593] ldc #226
+      [608] aastore
+      [609] dup
+      [610] iconst_4
+      [611] ldc #248
         + String [辰]
-      [595] aastore
-      [596] dup
-      [597] iconst_5
-      [598] ldc #191
+      [613] aastore
+      [614] dup
+      [615] iconst_5
+      [616] ldc #213
         + String [巳]
-      [600] aastore
-      [601] dup
-      [602] bipush 6
-      [604] ldc #173
-        + String [午]
-      [606] aastore
-      [607] dup
-      [608] bipush 7
-      [610] ldc #198
-        + String [未]
-      [612] aastore
-      [613] dup
-      [614] bipush 8
-      [616] ldc #206
-        + String [申]
       [618] aastore
       [619] dup
-      [620] bipush 9
-      [622] ldc #227
-        + String [酉]
+      [620] bipush 6
+      [622] ldc #195
+        + String [午]
       [624] aastore
       [625] dup
-      [626] bipush 10
-      [628] ldc #196
-        + String [戌]
+      [626] bipush 7
+      [628] ldc #220
+        + String [未]
       [630] aastore
       [631] dup
-      [632] bipush 11
-      [634] ldc #164
-        + String [亥]
+      [632] bipush 8
+      [634] ldc #228
+        + String [申]
       [636] aastore
-      [637] putstatic #296
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.w [Ljava/lang/String;]
-      [640] bipush 12
-      [642] anewarray #247
-        + Class [java/lang/String]
-      [645] dup
-      [646] iconst_0
-      [647] ldc #239
-        + String [鼠]
-      [649] aastore
-      [650] dup
-      [651] iconst_1
-      [652] ldc #201
-        + String [牛]
+      [637] dup
+      [638] bipush 9
+      [640] ldc #249
+        + String [酉]
+      [642] aastore
+      [643] dup
+      [644] bipush 10
+      [646] ldc #218
+        + String [戌]
+      [648] aastore
+      [649] dup
+      [650] bipush 11
+      [652] ldc #186
+        + String [亥]
       [654] aastore
-      [655] dup
-      [656] iconst_2
-      [657] ldc #220
-        + String [虎]
-      [659] aastore
-      [660] dup
-      [661] iconst_3
-      [662] ldc #165
-        + String [兔]
-      [664] aastore
-      [665] dup
-      [666] iconst_4
-      [667] ldc #240
-        + String [龍]
-      [669] aastore
-      [670] dup
-      [671] iconst_5
-      [672] ldc #222
-        + String [蛇]
-      [674] aastore
-      [675] dup
-      [676] bipush 6
-      [678] ldc #235
-        + String [馬]
-      [680] aastore
-      [681] dup
-      [682] bipush 7
-      [684] ldc #215
-        + String [羊]
-      [686] aastore
-      [687] dup
-      [688] bipush 8
-      [690] ldc #204
-        + String [猴]
-      [692] aastore
-      [693] dup
-      [694] bipush 9
-      [696] ldc #231
-        + String [雞]
-      [698] aastore
-      [699] dup
-      [700] bipush 10
-      [702] ldc #202
-        + String [狗]
-      [704] aastore
-      [705] dup
-      [706] bipush 11
-      [708] ldc #224
-        + String [豬]
-      [710] aastore
-      [711] putstatic #297
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.x [Ljava/lang/String;]
-      [714] bipush 24
-      [716] anewarray #247
+      [655] putstatic #326
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.w [Ljava/lang/String;]
+      [658] bipush 12
+      [660] anewarray #272
         + Class [java/lang/String]
-      [719] dup
-      [720] iconst_0
-      [721] ldc #185
+      [663] dup
+      [664] iconst_0
+      [665] ldc_w #262
+        + String [鼠]
+      [668] aastore
+      [669] dup
+      [670] iconst_1
+      [671] ldc #223
+        + String [牛]
+      [673] aastore
+      [674] dup
+      [675] iconst_2
+      [676] ldc #242
+        + String [虎]
+      [678] aastore
+      [679] dup
+      [680] iconst_3
+      [681] ldc #187
+        + String [兔]
+      [683] aastore
+      [684] dup
+      [685] iconst_4
+      [686] ldc_w #263
+        + String [龍]
+      [689] aastore
+      [690] dup
+      [691] iconst_5
+      [692] ldc #244
+        + String [蛇]
+      [694] aastore
+      [695] dup
+      [696] bipush 6
+      [698] ldc_w #258
+        + String [馬]
+      [701] aastore
+      [702] dup
+      [703] bipush 7
+      [705] ldc #237
+        + String [羊]
+      [707] aastore
+      [708] dup
+      [709] bipush 8
+      [711] ldc #226
+        + String [猴]
+      [713] aastore
+      [714] dup
+      [715] bipush 9
+      [717] ldc #254
+        + String [雞]
+      [719] aastore
+      [720] dup
+      [721] bipush 10
+      [723] ldc #224
+        + String [狗]
+      [725] aastore
+      [726] dup
+      [727] bipush 11
+      [729] ldc #246
+        + String [豬]
+      [731] aastore
+      [732] putstatic #327
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.x [Ljava/lang/String;]
+      [735] bipush 24
+      [737] anewarray #272
+        + Class [java/lang/String]
+      [740] dup
+      [741] iconst_0
+      [742] ldc #207
         + String [小寒]
-      [723] aastore
-      [724] dup
-      [725] iconst_1
-      [726] ldc #179
+      [744] aastore
+      [745] dup
+      [746] iconst_1
+      [747] ldc #201
         + String [大寒]
-      [728] aastore
-      [729] dup
-      [730] iconst_2
-      [731] ldc #213
+      [749] aastore
+      [750] dup
+      [751] iconst_2
+      [752] ldc #235
         + String [立春]
-      [733] aastore
-      [734] dup
-      [735] iconst_3
-      [736] ldc #232
-        + String [雨水]
-      [738] aastore
-      [739] dup
-      [740] iconst_4
-      [741] ldc #236
-        + String [驚蟄]
-      [743] aastore
-      [744] dup
-      [745] iconst_5
-      [746] ldc #197
-        + String [春分]
-      [748] aastore
-      [749] dup
-      [750] bipush 6
-      [752] ldc #200
-        + String [清明]
       [754] aastore
       [755] dup
-      [756] bipush 7
-      [758] ldc #210
+      [756] iconst_3
+      [757] ldc #255
+        + String [雨水]
+      [759] aastore
+      [760] dup
+      [761] iconst_4
+      [762] ldc_w #259
+        + String [驚蟄]
+      [765] aastore
+      [766] dup
+      [767] iconst_5
+      [768] ldc #219
+        + String [春分]
+      [770] aastore
+      [771] dup
+      [772] bipush 6
+      [774] ldc #222
+        + String [清明]
+      [776] aastore
+      [777] dup
+      [778] bipush 7
+      [780] ldc #232
         + String [穀雨]
-      [760] aastore
-      [761] dup
-      [762] bipush 8
-      [764] ldc #212
+      [782] aastore
+      [783] dup
+      [784] bipush 8
+      [786] ldc #234
         + String [立夏]
-      [766] aastore
-      [767] dup
-      [768] bipush 9
-      [770] ldc #188
+      [788] aastore
+      [789] dup
+      [790] bipush 9
+      [792] ldc #210
         + String [小滿]
-      [772] aastore
-      [773] dup
-      [774] bipush 10
-      [776] ldc #219
+      [794] aastore
+      [795] dup
+      [796] bipush 10
+      [798] ldc #241
         + String [芒種]
-      [778] aastore
-      [779] dup
-      [780] bipush 11
-      [782] ldc #178
+      [800] aastore
+      [801] dup
+      [802] bipush 11
+      [804] ldc #200
         + String [夏至]
-      [784] aastore
-      [785] dup
-      [786] bipush 12
-      [788] ldc #186
+      [806] aastore
+      [807] dup
+      [808] bipush 12
+      [810] ldc #208
         + String [小暑]
-      [790] aastore
-      [791] dup
-      [792] bipush 13
-      [794] ldc #180
+      [812] aastore
+      [813] dup
+      [814] bipush 13
+      [816] ldc #202
         + String [大暑]
-      [796] aastore
-      [797] dup
-      [798] bipush 14
-      [800] ldc #214
+      [818] aastore
+      [819] dup
+      [820] bipush 14
+      [822] ldc #236
         + String [立秋]
-      [802] aastore
-      [803] dup
-      [804] bipush 15
-      [806] ldc #221
+      [824] aastore
+      [825] dup
+      [826] bipush 15
+      [828] ldc #243
         + String [處暑]
-      [808] aastore
-      [809] dup
-      [810] bipush 16
-      [812] ldc #208
+      [830] aastore
+      [831] dup
+      [832] bipush 16
+      [834] ldc #230
         + String [白露]
-      [814] aastore
-      [815] dup
-      [816] bipush 17
-      [818] ldc #209
+      [836] aastore
+      [837] dup
+      [838] bipush 17
+      [840] ldc #231
         + String [秋分]
-      [820] aastore
-      [821] dup
-      [822] bipush 18
-      [824] ldc #184
+      [842] aastore
+      [843] dup
+      [844] bipush 18
+      [846] ldc #206
         + String [寒露]
-      [826] aastore
-      [827] dup
-      [828] bipush 19
-      [830] ldc #234
+      [848] aastore
+      [849] dup
+      [850] bipush 19
+      [852] ldc_w #257
         + String [霜降]
-      [832] aastore
-      [833] dup
-      [834] bipush 20
-      [836] ldc #211
+      [855] aastore
+      [856] dup
+      [857] bipush 20
+      [859] ldc #233
         + String [立冬]
-      [838] aastore
-      [839] dup
-      [840] bipush 21
-      [842] ldc #189
+      [861] aastore
+      [862] dup
+      [863] bipush 21
+      [865] ldc #211
         + String [小雪]
-      [844] aastore
-      [845] dup
-      [846] bipush 22
-      [848] ldc #181
+      [867] aastore
+      [868] dup
+      [869] bipush 22
+      [871] ldc #203
         + String [大雪]
-      [850] aastore
-      [851] dup
-      [852] bipush 23
-      [854] ldc #169
+      [873] aastore
+      [874] dup
+      [875] bipush 23
+      [877] ldc #191
         + String [冬至]
-      [856] aastore
-      [857] putstatic #298
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
-      [860] bipush 8
-      [862] anewarray #247
-        + Class [java/lang/String]
-      [865] dup
-      [866] iconst_0
-      [867] ldc #170
-        + String [初]
-      [869] aastore
-      [870] dup
-      [871] iconst_1
-      [872] ldc #171
-        + String [十]
-      [874] aastore
-      [875] dup
-      [876] iconst_2
-      [877] ldc #193
-        + String [廿]
       [879] aastore
-      [880] dup
-      [881] iconst_3
-      [882] ldc #172
-        + String [卅]
-      [884] aastore
-      [885] dup
-      [886] iconst_4
-      [887] ldc #199
-        + String [正]
-      [889] aastore
-      [890] dup
-      [891] iconst_5
-      [892] ldc #168
-        + String [冬]
-      [894] aastore
-      [895] dup
-      [896] bipush 6
-      [898] ldc #217
-        + String [臘]
-      [900] aastore
-      [901] dup
-      [902] bipush 7
-      [904] ldc #229
-        + String [閏]
-      [906] aastore
-      [907] putstatic #295
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
-      [910] bipush 11
-      [912] anewarray #247
+      [880] putstatic #328
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
+      [883] bipush 8
+      [885] anewarray #272
         + Class [java/lang/String]
-      [915] dup
-      [916] iconst_0
-      [917] ldc #113
-        + String []
-      [919] aastore
-      [920] dup
-      [921] iconst_1
-      [922] ldc #116
-        + String [0101春節]
-      [924] aastore
-      [925] dup
-      [926] iconst_2
-      [927] ldc #118
-        + String [0115元宵]
+      [888] dup
+      [889] iconst_0
+      [890] ldc #192
+        + String [初]
+      [892] aastore
+      [893] dup
+      [894] iconst_1
+      [895] ldc #193
+        + String [十]
+      [897] aastore
+      [898] dup
+      [899] iconst_2
+      [900] ldc #215
+        + String [廿]
+      [902] aastore
+      [903] dup
+      [904] iconst_3
+      [905] ldc #194
+        + String [卅]
+      [907] aastore
+      [908] dup
+      [909] iconst_4
+      [910] ldc #221
+        + String [正]
+      [912] aastore
+      [913] dup
+      [914] iconst_5
+      [915] ldc #190
+        + String [冬]
+      [917] aastore
+      [918] dup
+      [919] bipush 6
+      [921] ldc #239
+        + String [臘]
+      [923] aastore
+      [924] dup
+      [925] bipush 7
+      [927] ldc #251
+        + String [閏]
       [929] aastore
-      [930] dup
-      [931] iconst_3
-      [932] ldc #119
+      [930] putstatic #325
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
+      [933] bipush 11
+      [935] anewarray #272
+        + Class [java/lang/String]
+      [938] dup
+      [939] iconst_0
+      [940] ldc #113
+        + String []
+      [942] aastore
+      [943] dup
+      [944] iconst_1
+      [945] ldc #117
+        + String [0101春節]
+      [947] aastore
+      [948] dup
+      [949] iconst_2
+      [950] ldc #119
+        + String [0115元宵]
+      [952] aastore
+      [953] dup
+      [954] iconst_3
+      [955] ldc #120
         + String [0202龍頭]
-      [934] aastore
-      [935] dup
-      [936] iconst_4
-      [937] ldc #127
+      [957] aastore
+      [958] dup
+      [959] iconst_4
+      [960] ldc #135
         + String [0505端午]
-      [939] aastore
-      [940] dup
-      [941] iconst_5
-      [942] ldc #134
-        + String [0707七夕]
-      [944] aastore
-      [945] dup
-      [946] bipush 6
-      [948] ldc #135
-        + String [0715中元]
-      [950] aastore
-      [951] dup
-      [952] bipush 7
-      [954] ldc #137
-        + String [0815中秋]
-      [956] aastore
-      [957] dup
-      [958] bipush 8
-      [960] ldc #139
-        + String [0909重陽]
       [962] aastore
       [963] dup
-      [964] bipush 9
-      [966] ldc #144
+      [964] iconst_5
+      [965] ldc #143
+        + String [0707七夕]
+      [967] aastore
+      [968] dup
+      [969] bipush 6
+      [971] ldc #144
+        + String [0715中元]
+      [973] aastore
+      [974] dup
+      [975] bipush 7
+      [977] ldc #146
+        + String [0815中秋]
+      [979] aastore
+      [980] dup
+      [981] bipush 8
+      [983] ldc #149
+        + String [0909重陽]
+      [985] aastore
+      [986] dup
+      [987] bipush 9
+      [989] ldc #163
         + String [1208臘八]
-      [968] aastore
-      [969] dup
-      [970] bipush 10
-      [972] ldc #149
+      [991] aastore
+      [992] dup
+      [993] bipush 10
+      [995] ldc #171
         + String [1230除夕]
-      [974] aastore
-      [975] putstatic #299
+      [997] aastore
+      [998] putstatic #329
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [978] iconst_0
-      [979] anewarray #247
+      [1001] bipush 12
+      [1003] anewarray #272
         + Class [java/lang/String]
-      [982] putstatic #299
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [985] iconst_2
-      [986] anewarray #247
+      [1006] dup
+      [1007] iconst_0
+      [1008] ldc #116
+        + String [0101元旦]
+      [1010] aastore
+      [1011] dup
+      [1012] iconst_1
+      [1013] ldc #122
+        + String [0214情人節]
+      [1015] aastore
+      [1016] dup
+      [1017] iconst_2
+      [1018] ldc #124
+        + String [0228和平紀念日]
+      [1020] aastore
+      [1021] dup
+      [1022] iconst_3
+      [1023] ldc #126
+        + String [0308婦女節]
+      [1025] aastore
+      [1026] dup
+      [1027] iconst_4
+      [1028] ldc #130
+        + String [0404兒童節]
+      [1030] aastore
+      [1031] dup
+      [1032] iconst_5
+      [1033] ldc #128
+        + String [0401愚人節]
+      [1035] aastore
+      [1036] dup
+      [1037] bipush 6
+      [1039] ldc #133
+        + String [0501勞動節]
+      [1041] aastore
+      [1042] dup
+      [1043] bipush 7
+      [1045] ldc #147
+        + String [0903軍人節]
+      [1047] aastore
+      [1048] dup
+      [1049] bipush 8
+      [1051] ldc #152
+        + String [0928教師節]
+      [1053] aastore
+      [1054] dup
+      [1055] bipush 9
+      [1057] ldc #155
+        + String [1010國慶日]
+      [1059] aastore
+      [1060] dup
+      [1061] bipush 10
+      [1063] ldc #157
+        + String [1031萬聖節]
+      [1065] aastore
+      [1066] dup
+      [1067] bipush 11
+      [1069] ldc #169
+        + String [1225耶誕節]
+      [1071] aastore
+      [1072] putstatic #299
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
+      [1075] iconst_3
+      [1076] anewarray #272
         + Class [java/lang/String]
-      [989] dup
-      [990] iconst_0
-      [991] ldc #129
+      [1079] dup
+      [1080] iconst_0
+      [1081] ldc #137
         + String [0521母親節]
-      [993] aastore
-      [994] dup
-      [995] iconst_1
-      [996] ldc #132
-        + String [0631父親節]
-      [998] aastore
-      [999] putstatic #270
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
-      [1002] goto +361 (target=1363)
-      [1005] bipush 12
-      [1007] anewarray #247
-        + Class [java/lang/String]
-      [1010] dup
-      [1011] iconst_0
-      [1012] ldc #113
-        + String []
-      [1014] aastore
-      [1015] dup
-      [1016] iconst_1
-      [1017] ldc #113
-        + String []
-      [1019] aastore
-      [1020] dup
-      [1021] iconst_2
-      [1022] ldc #113
-        + String []
-      [1024] aastore
-      [1025] dup
-      [1026] iconst_3
-      [1027] ldc #113
-        + String []
-      [1029] aastore
-      [1030] dup
-      [1031] iconst_4
-      [1032] ldc #113
-        + String []
-      [1034] aastore
-      [1035] dup
-      [1036] iconst_5
-      [1037] ldc #113
-        + String []
-      [1039] aastore
-      [1040] dup
-      [1041] bipush 6
-      [1043] ldc #113
-        + String []
-      [1045] aastore
-      [1046] dup
-      [1047] bipush 7
-      [1049] ldc #113
-        + String []
-      [1051] aastore
-      [1052] dup
-      [1053] bipush 8
-      [1055] ldc #113
-        + String []
-      [1057] aastore
-      [1058] dup
-      [1059] bipush 9
-      [1061] ldc #113
-        + String []
-      [1063] aastore
-      [1064] dup
-      [1065] bipush 10
-      [1067] ldc #113
-        + String []
-      [1069] aastore
-      [1070] dup
-      [1071] bipush 11
-      [1073] ldc #113
-        + String []
-      [1075] aastore
-      [1076] putstatic #296
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.w [Ljava/lang/String;]
-      [1079] bipush 12
-      [1081] anewarray #247
-        + Class [java/lang/String]
+      [1083] aastore
       [1084] dup
-      [1085] iconst_0
-      [1086] ldc #113
-        + String []
+      [1085] iconst_1
+      [1086] ldc #140
+        + String [0631父親節]
       [1088] aastore
       [1089] dup
-      [1090] iconst_1
-      [1091] ldc #113
-        + String []
+      [1090] iconst_2
+      [1091] ldc #159
+        + String [1145感恩節]
       [1093] aastore
-      [1094] dup
-      [1095] iconst_2
-      [1096] ldc #113
-        + String []
-      [1098] aastore
-      [1099] dup
-      [1100] iconst_3
-      [1101] ldc #113
-        + String []
-      [1103] aastore
-      [1104] dup
-      [1105] iconst_4
-      [1106] ldc #113
-        + String []
-      [1108] aastore
-      [1109] dup
-      [1110] iconst_5
-      [1111] ldc #113
-        + String []
-      [1113] aastore
-      [1114] dup
-      [1115] bipush 6
-      [1117] ldc #113
-        + String []
+      [1094] putstatic #300
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
+      [1097] goto +1400 (target=2497)
+      [1100] bipush 12
+      [1102] anewarray #272
+        + Class [java/lang/String]
+      [1105] dup
+      [1106] iconst_0
+      [1107] ldc #204
+        + String [子]
+      [1109] aastore
+      [1110] dup
+      [1111] iconst_1
+      [1112] ldc #250
+        + String [醜]
+      [1114] aastore
+      [1115] dup
+      [1116] iconst_2
+      [1117] ldc #205
+        + String [寅]
       [1119] aastore
       [1120] dup
-      [1121] bipush 7
-      [1123] ldc #113
-        + String []
-      [1125] aastore
-      [1126] dup
-      [1127] bipush 8
-      [1129] ldc #113
-        + String []
-      [1131] aastore
-      [1132] dup
-      [1133] bipush 9
-      [1135] ldc #113
-        + String []
-      [1137] aastore
-      [1138] dup
-      [1139] bipush 10
-      [1141] ldc #113
-        + String []
-      [1143] aastore
-      [1144] dup
-      [1145] bipush 11
-      [1147] ldc #113
-        + String []
-      [1149] aastore
-      [1150] putstatic #297
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.x [Ljava/lang/String;]
-      [1153] bipush 24
-      [1155] anewarray #247
+      [1121] iconst_3
+      [1122] ldc #196
+        + String [卯]
+      [1124] aastore
+      [1125] dup
+      [1126] iconst_4
+      [1127] ldc #248
+        + String [辰]
+      [1129] aastore
+      [1130] dup
+      [1131] iconst_5
+      [1132] ldc #213
+        + String [巳]
+      [1134] aastore
+      [1135] dup
+      [1136] bipush 6
+      [1138] ldc #195
+        + String [午]
+      [1140] aastore
+      [1141] dup
+      [1142] bipush 7
+      [1144] ldc #220
+        + String [未]
+      [1146] aastore
+      [1147] dup
+      [1148] bipush 8
+      [1150] ldc #228
+        + String [申]
+      [1152] aastore
+      [1153] dup
+      [1154] bipush 9
+      [1156] ldc #249
+        + String [酉]
+      [1158] aastore
+      [1159] dup
+      [1160] bipush 10
+      [1162] ldc #218
+        + String [戌]
+      [1164] aastore
+      [1165] dup
+      [1166] bipush 11
+      [1168] ldc #186
+        + String [亥]
+      [1170] aastore
+      [1171] putstatic #326
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.w [Ljava/lang/String;]
+      [1174] bipush 12
+      [1176] anewarray #272
         + Class [java/lang/String]
-      [1158] dup
-      [1159] iconst_0
-      [1160] ldc #113
-        + String []
-      [1162] aastore
-      [1163] dup
-      [1164] iconst_1
-      [1165] ldc #113
-        + String []
-      [1167] aastore
-      [1168] dup
-      [1169] iconst_2
-      [1170] ldc #113
-        + String []
-      [1172] aastore
-      [1173] dup
-      [1174] iconst_3
-      [1175] ldc #113
-        + String []
-      [1177] aastore
-      [1178] dup
-      [1179] iconst_4
-      [1180] ldc #113
-        + String []
-      [1182] aastore
-      [1183] dup
-      [1184] iconst_5
-      [1185] ldc #113
-        + String []
-      [1187] aastore
-      [1188] dup
-      [1189] bipush 6
-      [1191] ldc #113
-        + String []
-      [1193] aastore
-      [1194] dup
-      [1195] bipush 7
-      [1197] ldc #113
-        + String []
+      [1179] dup
+      [1180] iconst_0
+      [1181] ldc_w #262
+        + String [鼠]
+      [1184] aastore
+      [1185] dup
+      [1186] iconst_1
+      [1187] ldc #223
+        + String [牛]
+      [1189] aastore
+      [1190] dup
+      [1191] iconst_2
+      [1192] ldc #242
+        + String [虎]
+      [1194] aastore
+      [1195] dup
+      [1196] iconst_3
+      [1197] ldc #187
+        + String [兔]
       [1199] aastore
       [1200] dup
-      [1201] bipush 8
-      [1203] ldc #113
-        + String []
+      [1201] iconst_4
+      [1202] ldc_w #263
+        + String [龍]
       [1205] aastore
       [1206] dup
-      [1207] bipush 9
-      [1209] ldc #113
-        + String []
-      [1211] aastore
-      [1212] dup
-      [1213] bipush 10
-      [1215] ldc #113
-        + String []
+      [1207] iconst_5
+      [1208] ldc #244
+        + String [蛇]
+      [1210] aastore
+      [1211] dup
+      [1212] bipush 6
+      [1214] ldc_w #258
+        + String [馬]
       [1217] aastore
       [1218] dup
-      [1219] bipush 11
-      [1221] ldc #113
-        + String []
+      [1219] bipush 7
+      [1221] ldc #237
+        + String [羊]
       [1223] aastore
       [1224] dup
-      [1225] bipush 12
-      [1227] ldc #113
-        + String []
+      [1225] bipush 8
+      [1227] ldc #226
+        + String [猴]
       [1229] aastore
       [1230] dup
-      [1231] bipush 13
-      [1233] ldc #113
-        + String []
+      [1231] bipush 9
+      [1233] ldc #254
+        + String [雞]
       [1235] aastore
       [1236] dup
-      [1237] bipush 14
-      [1239] ldc #113
-        + String []
+      [1237] bipush 10
+      [1239] ldc #224
+        + String [狗]
       [1241] aastore
       [1242] dup
-      [1243] bipush 15
-      [1245] ldc #113
-        + String []
+      [1243] bipush 11
+      [1245] ldc #246
+        + String [豬]
       [1247] aastore
-      [1248] dup
-      [1249] bipush 16
-      [1251] ldc #113
-        + String []
-      [1253] aastore
-      [1254] dup
-      [1255] bipush 17
-      [1257] ldc #113
-        + String []
-      [1259] aastore
-      [1260] dup
-      [1261] bipush 18
-      [1263] ldc #113
-        + String []
+      [1248] putstatic #327
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.x [Ljava/lang/String;]
+      [1251] bipush 24
+      [1253] anewarray #272
+        + Class [java/lang/String]
+      [1256] dup
+      [1257] iconst_0
+      [1258] ldc #207
+        + String [小寒]
+      [1260] aastore
+      [1261] dup
+      [1262] iconst_1
+      [1263] ldc #201
+        + String [大寒]
       [1265] aastore
       [1266] dup
-      [1267] bipush 19
-      [1269] ldc #113
-        + String []
-      [1271] aastore
-      [1272] dup
-      [1273] bipush 20
-      [1275] ldc #113
-        + String []
-      [1277] aastore
-      [1278] dup
-      [1279] bipush 21
-      [1281] ldc #113
-        + String []
-      [1283] aastore
-      [1284] dup
-      [1285] bipush 22
-      [1287] ldc #113
-        + String []
-      [1289] aastore
-      [1290] dup
-      [1291] bipush 23
-      [1293] ldc #113
-        + String []
-      [1295] aastore
-      [1296] putstatic #298
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
-      [1299] bipush 8
-      [1301] anewarray #247
-        + Class [java/lang/String]
-      [1304] dup
-      [1305] iconst_0
-      [1306] ldc #113
-        + String []
-      [1308] aastore
-      [1309] dup
-      [1310] iconst_1
-      [1311] ldc #113
-        + String []
-      [1313] aastore
-      [1314] dup
-      [1315] iconst_2
-      [1316] ldc #113
-        + String []
-      [1318] aastore
-      [1319] dup
-      [1320] iconst_3
-      [1321] ldc #113
-        + String []
-      [1323] aastore
-      [1324] dup
-      [1325] iconst_4
-      [1326] ldc #113
-        + String []
+      [1267] iconst_2
+      [1268] ldc #235
+        + String [立春]
+      [1270] aastore
+      [1271] dup
+      [1272] iconst_3
+      [1273] ldc #255
+        + String [雨水]
+      [1275] aastore
+      [1276] dup
+      [1277] iconst_4
+      [1278] ldc_w #259
+        + String [驚蟄]
+      [1281] aastore
+      [1282] dup
+      [1283] iconst_5
+      [1284] ldc #219
+        + String [春分]
+      [1286] aastore
+      [1287] dup
+      [1288] bipush 6
+      [1290] ldc #222
+        + String [清明]
+      [1292] aastore
+      [1293] dup
+      [1294] bipush 7
+      [1296] ldc #232
+        + String [穀雨]
+      [1298] aastore
+      [1299] dup
+      [1300] bipush 8
+      [1302] ldc #234
+        + String [立夏]
+      [1304] aastore
+      [1305] dup
+      [1306] bipush 9
+      [1308] ldc #210
+        + String [小滿]
+      [1310] aastore
+      [1311] dup
+      [1312] bipush 10
+      [1314] ldc #241
+        + String [芒種]
+      [1316] aastore
+      [1317] dup
+      [1318] bipush 11
+      [1320] ldc #200
+        + String [夏至]
+      [1322] aastore
+      [1323] dup
+      [1324] bipush 12
+      [1326] ldc #208
+        + String [小暑]
       [1328] aastore
       [1329] dup
-      [1330] iconst_5
-      [1331] ldc #113
-        + String []
-      [1333] aastore
-      [1334] dup
-      [1335] bipush 6
-      [1337] ldc #113
-        + String []
-      [1339] aastore
-      [1340] dup
-      [1341] bipush 7
-      [1343] ldc #113
-        + String []
-      [1345] aastore
-      [1346] putstatic #295
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
-      [1349] iconst_0
-      [1350] anewarray #247
+      [1330] bipush 13
+      [1332] ldc #202
+        + String [大暑]
+      [1334] aastore
+      [1335] dup
+      [1336] bipush 14
+      [1338] ldc #236
+        + String [立秋]
+      [1340] aastore
+      [1341] dup
+      [1342] bipush 15
+      [1344] ldc #243
+        + String [處暑]
+      [1346] aastore
+      [1347] dup
+      [1348] bipush 16
+      [1350] ldc #230
+        + String [白露]
+      [1352] aastore
+      [1353] dup
+      [1354] bipush 17
+      [1356] ldc #231
+        + String [秋分]
+      [1358] aastore
+      [1359] dup
+      [1360] bipush 18
+      [1362] ldc #206
+        + String [寒露]
+      [1364] aastore
+      [1365] dup
+      [1366] bipush 19
+      [1368] ldc_w #257
+        + String [霜降]
+      [1371] aastore
+      [1372] dup
+      [1373] bipush 20
+      [1375] ldc #233
+        + String [立冬]
+      [1377] aastore
+      [1378] dup
+      [1379] bipush 21
+      [1381] ldc #211
+        + String [小雪]
+      [1383] aastore
+      [1384] dup
+      [1385] bipush 22
+      [1387] ldc #203
+        + String [大雪]
+      [1389] aastore
+      [1390] dup
+      [1391] bipush 23
+      [1393] ldc #191
+        + String [冬至]
+      [1395] aastore
+      [1396] putstatic #328
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
+      [1399] bipush 8
+      [1401] anewarray #272
         + Class [java/lang/String]
-      [1353] putstatic #299
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [1356] iconst_0
-      [1357] anewarray #247
-        + Class [java/lang/String]
-      [1360] putstatic #270
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
-      [1363] iload_1 v1
-      [1364] iconst_3
-      [1365] ificmpeq +54 (target=1419)
-      [1368] getstatic #266
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.j I]
-      [1371] tableswitch (3 offsets, default=48) (target=1419)
-        1: offset = 25, target = 1396
-        2: offset = 33, target = 1404
-        3: offset = 41, target = 1412
-        default: offset = 48, target = 1419
-      [1396] getstatic #299
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [1399] iconst_0
-      [1400] ldc #145
-        + String [1223 小年]
-      [1402] aastore
-      [1403] return
-      [1404] getstatic #299
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [1407] iconst_0
-      [1408] ldc #146
-        + String [1224 小年]
-      [1410] aastore
-      [1411] return
-      [1412] getstatic #299
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [1415] iconst_0
-      [1416] ldc #147
-        + String [1225 小年]
+      [1404] dup
+      [1405] iconst_0
+      [1406] ldc #192
+        + String [初]
+      [1408] aastore
+      [1409] dup
+      [1410] iconst_1
+      [1411] ldc #193
+        + String [十]
+      [1413] aastore
+      [1414] dup
+      [1415] iconst_2
+      [1416] ldc #215
+        + String [廿]
       [1418] aastore
-      [1419] return
+      [1419] dup
+      [1420] iconst_3
+      [1421] ldc #194
+        + String [卅]
+      [1423] aastore
+      [1424] dup
+      [1425] iconst_4
+      [1426] ldc #221
+        + String [正]
+      [1428] aastore
+      [1429] dup
+      [1430] iconst_5
+      [1431] ldc #190
+        + String [冬]
+      [1433] aastore
+      [1434] dup
+      [1435] bipush 6
+      [1437] ldc #239
+        + String [臘]
+      [1439] aastore
+      [1440] dup
+      [1441] bipush 7
+      [1443] ldc #251
+        + String [閏]
+      [1445] aastore
+      [1446] putstatic #325
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
+      [1449] bipush 12
+      [1451] anewarray #272
+        + Class [java/lang/String]
+      [1454] dup
+      [1455] iconst_0
+      [1456] ldc #113
+        + String []
+      [1458] aastore
+      [1459] dup
+      [1460] iconst_1
+      [1461] ldc #117
+        + String [0101春節]
+      [1463] aastore
+      [1464] dup
+      [1465] iconst_2
+      [1466] ldc #119
+        + String [0115元宵]
+      [1468] aastore
+      [1469] dup
+      [1470] iconst_3
+      [1471] ldc #120
+        + String [0202龍頭]
+      [1473] aastore
+      [1474] dup
+      [1475] iconst_4
+      [1476] ldc #135
+        + String [0505端午]
+      [1478] aastore
+      [1479] dup
+      [1480] iconst_5
+      [1481] ldc #143
+        + String [0707七夕]
+      [1483] aastore
+      [1484] dup
+      [1485] bipush 6
+      [1487] ldc #144
+        + String [0715中元]
+      [1489] aastore
+      [1490] dup
+      [1491] bipush 7
+      [1493] ldc #146
+        + String [0815中秋]
+      [1495] aastore
+      [1496] dup
+      [1497] bipush 8
+      [1499] ldc #149
+        + String [0909重陽]
+      [1501] aastore
+      [1502] dup
+      [1503] bipush 9
+      [1505] ldc #163
+        + String [1208臘八]
+      [1507] aastore
+      [1508] dup
+      [1509] bipush 10
+      [1511] ldc #171
+        + String [1230除夕]
+      [1513] aastore
+      [1514] dup
+      [1515] bipush 11
+      [1517] ldc #131
+        + String [0408佛诞]
+      [1519] aastore
+      [1520] putstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [1523] bipush 10
+      [1525] anewarray #272
+        + Class [java/lang/String]
+      [1528] dup
+      [1529] iconst_0
+      [1530] ldc #116
+        + String [0101元旦]
+      [1532] aastore
+      [1533] dup
+      [1534] iconst_1
+      [1535] ldc #122
+        + String [0214情人節]
+      [1537] aastore
+      [1538] dup
+      [1539] iconst_2
+      [1540] ldc #126
+        + String [0308婦女節]
+      [1542] aastore
+      [1543] dup
+      [1544] iconst_3
+      [1545] ldc #128
+        + String [0401愚人節]
+      [1547] aastore
+      [1548] dup
+      [1549] iconst_4
+      [1550] ldc #133
+        + String [0501勞動節]
+      [1552] aastore
+      [1553] dup
+      [1554] iconst_5
+      [1555] ldc #142
+        + String [0701特區紀念日]
+      [1557] aastore
+      [1558] dup
+      [1559] bipush 6
+      [1561] ldc #151
+        + String [0910教師節]
+      [1563] aastore
+      [1564] dup
+      [1565] bipush 7
+      [1567] ldc #154
+        + String [1001國慶日]
+      [1569] aastore
+      [1570] dup
+      [1571] bipush 8
+      [1573] ldc #157
+        + String [1031萬聖節]
+      [1575] aastore
+      [1576] dup
+      [1577] bipush 9
+      [1579] ldc #170
+        + String [1225聖誕節]
+      [1581] aastore
+      [1582] putstatic #299
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
+      [1585] iconst_3
+      [1586] anewarray #272
+        + Class [java/lang/String]
+      [1589] dup
+      [1590] iconst_0
+      [1591] ldc #137
+        + String [0521母親節]
+      [1593] aastore
+      [1594] dup
+      [1595] iconst_1
+      [1596] ldc #140
+        + String [0631父親節]
+      [1598] aastore
+      [1599] dup
+      [1600] iconst_2
+      [1601] ldc #159
+        + String [1145感恩節]
+      [1603] aastore
+      [1604] putstatic #300
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
+      [1607] goto +890 (target=2497)
+      [1610] bipush 12
+      [1612] anewarray #272
+        + Class [java/lang/String]
+      [1615] dup
+      [1616] iconst_0
+      [1617] ldc #204
+        + String [子]
+      [1619] aastore
+      [1620] dup
+      [1621] iconst_1
+      [1622] ldc #250
+        + String [醜]
+      [1624] aastore
+      [1625] dup
+      [1626] iconst_2
+      [1627] ldc #205
+        + String [寅]
+      [1629] aastore
+      [1630] dup
+      [1631] iconst_3
+      [1632] ldc #196
+        + String [卯]
+      [1634] aastore
+      [1635] dup
+      [1636] iconst_4
+      [1637] ldc #248
+        + String [辰]
+      [1639] aastore
+      [1640] dup
+      [1641] iconst_5
+      [1642] ldc #213
+        + String [巳]
+      [1644] aastore
+      [1645] dup
+      [1646] bipush 6
+      [1648] ldc #195
+        + String [午]
+      [1650] aastore
+      [1651] dup
+      [1652] bipush 7
+      [1654] ldc #220
+        + String [未]
+      [1656] aastore
+      [1657] dup
+      [1658] bipush 8
+      [1660] ldc #228
+        + String [申]
+      [1662] aastore
+      [1663] dup
+      [1664] bipush 9
+      [1666] ldc #249
+        + String [酉]
+      [1668] aastore
+      [1669] dup
+      [1670] bipush 10
+      [1672] ldc #218
+        + String [戌]
+      [1674] aastore
+      [1675] dup
+      [1676] bipush 11
+      [1678] ldc #186
+        + String [亥]
+      [1680] aastore
+      [1681] putstatic #326
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.w [Ljava/lang/String;]
+      [1684] bipush 12
+      [1686] anewarray #272
+        + Class [java/lang/String]
+      [1689] dup
+      [1690] iconst_0
+      [1691] ldc_w #262
+        + String [鼠]
+      [1694] aastore
+      [1695] dup
+      [1696] iconst_1
+      [1697] ldc #223
+        + String [牛]
+      [1699] aastore
+      [1700] dup
+      [1701] iconst_2
+      [1702] ldc #242
+        + String [虎]
+      [1704] aastore
+      [1705] dup
+      [1706] iconst_3
+      [1707] ldc #187
+        + String [兔]
+      [1709] aastore
+      [1710] dup
+      [1711] iconst_4
+      [1712] ldc_w #263
+        + String [龍]
+      [1715] aastore
+      [1716] dup
+      [1717] iconst_5
+      [1718] ldc #244
+        + String [蛇]
+      [1720] aastore
+      [1721] dup
+      [1722] bipush 6
+      [1724] ldc_w #258
+        + String [馬]
+      [1727] aastore
+      [1728] dup
+      [1729] bipush 7
+      [1731] ldc #237
+        + String [羊]
+      [1733] aastore
+      [1734] dup
+      [1735] bipush 8
+      [1737] ldc #226
+        + String [猴]
+      [1739] aastore
+      [1740] dup
+      [1741] bipush 9
+      [1743] ldc #254
+        + String [雞]
+      [1745] aastore
+      [1746] dup
+      [1747] bipush 10
+      [1749] ldc #224
+        + String [狗]
+      [1751] aastore
+      [1752] dup
+      [1753] bipush 11
+      [1755] ldc #246
+        + String [豬]
+      [1757] aastore
+      [1758] putstatic #327
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.x [Ljava/lang/String;]
+      [1761] bipush 24
+      [1763] anewarray #272
+        + Class [java/lang/String]
+      [1766] dup
+      [1767] iconst_0
+      [1768] ldc #207
+        + String [小寒]
+      [1770] aastore
+      [1771] dup
+      [1772] iconst_1
+      [1773] ldc #201
+        + String [大寒]
+      [1775] aastore
+      [1776] dup
+      [1777] iconst_2
+      [1778] ldc #235
+        + String [立春]
+      [1780] aastore
+      [1781] dup
+      [1782] iconst_3
+      [1783] ldc #255
+        + String [雨水]
+      [1785] aastore
+      [1786] dup
+      [1787] iconst_4
+      [1788] ldc_w #259
+        + String [驚蟄]
+      [1791] aastore
+      [1792] dup
+      [1793] iconst_5
+      [1794] ldc #219
+        + String [春分]
+      [1796] aastore
+      [1797] dup
+      [1798] bipush 6
+      [1800] ldc #222
+        + String [清明]
+      [1802] aastore
+      [1803] dup
+      [1804] bipush 7
+      [1806] ldc #232
+        + String [穀雨]
+      [1808] aastore
+      [1809] dup
+      [1810] bipush 8
+      [1812] ldc #234
+        + String [立夏]
+      [1814] aastore
+      [1815] dup
+      [1816] bipush 9
+      [1818] ldc #210
+        + String [小滿]
+      [1820] aastore
+      [1821] dup
+      [1822] bipush 10
+      [1824] ldc #241
+        + String [芒種]
+      [1826] aastore
+      [1827] dup
+      [1828] bipush 11
+      [1830] ldc #200
+        + String [夏至]
+      [1832] aastore
+      [1833] dup
+      [1834] bipush 12
+      [1836] ldc #208
+        + String [小暑]
+      [1838] aastore
+      [1839] dup
+      [1840] bipush 13
+      [1842] ldc #202
+        + String [大暑]
+      [1844] aastore
+      [1845] dup
+      [1846] bipush 14
+      [1848] ldc #236
+        + String [立秋]
+      [1850] aastore
+      [1851] dup
+      [1852] bipush 15
+      [1854] ldc #243
+        + String [處暑]
+      [1856] aastore
+      [1857] dup
+      [1858] bipush 16
+      [1860] ldc #230
+        + String [白露]
+      [1862] aastore
+      [1863] dup
+      [1864] bipush 17
+      [1866] ldc #231
+        + String [秋分]
+      [1868] aastore
+      [1869] dup
+      [1870] bipush 18
+      [1872] ldc #206
+        + String [寒露]
+      [1874] aastore
+      [1875] dup
+      [1876] bipush 19
+      [1878] ldc_w #257
+        + String [霜降]
+      [1881] aastore
+      [1882] dup
+      [1883] bipush 20
+      [1885] ldc #233
+        + String [立冬]
+      [1887] aastore
+      [1888] dup
+      [1889] bipush 21
+      [1891] ldc #211
+        + String [小雪]
+      [1893] aastore
+      [1894] dup
+      [1895] bipush 22
+      [1897] ldc #203
+        + String [大雪]
+      [1899] aastore
+      [1900] dup
+      [1901] bipush 23
+      [1903] ldc #191
+        + String [冬至]
+      [1905] aastore
+      [1906] putstatic #328
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
+      [1909] bipush 8
+      [1911] anewarray #272
+        + Class [java/lang/String]
+      [1914] dup
+      [1915] iconst_0
+      [1916] ldc #192
+        + String [初]
+      [1918] aastore
+      [1919] dup
+      [1920] iconst_1
+      [1921] ldc #193
+        + String [十]
+      [1923] aastore
+      [1924] dup
+      [1925] iconst_2
+      [1926] ldc #215
+        + String [廿]
+      [1928] aastore
+      [1929] dup
+      [1930] iconst_3
+      [1931] ldc #194
+        + String [卅]
+      [1933] aastore
+      [1934] dup
+      [1935] iconst_4
+      [1936] ldc #221
+        + String [正]
+      [1938] aastore
+      [1939] dup
+      [1940] iconst_5
+      [1941] ldc #190
+        + String [冬]
+      [1943] aastore
+      [1944] dup
+      [1945] bipush 6
+      [1947] ldc #239
+        + String [臘]
+      [1949] aastore
+      [1950] dup
+      [1951] bipush 7
+      [1953] ldc #251
+        + String [閏]
+      [1955] aastore
+      [1956] putstatic #325
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
+      [1959] bipush 12
+      [1961] anewarray #272
+        + Class [java/lang/String]
+      [1964] dup
+      [1965] iconst_0
+      [1966] ldc #113
+        + String []
+      [1968] aastore
+      [1969] dup
+      [1970] iconst_1
+      [1971] ldc #117
+        + String [0101春節]
+      [1973] aastore
+      [1974] dup
+      [1975] iconst_2
+      [1976] ldc #119
+        + String [0115元宵]
+      [1978] aastore
+      [1979] dup
+      [1980] iconst_3
+      [1981] ldc #120
+        + String [0202龍頭]
+      [1983] aastore
+      [1984] dup
+      [1985] iconst_4
+      [1986] ldc #135
+        + String [0505端午]
+      [1988] aastore
+      [1989] dup
+      [1990] iconst_5
+      [1991] ldc #143
+        + String [0707七夕]
+      [1993] aastore
+      [1994] dup
+      [1995] bipush 6
+      [1997] ldc #144
+        + String [0715中元]
+      [1999] aastore
+      [2000] dup
+      [2001] bipush 7
+      [2003] ldc #146
+        + String [0815中秋]
+      [2005] aastore
+      [2006] dup
+      [2007] bipush 8
+      [2009] ldc #149
+        + String [0909重陽]
+      [2011] aastore
+      [2012] dup
+      [2013] bipush 9
+      [2015] ldc #163
+        + String [1208臘八]
+      [2017] aastore
+      [2018] dup
+      [2019] bipush 10
+      [2021] ldc #171
+        + String [1230除夕]
+      [2023] aastore
+      [2024] dup
+      [2025] bipush 11
+      [2027] ldc #131
+        + String [0408佛诞]
+      [2029] aastore
+      [2030] putstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [2033] bipush 12
+      [2035] anewarray #272
+        + Class [java/lang/String]
+      [2038] dup
+      [2039] iconst_0
+      [2040] ldc #116
+        + String [0101元旦]
+      [2042] aastore
+      [2043] dup
+      [2044] iconst_1
+      [2045] ldc #122
+        + String [0214情人節]
+      [2047] aastore
+      [2048] dup
+      [2049] iconst_2
+      [2050] ldc #126
+        + String [0308婦女節]
+      [2052] aastore
+      [2053] dup
+      [2054] iconst_3
+      [2055] ldc #128
+        + String [0401愚人節]
+      [2057] aastore
+      [2058] dup
+      [2059] iconst_4
+      [2060] ldc #133
+        + String [0501勞動節]
+      [2062] aastore
+      [2063] dup
+      [2064] iconst_5
+      [2065] ldc #151
+        + String [0910教師節]
+      [2067] aastore
+      [2068] dup
+      [2069] bipush 6
+      [2071] ldc #154
+        + String [1001國慶日]
+      [2073] aastore
+      [2074] dup
+      [2075] bipush 7
+      [2077] ldc #157
+        + String [1031萬聖節]
+      [2079] aastore
+      [2080] dup
+      [2081] bipush 8
+      [2083] ldc #158
+        + String [1102追思節]
+      [2085] aastore
+      [2086] dup
+      [2087] bipush 9
+      [2089] ldc #161
+        + String [1208聖母無原罪日]
+      [2091] aastore
+      [2092] dup
+      [2093] bipush 10
+      [2095] ldc #164
+        + String [1220特區紀念日]
+      [2097] aastore
+      [2098] dup
+      [2099] bipush 11
+      [2101] ldc #170
+        + String [1225聖誕節]
+      [2103] aastore
+      [2104] putstatic #299
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
+      [2107] iconst_3
+      [2108] anewarray #272
+        + Class [java/lang/String]
+      [2111] dup
+      [2112] iconst_0
+      [2113] ldc #137
+        + String [0521母親節]
+      [2115] aastore
+      [2116] dup
+      [2117] iconst_1
+      [2118] ldc #140
+        + String [0631父親節]
+      [2120] aastore
+      [2121] dup
+      [2122] iconst_2
+      [2123] ldc #159
+        + String [1145感恩節]
+      [2125] aastore
+      [2126] putstatic #300
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
+      [2129] goto +368 (target=2497)
+      [2132] bipush 12
+      [2134] anewarray #272
+        + Class [java/lang/String]
+      [2137] dup
+      [2138] iconst_0
+      [2139] ldc #113
+        + String []
+      [2141] aastore
+      [2142] dup
+      [2143] iconst_1
+      [2144] ldc #113
+        + String []
+      [2146] aastore
+      [2147] dup
+      [2148] iconst_2
+      [2149] ldc #113
+        + String []
+      [2151] aastore
+      [2152] dup
+      [2153] iconst_3
+      [2154] ldc #113
+        + String []
+      [2156] aastore
+      [2157] dup
+      [2158] iconst_4
+      [2159] ldc #113
+        + String []
+      [2161] aastore
+      [2162] dup
+      [2163] iconst_5
+      [2164] ldc #113
+        + String []
+      [2166] aastore
+      [2167] dup
+      [2168] bipush 6
+      [2170] ldc #113
+        + String []
+      [2172] aastore
+      [2173] dup
+      [2174] bipush 7
+      [2176] ldc #113
+        + String []
+      [2178] aastore
+      [2179] dup
+      [2180] bipush 8
+      [2182] ldc #113
+        + String []
+      [2184] aastore
+      [2185] dup
+      [2186] bipush 9
+      [2188] ldc #113
+        + String []
+      [2190] aastore
+      [2191] dup
+      [2192] bipush 10
+      [2194] ldc #113
+        + String []
+      [2196] aastore
+      [2197] dup
+      [2198] bipush 11
+      [2200] ldc #113
+        + String []
+      [2202] aastore
+      [2203] putstatic #326
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.w [Ljava/lang/String;]
+      [2206] bipush 12
+      [2208] anewarray #272
+        + Class [java/lang/String]
+      [2211] dup
+      [2212] iconst_0
+      [2213] ldc #113
+        + String []
+      [2215] aastore
+      [2216] dup
+      [2217] iconst_1
+      [2218] ldc #113
+        + String []
+      [2220] aastore
+      [2221] dup
+      [2222] iconst_2
+      [2223] ldc #113
+        + String []
+      [2225] aastore
+      [2226] dup
+      [2227] iconst_3
+      [2228] ldc #113
+        + String []
+      [2230] aastore
+      [2231] dup
+      [2232] iconst_4
+      [2233] ldc #113
+        + String []
+      [2235] aastore
+      [2236] dup
+      [2237] iconst_5
+      [2238] ldc #113
+        + String []
+      [2240] aastore
+      [2241] dup
+      [2242] bipush 6
+      [2244] ldc #113
+        + String []
+      [2246] aastore
+      [2247] dup
+      [2248] bipush 7
+      [2250] ldc #113
+        + String []
+      [2252] aastore
+      [2253] dup
+      [2254] bipush 8
+      [2256] ldc #113
+        + String []
+      [2258] aastore
+      [2259] dup
+      [2260] bipush 9
+      [2262] ldc #113
+        + String []
+      [2264] aastore
+      [2265] dup
+      [2266] bipush 10
+      [2268] ldc #113
+        + String []
+      [2270] aastore
+      [2271] dup
+      [2272] bipush 11
+      [2274] ldc #113
+        + String []
+      [2276] aastore
+      [2277] putstatic #327
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.x [Ljava/lang/String;]
+      [2280] bipush 24
+      [2282] anewarray #272
+        + Class [java/lang/String]
+      [2285] dup
+      [2286] iconst_0
+      [2287] ldc #113
+        + String []
+      [2289] aastore
+      [2290] dup
+      [2291] iconst_1
+      [2292] ldc #113
+        + String []
+      [2294] aastore
+      [2295] dup
+      [2296] iconst_2
+      [2297] ldc #113
+        + String []
+      [2299] aastore
+      [2300] dup
+      [2301] iconst_3
+      [2302] ldc #113
+        + String []
+      [2304] aastore
+      [2305] dup
+      [2306] iconst_4
+      [2307] ldc #113
+        + String []
+      [2309] aastore
+      [2310] dup
+      [2311] iconst_5
+      [2312] ldc #113
+        + String []
+      [2314] aastore
+      [2315] dup
+      [2316] bipush 6
+      [2318] ldc #113
+        + String []
+      [2320] aastore
+      [2321] dup
+      [2322] bipush 7
+      [2324] ldc #113
+        + String []
+      [2326] aastore
+      [2327] dup
+      [2328] bipush 8
+      [2330] ldc #113
+        + String []
+      [2332] aastore
+      [2333] dup
+      [2334] bipush 9
+      [2336] ldc #113
+        + String []
+      [2338] aastore
+      [2339] dup
+      [2340] bipush 10
+      [2342] ldc #113
+        + String []
+      [2344] aastore
+      [2345] dup
+      [2346] bipush 11
+      [2348] ldc #113
+        + String []
+      [2350] aastore
+      [2351] dup
+      [2352] bipush 12
+      [2354] ldc #113
+        + String []
+      [2356] aastore
+      [2357] dup
+      [2358] bipush 13
+      [2360] ldc #113
+        + String []
+      [2362] aastore
+      [2363] dup
+      [2364] bipush 14
+      [2366] ldc #113
+        + String []
+      [2368] aastore
+      [2369] dup
+      [2370] bipush 15
+      [2372] ldc #113
+        + String []
+      [2374] aastore
+      [2375] dup
+      [2376] bipush 16
+      [2378] ldc #113
+        + String []
+      [2380] aastore
+      [2381] dup
+      [2382] bipush 17
+      [2384] ldc #113
+        + String []
+      [2386] aastore
+      [2387] dup
+      [2388] bipush 18
+      [2390] ldc #113
+        + String []
+      [2392] aastore
+      [2393] dup
+      [2394] bipush 19
+      [2396] ldc #113
+        + String []
+      [2398] aastore
+      [2399] dup
+      [2400] bipush 20
+      [2402] ldc #113
+        + String []
+      [2404] aastore
+      [2405] dup
+      [2406] bipush 21
+      [2408] ldc #113
+        + String []
+      [2410] aastore
+      [2411] dup
+      [2412] bipush 22
+      [2414] ldc #113
+        + String []
+      [2416] aastore
+      [2417] dup
+      [2418] bipush 23
+      [2420] ldc #113
+        + String []
+      [2422] aastore
+      [2423] putstatic #328
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
+      [2426] bipush 8
+      [2428] anewarray #272
+        + Class [java/lang/String]
+      [2431] dup
+      [2432] iconst_0
+      [2433] ldc #113
+        + String []
+      [2435] aastore
+      [2436] dup
+      [2437] iconst_1
+      [2438] ldc #113
+        + String []
+      [2440] aastore
+      [2441] dup
+      [2442] iconst_2
+      [2443] ldc #113
+        + String []
+      [2445] aastore
+      [2446] dup
+      [2447] iconst_3
+      [2448] ldc #113
+        + String []
+      [2450] aastore
+      [2451] dup
+      [2452] iconst_4
+      [2453] ldc #113
+        + String []
+      [2455] aastore
+      [2456] dup
+      [2457] iconst_5
+      [2458] ldc #113
+        + String []
+      [2460] aastore
+      [2461] dup
+      [2462] bipush 6
+      [2464] ldc #113
+        + String []
+      [2466] aastore
+      [2467] dup
+      [2468] bipush 7
+      [2470] ldc #113
+        + String []
+      [2472] aastore
+      [2473] putstatic #325
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
+      [2476] iconst_0
+      [2477] anewarray #272
+        + Class [java/lang/String]
+      [2480] putstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [2483] iconst_0
+      [2484] anewarray #272
+        + Class [java/lang/String]
+      [2487] putstatic #299
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.A [Ljava/lang/String;]
+      [2490] iconst_0
+      [2491] anewarray #272
+        + Class [java/lang/String]
+      [2494] putstatic #300
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
+      [2497] iload_1 v1
+      [2498] iconst_3
+      [2499] ificmpeq +56 (target=2555)
+      [2502] getstatic #295
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.j I]
+      [2505] tableswitch (3 offsets, default=50) (target=2555)
+        1: offset = 27, target = 2532
+        2: offset = 35, target = 2540
+        3: offset = 43, target = 2548
+        default: offset = 50, target = 2555
+      [2532] getstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [2535] iconst_0
+      [2536] ldc #165
+        + String [1223 小年]
+      [2538] aastore
+      [2539] return
+      [2540] getstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [2543] iconst_0
+      [2544] ldc #166
+        + String [1224 小年]
+      [2546] aastore
+      [2547] return
+      [2548] getstatic #329
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
+      [2551] iconst_0
+      [2552] ldc #167
+        + String [1225 小年]
+      [2554] aastore
+      [2555] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
-      + Stack map table attribute (count = 8):
-        - [48] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i], Stack: 
-        - [566] Var: ..., Stack: (empty)
-        - [1005] Var: ..., Stack: (empty)
-        - [1363] Var: ..., Stack: (empty)
-        - [1396] Var: ..., Stack: (empty)
-        - [1404] Var: ..., Stack: (empty)
-        - [1412] Var: ..., Stack: (empty)
-        - [1419] Var: ..., Stack: (empty)
+      + Stack map table attribute (count = 10):
+        - [56] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i], Stack: 
+        - [584] Var: ..., Stack: (empty)
+        - [1100] Var: ..., Stack: (empty)
+        - [1610] Var: ..., Stack: (empty)
+        - [2132] Var: ..., Stack: (empty)
+        - [2497] Var: ..., Stack: (empty)
+        - [2532] Var: ..., Stack: (empty)
+        - [2540] Var: ..., Stack: (empty)
+        - [2548] Var: ..., Stack: (empty)
+        - [2555] Var: ..., Stack: (empty)
   + Method:       a(J)V
     Access flags: 0x11
       = public final void a(long)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 564, locals = 9, stack = 5):
+    + Code attribute instructions (code length = 512, locals = 8, stack = 5):
       [0] aload_0 v0
       [1] ldc #113
         + String []
-      [3] putfield #286
+      [3] putfield #316
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
       [6] aload_0 v0
       [7] ldc #113
         + String []
-      [9] putfield #289
+      [9] putfield #319
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
       [12] aload_0 v0
       [13] ldc #113
         + String []
-      [15] putfield #287
+      [15] putfield #317
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.n Ljava/lang/String;]
       [18] aload_0 v0
       [19] ldc #113
         + String []
-      [21] putfield #288
+      [21] putfield #318
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.o Ljava/lang/String;]
       [24] aload_0 v0
       [25] ldc #113
         + String []
-      [27] putfield #290
+      [27] putfield #320
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.q Ljava/lang/String;]
       [30] aload_0 v0
-      [31] invokestatic #318
+      [31] invokestatic #351
         + Methodref [java/util/Calendar.getInstance ()Ljava/util/Calendar;]
-      [34] putfield #274
+      [34] putfield #304
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
       [37] aload_0 v0
-      [38] getfield #274
+      [38] getfield #304
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
       [41] lload_1 v1
-      [42] invokevirtual #320
+      [42] invokevirtual #353
         + Methodref [java/util/Calendar.setTimeInMillis (J)V]
-      [45] new #252
+      [45] new #277
         + Class [java/util/GregorianCalendar]
       [48] dup
       [49] sipush 1900
       [52] iconst_0
       [53] bipush 31
-      [55] invokespecial #323
+      [55] invokespecial #356
         + Methodref [java/util/GregorianCalendar.<init> (III)V]
       [58] astore_3 v3
       [59] lload_1 v1
       [60] aload_3 v3
-      [61] invokevirtual #319
+      [61] invokevirtual #352
         + Methodref [java/util/Calendar.getTimeInMillis ()J]
       [64] lsub
-      [65] ldc2_w #262
+      [65] ldc2_w #287
         + Long [86400000]
       [68] ldiv
       [69] lstore v4
       [71] aload_0 v0
       [72] sipush 1900
-      [75] putfield #275
+      [75] putfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
       [78] aload_0 v0
-      [79] getfield #275
+      [79] getfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
-      [82] invokestatic #306
+      [82] invokestatic #337
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.c (I)I]
       [85] istore_1 v1
       [86] goto +25 (target=111)
@@ -5290,18 +6604,18 @@ Methods (count = 23):
       [94] lstore v4
       [96] aload_0 v0
       [97] dup
-      [98] getfield #275
+      [98] getfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
       [101] iconst_1
       [102] iadd
       [103] dup_x1
-      [104] putfield #275
+      [104] putfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
-      [107] invokestatic #306
+      [107] invokestatic #337
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.c (I)I]
       [110] istore_1 v1
       [111] aload_0 v0
-      [112] getfield #275
+      [112] getfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
       [115] sipush 2100
       [118] ificmpge +11 (target=129)
@@ -5313,9 +6627,9 @@ Methods (count = 23):
       [129] iconst_1
       [130] istore_1 v1
       [131] aload_0 v0
-      [132] getfield #275
+      [132] getfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
-      [135] invokestatic #300
+      [135] invokestatic #330
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (I)I]
       [138] istore_2 v2
       [139] aload_0 v0
@@ -5324,7 +6638,7 @@ Methods (count = 23):
       [144] iconst_1
       [145] goto +4 (target=149)
       [148] iconst_0
-      [149] putfield #279
+      [149] putfield #309
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.f Z]
       [152] iconst_0
       [153] istore_3 v3
@@ -5332,256 +6646,241 @@ Methods (count = 23):
       [155] istore v6
       [157] iconst_0
       [158] istore v7
-      [160] goto +101 (target=261)
+      [160] goto +74 (target=234)
       [163] iload v6
       [165] ifeq +21 (target=186)
       [168] iload_3 v3
       [169] ifeq +17 (target=186)
       [172] aload_0 v0
-      [173] getfield #275
+      [173] getfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
-      [176] invokestatic #305
+      [176] invokestatic #335
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.b (I)I]
       [179] istore v7
       [181] iconst_0
       [182] istore_3 v3
-      [183] goto +40 (target=223)
+      [183] goto +13 (target=196)
       [186] aload_0 v0
-      [187] getfield #275
+      [187] getfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
       [190] iload_1 v1
-      [191] istore v8
-      [193] istore v7
-      [195] getstatic #291
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.r [I]
+      [191] invokestatic #331
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (II)I]
+      [194] istore v7
+      [196] lload v4
       [198] iload v7
-      [200] sipush 1900
-      [203] isub
-      [204] iaload
-      [205] ldc #92
-        + Integer [65536]
-      [207] iload v8
-      [209] ishr
-      [210] iand
-      [211] ifeq +8 (target=219)
-      [214] bipush 30
-      [216] goto +5 (target=221)
-      [219] bipush 29
-      [221] istore v7
-      [223] lload v4
-      [225] iload v7
-      [227] i2l
-      [228] lcmp
-      [229] iflt +45 (target=274)
-      [232] lload v4
-      [234] iload v7
-      [236] i2l
-      [237] lsub
-      [238] lstore v4
-      [240] iload_2 v2
-      [241] iload_1 v1
-      [242] ificmpne +16 (target=258)
-      [245] iload v6
-      [247] ifne +11 (target=258)
-      [250] iconst_1
-      [251] istore_3 v3
-      [252] iconst_1
-      [253] istore v6
-      [255] goto +6 (target=261)
-      [258] iinc v1, 1
-      [261] iload_1 v1
-      [262] bipush 13
-      [264] ificmpge +10 (target=274)
-      [267] lload v4
-      [269] lconst_0
-      [270] lcmp
-      [271] ifgt -108 (target=163)
-      [274] aload_0 v0
-      [275] iload_1 v1
-      [276] putfield #276
+      [200] i2l
+      [201] lcmp
+      [202] iflt +45 (target=247)
+      [205] lload v4
+      [207] iload v7
+      [209] i2l
+      [210] lsub
+      [211] lstore v4
+      [213] iload_2 v2
+      [214] iload_1 v1
+      [215] ificmpne +16 (target=231)
+      [218] iload v6
+      [220] ifne +11 (target=231)
+      [223] iconst_1
+      [224] istore_3 v3
+      [225] iconst_1
+      [226] istore v6
+      [228] goto +6 (target=234)
+      [231] iinc v1, 1
+      [234] iload_1 v1
+      [235] bipush 13
+      [237] ificmpge +10 (target=247)
+      [240] lload v4
+      [242] lconst_0
+      [243] lcmp
+      [244] ifgt -81 (target=163)
+      [247] aload_0 v0
+      [248] iload_1 v1
+      [249] putfield #306
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.c I]
-      [279] aload_0 v0
-      [280] iload_1 v1
-      [281] iload_2 v2
-      [282] ificmpne +12 (target=294)
-      [285] iload v6
-      [287] ifeq +7 (target=294)
-      [290] iconst_1
-      [291] goto +4 (target=295)
-      [294] iconst_0
-      [295] putfield #278
+      [252] aload_0 v0
+      [253] iload_1 v1
+      [254] iload_2 v2
+      [255] ificmpne +12 (target=267)
+      [258] iload v6
+      [260] ifeq +7 (target=267)
+      [263] iconst_1
+      [264] goto +4 (target=268)
+      [267] iconst_0
+      [268] putfield #308
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.e Z]
-      [298] aload_0 v0
-      [299] lload v4
-      [301] l2i
-      [302] iconst_1
-      [303] iadd
-      [304] putfield #277
+      [271] aload_0 v0
+      [272] lload v4
+      [274] l2i
+      [275] iconst_1
+      [276] iadd
+      [277] putfield #307
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.d I]
-      [307] aload_0 v0
-      [308] dup
-      [309] dup
-      [310] astore v7
-      [312] getfield #274
+      [280] aload_0 v0
+      [281] dup
+      [282] dup
+      [283] astore_1 v1
+      [284] getfield #304
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
-      [315] iconst_1
-      [316] invokevirtual #317
+      [287] iconst_1
+      [288] invokevirtual #350
         + Methodref [java/util/Calendar.get (I)I]
-      [319] putfield #280
+      [291] putfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
-      [322] aload v7
-      [324] aload v7
-      [326] getfield #274
+      [294] aload_1 v1
+      [295] aload_1 v1
+      [296] getfield #304
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
-      [329] iconst_2
-      [330] invokevirtual #317
+      [299] iconst_2
+      [300] invokevirtual #350
         + Methodref [java/util/Calendar.get (I)I]
-      [333] putfield #281
+      [303] putfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [336] aload v7
-      [338] aload v7
-      [340] getfield #274
+      [306] aload_1 v1
+      [307] aload_1 v1
+      [308] getfield #304
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
-      [343] iconst_5
-      [344] invokevirtual #317
+      [311] iconst_5
+      [312] invokevirtual #350
         + Methodref [java/util/Calendar.get (I)I]
-      [347] putfield #282
+      [315] putfield #312
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.i I]
-      [350] aload v7
-      [352] getfield #280
+      [318] aload_1 v1
+      [319] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
-      [355] iconst_2
-      [356] invokestatic #301
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (II)I]
-      [359] istore_1 v1
-      [360] aload v7
-      [362] getfield #281
+      [322] iconst_2
+      [323] invokestatic #336
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.b (II)I]
+      [326] istore_2 v2
+      [327] aload_1 v1
+      [328] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [365] ifle +21 (target=386)
-      [368] aload v7
-      [370] getfield #281
+      [331] ifle +19 (target=350)
+      [334] aload_1 v1
+      [335] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [373] iconst_1
-      [374] ificmpne +34 (target=408)
-      [377] aload v7
-      [379] getfield #282
+      [338] iconst_1
+      [339] ificmpne +31 (target=370)
+      [342] aload_1 v1
+      [343] getfield #312
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.i I]
-      [382] iload_1 v1
-      [383] ificmpge +25 (target=408)
-      [386] aload v7
-      [388] getfield #280
+      [346] iload_2 v2
+      [347] ificmpge +23 (target=370)
+      [350] aload_1 v1
+      [351] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
-      [391] sipush 1900
-      [394] isub
-      [395] bipush 36
-      [397] iadd
-      [398] iconst_1
-      [399] isub
-      [400] bipush 60
-      [402] irem
-      [403] istore v8
-      [405] goto +20 (target=425)
-      [408] aload v7
-      [410] getfield #280
+      [354] sipush 1900
+      [357] isub
+      [358] bipush 36
+      [360] iadd
+      [361] iconst_1
+      [362] isub
+      [363] bipush 60
+      [365] irem
+      [366] istore_2 v2
+      [367] goto +18 (target=385)
+      [370] aload_1 v1
+      [371] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
-      [413] sipush 1900
-      [416] isub
-      [417] bipush 36
-      [419] iadd
-      [420] bipush 60
-      [422] irem
-      [423] istore v8
-      [425] aload v7
-      [427] getfield #280
+      [374] sipush 1900
+      [377] isub
+      [378] bipush 36
+      [380] iadd
+      [381] bipush 60
+      [383] irem
+      [384] istore_2 v2
+      [385] aload_1 v1
+      [386] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
-      [430] aload v7
-      [432] getfield #281
+      [389] aload_1 v1
+      [390] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [435] iconst_2
-      [436] imul
-      [437] invokestatic #301
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (II)I]
-      [440] istore_1 v1
-      [441] aload v7
-      [443] getfield #282
+      [393] iconst_2
+      [394] imul
+      [395] invokestatic #336
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.b (II)I]
+      [398] istore_3 v3
+      [399] aload_1 v1
+      [400] getfield #312
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.i I]
-      [446] iload_1 v1
-      [447] ificmpge +31 (target=478)
-      [450] aload v7
-      [452] getfield #280
+      [403] iload_3 v3
+      [404] ificmpge +29 (target=433)
+      [407] aload_1 v1
+      [408] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
-      [455] sipush 1900
-      [458] isub
-      [459] bipush 12
-      [461] imul
-      [462] aload v7
-      [464] getfield #281
+      [411] sipush 1900
+      [414] isub
+      [415] bipush 12
+      [417] imul
+      [418] aload_1 v1
+      [419] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [467] iadd
-      [468] bipush 12
-      [470] iadd
-      [471] bipush 60
-      [473] irem
-      [474] istore_2 v2
-      [475] goto +28 (target=503)
-      [478] aload v7
-      [480] getfield #280
+      [422] iadd
+      [423] bipush 12
+      [425] iadd
+      [426] bipush 60
+      [428] irem
+      [429] istore_3 v3
+      [430] goto +26 (target=456)
+      [433] aload_1 v1
+      [434] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
-      [483] sipush 1900
-      [486] isub
-      [487] bipush 12
-      [489] imul
-      [490] aload v7
-      [492] getfield #281
+      [437] sipush 1900
+      [440] isub
+      [441] bipush 12
+      [443] imul
+      [444] aload_1 v1
+      [445] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [495] iadd
-      [496] bipush 13
-      [498] iadd
-      [499] bipush 60
-      [501] irem
-      [502] istore_2 v2
-      [503] aload v7
-      [505] getfield #280
+      [448] iadd
+      [449] bipush 13
+      [451] iadd
+      [452] bipush 60
+      [454] irem
+      [455] istore_3 v3
+      [456] aload_1 v1
+      [457] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
-      [508] aload v7
-      [510] getfield #281
+      [460] aload_1 v1
+      [461] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [513] aload v7
-      [515] getfield #282
+      [464] aload_1 v1
+      [465] getfield #312
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.i I]
-      [518] iconst_0
-      [519] iconst_0
-      [520] invokestatic #302
+      [468] iconst_0
+      [469] iconst_0
+      [470] invokestatic #332
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (IIIII)J]
-      [523] ldc2_w #262
+      [473] ldc2_w #287
         + Long [86400000]
-      [526] ldiv
-      [527] ldc2_w #258
+      [476] ldiv
+      [477] ldc2_w #283
         + Long [25567]
-      [530] ladd
-      [531] ldc2_w #256
+      [480] ladd
+      [481] ldc2_w #281
         + Long [10]
-      [534] ladd
-      [535] l2i
-      [536] bipush 60
-      [538] irem
-      [539] istore_1 v1
-      [540] aload v7
-      [542] iload v8
-      [544] putfield #283
+      [484] ladd
+      [485] l2i
+      [486] bipush 60
+      [488] irem
+      [489] istore v4
+      [491] aload_1 v1
+      [492] iload_2 v2
+      [493] putfield #313
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.j I]
-      [547] aload v7
-      [549] iload_2 v2
-      [550] putfield #284
+      [496] aload_1 v1
+      [497] iload_3 v3
+      [498] putfield #314
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.k I]
-      [553] aload v7
-      [555] iload_1 v1
-      [556] putfield #285
+      [501] aload_1 v1
+      [502] iload v4
+      [504] putfield #315
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.l I]
-      [559] aload_0 v0
-      [560] invokespecial #307
+      [507] aload_0 v0
+      [508] invokespecial #338
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.l ()V]
-      [563] return
+      [511] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Stack map table attribute (count = 14):
@@ -5592,20 +6891,20 @@ Methods (count = 23):
         - [149] Var: [a:de/xiaoxia/xstatusbarlunardate/d][l][a:java/util/Calendar][l][i][i][i], Stack: [a:de/xiaoxia/xstatusbarlunardate/d][i]
         - [163] Var: ...[i][i][i], Stack: (empty)
         - [186] Var: ..., Stack: (empty)
-        - [223] Var: ..., Stack: (empty)
-        - [232] Var: ..., Stack: (empty)
-        - [258] Var: ..., Stack: (empty)
-        - [261] Var: ..., Stack: (empty)
-        - [274] Var: ..., Stack: (empty)
-        - [294] Var: ..., Stack: [a:de/xiaoxia/xstatusbarlunardate/d]
-        - [295] Var: [a:de/xiaoxia/xstatusbarlunardate/d][l][a:java/util/Calendar][l][i][i][i][i][i][i], Stack: [a:de/xiaoxia/xstatusbarlunardate/d][i]
+        - [196] Var: ..., Stack: (empty)
+        - [205] Var: ..., Stack: (empty)
+        - [231] Var: ..., Stack: (empty)
+        - [234] Var: ..., Stack: (empty)
+        - [247] Var: ..., Stack: (empty)
+        - [267] Var: ..., Stack: [a:de/xiaoxia/xstatusbarlunardate/d]
+        - [268] Var: [a:de/xiaoxia/xstatusbarlunardate/d][l][a:java/util/Calendar][l][i][i][i][i][i][i], Stack: [a:de/xiaoxia/xstatusbarlunardate/d][i]
   + Method:       a()Ljava/lang/String;
     Access flags: 0x11
       = public final java.lang.String a()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #289
+      [1] getfield #319
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -5615,10 +6914,10 @@ Methods (count = 23):
       = public final java.lang.String b()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 14, locals = 1, stack = 3):
-      [0] getstatic #297
+      [0] getstatic #327
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.x [Ljava/lang/String;]
       [3] aload_0 v0
-      [4] getfield #275
+      [4] getfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
       [7] iconst_4
       [8] isub
@@ -5636,73 +6935,73 @@ Methods (count = 23):
       [0] ldc #113
         + String []
       [2] aload_0 v0
-      [3] getfield #287
+      [3] getfield #317
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.n Ljava/lang/String;]
-      [6] invokevirtual #311
+      [6] invokevirtual #344
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [9] ifeq +84 (target=93)
       [12] aload_0 v0
       [13] ldc #113
         + String []
-      [15] putfield #287
+      [15] putfield #317
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.n Ljava/lang/String;]
       [18] aload_0 v0
-      [19] getfield #280
+      [19] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
       [22] aload_0 v0
-      [23] getfield #281
+      [23] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
       [26] iconst_2
       [27] imul
-      [28] invokestatic #301
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (II)I]
+      [28] invokestatic #336
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.b (II)I]
       [31] aload_0 v0
-      [32] getfield #282
+      [32] getfield #312
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.i I]
       [35] ificmpne +20 (target=55)
       [38] aload_0 v0
-      [39] getstatic #298
+      [39] getstatic #328
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
       [42] aload_0 v0
-      [43] getfield #281
+      [43] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
       [46] iconst_2
       [47] imul
       [48] aaload
-      [49] putfield #287
+      [49] putfield #317
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.n Ljava/lang/String;]
       [52] goto +41 (target=93)
       [55] aload_0 v0
-      [56] getfield #280
+      [56] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.g I]
       [59] aload_0 v0
-      [60] getfield #281
+      [60] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
       [63] iconst_2
       [64] imul
       [65] iconst_1
       [66] iadd
-      [67] invokestatic #301
-        + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (II)I]
+      [67] invokestatic #336
+        + Methodref [de/xiaoxia/xstatusbarlunardate/d.b (II)I]
       [70] aload_0 v0
-      [71] getfield #282
+      [71] getfield #312
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.i I]
       [74] ificmpne +19 (target=93)
       [77] aload_0 v0
-      [78] getstatic #298
+      [78] getstatic #328
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.y [Ljava/lang/String;]
       [81] aload_0 v0
-      [82] getfield #281
+      [82] getfield #311
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
       [85] iconst_2
       [86] imul
       [87] iconst_1
       [88] iadd
       [89] aaload
-      [90] putfield #287
+      [90] putfield #317
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.n Ljava/lang/String;]
       [93] aload_0 v0
-      [94] getfield #287
+      [94] getfield #317
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.n Ljava/lang/String;]
       [97] areturn
       Code attribute exceptions (count = 0):
@@ -5716,7 +7015,7 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 84, locals = 5, stack = 3):
       [0] aload_0 v0
-      [1] getfield #277
+      [1] getfield #307
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.d I]
       [4] dup
       [5] istore_1 v1
@@ -5735,12 +7034,12 @@ Methods (count = 23):
       [24] bipush 10
       [26] irem
       [27] istore_3 v3
-      [28] getstatic #295
+      [28] getstatic #325
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
       [31] iload_2 v2
       [32] aaload
       [33] astore_2 v2
-      [34] getstatic #294
+      [34] getstatic #324
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.u [Ljava/lang/String;]
       [37] iload_3 v3
       [38] aaload
@@ -5748,30 +7047,30 @@ Methods (count = 23):
       [41] iload_1 v1
       [42] bipush 11
       [44] ificmpge +9 (target=53)
-      [47] getstatic #295
+      [47] getstatic #325
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
       [50] iconst_0
       [51] aaload
       [52] astore_2 v2
       [53] iload_3 v3
       [54] ifne +10 (target=64)
-      [57] getstatic #295
+      [57] getstatic #325
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
       [60] iconst_1
       [61] aaload
       [62] astore v4
-      [64] new #248
+      [64] new #273
         + Class [java/lang/StringBuilder]
       [67] dup
       [68] aload_2 v2
-      [69] invokestatic #313
+      [69] invokestatic #346
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [72] invokespecial #314
+      [72] invokespecial #347
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [75] aload v4
-      [77] invokevirtual #315
+      [77] invokevirtual #348
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [80] invokevirtual #316
+      [80] invokevirtual #349
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [83] areturn
       Code attribute exceptions (count = 0):
@@ -5781,26 +7080,26 @@ Methods (count = 23):
       = public final java.lang.String e()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 160, locals = 3, stack = 5):
-      [0] new #248
+      [0] new #273
         + Class [java/lang/StringBuilder]
       [3] dup
       [4] aload_0 v0
-      [5] getfield #278
+      [5] getfield #308
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.e Z]
       [8] ifeq +12 (target=20)
-      [11] getstatic #295
+      [11] getstatic #325
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
       [14] bipush 7
       [16] aaload
       [17] goto +5 (target=22)
       [20] ldc #113
         + String []
-      [22] invokestatic #313
+      [22] invokestatic #346
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [25] invokespecial #314
+      [25] invokespecial #347
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [28] aload_0 v0
-      [29] getfield #276
+      [29] getfield #306
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.c I]
       [32] istore_1 v1
       [33] ldc #113
@@ -5809,7 +7108,7 @@ Methods (count = 23):
       [36] iload_1 v1
       [37] iconst_1
       [38] ificmpne +12 (target=50)
-      [41] getstatic #295
+      [41] getstatic #325
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
       [44] iconst_4
       [45] aaload
@@ -5818,36 +7117,36 @@ Methods (count = 23):
       [50] iload_1 v1
       [51] bipush 10
       [53] ificmpne +29 (target=82)
-      [56] new #248
+      [56] new #273
         + Class [java/lang/StringBuilder]
       [59] dup
       [60] aload_2 v2
-      [61] invokestatic #313
+      [61] invokestatic #346
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [64] invokespecial #314
+      [64] invokespecial #347
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [67] getstatic #295
+      [67] getstatic #325
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
       [70] iconst_1
       [71] aaload
-      [72] invokevirtual #315
+      [72] invokevirtual #348
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [75] invokevirtual #316
+      [75] invokevirtual #349
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [78] astore_2 v2
       [79] goto +73 (target=152)
       [82] iload_1 v1
       [83] bipush 10
       [85] ificmple +34 (target=119)
-      [88] new #248
+      [88] new #273
         + Class [java/lang/StringBuilder]
       [91] dup
       [92] aload_2 v2
-      [93] invokestatic #313
+      [93] invokestatic #346
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [96] invokespecial #314
+      [96] invokespecial #347
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [99] getstatic #295
+      [99] getstatic #325
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.v [Ljava/lang/String;]
       [102] iload_1 v1
       [103] bipush 10
@@ -5855,9 +7154,9 @@ Methods (count = 23):
       [106] iconst_4
       [107] iadd
       [108] aaload
-      [109] invokevirtual #315
+      [109] invokevirtual #348
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [112] invokevirtual #316
+      [112] invokevirtual #349
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [115] astore_2 v2
       [116] goto +36 (target=152)
@@ -5865,29 +7164,29 @@ Methods (count = 23):
       [120] bipush 10
       [122] irem
       [123] ifle +29 (target=152)
-      [126] new #248
+      [126] new #273
         + Class [java/lang/StringBuilder]
       [129] dup
       [130] aload_2 v2
-      [131] invokestatic #313
+      [131] invokestatic #346
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [134] invokespecial #314
+      [134] invokespecial #347
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [137] getstatic #294
+      [137] getstatic #324
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.u [Ljava/lang/String;]
       [140] iload_1 v1
       [141] bipush 10
       [143] irem
       [144] aaload
-      [145] invokevirtual #315
+      [145] invokevirtual #348
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [148] invokevirtual #316
+      [148] invokevirtual #349
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [151] astore_2 v2
       [152] aload_2 v2
-      [153] invokevirtual #315
+      [153] invokevirtual #348
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [156] invokevirtual #316
+      [156] invokevirtual #349
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [159] areturn
       Code attribute exceptions (count = 0):
@@ -5901,35 +7200,35 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 45, locals = 2, stack = 5):
       [0] aload_0 v0
-      [1] getfield #275
+      [1] getfield #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
       [4] sipush 1900
       [7] isub
       [8] bipush 36
       [10] iadd
       [11] istore_1 v1
-      [12] new #248
+      [12] new #273
         + Class [java/lang/StringBuilder]
       [15] dup
-      [16] getstatic #293
+      [16] getstatic #323
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.t [Ljava/lang/String;]
       [19] iload_1 v1
       [20] bipush 10
       [22] irem
       [23] aaload
-      [24] invokestatic #313
+      [24] invokestatic #346
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [27] invokespecial #314
+      [27] invokespecial #347
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [30] getstatic #296
+      [30] getstatic #326
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.w [Ljava/lang/String;]
       [33] iload_1 v1
       [34] bipush 12
       [36] irem
       [37] aaload
-      [38] invokevirtual #315
+      [38] invokevirtual #348
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [41] invokevirtual #316
+      [41] invokevirtual #349
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [44] areturn
       Code attribute exceptions (count = 0):
@@ -5940,7 +7239,7 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #277
+      [1] getfield #307
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.d I]
       [4] ireturn
       Code attribute exceptions (count = 0):
@@ -5951,7 +7250,7 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #276
+      [1] getfield #306
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.c I]
       [4] ireturn
       Code attribute exceptions (count = 0):
@@ -5962,7 +7261,7 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #286
+      [1] getfield #316
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -5973,7 +7272,7 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #288
+      [1] getfield #318
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.o Ljava/lang/String;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -5984,7 +7283,7 @@ Methods (count = 23):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #290
+      [1] getfield #320
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.q Ljava/lang/String;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -7704,24 +9003,24 @@ Methods (count = 8):
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.d ()Ljava/lang/String;]
       [610] invokevirtual #156
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [613] getstatic #89
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.B Ljava/lang/String;]
+      [613] getstatic #117
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.y Ljava/lang/String;]
       [616] invokevirtual #156
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [619] getstatic #118
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.z Ljava/lang/String;]
       [622] invokevirtual #156
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [625] getstatic #117
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.y Ljava/lang/String;]
+      [625] getstatic #88
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.A Ljava/lang/String;]
       [628] invokevirtual #156
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [631] getstatic #90
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.C Ljava/lang/String;]
+      [631] getstatic #89
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.B Ljava/lang/String;]
       [634] invokevirtual #156
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [637] getstatic #88
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.A Ljava/lang/String;]
+      [637] getstatic #90
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.C Ljava/lang/String;]
       [640] invokevirtual #156
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [643] invokevirtual #157
@@ -8397,8 +9696,8 @@ Interfaces (count = 1):
 
 Constant Pool (count = 94):
   + Integer [2130968577]
-  + Integer [2131099708]
-  + Integer [2131099709]
+  + Integer [2131099710]
+  + Integer [2131099711]
   + String []
   + String [ ]
   + String [custom_lunar_item_]
@@ -8578,7 +9877,7 @@ Methods (count = 3):
       [89] dup
       [90] aload_0 v0
       [91] ldc #2
-        + Integer [2131099708]
+        + Integer [2131099710]
       [93] invokevirtual #24
         + Methodref [de/xiaoxia/xstatusbarlunardate/SettingCustomLunar.getString (I)Ljava/lang/String;]
       [96] invokestatic #26
@@ -8691,7 +9990,7 @@ Methods (count = 3):
         + Fieldref [de/xiaoxia/xstatusbarlunardate/SettingCustomLunar.a Landroid/preference/EditTextPreference;]
       [99] aload_0 v0
       [100] ldc #3
-        + Integer [2131099709]
+        + Integer [2131099711]
       [102] invokevirtual #24
         + Methodref [de/xiaoxia/xstatusbarlunardate/SettingCustomLunar.getString (I)Ljava/lang/String;]
       [105] invokevirtual #17
@@ -8726,8 +10025,8 @@ Interfaces (count = 1):
 
 Constant Pool (count = 94):
   + Integer [2130968578]
-  + Integer [2131099718]
-  + Integer [2131099719]
+  + Integer [2131099720]
+  + Integer [2131099721]
   + String []
   + String [ ]
   + String [custom_solar_item_]
@@ -8907,7 +10206,7 @@ Methods (count = 3):
       [89] dup
       [90] aload_0 v0
       [91] ldc #2
-        + Integer [2131099718]
+        + Integer [2131099720]
       [93] invokevirtual #24
         + Methodref [de/xiaoxia/xstatusbarlunardate/SettingCustomSolar.getString (I)Ljava/lang/String;]
       [96] invokestatic #26
@@ -9020,7 +10319,7 @@ Methods (count = 3):
         + Fieldref [de/xiaoxia/xstatusbarlunardate/SettingCustomSolar.a Landroid/preference/EditTextPreference;]
       [99] aload_0 v0
       [100] ldc #3
-        + Integer [2131099719]
+        + Integer [2131099721]
       [102] invokevirtual #24
         + Methodref [de/xiaoxia/xstatusbarlunardate/SettingCustomSolar.getString (I)Ljava/lang/String;]
       [105] invokevirtual #17

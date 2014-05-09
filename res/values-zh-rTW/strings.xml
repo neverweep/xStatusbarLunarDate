@@ -9,7 +9,7 @@
     <string name="breakline_summary_on">另起一行顯示農曆日期</string>
     <string name="breakline_summay_off">在同一行顯示農曆日期</string>
     <string name="description">"在下拉狀態列和鎖定螢幕（目前添加至瑣屏僅支持 AOSP）上顯示農曆日期、節日和節氣。
-[點擊這裡進入設置介面，重啟後生效]"</string>
+[點擊這裡進入設置，重啟後生效]"</string>
     <string name="content_category">內容</string>
     <string name="term">二十四節氣</string>
     <string name="term_summray_on">在農曆日期後顯示二十四節氣</string>
@@ -24,13 +24,15 @@
     <string name="minor_year_option_3">臘月廿五（個別地區）</string>
     <string name="about_category">關於</string>
     <string name="about">關於 X 狀態列農曆日期</string>
-    <string name="about_msg">"<b>歡迎使用這個 Xposed 模組\n希望能給你帶來一點方便：）</b>\n\n我的部落格: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n說明、報錯、建議還有捐贈: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>"</string>
+    <string name="about_msg"><b>歡迎使用這個 Xposed 模組\n希望能給你帶來一點方便：）</b>\n\n我的部落格: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n說明、報錯、建議: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\n捐贈：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
     <string name="remove">移除換行</string>
     <string name="remove_summary_on">移除原日期中的換行</string>
     <string name="remove_summary_off">保留原日期中的換行</string>
-    <string name="lang">顯示語言</string>
-    <string name="lang_option_1">简体中文</string>
-    <string name="lang_option_2">繁體中文</string>
+    <string name="lang">顯示語言和內置節日</string>
+    <string name="lang_option_1">简体中文（中国大陆）</string>
+    <string name="lang_option_2">繁體中文（臺灣）</string>
+    <string name="lang_option_4">繁體中文（香港）</string>
+    <string name="lang_option_5">繁體中文（澳門）</string>
     <string name="lang_option_3">English (Only digits)</string>
     <string name="lang_dialogue_title">選擇顯示的語言</string>
     <string name="year">年份顯示選項</string>
@@ -77,8 +79,8 @@
     <string name="custom_solar_summary_off">不顯示自訂西曆紀念日</string>
     <string name="system_category">系統</string>
     <string name="rom">選擇系統類型</string>
-    <string name="rom_option_1">大多數 Android</string>
-    <string name="rom_option_2">Miui</string>
+    <string name="rom_option_1">大多數 Android 或 Miui（Kitkat）</string>
+    <string name="rom_option_2">Miui（Jelly Bean 或更早版本）</string>
     <string name="solar">西曆節日</string>
     <string name="solar_summary_on">在農曆日期後顯示西曆節日</string>
     <string name="solar_summary_off">不顯示西曆節日</string>

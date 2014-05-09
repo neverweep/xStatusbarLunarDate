@@ -173,7 +173,7 @@ public class Main implements IXposedHookLoadPackage{
 
                 //组合农历文本
                 if(_lang != 3){
-                	lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + sfest + fest + term + sfest_custom + custom;
+                	lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
                 }else{
                 	lunarText = "[" + lunar.getLunarDay() + "/" + lunar.getLunarMonth() + "]";
                 }

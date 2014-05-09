@@ -92,10 +92,12 @@ public class Lunar {
     private synchronized void findFestival() {
 		int sM = this.getSolarMonth();
 		int sD = this.getSolarDay();
+		int sY = this.getSolarYear();
 		int lM = this.getLunarMonth();
 		int lD = this.getLunarDay();
 		Matcher m;
 		
+		//公历节日计算
 		if(Main._solar){
 			for (int i=0; i<Lunar.sFtv.length; i++) {
 				m = Lunar.sFreg.matcher(Lunar.sFtv[i]);
@@ -106,7 +108,28 @@ public class Lunar {
 					}
 				}
 			}
+			//计算复活节
+			if(Main._lang == 4 || Main._lang == 5){
+				int a = sY % 19;
+				int b = (int) Math.floor(sY / 100);
+				int c = sY % 100;
+				int d = (int) Math.floor(b / 4);
+				int e = b % 4;
+				int f = (int) Math.floor((b + 8) / 25);
+				int g = (int) Math.floor((b - f + 1) / 3);
+				int h = (19 * a + b - d - g + 15) % 30;
+				int i = (int) Math.floor(c / 4);
+				int k = c % 4;
+				int l = (32 + 2 * e + 2 * i - h - k) % 7;
+				int z = (int) Math.floor((a + 11 * h + 22 * l) / 451);
+				if(sM == (int) Math.floor((h + l - 7 * z + 114) / 31) && sD == ((h + l - 7 * z + 114) % 31) + 1){
+					this.sFestivalName += " " + "復活節" ;
+					this.sFestivalName = this.sFestivalName.replaceFirst("^\\s", "");
+				}
+			}
 		}
+		
+		//农历
 		if(Main._fest){
 	        for (int i=0; i<Lunar.lFtv.length; i++) {
 	            m = Lunar.sFreg.matcher(Lunar.lFtv[i]);
@@ -122,6 +145,8 @@ public class Lunar {
 	            }
 	        }
 		}
+		
+		//自定义农历
 		if(Main._custom){
 	        for (int i=0; i<Main._clf.length; i++) {
 	            m = Lunar.sFreg.matcher(Main._clf[i]);
@@ -133,6 +158,8 @@ public class Lunar {
 	            }
 	        }
 		}
+		
+		//自定义公历
 		if(Main._solar_custom){
 	        for (int i=0; i<Main._csf.length; i++) {
 	            m = Lunar.sFreg.matcher(Main._csf[i]);
@@ -144,6 +171,7 @@ public class Lunar {
 				}
 	        }
 		}
+		
 		// 月周节日
 		if(Main._solar){
 			int w, d;
@@ -282,6 +310,7 @@ public class Lunar {
     public Lunar(int lang) {
         //在这里设置语言
     	switch(lang){
+    		//大陆简中
 	    	case 1:
 	            Lunar.Deqi = new String[]{
 	                "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
@@ -315,6 +344,7 @@ public class Lunar {
 	        		"0521母亲节", "0631父亲节", "1145感恩节"
 	        	};
 	            break;
+	        //台湾繁中
 	    	case 2:
 	            Lunar.Deqi = new String[]{
 	                "子", "醜", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
@@ -338,7 +368,77 @@ public class Lunar {
 	                "0815中秋", "0909重陽", "1208臘八", 
 	                "1230除夕"
 	            };
-	            Lunar.sFtv = new String[]{};
+	        	Lunar.sFtv = new String[]{
+			        "0101元旦", "0214情人節", "0228和平紀念日", "0308婦女節",
+			        "0404兒童節", 	"0401愚人節", "0501勞動節", "0903軍人節", 
+			        "0928教師節", 	"1010國慶日", "1031萬聖節", "1225耶誕節"
+		        };
+	        	Lunar.wFtv = new String[]{
+		        	"0521母親節", "0631父親節", "1145感恩節"
+		        };
+	            break;
+	        //香港繁中
+	    	case 4:
+	            Lunar.Deqi = new String[]{
+	                "子", "醜", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
+	            };
+	            Lunar.Animals = new String[]{
+	                "鼠", "牛", "虎", "兔", "龍", "蛇", "馬", "羊", "猴", "雞", "狗", "豬"
+	            };
+	            Lunar.solarTerm = new String[]{
+	                "小寒", "大寒", "立春", "雨水", "驚蟄", "春分",
+	                "清明", "穀雨", "立夏", "小滿", "芒種", "夏至",
+	                "小暑", "大暑", "立秋", "處暑", "白露", "秋分",
+	                "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
+	            };
+	            Lunar.lunarString2 = new String[]{
+	                "初", "十", "廿", "卅", "正", "冬", "臘", "閏"
+	            };
+	            Lunar.lFtv = new String[]{
+	                "",
+	                "0101春節", "0115元宵", "0202龍頭",
+	                "0505端午", "0707七夕", "0715中元",
+	                "0815中秋", "0909重陽", "1208臘八", 
+	                "1230除夕", "0408佛诞"
+	            };
+	        	Lunar.sFtv = new String[]{
+			        "0101元旦", "0214情人節", "0308婦女節", "0401愚人節",
+			        "0501勞動節", "0701特區紀念日", "0910教師節", "1001國慶日",
+			        "1031萬聖節", "1225聖誕節"
+		        };
+	        	Lunar.wFtv = new String[]{
+		        	"0521母親節", "0631父親節", "1145感恩節"
+		        };
+	            break;
+	        //澳门繁中
+	    	case 5:
+	            Lunar.Deqi = new String[]{
+	                "子", "醜", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
+	            };
+	            Lunar.Animals = new String[]{
+	                "鼠", "牛", "虎", "兔", "龍", "蛇", "馬", "羊", "猴", "雞", "狗", "豬"
+	            };
+	            Lunar.solarTerm = new String[]{
+	                "小寒", "大寒", "立春", "雨水", "驚蟄", "春分",
+	                "清明", "穀雨", "立夏", "小滿", "芒種", "夏至",
+	                "小暑", "大暑", "立秋", "處暑", "白露", "秋分",
+	                "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
+	            };
+	            Lunar.lunarString2 = new String[]{
+	                "初", "十", "廿", "卅", "正", "冬", "臘", "閏"
+	            };
+	            Lunar.lFtv = new String[]{
+	                "",
+	                "0101春節", "0115元宵", "0202龍頭",
+	                "0505端午", "0707七夕", "0715中元",
+	                "0815中秋", "0909重陽", "1208臘八", 
+	                "1230除夕", "0408佛诞"
+	            };
+	        	Lunar.sFtv = new String[]{
+			        "0101元旦", "0214情人節", "0308婦女節", "0401愚人節",
+			        "0501勞動節", "0910教師節", "1001國慶日", "1031萬聖節", 
+			        "1102追思節", "1208聖母無原罪日", "1220特區紀念日", "1225聖誕節"
+		        };
 	        	Lunar.wFtv = new String[]{
 		        	"0521母親節", "0631父親節", "1145感恩節"
 		        };
