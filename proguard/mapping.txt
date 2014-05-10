@@ -119,7 +119,7 @@ de.xiaoxia.xstatusbarlunardate.Main -> de.xiaoxia.xstatusbarlunardate.Main:
     android.widget.TextView access$1() -> a
     void access$2(java.lang.String) -> a
     java.lang.String access$3() -> b
-    java.lang.String access$4(de.xiaoxia.xstatusbarlunardate.Main,java.lang.String) -> a
+    java.lang.String access$4$50d1bbc3(java.lang.String) -> b
 de.xiaoxia.xstatusbarlunardate.Main$1 -> de.xiaoxia.xstatusbarlunardate.e:
     de.xiaoxia.xstatusbarlunardate.Main this$0 -> a
     void afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam) -> afterHookedMethod

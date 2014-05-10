@@ -30,6 +30,7 @@
     <string name="remove_summary_off">保留原日期中的换行</string>
     <string name="lang">显示语言和内置节日</string>
     <string name="lang_option_1">简体中文（中国大陆）</string>
+    <string name="lang_option_6">繁體中文（中國大陸）</string>
     <string name="lang_option_2">繁體中文（臺灣）</string>
     <string name="lang_option_4">繁體中文（香港）</string>
     <string name="lang_option_5">繁體中文（澳門）</string>

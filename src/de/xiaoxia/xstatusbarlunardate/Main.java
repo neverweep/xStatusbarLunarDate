@@ -87,7 +87,7 @@ public class Main implements IXposedHookLoadPackage{
     	prefs.getString("custom_solar_item_14", "").trim()
     };
     //初始化Lunar类
-    private Lunar lunar = new Lunar(_lang);
+    private static Lunar lunar = new Lunar(_lang);
     
     //获取农历字符串子程序
     private String returnDate(String nDate){

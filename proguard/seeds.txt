@@ -44,6 +44,7 @@ de.xiaoxia.xstatusbarlunardate.R$string: int lang_option_2
 de.xiaoxia.xstatusbarlunardate.R$string: int lang_option_3
 de.xiaoxia.xstatusbarlunardate.R$string: int lang_option_4
 de.xiaoxia.xstatusbarlunardate.R$string: int lang_option_5
+de.xiaoxia.xstatusbarlunardate.R$string: int lang_option_6
 de.xiaoxia.xstatusbarlunardate.R$string: int layout_align
 de.xiaoxia.xstatusbarlunardate.R$string: int layout_align_summary_off
 de.xiaoxia.xstatusbarlunardate.R$string: int layout_align_summary_on
