@@ -19,31 +19,31 @@ public class SettingCustomSolar extends PreferenceActivity implements OnSharedPr
 
         //找到设置，并将其概括修改为当前设置option_name
         for(int i = 0; i < 15; i++){
-        	lp = (EditTextPreference)findPreference("custom_solar_item_" + i);
-        	if(!"".equals(lp.getText()) && lp.getText() != null)
-        		lp.setSummary(lp.getText());
-        	lp.setTitle(getString(R.string.custom_solar) + " " + (i + 1));
+            lp = (EditTextPreference)findPreference("custom_solar_item_" + i);
+            if(!"".equals(lp.getText()) && lp.getText() != null)
+                lp.setSummary(lp.getText());
+            lp.setTitle(getString(R.string.custom_solar) + " " + (i + 1));
         }
-        
+
         //监听sharedPreferences变化
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
-	@SuppressWarnings("deprecation")
-	@Override
+    @SuppressWarnings("deprecation")
+    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-    	//设置发生变化时，设置summary为option_name
+        //设置发生变化时，设置summary为option_name
         for(int i = 0; i < 15; i++){
-        	if(key.equals("custom_solar_item_" + i)){
-	        	lp = (EditTextPreference)findPreference("custom_solar_item_" + i);
-	        	if(!"".equals(lp.getText()) && lp.getText() != null){
-	        		lp.setSummary(lp.getText());
-	        	}else{
-	        		lp.setSummary(getString(R.string.custom_solar_summary));
-	        	}
-	        	break;
-        	}
+            if(key.equals("custom_solar_item_" + i)){
+                lp = (EditTextPreference)findPreference("custom_solar_item_" + i);
+                if(!"".equals(lp.getText()) && lp.getText() != null){
+                    lp.setSummary(lp.getText());
+                }else{
+                    lp.setSummary(getString(R.string.custom_solar_summary));
+                }
+                break;
+            }
         }
     }
 }

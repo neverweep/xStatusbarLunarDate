@@ -23,39 +23,39 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
 
         lp = (ListPreference)findPreference("lang");
         lp.setSummary(lp.getEntry());
-        
+
         lp = (ListPreference)findPreference("year");
         lp.setSummary(lp.getEntry());
-        
+
         lp = (ListPreference)findPreference("rom");
         lp.setSummary(lp.getEntry());
-        
+
         //监听sharedPreferences变化
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @SuppressWarnings("deprecation")
-	@Override
+    @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-    	//设置发生变化时，设置summary为option_name
+        //设置发生变化时，设置summary为option_name
         if(key.equals("minor")){
-        	lp = (ListPreference)findPreference("minor");
+            lp = (ListPreference)findPreference("minor");
             lp.setSummary(lp.getEntry());
             return;
         }
         if(key.equals("lang")){
-        	lp = (ListPreference)findPreference("lang");
+            lp = (ListPreference)findPreference("lang");
             lp.setSummary(lp.getEntry());
             return;
         }
         if(key.equals("year")){
-        	lp = (ListPreference)findPreference("year");
+            lp = (ListPreference)findPreference("year");
             lp.setSummary(lp.getEntry());
             return;
         }
         if(key.equals("rom")){
-        	lp = (ListPreference)findPreference("rom");
+            lp = (ListPreference)findPreference("rom");
             lp.setSummary(lp.getEntry());
             return;
         }

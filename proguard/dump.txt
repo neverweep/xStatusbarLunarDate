@@ -9,7 +9,7 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [de/robv/android/xposed/IXposedHookLoadPackage]
 
-Constant Pool (count = 226):
+Constant Pool (count = 229):
   + String []
   + String [ ]
   + String [/]
@@ -65,6 +65,7 @@ Constant Pool (count = 226):
   + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.i Ljava/lang/Boolean;]
   + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.k I]
   + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.l I]
+  + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.m I]
   + Methodref [de/robv/android/xposed/XposedHelpers.findAndHookMethod (Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Object;)Lde/robv/android/xposed/XC_MethodHook$Unhook;]
   + Methodref [de/robv/android/xposed/XposedHelpers.findAndHookMethod (Ljava/lang/String;Ljava/lang/ClassLoader;Ljava/lang/String;[Ljava/lang/Object;)Lde/robv/android/xposed/XC_MethodHook$Unhook;]
   + Methodref [de/robv/android/xposed/XposedHelpers.findClass (Ljava/lang/String;Ljava/lang/ClassLoader;)Ljava/lang/Class;]
@@ -140,6 +141,7 @@ Constant Pool (count = 226):
   + NameAndType [k Ljava/lang/String;]
   + NameAndType [l I]
   + NameAndType [l Ljava/lang/String;]
+  + NameAndType [m I]
   + NameAndType [packageName Ljava/lang/String;]
   + NameAndType [toString ()Ljava/lang/String;]
   + NameAndType [trim ()Ljava/lang/String;]
@@ -226,6 +228,7 @@ Constant Pool (count = 226):
   + Utf8 [java/lang/System]
   + Utf8 [k]
   + Utf8 [l]
+  + Utf8 [m]
   + Utf8 [packageName]
   + Utf8 [refresh]
   + Utf8 [refreshDate]
@@ -281,7 +284,7 @@ Methods (count = 9):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 25, locals = 1, stack = 4):
       [0] aload_0 v0
-      [1] invokespecial #76
+      [1] invokespecial #77
         + Methodref [java/lang/Object.<init> ()V]
       [4] aload_0 v0
       [5] ldc #4
@@ -294,7 +297,7 @@ Methods (count = 9):
       [14] dup
       [15] getstatic #54
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.k I]
-      [18] invokespecial #62
+      [18] invokespecial #63
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.<init> (I)V]
       [21] putfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
@@ -305,121 +308,128 @@ Methods (count = 9):
     Access flags: 0x1
       = public void handleLoadPackage(de.robv.android.xposed.callbacks.XC_LoadPackage$LoadPackageParam)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 137, locals = 2, stack = 9):
+    + Code attribute instructions (code length = 164, locals = 2, stack = 9):
       [0] getstatic #53
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.i Ljava/lang/Boolean;]
-      [3] invokevirtual #75
+      [3] invokevirtual #76
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [6] ifeq +130 (target=136)
-      [9] aload_1 v1
-      [10] getfield #35
+      [6] ifeq +157 (target=163)
+      [9] getstatic #56
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.m I]
+      [12] tableswitch (2 offsets, default=151) (target=163)
+        1: offset = 24, target = 36
+        2: offset = 151, target = 163
+        default: offset = 151, target = 163
+      [36] aload_1 v1
+      [37] getfield #35
         + Fieldref [de/robv/android/xposed/callbacks/XC_LoadPackage$LoadPackageParam.packageName Ljava/lang/String;]
-      [13] ldc #7
+      [40] ldc #7
         + String [android]
-      [15] invokevirtual #77
+      [42] invokevirtual #78
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [18] ifeq +77 (target=95)
-      [21] getstatic #33
+      [45] ifeq +77 (target=122)
+      [48] getstatic #33
         + Fieldref [android/os/Build$VERSION.SDK_INT I]
-      [24] bipush 16
-      [26] ificmpgt +31 (target=57)
-      [29] ldc #8
+      [51] bipush 16
+      [53] ificmpgt +31 (target=84)
+      [56] ldc #8
         + String [com.android.internal.policy.impl.KeyguardStatusViewManager]
-      [31] aconst_null
-      [32] invokestatic #58
+      [58] aconst_null
+      [59] invokestatic #59
         + Methodref [de/robv/android/xposed/XposedHelpers.findClass (Ljava/lang/String;Ljava/lang/ClassLoader;)Ljava/lang/Class;]
-      [35] ldc #13
+      [62] ldc #13
         + String [refreshDate]
-      [37] iconst_1
-      [38] anewarray #29
+      [64] iconst_1
+      [65] anewarray #29
         + Class [java/lang/Object]
-      [41] dup
-      [42] iconst_0
-      [43] new #23
+      [68] dup
+      [69] iconst_0
+      [70] new #23
         + Class [de/xiaoxia/xstatusbarlunardate/a]
-      [46] dup
-      [47] aload_0 v0
-      [48] invokespecial #59
+      [73] dup
+      [74] aload_0 v0
+      [75] invokespecial #60
         + Methodref [de/xiaoxia/xstatusbarlunardate/a.<init> (Lde/xiaoxia/xstatusbarlunardate/Lockscreen;)V]
-      [51] aastore
-      [52] invokestatic #56
+      [78] aastore
+      [79] invokestatic #57
         + Methodref [de/robv/android/xposed/XposedHelpers.findAndHookMethod (Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Object;)Lde/robv/android/xposed/XC_MethodHook$Unhook;]
-      [55] pop
-      [56] return
-      [57] getstatic #33
+      [82] pop
+      [83] return
+      [84] getstatic #33
         + Fieldref [android/os/Build$VERSION.SDK_INT I]
-      [60] bipush 18
-      [62] ificmpgt +74 (target=136)
-      [65] ldc #9
+      [87] bipush 18
+      [89] ificmpgt +74 (target=163)
+      [92] ldc #9
         + String [com.android.internal.policy.impl.keyguard.KeyguardStatusView]
-      [67] aconst_null
-      [68] invokestatic #58
+      [94] aconst_null
+      [95] invokestatic #59
         + Methodref [de/robv/android/xposed/XposedHelpers.findClass (Ljava/lang/String;Ljava/lang/ClassLoader;)Ljava/lang/Class;]
-      [71] ldc #13
+      [98] ldc #13
         + String [refreshDate]
-      [73] iconst_1
-      [74] anewarray #29
+      [100] iconst_1
+      [101] anewarray #29
         + Class [java/lang/Object]
-      [77] dup
-      [78] iconst_0
-      [79] new #24
+      [104] dup
+      [105] iconst_0
+      [106] new #24
         + Class [de/xiaoxia/xstatusbarlunardate/b]
-      [82] dup
-      [83] aload_0 v0
-      [84] invokespecial #60
+      [109] dup
+      [110] aload_0 v0
+      [111] invokespecial #61
         + Methodref [de/xiaoxia/xstatusbarlunardate/b.<init> (Lde/xiaoxia/xstatusbarlunardate/Lockscreen;)V]
-      [87] aastore
-      [88] invokestatic #56
+      [114] aastore
+      [115] invokestatic #57
         + Methodref [de/robv/android/xposed/XposedHelpers.findAndHookMethod (Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Object;)Lde/robv/android/xposed/XC_MethodHook$Unhook;]
-      [91] pop
-      [92] return
-      [93] pop
-      [94] return
-      [95] aload_1 v1
-      [96] getfield #35
+      [118] pop
+      [119] return
+      [120] pop
+      [121] return
+      [122] aload_1 v1
+      [123] getfield #35
         + Fieldref [de/robv/android/xposed/callbacks/XC_LoadPackage$LoadPackageParam.packageName Ljava/lang/String;]
-      [99] ldc #10
+      [126] ldc #10
         + String [com.android.keyguard]
-      [101] invokevirtual #77
+      [128] invokevirtual #78
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [104] ifeq +32 (target=136)
-      [107] ldc #11
+      [131] ifeq +32 (target=163)
+      [134] ldc #11
         + String [com.android.keyguard.KeyguardStatusView]
-      [109] aload_1 v1
-      [110] getfield #34
+      [136] aload_1 v1
+      [137] getfield #34
         + Fieldref [de/robv/android/xposed/callbacks/XC_LoadPackage$LoadPackageParam.classLoader Ljava/lang/ClassLoader;]
-      [113] ldc #12
+      [140] ldc #12
         + String [refresh]
-      [115] iconst_1
-      [116] anewarray #29
+      [142] iconst_1
+      [143] anewarray #29
         + Class [java/lang/Object]
-      [119] dup
-      [120] iconst_0
-      [121] new #25
+      [146] dup
+      [147] iconst_0
+      [148] new #25
         + Class [de/xiaoxia/xstatusbarlunardate/c]
-      [124] dup
-      [125] aload_0 v0
-      [126] invokespecial #61
+      [151] dup
+      [152] aload_0 v0
+      [153] invokespecial #62
         + Methodref [de/xiaoxia/xstatusbarlunardate/c.<init> (Lde/xiaoxia/xstatusbarlunardate/Lockscreen;)V]
-      [129] aastore
-      [130] invokestatic #57
+      [156] aastore
+      [157] invokestatic #58
         + Methodref [de/robv/android/xposed/XposedHelpers.findAndHookMethod (Ljava/lang/String;Ljava/lang/ClassLoader;Ljava/lang/String;[Ljava/lang/Object;)Lde/robv/android/xposed/XC_MethodHook$Unhook;]
-      [133] pop
-      [134] return
-      [135] pop
-      [136] return
+      [160] pop
+      [161] return
+      [162] pop
+      [163] return
       Code attribute exceptions (count = 2):
-      - ExceptionInfo (21 -> 92: 93):
+      - ExceptionInfo (48 -> 119: 120):
       + Class [java/lang/Exception]
-      - ExceptionInfo (107 -> 134: 135):
+      - ExceptionInfo (134 -> 161: 162):
       + Class [java/lang/Exception]
       Code attribute attributes (attribute count = 1):
-      + Stack map table attribute (count = 5):
-        - [57] Var: ..., Stack: (empty)
-        - [93] Var: ..., Stack: [a:java/lang/Exception]
-        - [95] Var: ..., Stack: (empty)
-        - [135] Var: ..., Stack: [a:java/lang/Exception]
-        - [136] Var: ..., Stack: (empty)
+      + Stack map table attribute (count = 6):
+        - [36] Var: ..., Stack: (empty)
+        - [84] Var: ..., Stack: (empty)
+        - [120] Var: ..., Stack: [a:java/lang/Exception]
+        - [122] Var: ..., Stack: (empty)
+        - [162] Var: ..., Stack: [a:java/lang/Exception]
+        - [163] Var: ..., Stack: (empty)
   + Method:       a(Lde/xiaoxia/xstatusbarlunardate/Lockscreen;Landroid/widget/TextView;)V
     Access flags: 0x1008
       = static synthetic void a(de.xiaoxia.xstatusbarlunardate.Lockscreen,android.widget.TextView)
@@ -475,19 +485,19 @@ Methods (count = 9):
       [1] aload_0 v0
       [2] getfield #38
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.c Ljava/lang/String;]
-      [5] invokevirtual #77
+      [5] invokevirtual #78
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [8] ifne +605 (target=613)
       [11] aload_0 v0
       [12] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [15] invokestatic #84
+      [15] invokestatic #85
         + Methodref [java/lang/System.currentTimeMillis ()J]
-      [18] invokevirtual #64
+      [18] invokevirtual #65
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (J)V]
       [21] getstatic #51
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.e Ljava/lang/Boolean;]
-      [24] invokevirtual #75
+      [24] invokevirtual #76
         + Methodref [java/lang/Boolean.booleanValue ()Z]
       [27] ifeq +47 (target=74)
       [30] ldc #1
@@ -495,9 +505,9 @@ Methods (count = 9):
       [32] aload_0 v0
       [33] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [36] invokevirtual #63
+      [36] invokevirtual #64
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a ()Ljava/lang/String;]
-      [39] invokevirtual #77
+      [39] invokevirtual #78
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [42] ifne +32 (target=74)
       [45] aload_0 v0
@@ -506,16 +516,16 @@ Methods (count = 9):
       [49] dup
       [50] ldc #2
         + String [ ]
-      [52] invokespecial #80
+      [52] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [55] aload_0 v0
       [56] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [59] invokevirtual #63
+      [59] invokevirtual #64
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a ()Ljava/lang/String;]
-      [62] invokevirtual #82
+      [62] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [65] invokevirtual #83
+      [65] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [68] putfield #46
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.k Ljava/lang/String;]
@@ -527,7 +537,7 @@ Methods (count = 9):
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.k Ljava/lang/String;]
       [80] getstatic #49
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.c Ljava/lang/Boolean;]
-      [83] invokevirtual #75
+      [83] invokevirtual #76
         + Methodref [java/lang/Boolean.booleanValue ()Z]
       [86] ifeq +47 (target=133)
       [89] ldc #1
@@ -535,9 +545,9 @@ Methods (count = 9):
       [91] aload_0 v0
       [92] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [95] invokevirtual #72
+      [95] invokevirtual #73
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.i ()Ljava/lang/String;]
-      [98] invokevirtual #77
+      [98] invokevirtual #78
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [101] ifne +32 (target=133)
       [104] aload_0 v0
@@ -546,16 +556,16 @@ Methods (count = 9):
       [108] dup
       [109] ldc #2
         + String [ ]
-      [111] invokespecial #80
+      [111] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [114] aload_0 v0
       [115] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [118] invokevirtual #72
+      [118] invokevirtual #73
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.i ()Ljava/lang/String;]
-      [121] invokevirtual #82
+      [121] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [124] invokevirtual #83
+      [124] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [127] putfield #44
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.i Ljava/lang/String;]
@@ -567,7 +577,7 @@ Methods (count = 9):
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.i Ljava/lang/String;]
       [139] getstatic #48
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.b Ljava/lang/Boolean;]
-      [142] invokevirtual #75
+      [142] invokevirtual #76
         + Methodref [java/lang/Boolean.booleanValue ()Z]
       [145] ifeq +47 (target=192)
       [148] ldc #1
@@ -575,9 +585,9 @@ Methods (count = 9):
       [150] aload_0 v0
       [151] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [154] invokevirtual #66
+      [154] invokevirtual #67
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.c ()Ljava/lang/String;]
-      [157] invokevirtual #77
+      [157] invokevirtual #78
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [160] ifne +32 (target=192)
       [163] aload_0 v0
@@ -586,16 +596,16 @@ Methods (count = 9):
       [167] dup
       [168] ldc #2
         + String [ ]
-      [170] invokespecial #80
+      [170] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [173] aload_0 v0
       [174] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [177] invokevirtual #66
+      [177] invokevirtual #67
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.c ()Ljava/lang/String;]
-      [180] invokevirtual #82
+      [180] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [183] invokevirtual #83
+      [183] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [186] putfield #43
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.h Ljava/lang/String;]
@@ -607,7 +617,7 @@ Methods (count = 9):
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.h Ljava/lang/String;]
       [198] getstatic #50
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.d Ljava/lang/Boolean;]
-      [201] invokevirtual #75
+      [201] invokevirtual #76
         + Methodref [java/lang/Boolean.booleanValue ()Z]
       [204] ifeq +47 (target=251)
       [207] ldc #1
@@ -615,9 +625,9 @@ Methods (count = 9):
       [209] aload_0 v0
       [210] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [213] invokevirtual #73
+      [213] invokevirtual #74
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.j ()Ljava/lang/String;]
-      [216] invokevirtual #77
+      [216] invokevirtual #78
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [219] ifne +32 (target=251)
       [222] aload_0 v0
@@ -626,16 +636,16 @@ Methods (count = 9):
       [226] dup
       [227] ldc #16
         + String [，]
-      [229] invokespecial #80
+      [229] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [232] aload_0 v0
       [233] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [236] invokevirtual #73
+      [236] invokevirtual #74
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.j ()Ljava/lang/String;]
-      [239] invokevirtual #82
+      [239] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [242] invokevirtual #83
+      [242] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [245] putfield #45
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.j Ljava/lang/String;]
@@ -647,7 +657,7 @@ Methods (count = 9):
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.j Ljava/lang/String;]
       [257] getstatic #52
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.f Ljava/lang/Boolean;]
-      [260] invokevirtual #75
+      [260] invokevirtual #76
         + Methodref [java/lang/Boolean.booleanValue ()Z]
       [263] ifeq +47 (target=310)
       [266] ldc #1
@@ -655,9 +665,9 @@ Methods (count = 9):
       [268] aload_0 v0
       [269] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [272] invokevirtual #74
+      [272] invokevirtual #75
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.k ()Ljava/lang/String;]
-      [275] invokevirtual #77
+      [275] invokevirtual #78
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [278] ifne +32 (target=310)
       [281] aload_0 v0
@@ -666,16 +676,16 @@ Methods (count = 9):
       [285] dup
       [286] ldc #16
         + String [，]
-      [288] invokespecial #80
+      [288] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [291] aload_0 v0
       [292] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [295] invokevirtual #74
+      [295] invokevirtual #75
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.k ()Ljava/lang/String;]
-      [298] invokevirtual #82
+      [298] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [301] invokevirtual #83
+      [301] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [304] putfield #47
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.l Ljava/lang/String;]
@@ -700,17 +710,17 @@ Methods (count = 9):
       [353] aload_0 v0
       [354] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [357] invokevirtual #65
+      [357] invokevirtual #66
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.b ()Ljava/lang/String;]
-      [360] invokestatic #79
+      [360] invokestatic #80
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [363] invokespecial #80
+      [363] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [366] ldc #14
         + String [年]
-      [368] invokevirtual #82
+      [368] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [371] invokevirtual #83
+      [371] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [374] putfield #37
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.b Ljava/lang/String;]
@@ -722,17 +732,17 @@ Methods (count = 9):
       [385] aload_0 v0
       [386] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [389] invokevirtual #69
+      [389] invokevirtual #70
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.f ()Ljava/lang/String;]
-      [392] invokestatic #79
+      [392] invokestatic #80
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [395] invokespecial #80
+      [395] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [398] ldc #14
         + String [年]
-      [400] invokevirtual #82
+      [400] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [403] invokevirtual #83
+      [403] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [406] putfield #37
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.b Ljava/lang/String;]
@@ -750,24 +760,24 @@ Methods (count = 9):
       [426] aload_0 v0
       [427] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [430] invokevirtual #69
+      [430] invokevirtual #70
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.f ()Ljava/lang/String;]
-      [433] invokestatic #79
+      [433] invokestatic #80
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [436] invokespecial #80
+      [436] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [439] aload_0 v0
       [440] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [443] invokevirtual #65
+      [443] invokevirtual #66
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.b ()Ljava/lang/String;]
-      [446] invokevirtual #82
+      [446] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [449] ldc #14
         + String [年]
-      [451] invokevirtual #82
+      [451] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [454] invokevirtual #83
+      [454] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [457] putfield #37
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.b Ljava/lang/String;]
@@ -782,54 +792,54 @@ Methods (count = 9):
       [472] aload_0 v0
       [473] getfield #37
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.b Ljava/lang/String;]
-      [476] invokestatic #79
+      [476] invokestatic #80
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [479] invokespecial #80
+      [479] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [482] aload_0 v0
       [483] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [486] invokevirtual #68
+      [486] invokevirtual #69
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.e ()Ljava/lang/String;]
-      [489] invokevirtual #82
+      [489] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [492] ldc #15
         + String [月]
-      [494] invokevirtual #82
+      [494] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [497] aload_0 v0
       [498] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [501] invokevirtual #67
+      [501] invokevirtual #68
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.d ()Ljava/lang/String;]
-      [504] invokevirtual #82
+      [504] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [507] aload_0 v0
       [508] getfield #43
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.h Ljava/lang/String;]
-      [511] invokevirtual #82
+      [511] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [514] aload_0 v0
       [515] getfield #44
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.i Ljava/lang/String;]
-      [518] invokevirtual #82
+      [518] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [521] aload_0 v0
       [522] getfield #45
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.j Ljava/lang/String;]
-      [525] invokevirtual #82
+      [525] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [528] aload_0 v0
       [529] getfield #46
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.k Ljava/lang/String;]
-      [532] invokevirtual #82
+      [532] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [535] aload_0 v0
       [536] getfield #47
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.l Ljava/lang/String;]
-      [539] invokevirtual #82
+      [539] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [542] invokevirtual #83
+      [542] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [545] putfield #36
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.a Ljava/lang/String;]
@@ -840,31 +850,31 @@ Methods (count = 9):
       [555] dup
       [556] ldc #5
         + String [[]
-      [558] invokespecial #80
+      [558] invokespecial #81
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [561] aload_0 v0
       [562] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [565] invokevirtual #70
+      [565] invokevirtual #71
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.g ()I]
-      [568] invokevirtual #81
+      [568] invokevirtual #82
         + Methodref [java/lang/StringBuilder.append (I)Ljava/lang/StringBuilder;]
       [571] ldc #3
         + String [/]
-      [573] invokevirtual #82
+      [573] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
       [576] aload_0 v0
       [577] getfield #40
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.e Lde/xiaoxia/xstatusbarlunardate/d;]
-      [580] invokevirtual #71
+      [580] invokevirtual #72
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.h ()I]
-      [583] invokevirtual #81
+      [583] invokevirtual #82
         + Methodref [java/lang/StringBuilder.append (I)Ljava/lang/StringBuilder;]
       [586] ldc #6
         + String []]
-      [588] invokevirtual #82
+      [588] invokevirtual #83
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [591] invokevirtual #83
+      [591] invokevirtual #84
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [594] putfield #36
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.a Ljava/lang/String;]
@@ -872,7 +882,7 @@ Methods (count = 9):
       [598] aload_0 v0
       [599] getfield #36
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.a Ljava/lang/String;]
-      [602] invokevirtual #78
+      [602] invokevirtual #79
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [605] putfield #36
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Lockscreen.a Ljava/lang/String;]
@@ -3506,7 +3516,7 @@ Methods (count = 24):
     Access flags: 0x22
       = private synchronized void l()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 859, locals = 11, stack = 4):
+    + Code attribute instructions (code length = 838, locals = 11, stack = 4):
       [0] aload_0 v0
       [1] getfield #316
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
@@ -3764,10 +3774,10 @@ Methods (count = 24):
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.c Ljava/lang/Boolean;]
       [373] invokevirtual #345
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [376] ifeq +142 (target=518)
+      [376] ifeq +121 (target=497)
       [379] iconst_0
       [380] istore v7
-      [382] goto +127 (target=509)
+      [382] goto +106 (target=488)
       [385] getstatic #306
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
       [388] getstatic #334
@@ -3780,7 +3790,7 @@ Methods (count = 24):
       [398] astore v6
       [400] invokevirtual #369
         + Methodref [java/util/regex/Matcher.find ()Z]
-      [403] ifeq +103 (target=506)
+      [403] ifeq +82 (target=485)
       [406] iload v4
       [408] aload v6
       [410] iconst_1
@@ -3804,13 +3814,13 @@ Methods (count = 24):
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
       [441] putfield #321
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
-      [444] goto +74 (target=518)
+      [444] goto +53 (target=497)
       [447] iload v4
       [449] bipush 12
-      [451] ificmpne +55 (target=506)
+      [451] ificmpne +34 (target=485)
       [454] iload v5
       [456] bipush 29
-      [458] ificmpne +48 (target=506)
+      [458] ificmpne +27 (target=485)
       [461] aload_0 v0
       [462] getfield #310
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.b I]
@@ -3818,244 +3828,229 @@ Methods (count = 24):
       [467] invokestatic #336
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (II)I]
       [470] bipush 29
-      [472] ificmpne +34 (target=506)
+      [472] ificmpne +13 (target=485)
       [475] aload_0 v0
-      [476] dup
-      [477] getfield #321
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
-      [480] new #278
-        + Class [java/lang/StringBuilder]
-      [483] dup_x1
-      [484] swap
-      [485] invokestatic #351
-        + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [488] invokespecial #352
-        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [491] ldc_w #258
+      [476] ldc_w #258
         + String [除夕]
-      [494] invokevirtual #353
-        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [497] invokevirtual #354
-        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [500] putfield #321
+      [479] putfield #321
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.m Ljava/lang/String;]
-      [503] goto +15 (target=518)
-      [506] iinc v7, 1
-      [509] iload v7
-      [511] getstatic #334
+      [482] goto +15 (target=497)
+      [485] iinc v7, 1
+      [488] iload v7
+      [490] getstatic #334
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.z [Ljava/lang/String;]
-      [514] arraylength
-      [515] ificmplt -130 (target=385)
-      [518] getstatic #297
+      [493] arraylength
+      [494] ificmplt -109 (target=385)
+      [497] getstatic #297
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.d Ljava/lang/Boolean;]
-      [521] invokevirtual #345
+      [500] invokevirtual #345
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [524] ifeq +83 (target=607)
-      [527] iconst_0
-      [528] istore v7
-      [530] goto +68 (target=598)
-      [533] getstatic #306
+      [503] ifeq +83 (target=586)
+      [506] iconst_0
+      [507] istore v7
+      [509] goto +68 (target=577)
+      [512] getstatic #306
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
-      [536] getstatic #302
+      [515] getstatic #302
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.n [Ljava/lang/String;]
-      [539] iload v7
-      [541] aaload
-      [542] invokevirtual #372
+      [518] iload v7
+      [520] aaload
+      [521] invokevirtual #372
         + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [545] dup
-      [546] astore v6
-      [548] invokevirtual #369
+      [524] dup
+      [525] astore v6
+      [527] invokevirtual #369
         + Methodref [java/util/regex/Matcher.find ()Z]
-      [551] ifeq +44 (target=595)
-      [554] iload v4
-      [556] aload v6
-      [558] iconst_1
-      [559] invokevirtual #370
+      [530] ifeq +44 (target=574)
+      [533] iload v4
+      [535] aload v6
+      [537] iconst_1
+      [538] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [562] invokestatic #338
+      [541] invokestatic #338
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [565] ificmpne +30 (target=595)
-      [568] iload v5
-      [570] aload v6
-      [572] iconst_2
-      [573] invokevirtual #370
+      [544] ificmpne +30 (target=574)
+      [547] iload v5
+      [549] aload v6
+      [551] iconst_2
+      [552] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [576] invokestatic #338
+      [555] invokestatic #338
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [579] ificmpne +16 (target=595)
-      [582] aload_0 v0
-      [583] aload v6
-      [585] iconst_3
-      [586] invokevirtual #370
+      [558] ificmpne +16 (target=574)
+      [561] aload_0 v0
+      [562] aload v6
+      [564] iconst_3
+      [565] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [589] putfield #323
+      [568] putfield #323
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.o Ljava/lang/String;]
-      [592] goto +15 (target=607)
-      [595] iinc v7, 1
-      [598] iload v7
-      [600] getstatic #302
+      [571] goto +15 (target=586)
+      [574] iinc v7, 1
+      [577] iload v7
+      [579] getstatic #302
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.n [Ljava/lang/String;]
-      [603] arraylength
-      [604] ificmplt -71 (target=533)
-      [607] getstatic #299
+      [582] arraylength
+      [583] ificmplt -71 (target=512)
+      [586] getstatic #299
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.f Ljava/lang/Boolean;]
-      [610] invokevirtual #345
+      [589] invokevirtual #345
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [613] ifeq +81 (target=694)
-      [616] iconst_0
-      [617] istore v7
-      [619] goto +66 (target=685)
-      [622] getstatic #306
+      [592] ifeq +81 (target=673)
+      [595] iconst_0
+      [596] istore v7
+      [598] goto +66 (target=664)
+      [601] getstatic #306
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.C Ljava/util/regex/Pattern;]
-      [625] getstatic #303
+      [604] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.o [Ljava/lang/String;]
-      [628] iload v7
-      [630] aaload
-      [631] invokevirtual #372
+      [607] iload v7
+      [609] aaload
+      [610] invokevirtual #372
         + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [634] dup
-      [635] astore v6
-      [637] invokevirtual #369
+      [613] dup
+      [614] astore v6
+      [616] invokevirtual #369
         + Methodref [java/util/regex/Matcher.find ()Z]
-      [640] ifeq +42 (target=682)
-      [643] iload_1 v1
-      [644] aload v6
-      [646] iconst_1
-      [647] invokevirtual #370
+      [619] ifeq +42 (target=661)
+      [622] iload_1 v1
+      [623] aload v6
+      [625] iconst_1
+      [626] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [650] invokestatic #338
+      [629] invokestatic #338
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [653] ificmpne +29 (target=682)
-      [656] iload_2 v2
-      [657] aload v6
-      [659] iconst_2
-      [660] invokevirtual #370
+      [632] ificmpne +29 (target=661)
+      [635] iload_2 v2
+      [636] aload v6
+      [638] iconst_2
+      [639] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [663] invokestatic #338
+      [642] invokestatic #338
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [666] ificmpne +16 (target=682)
-      [669] aload_0 v0
-      [670] aload v6
-      [672] iconst_3
-      [673] invokevirtual #370
+      [645] ificmpne +16 (target=661)
+      [648] aload_0 v0
+      [649] aload v6
+      [651] iconst_3
+      [652] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [676] putfield #325
+      [655] putfield #325
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.q Ljava/lang/String;]
-      [679] goto +15 (target=694)
-      [682] iinc v7, 1
-      [685] iload v7
-      [687] getstatic #303
+      [658] goto +15 (target=673)
+      [661] iinc v7, 1
+      [664] iload v7
+      [666] getstatic #303
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.o [Ljava/lang/String;]
-      [690] arraylength
-      [691] ificmplt -69 (target=622)
-      [694] getstatic #298
+      [669] arraylength
+      [670] ificmplt -69 (target=601)
+      [673] getstatic #298
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.e Ljava/lang/Boolean;]
-      [697] invokevirtual #345
+      [676] invokevirtual #345
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [700] ifeq +158 (target=858)
-      [703] iconst_0
-      [704] istore_3 v3
-      [705] goto +130 (target=835)
-      [708] getstatic #307
+      [679] ifeq +158 (target=837)
+      [682] iconst_0
+      [683] istore_3 v3
+      [684] goto +130 (target=814)
+      [687] getstatic #307
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.D Ljava/util/regex/Pattern;]
-      [711] getstatic #305
+      [690] getstatic #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
-      [714] iload_3 v3
-      [715] aaload
-      [716] invokevirtual #372
+      [693] iload_3 v3
+      [694] aaload
+      [695] invokevirtual #372
         + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [719] dup
-      [720] astore v6
-      [722] invokevirtual #369
+      [698] dup
+      [699] astore v6
+      [701] invokevirtual #369
         + Methodref [java/util/regex/Matcher.find ()Z]
-      [725] ifeq +107 (target=832)
-      [728] aload_0 v0
-      [729] getfield #316
+      [704] ifeq +107 (target=811)
+      [707] aload_0 v0
+      [708] getfield #316
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.h I]
-      [732] iconst_1
-      [733] iadd
-      [734] aload v6
-      [736] iconst_1
-      [737] invokevirtual #370
+      [711] iconst_1
+      [712] iadd
+      [713] aload v6
+      [715] iconst_1
+      [716] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [740] invokestatic #338
+      [719] invokestatic #338
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [743] ificmpne +89 (target=832)
-      [746] aload v6
-      [748] iconst_2
-      [749] invokevirtual #370
+      [722] ificmpne +89 (target=811)
+      [725] aload v6
+      [727] iconst_2
+      [728] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [752] invokestatic #338
+      [731] invokestatic #338
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [755] istore v7
-      [757] aload v6
-      [759] iconst_3
-      [760] invokevirtual #370
+      [734] istore v7
+      [736] aload v6
+      [738] iconst_3
+      [739] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [763] invokestatic #338
+      [742] invokestatic #338
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (Ljava/lang/String;)I]
-      [766] istore v8
-      [768] aload_0 v0
-      [769] getfield #309
+      [745] istore v8
+      [747] aload_0 v0
+      [748] getfield #309
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
-      [772] bipush 8
-      [774] invokevirtual #355
+      [751] bipush 8
+      [753] invokevirtual #355
         + Methodref [java/util/Calendar.get (I)I]
-      [777] iload v7
-      [779] ificmpne +53 (target=832)
-      [782] aload_0 v0
-      [783] getfield #309
+      [756] iload v7
+      [758] ificmpne +53 (target=811)
+      [761] aload_0 v0
+      [762] getfield #309
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.a Ljava/util/Calendar;]
-      [786] bipush 7
-      [788] invokevirtual #355
+      [765] bipush 7
+      [767] invokevirtual #355
         + Methodref [java/util/Calendar.get (I)I]
-      [791] iload v8
-      [793] ificmpne +39 (target=832)
-      [796] aload_0 v0
-      [797] dup
-      [798] getfield #324
+      [770] iload v8
+      [772] ificmpne +39 (target=811)
+      [775] aload_0 v0
+      [776] dup
+      [777] getfield #324
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [801] new #278
+      [780] new #278
         + Class [java/lang/StringBuilder]
-      [804] dup_x1
-      [805] swap
-      [806] invokestatic #351
+      [783] dup_x1
+      [784] swap
+      [785] invokestatic #351
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [809] invokespecial #352
+      [788] invokespecial #352
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [812] ldc #114
+      [791] ldc #114
         + String [ ]
-      [814] invokevirtual #353
+      [793] invokevirtual #353
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [817] aload v6
-      [819] iconst_4
-      [820] invokevirtual #370
+      [796] aload v6
+      [798] iconst_4
+      [799] invokevirtual #370
         + Methodref [java/util/regex/Matcher.group (I)Ljava/lang/String;]
-      [823] invokevirtual #353
+      [802] invokevirtual #353
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [826] invokevirtual #354
+      [805] invokevirtual #354
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [829] putfield #324
+      [808] putfield #324
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [832] iinc v3, 1
-      [835] iload_3 v3
-      [836] getstatic #305
+      [811] iinc v3, 1
+      [814] iload_3 v3
+      [815] getstatic #305
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.B [Ljava/lang/String;]
-      [839] arraylength
-      [840] ificmplt -132 (target=708)
-      [843] aload_0 v0
-      [844] aload_0 v0
-      [845] getfield #324
+      [818] arraylength
+      [819] ificmplt -132 (target=687)
+      [822] aload_0 v0
+      [823] aload_0 v0
+      [824] getfield #324
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [848] ldc #180
+      [827] ldc #180
         + String [^\s]
-      [850] ldc #113
+      [829] ldc #113
         + String []
-      [852] invokevirtual #350
+      [831] invokevirtual #350
         + Methodref [java/lang/String.replaceFirst (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [855] putfield #324
+      [834] putfield #324
         + Fieldref [de/xiaoxia/xstatusbarlunardate/d.p Ljava/lang/String;]
-      [858] return
+      [837] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Stack map table attribute (count = 23):
@@ -4067,21 +4062,21 @@ Methods (count = 24):
         - [370] Var: ..., Stack: (empty)
         - [385] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
         - [447] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
-        - [506] Var: ..., Stack: (empty)
-        - [509] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
-        - [518] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
-        - [533] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
-        - [595] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
-        - [598] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
-        - [607] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
-        - [622] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
-        - [682] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
-        - [685] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
-        - [694] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
-        - [708] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][T][T][i], Stack: 
-        - [832] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][T][T][i], Stack: 
-        - [835] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][T][T][i], Stack: 
-        - [858] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
+        - [485] Var: ..., Stack: (empty)
+        - [488] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [497] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
+        - [512] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [574] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
+        - [577] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [586] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
+        - [601] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [661] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][i], Stack: 
+        - [664] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][i], Stack: 
+        - [673] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
+        - [687] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][T][T][i], Stack: 
+        - [811] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][a:java/util/regex/Matcher][T][T][i], Stack: 
+        - [814] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i][T][T][T][i], Stack: 
+        - [837] Var: [a:de/xiaoxia/xstatusbarlunardate/d][i][i][i][i][i], Stack: 
   + Method:       a(I)I
     Access flags: 0xa
       = private static int a(int)
@@ -6816,7 +6811,7 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [de/robv/android/xposed/IXposedHookLoadPackage]
 
-Constant Pool (count = 419):
+Constant Pool (count = 415):
   + String []
   + String [
 ]
@@ -6967,7 +6962,6 @@ Constant Pool (count = 419):
   + Methodref [java/lang/Integer.valueOf (Ljava/lang/String;)Ljava/lang/Integer;]
   + Methodref [java/lang/Object.<init> ()V]
   + Methodref [java/lang/Package.getName ()Ljava/lang/String;]
-  + Methodref [java/lang/String.contains (Ljava/lang/CharSequence;)Z]
   + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
   + Methodref [java/lang/String.trim ()Ljava/lang/String;]
   + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
@@ -7002,7 +6996,6 @@ Constant Pool (count = 419):
   + NameAndType [c Ljava/lang/Boolean;]
   + NameAndType [classLoader Ljava/lang/ClassLoader;]
   + NameAndType [compile (Ljava/lang/String;)Ljava/util/regex/Pattern;]
-  + NameAndType [contains (Ljava/lang/CharSequence;)Z]
   + NameAndType [currentTimeMillis ()J]
   + NameAndType [d ()Ljava/lang/String;]
   + NameAndType [d Ljava/lang/Boolean;]
@@ -7075,7 +7068,6 @@ Constant Pool (count = 419):
   + Utf8 [(Lde/robv/android/xposed/callbacks/XC_LoadPackage$LoadPackageParam;)V]
   + Utf8 [(Lde/xiaoxia/xstatusbarlunardate/Main;)V]
   + Utf8 [(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-  + Utf8 [(Ljava/lang/CharSequence;)Z]
   + Utf8 [(Ljava/lang/Object;)Ljava/lang/String;]
   + Utf8 [(Ljava/lang/Object;)Z]
   + Utf8 [(Ljava/lang/String;)Ljava/lang/Integer;]
@@ -7125,7 +7117,6 @@ Constant Pool (count = 419):
   + Utf8 [com.android.systemui]
   + Utf8 [com.android.systemui.statusbar.policy.DateView]
   + Utf8 [compile]
-  + Utf8 [contains]
   + Utf8 [currentTimeMillis]
   + Utf8 [custom]
   + Utf8 [custom_lunar_item_0]
@@ -7359,7 +7350,7 @@ Methods (count = 8):
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.v Ljava/lang/Boolean;]
       [22] ldc #8
         + String [\n]
-      [24] invokestatic #160
+      [24] invokestatic #159
         + Methodref [java/util/regex/Pattern.compile (Ljava/lang/String;)Ljava/util/regex/Pattern;]
       [27] putstatic #115
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.w Ljava/util/regex/Pattern;]
@@ -7543,7 +7534,7 @@ Methods (count = 8):
         + String []
       [271] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [274] invokevirtual #152
+      [274] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [277] aastore
       [278] dup
@@ -7556,7 +7547,7 @@ Methods (count = 8):
         + String []
       [287] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [290] invokevirtual #152
+      [290] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [293] aastore
       [294] dup
@@ -7569,7 +7560,7 @@ Methods (count = 8):
         + String []
       [303] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [306] invokevirtual #152
+      [306] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [309] aastore
       [310] dup
@@ -7582,7 +7573,7 @@ Methods (count = 8):
         + String []
       [319] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [322] invokevirtual #152
+      [322] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [325] aastore
       [326] dup
@@ -7595,7 +7586,7 @@ Methods (count = 8):
         + String []
       [335] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [338] invokevirtual #152
+      [338] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [341] aastore
       [342] dup
@@ -7608,7 +7599,7 @@ Methods (count = 8):
         + String []
       [351] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [354] invokevirtual #152
+      [354] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [357] aastore
       [358] dup
@@ -7621,7 +7612,7 @@ Methods (count = 8):
         + String []
       [368] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [371] invokevirtual #152
+      [371] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [374] aastore
       [375] dup
@@ -7634,7 +7625,7 @@ Methods (count = 8):
         + String []
       [385] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [388] invokevirtual #152
+      [388] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [391] aastore
       [392] dup
@@ -7647,7 +7638,7 @@ Methods (count = 8):
         + String []
       [402] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [405] invokevirtual #152
+      [405] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [408] aastore
       [409] dup
@@ -7660,7 +7651,7 @@ Methods (count = 8):
         + String []
       [419] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [422] invokevirtual #152
+      [422] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [425] aastore
       [426] dup
@@ -7673,7 +7664,7 @@ Methods (count = 8):
         + String []
       [436] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [439] invokevirtual #152
+      [439] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [442] aastore
       [443] dup
@@ -7686,7 +7677,7 @@ Methods (count = 8):
         + String []
       [453] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [456] invokevirtual #152
+      [456] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [459] aastore
       [460] dup
@@ -7699,7 +7690,7 @@ Methods (count = 8):
         + String []
       [470] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [473] invokevirtual #152
+      [473] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [476] aastore
       [477] dup
@@ -7712,7 +7703,7 @@ Methods (count = 8):
         + String []
       [487] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [490] invokevirtual #152
+      [490] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [493] aastore
       [494] dup
@@ -7725,7 +7716,7 @@ Methods (count = 8):
         + String []
       [504] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [507] invokevirtual #152
+      [507] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [510] aastore
       [511] dup
@@ -7738,7 +7729,7 @@ Methods (count = 8):
         + String []
       [521] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [524] invokevirtual #152
+      [524] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [527] aastore
       [528] putstatic #106
@@ -7756,7 +7747,7 @@ Methods (count = 8):
         + String []
       [545] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [548] invokevirtual #152
+      [548] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [551] aastore
       [552] dup
@@ -7769,7 +7760,7 @@ Methods (count = 8):
         + String []
       [561] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [564] invokevirtual #152
+      [564] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [567] aastore
       [568] dup
@@ -7782,7 +7773,7 @@ Methods (count = 8):
         + String []
       [577] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [580] invokevirtual #152
+      [580] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [583] aastore
       [584] dup
@@ -7795,7 +7786,7 @@ Methods (count = 8):
         + String []
       [593] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [596] invokevirtual #152
+      [596] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [599] aastore
       [600] dup
@@ -7808,7 +7799,7 @@ Methods (count = 8):
         + String []
       [609] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [612] invokevirtual #152
+      [612] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [615] aastore
       [616] dup
@@ -7821,7 +7812,7 @@ Methods (count = 8):
         + String []
       [625] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [628] invokevirtual #152
+      [628] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [631] aastore
       [632] dup
@@ -7834,7 +7825,7 @@ Methods (count = 8):
         + String []
       [642] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [645] invokevirtual #152
+      [645] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [648] aastore
       [649] dup
@@ -7847,7 +7838,7 @@ Methods (count = 8):
         + String []
       [659] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [662] invokevirtual #152
+      [662] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [665] aastore
       [666] dup
@@ -7860,7 +7851,7 @@ Methods (count = 8):
         + String []
       [676] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [679] invokevirtual #152
+      [679] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [682] aastore
       [683] dup
@@ -7873,7 +7864,7 @@ Methods (count = 8):
         + String []
       [693] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [696] invokevirtual #152
+      [696] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [699] aastore
       [700] dup
@@ -7886,7 +7877,7 @@ Methods (count = 8):
         + String []
       [710] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [713] invokevirtual #152
+      [713] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [716] aastore
       [717] dup
@@ -7899,7 +7890,7 @@ Methods (count = 8):
         + String []
       [727] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [730] invokevirtual #152
+      [730] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [733] aastore
       [734] dup
@@ -7912,7 +7903,7 @@ Methods (count = 8):
         + String []
       [744] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [747] invokevirtual #152
+      [747] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [750] aastore
       [751] dup
@@ -7925,7 +7916,7 @@ Methods (count = 8):
         + String []
       [761] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [764] invokevirtual #152
+      [764] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [767] aastore
       [768] dup
@@ -7938,7 +7929,7 @@ Methods (count = 8):
         + String []
       [778] invokevirtual #126
         + Methodref [de/robv/android/xposed/XSharedPreferences.getString (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [781] invokevirtual #152
+      [781] invokevirtual #151
         + Methodref [java/lang/String.trim ()Ljava/lang/String;]
       [784] aastore
       [785] putstatic #107
@@ -7976,7 +7967,7 @@ Methods (count = 8):
         + Fieldref [de/robv/android/xposed/callbacks/XC_LoadPackage$LoadPackageParam.packageName Ljava/lang/String;]
       [4] ldc #12
         + String [com.android.systemui]
-      [6] invokevirtual #151
+      [6] invokevirtual #150
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [9] ifne +4 (target=13)
       [12] return
@@ -8116,489 +8107,483 @@ Methods (count = 8):
     Access flags: 0x1008
       = static synthetic java.lang.String b(java.lang.String)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 740, locals = 2, stack = 3):
+    + Code attribute instructions (code length = 732, locals = 2, stack = 3):
       [0] aload_0 v0
       [1] dup
       [2] astore_1 v1
-      [3] getstatic #108
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.p Ljava/lang/String;]
-      [6] invokevirtual #150
-        + Methodref [java/lang/String.contains (Ljava/lang/CharSequence;)Z]
-      [9] ifne +727 (target=736)
-      [12] aload_1 v1
-      [13] getstatic #110
+      [3] getstatic #110
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.r Ljava/lang/String;]
-      [16] invokevirtual #151
+      [6] invokevirtual #150
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [19] ifne +717 (target=736)
-      [22] getstatic #92
+      [9] ifne +719 (target=728)
+      [12] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [25] invokestatic #158
+      [15] invokestatic #157
         + Methodref [java/lang/System.currentTimeMillis ()J]
-      [28] invokevirtual #130
+      [18] invokevirtual #130
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a (J)V]
-      [31] getstatic #114
+      [21] getstatic #114
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.v Ljava/lang/Boolean;]
-      [34] invokevirtual #143
+      [24] invokevirtual #143
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [37] ifne +104 (target=141)
-      [40] getstatic #91
+      [27] ifne +104 (target=131)
+      [30] getstatic #91
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.D Lde/robv/android/xposed/XSharedPreferences;]
-      [43] ldc #50
+      [33] ldc #50
         + String [layout_line]
+      [35] iconst_0
+      [36] invokevirtual #125
+        + Methodref [de/robv/android/xposed/XSharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
+      [39] ifeq +10 (target=49)
+      [42] getstatic #116
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.x Landroid/widget/TextView;]
       [45] iconst_0
-      [46] invokevirtual #125
-        + Methodref [de/robv/android/xposed/XSharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
-      [49] ifeq +10 (target=59)
-      [52] getstatic #116
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.x Landroid/widget/TextView;]
-      [55] iconst_0
-      [56] invokevirtual #123
+      [46] invokevirtual #123
         + Methodref [android/widget/TextView.setSingleLine (Z)V]
-      [59] getstatic #91
+      [49] getstatic #91
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.D Lde/robv/android/xposed/XSharedPreferences;]
-      [62] ldc #48
+      [52] ldc #48
         + String [layout_align]
-      [64] iconst_0
-      [65] invokevirtual #125
+      [54] iconst_0
+      [55] invokevirtual #125
         + Methodref [de/robv/android/xposed/XSharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
-      [68] ifeq +32 (target=100)
-      [71] getstatic #116
+      [58] ifeq +32 (target=90)
+      [61] getstatic #116
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.x Landroid/widget/TextView;]
-      [74] invokevirtual #121
+      [64] invokevirtual #121
         + Methodref [android/widget/TextView.getLayoutParams ()Landroid/view/ViewGroup$LayoutParams;]
-      [77] checkcast #64
+      [67] checkcast #64
         + Class [android/widget/RelativeLayout$LayoutParams]
-      [80] dup
-      [81] astore_0 v0
-      [82] iconst_4
-      [83] iconst_0
-      [84] invokevirtual #120
+      [70] dup
+      [71] astore_0 v0
+      [72] iconst_4
+      [73] iconst_0
+      [74] invokevirtual #120
         + Methodref [android/widget/RelativeLayout$LayoutParams.addRule (II)V]
-      [87] aload_0 v0
-      [88] bipush 15
-      [90] invokevirtual #119
+      [77] aload_0 v0
+      [78] bipush 15
+      [80] invokevirtual #119
         + Methodref [android/widget/RelativeLayout$LayoutParams.addRule (I)V]
-      [93] getstatic #116
+      [83] getstatic #116
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.x Landroid/widget/TextView;]
-      [96] aload_0 v0
-      [97] invokevirtual #122
+      [86] aload_0 v0
+      [87] invokevirtual #122
         + Methodref [android/widget/TextView.setLayoutParams (Landroid/view/ViewGroup$LayoutParams;)V]
-      [100] getstatic #91
+      [90] getstatic #91
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.D Lde/robv/android/xposed/XSharedPreferences;]
-      [103] ldc #51
+      [93] ldc #51
         + String [layout_width]
-      [105] iconst_0
-      [106] invokevirtual #125
+      [95] iconst_0
+      [96] invokevirtual #125
         + Methodref [de/robv/android/xposed/XSharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
-      [109] ifeq +25 (target=134)
-      [112] getstatic #116
+      [99] ifeq +25 (target=124)
+      [102] getstatic #116
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.x Landroid/widget/TextView;]
-      [115] invokevirtual #121
+      [105] invokevirtual #121
         + Methodref [android/widget/TextView.getLayoutParams ()Landroid/view/ViewGroup$LayoutParams;]
-      [118] checkcast #64
+      [108] checkcast #64
         + Class [android/widget/RelativeLayout$LayoutParams]
-      [121] dup
-      [122] astore_0 v0
-      [123] iconst_m1
-      [124] putfield #85
+      [111] dup
+      [112] astore_0 v0
+      [113] iconst_m1
+      [114] putfield #85
         + Fieldref [android/widget/RelativeLayout$LayoutParams.width I]
-      [127] getstatic #116
+      [117] getstatic #116
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.x Landroid/widget/TextView;]
-      [130] aload_0 v0
-      [131] invokevirtual #122
+      [120] aload_0 v0
+      [121] invokevirtual #122
         + Methodref [android/widget/TextView.setLayoutParams (Landroid/view/ViewGroup$LayoutParams;)V]
-      [134] iconst_1
-      [135] invokestatic #144
+      [124] iconst_1
+      [125] invokestatic #144
         + Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [138] putstatic #114
+      [128] putstatic #114
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.v Ljava/lang/Boolean;]
-      [141] getstatic #97
+      [131] getstatic #97
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.e Ljava/lang/Boolean;]
-      [144] invokevirtual #143
+      [134] invokevirtual #143
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [147] ifeq +44 (target=191)
-      [150] ldc #1
+      [137] ifeq +44 (target=181)
+      [140] ldc #1
         + String []
-      [152] getstatic #92
+      [142] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [155] invokevirtual #129
+      [145] invokevirtual #129
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a ()Ljava/lang/String;]
-      [158] invokevirtual #151
+      [148] invokevirtual #150
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [161] ifne +30 (target=191)
-      [164] new #81
+      [151] ifne +30 (target=181)
+      [154] new #81
         + Class [java/lang/StringBuilder]
-      [167] dup
-      [168] ldc #3
+      [157] dup
+      [158] ldc #3
         + String [ ]
-      [170] invokespecial #154
+      [160] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [173] getstatic #92
+      [163] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [176] invokevirtual #129
+      [166] invokevirtual #129
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.a ()Ljava/lang/String;]
-      [179] invokevirtual #156
+      [169] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [182] invokevirtual #157
+      [172] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [185] putstatic #89
+      [175] putstatic #89
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.B Ljava/lang/String;]
-      [188] goto +8 (target=196)
-      [191] ldc #1
+      [178] goto +8 (target=186)
+      [181] ldc #1
         + String []
-      [193] putstatic #89
+      [183] putstatic #89
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.B Ljava/lang/String;]
-      [196] getstatic #95
+      [186] getstatic #95
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.c Ljava/lang/Boolean;]
-      [199] invokevirtual #143
+      [189] invokevirtual #143
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [202] ifeq +44 (target=246)
-      [205] ldc #1
+      [192] ifeq +44 (target=236)
+      [195] ldc #1
         + String []
-      [207] getstatic #92
+      [197] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [210] invokevirtual #138
+      [200] invokevirtual #138
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.i ()Ljava/lang/String;]
-      [213] invokevirtual #151
+      [203] invokevirtual #150
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [216] ifne +30 (target=246)
-      [219] new #81
+      [206] ifne +30 (target=236)
+      [209] new #81
         + Class [java/lang/StringBuilder]
-      [222] dup
-      [223] ldc #3
+      [212] dup
+      [213] ldc #3
         + String [ ]
-      [225] invokespecial #154
+      [215] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [228] getstatic #92
+      [218] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [231] invokevirtual #138
+      [221] invokevirtual #138
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.i ()Ljava/lang/String;]
-      [234] invokevirtual #156
+      [224] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [237] invokevirtual #157
+      [227] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [240] putstatic #118
+      [230] putstatic #118
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.z Ljava/lang/String;]
-      [243] goto +8 (target=251)
-      [246] ldc #1
+      [233] goto +8 (target=241)
+      [236] ldc #1
         + String []
-      [248] putstatic #118
+      [238] putstatic #118
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.z Ljava/lang/String;]
-      [251] getstatic #94
+      [241] getstatic #94
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.b Ljava/lang/Boolean;]
-      [254] invokevirtual #143
+      [244] invokevirtual #143
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [257] ifeq +44 (target=301)
-      [260] ldc #1
+      [247] ifeq +44 (target=291)
+      [250] ldc #1
         + String []
-      [262] getstatic #92
+      [252] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [265] invokevirtual #132
+      [255] invokevirtual #132
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.c ()Ljava/lang/String;]
-      [268] invokevirtual #151
+      [258] invokevirtual #150
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [271] ifne +30 (target=301)
-      [274] new #81
+      [261] ifne +30 (target=291)
+      [264] new #81
         + Class [java/lang/StringBuilder]
-      [277] dup
-      [278] ldc #3
+      [267] dup
+      [268] ldc #3
         + String [ ]
-      [280] invokespecial #154
+      [270] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [283] getstatic #92
+      [273] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [286] invokevirtual #132
+      [276] invokevirtual #132
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.c ()Ljava/lang/String;]
-      [289] invokevirtual #156
+      [279] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [292] invokevirtual #157
+      [282] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [295] putstatic #117
+      [285] putstatic #117
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.y Ljava/lang/String;]
-      [298] goto +8 (target=306)
-      [301] ldc #1
+      [288] goto +8 (target=296)
+      [291] ldc #1
         + String []
-      [303] putstatic #117
+      [293] putstatic #117
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.y Ljava/lang/String;]
-      [306] getstatic #96
+      [296] getstatic #96
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.d Ljava/lang/Boolean;]
-      [309] invokevirtual #143
+      [299] invokevirtual #143
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [312] ifeq +44 (target=356)
-      [315] ldc #1
+      [302] ifeq +44 (target=346)
+      [305] ldc #1
         + String []
-      [317] getstatic #92
+      [307] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [320] invokevirtual #139
+      [310] invokevirtual #139
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.j ()Ljava/lang/String;]
-      [323] invokevirtual #151
+      [313] invokevirtual #150
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [326] ifne +30 (target=356)
-      [329] new #81
+      [316] ifne +30 (target=346)
+      [319] new #81
         + Class [java/lang/StringBuilder]
-      [332] dup
-      [333] ldc #63
+      [322] dup
+      [323] ldc #63
         + String [，]
-      [335] invokespecial #154
+      [325] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [338] getstatic #92
+      [328] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [341] invokevirtual #139
+      [331] invokevirtual #139
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.j ()Ljava/lang/String;]
-      [344] invokevirtual #156
+      [334] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [347] invokevirtual #157
+      [337] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [350] putstatic #88
+      [340] putstatic #88
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.A Ljava/lang/String;]
-      [353] goto +8 (target=361)
-      [356] ldc #1
+      [343] goto +8 (target=351)
+      [346] ldc #1
         + String []
-      [358] putstatic #88
+      [348] putstatic #88
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.A Ljava/lang/String;]
-      [361] getstatic #98
+      [351] getstatic #98
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.f Ljava/lang/Boolean;]
-      [364] invokevirtual #143
+      [354] invokevirtual #143
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [367] ifeq +44 (target=411)
-      [370] ldc #1
+      [357] ifeq +44 (target=401)
+      [360] ldc #1
         + String []
-      [372] getstatic #92
+      [362] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [375] invokevirtual #140
+      [365] invokevirtual #140
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.k ()Ljava/lang/String;]
-      [378] invokevirtual #151
+      [368] invokevirtual #150
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
-      [381] ifne +30 (target=411)
-      [384] new #81
+      [371] ifne +30 (target=401)
+      [374] new #81
         + Class [java/lang/StringBuilder]
-      [387] dup
-      [388] ldc #63
+      [377] dup
+      [378] ldc #63
         + String [，]
-      [390] invokespecial #154
+      [380] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [393] getstatic #92
+      [383] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [396] invokevirtual #140
+      [386] invokevirtual #140
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.k ()Ljava/lang/String;]
-      [399] invokevirtual #156
+      [389] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [402] invokevirtual #157
+      [392] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [405] putstatic #90
+      [395] putstatic #90
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.C Ljava/lang/String;]
-      [408] goto +8 (target=416)
-      [411] ldc #1
+      [398] goto +8 (target=406)
+      [401] ldc #1
         + String []
-      [413] putstatic #90
+      [403] putstatic #90
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.C Ljava/lang/String;]
-      [416] getstatic #104
+      [406] getstatic #104
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.l I]
-      [419] tableswitch (4 offsets, default=133) (target=552)
-        1: offset = 29, target = 448
-        2: offset = 59, target = 478
-        3: offset = 89, target = 508
-        4: offset = 97, target = 516
-        default: offset = 133, target = 552
-      [448] new #81
+      [409] tableswitch (4 offsets, default=135) (target=544)
+        1: offset = 31, target = 440
+        2: offset = 61, target = 470
+        3: offset = 91, target = 500
+        4: offset = 99, target = 508
+        default: offset = 135, target = 544
+      [440] new #81
         + Class [java/lang/StringBuilder]
-      [451] dup
-      [452] getstatic #92
+      [443] dup
+      [444] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [455] invokevirtual #131
+      [447] invokevirtual #131
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.b ()Ljava/lang/String;]
-      [458] invokestatic #153
+      [450] invokestatic #152
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [461] invokespecial #154
+      [453] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [464] ldc #61
+      [456] ldc #61
         + String [年]
-      [466] invokevirtual #156
+      [458] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [469] invokevirtual #157
+      [461] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [472] putstatic #113
+      [464] putstatic #113
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.u Ljava/lang/String;]
-      [475] goto +77 (target=552)
-      [478] new #81
+      [467] goto +77 (target=544)
+      [470] new #81
         + Class [java/lang/StringBuilder]
-      [481] dup
-      [482] getstatic #92
+      [473] dup
+      [474] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [485] invokevirtual #135
+      [477] invokevirtual #135
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.f ()Ljava/lang/String;]
-      [488] invokestatic #153
+      [480] invokestatic #152
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [491] invokespecial #154
+      [483] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [494] ldc #61
+      [486] ldc #61
         + String [年]
-      [496] invokevirtual #156
+      [488] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [499] invokevirtual #157
+      [491] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [494] putstatic #113
+        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.u Ljava/lang/String;]
+      [497] goto +47 (target=544)
+      [500] ldc #1
+        + String []
       [502] putstatic #113
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.u Ljava/lang/String;]
-      [505] goto +47 (target=552)
-      [508] ldc #1
-        + String []
-      [510] putstatic #113
-        + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.u Ljava/lang/String;]
-      [513] goto +39 (target=552)
-      [516] new #81
+      [505] goto +39 (target=544)
+      [508] new #81
         + Class [java/lang/StringBuilder]
-      [519] dup
-      [520] getstatic #92
+      [511] dup
+      [512] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [523] invokevirtual #135
+      [515] invokevirtual #135
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.f ()Ljava/lang/String;]
-      [526] invokestatic #153
+      [518] invokestatic #152
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [529] invokespecial #154
+      [521] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [532] getstatic #92
+      [524] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [535] invokevirtual #131
+      [527] invokevirtual #131
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.b ()Ljava/lang/String;]
-      [538] invokevirtual #156
+      [530] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [541] ldc #61
+      [533] ldc #61
         + String [年]
-      [543] invokevirtual #156
+      [535] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [546] invokevirtual #157
+      [538] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [549] putstatic #113
+      [541] putstatic #113
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.u Ljava/lang/String;]
-      [552] getstatic #103
+      [544] getstatic #103
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.k I]
-      [555] iconst_3
-      [556] ificmpeq +78 (target=634)
-      [559] new #81
+      [547] iconst_3
+      [548] ificmpeq +78 (target=626)
+      [551] new #81
         + Class [java/lang/StringBuilder]
-      [562] dup
-      [563] getstatic #113
+      [554] dup
+      [555] getstatic #113
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.u Ljava/lang/String;]
-      [566] invokestatic #153
+      [558] invokestatic #152
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [569] invokespecial #154
+      [561] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [572] getstatic #92
+      [564] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [575] invokevirtual #134
+      [567] invokevirtual #134
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.e ()Ljava/lang/String;]
-      [578] invokevirtual #156
+      [570] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [581] ldc #62
+      [573] ldc #62
         + String [月]
-      [583] invokevirtual #156
+      [575] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [586] getstatic #92
+      [578] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [589] invokevirtual #133
+      [581] invokevirtual #133
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.d ()Ljava/lang/String;]
-      [592] invokevirtual #156
+      [584] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [595] getstatic #117
+      [587] getstatic #117
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.y Ljava/lang/String;]
-      [598] invokevirtual #156
+      [590] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [601] getstatic #118
+      [593] getstatic #118
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.z Ljava/lang/String;]
-      [604] invokevirtual #156
+      [596] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [607] getstatic #88
+      [599] getstatic #88
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.A Ljava/lang/String;]
-      [610] invokevirtual #156
+      [602] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [613] getstatic #89
+      [605] getstatic #89
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.B Ljava/lang/String;]
-      [616] invokevirtual #156
+      [608] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [619] getstatic #90
+      [611] getstatic #90
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.C Ljava/lang/String;]
-      [622] invokevirtual #156
+      [614] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [625] invokevirtual #157
+      [617] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [628] putstatic #108
+      [620] putstatic #108
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.p Ljava/lang/String;]
-      [631] goto +46 (target=677)
-      [634] new #81
+      [623] goto +46 (target=669)
+      [626] new #81
         + Class [java/lang/StringBuilder]
-      [637] dup
-      [638] ldc #7
+      [629] dup
+      [630] ldc #7
         + String [[]
-      [640] invokespecial #154
+      [632] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [643] getstatic #92
+      [635] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [646] invokevirtual #136
+      [638] invokevirtual #136
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.g ()I]
-      [649] invokevirtual #155
+      [641] invokevirtual #154
         + Methodref [java/lang/StringBuilder.append (I)Ljava/lang/StringBuilder;]
-      [652] ldc #4
+      [644] ldc #4
         + String [/]
-      [654] invokevirtual #156
+      [646] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [657] getstatic #92
+      [649] getstatic #92
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.E Lde/xiaoxia/xstatusbarlunardate/d;]
-      [660] invokevirtual #137
+      [652] invokevirtual #137
         + Methodref [de/xiaoxia/xstatusbarlunardate/d.h ()I]
-      [663] invokevirtual #155
+      [655] invokevirtual #154
         + Methodref [java/lang/StringBuilder.append (I)Ljava/lang/StringBuilder;]
-      [666] ldc #9
+      [658] ldc #9
         + String []]
-      [668] invokevirtual #156
+      [660] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [671] invokevirtual #157
+      [663] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [674] putstatic #108
+      [666] putstatic #108
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.p Ljava/lang/String;]
-      [677] aload_1 v1
-      [678] putstatic #110
+      [669] aload_1 v1
+      [670] putstatic #110
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.r Ljava/lang/String;]
-      [681] new #81
+      [673] new #81
         + Class [java/lang/StringBuilder]
-      [684] dup
-      [685] aload_1 v1
-      [686] invokestatic #153
+      [676] dup
+      [677] aload_1 v1
+      [678] invokestatic #152
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [689] invokespecial #154
+      [681] invokespecial #153
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [692] getstatic #109
+      [684] getstatic #109
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.q Ljava/lang/String;]
-      [695] invokevirtual #156
+      [687] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [698] getstatic #108
+      [690] getstatic #108
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.p Ljava/lang/String;]
-      [701] invokevirtual #156
+      [693] invokevirtual #155
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [704] invokevirtual #157
+      [696] invokevirtual #156
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [707] putstatic #112
+      [699] putstatic #112
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.t Ljava/lang/String;]
-      [710] getstatic #93
+      [702] getstatic #93
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.a Ljava/lang/Boolean;]
-      [713] invokevirtual #143
+      [705] invokevirtual #143
         + Methodref [java/lang/Boolean.booleanValue ()Z]
-      [716] ifeq +20 (target=736)
-      [719] getstatic #115
+      [708] ifeq +20 (target=728)
+      [711] getstatic #115
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.w Ljava/util/regex/Pattern;]
-      [722] getstatic #112
+      [714] getstatic #112
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.t Ljava/lang/String;]
-      [725] invokevirtual #161
+      [717] invokevirtual #160
         + Methodref [java/util/regex/Pattern.matcher (Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;]
-      [728] ldc #3
+      [720] ldc #3
         + String [ ]
-      [730] invokevirtual #159
+      [722] invokevirtual #158
         + Methodref [java/util/regex/Matcher.replaceFirst (Ljava/lang/String;)Ljava/lang/String;]
-      [733] putstatic #112
+      [725] putstatic #112
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.t Ljava/lang/String;]
-      [736] getstatic #112
+      [728] getstatic #112
         + Fieldref [de/xiaoxia/xstatusbarlunardate/Main.t Ljava/lang/String;]
-      [739] areturn
+      [731] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
