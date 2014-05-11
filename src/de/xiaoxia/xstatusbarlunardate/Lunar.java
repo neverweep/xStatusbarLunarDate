@@ -108,25 +108,42 @@ public class Lunar {
                     }
                 }
             }
+            
+            int w, d;
+            for (int i=0; i<Lunar.wFtv.length; i++) {
+                m = Lunar.wFreg.matcher(Lunar.wFtv[i]);
+                if (m.find()) {
+                    if (this.getSolarMonth() == Lunar.toInt(m.group(1))) {
+                        w = Lunar.toInt(m.group(2));
+                        d = Lunar.toInt(m.group(3));
+                        if (this.solar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == w &&
+                                this.solar.get(Calendar.DAY_OF_WEEK) == d) {
+                            this.sFestivalName += " " + m.group(4);
+                        }
+                    }
+                }
+            }
+            
             //计算复活节
             if(Main._lang == 4 || Main._lang == 5){
                 int a = sY % 19;
                 int b = (int) Math.floor(sY / 100);
                 int c = sY % 100;
-                int d = (int) Math.floor(b / 4);
+                int d1 = (int) Math.floor(b / 4);
                 int e = b % 4;
                 int f = (int) Math.floor((b + 8) / 25);
                 int g = (int) Math.floor((b - f + 1) / 3);
-                int h = (19 * a + b - d - g + 15) % 30;
+                int h = (19 * a + b - d1 - g + 15) % 30;
                 int i = (int) Math.floor(c / 4);
                 int k = c % 4;
                 int l = (32 + 2 * e + 2 * i - h - k) % 7;
                 int z = (int) Math.floor((a + 11 * h + 22 * l) / 451);
                 if(sM == (int) Math.floor((h + l - 7 * z + 114) / 31) && sD == ((h + l - 7 * z + 114) % 31) + 1){
                     this.sFestivalName += " " + "復活節" ;
-                    this.sFestivalName = this.sFestivalName.replaceFirst("^\\s", "");
                 }
             }
+            
+            this.sFestivalName = this.sFestivalName.replaceFirst("^\\s", "");
         }
 
         //农历
@@ -170,25 +187,6 @@ public class Lunar {
                     }
                 }
             }
-        }
-
-        // 月周节日
-        if(Main._solar){
-            int w, d;
-            for (int i=0; i<Lunar.wFtv.length; i++) {
-                m = Lunar.wFreg.matcher(Lunar.wFtv[i]);
-                if (m.find()) {
-                    if (this.getSolarMonth() == Lunar.toInt(m.group(1))) {
-                        w = Lunar.toInt(m.group(2));
-                        d = Lunar.toInt(m.group(3));
-                        if (this.solar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == w &&
-                                this.solar.get(Calendar.DAY_OF_WEEK) == d) {
-                            this.sFestivalName += " " + m.group(4);
-                        }
-                    }
-                }
-            }
-            this.sFestivalName = this.sFestivalName.replaceFirst("^\\s", "");
         }
     }
 
@@ -844,5 +842,67 @@ public class Lunar {
         if (lunarDay < 11) c1 = Lunar.lunarString2[0];
         if (i2 == 0) c2 = Lunar.lunarString2[1];
         return c1 + c2;
+    }
+    
+    /**
+     * 返回组合文本
+     * @return 组合文本
+     */
+    public String getComboText(){
+    	String sfest, fest, term, custom, sfest_custom, year = "", lunarText;
+        //判断是否是公历节日
+        if (Main._solar && (!"".equals(this.getSFestivalName()))){
+            sfest = " " + this.getSFestivalName();
+        }else{
+            sfest = "";
+        }
+
+        //判断是否是农历节日
+        if (Main._fest && (!"".equals(this.getLFestivalName()))){
+            fest = " " + this.getLFestivalName();
+        }else{
+            fest = "";
+        }
+
+        //判断是否是二十四节气
+        if (Main._term && (!"".equals(this.getTermString()))){
+            term = " " + this.getTermString();
+        }else{
+            term = "";
+        }
+
+        //判断是否是自定义农历节日
+        if (Main._custom && (!"".equals(this.getCLFestivalName()))){
+            custom = "，" + this.getCLFestivalName();
+        }else{
+            custom = "";
+        }
+
+        //判断是否是自定义公历节日
+        if (Main._solar_custom && (!"".equals(this.getCSFestivalName()))){
+            sfest_custom = "，" + this.getCSFestivalName();
+        }else{
+            sfest_custom = "";
+        }
+
+        //根据设置设置年份
+        switch(Main._year){
+            case 1:  year = this.getAnimalString() + "年";
+                break;
+            case 2:  year = this.getLunarYearString() + "年";
+                break;
+            case 3:  year = "";
+                break;
+            case 4:  year = this.getLunarYearString() + this.getAnimalString() + "年";
+                break;               
+        }
+
+        //组合农历文本
+        if(Main._lang != 3){
+            lunarText = year + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
+        }else{
+            lunarText = "[" + this.getLunarDay() + "/" + this.getLunarMonth() + "]";
+        }
+        return lunarText;
     }
 }

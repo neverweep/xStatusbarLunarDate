@@ -21,6 +21,6 @@
 # This is a configuration file for ProGuard.
 # http://proguard.sourceforge.net/index.html#manual/usage.html
 
--libraryjars lib/XposedBridgeApi-42.jar
--keep class de.xiaoxia.xstatusbarlunardate.Main
--keep class de.xiaoxia.xstatusbarlunardate.Lockscreen
+#-libraryjars lib/XposedBridgeApi-42.jar
+#-keep class de.xiaoxia.xstatusbarlunardate.Main
+#-keep class de.xiaoxia.xstatusbarlunardate.Lockscreen

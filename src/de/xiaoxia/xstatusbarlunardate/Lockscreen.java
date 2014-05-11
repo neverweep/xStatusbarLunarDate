@@ -17,18 +17,12 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 public class Lockscreen implements IXposedHookLoadPackage{
 
     /* 初始变量 */
-    private String lunarText; //记录最后更新时的文字字符串
-    private String year; //记录年份
-    private String lDate = "LastDate";
+    private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
+    private String lDate = "LAST";
     private String nDate;
     private Lunar lunar = new Lunar(Main._lang);
     private TextClock textclock;
     private TextView textview;
-    private String term;
-    private String fest;
-    private String custom;
-    private String sfest;
-    private String sfest_custom;
 
 
     //获取农历字符串子程序
@@ -36,59 +30,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
         //判断日期是否发生变更，没有变更则直接返回缓存
         if(!nDate.equals(lDate)){
             lunar.init(System.currentTimeMillis());
-
-            if (Main._solar && (!"".equals(lunar.getSFestivalName()))){
-                sfest = " " + lunar.getSFestivalName();
-            }else{
-                sfest = "";
-            }
-
-            //判断是否是农历节日
-            if (Main._fest && (!"".equals(lunar.getLFestivalName()))){
-                fest = " " + lunar.getLFestivalName();
-            }else{
-                fest = "";
-            }
-
-            //判断是否是二十四节气
-            if (Main._term && (!"".equals(lunar.getTermString()))){
-                term = " " + lunar.getTermString();
-            }else{
-                term = "";
-            }
-
-            //判断是否是自定义农历节日
-            if (Main._custom && (!"".equals(lunar.getCLFestivalName()))){
-                custom = "，" + lunar.getCLFestivalName();
-            }else{
-                custom = "";
-            }
-
-            if (Main._solar_custom && (!"".equals(lunar.getCSFestivalName()))){
-                sfest_custom = "，" + lunar.getCSFestivalName();
-            }else{
-                sfest_custom = "";
-            }
-
-            //根据设置设置年份
-            switch(Main._year){
-                case 1:  year = lunar.getAnimalString() + "年";
-                    break;
-                case 2:  year = lunar.getLunarYearString() + "年";
-                    break;
-                case 3:  year = "";
-                    break;
-                case 4:  year = lunar.getLunarYearString() + lunar.getAnimalString() + "年";
-                    break;          
-            }
-
-            //组合农历文本
-            if(Main._lang != 3){
-                lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
-            }else{
-                lunarText = "[" + lunar.getLunarDay() + "/" + lunar.getLunarMonth() + "]";
-            }
-            lunarText = lunarText.trim();
+            lunarText = lunar.getComboText().trim();
             lDate = nDate;
             //XposedBridge.log("Calculating lunar date: @" + System.currentTimeMillis());
         }

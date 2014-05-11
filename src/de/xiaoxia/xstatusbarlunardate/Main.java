@@ -20,18 +20,12 @@ public class Main implements IXposedHookLoadPackage{
     /* 初始变量 */
     private static String lunarText = "LUNAR"; //记录最后更新时的文字字符串
     private static String breaklineText = "\n"; //是否换行的文本
-    private static String lDate = ""; //上次记录的日期
+    private static String lDate = "LAST"; //上次记录的日期
     private static String nDate;
     private static String finalText; //最终输出文本
-    private static String year; //记录年份
     private static Boolean _layout_run = false; //判断是否设置过singleLine属性
     private final static Pattern reg = Pattern.compile("\\n");
     private static TextView textview;
-    private static String term;
-    private static String fest;
-    private static String custom;
-    private static String sfest;
-    private static String sfest_custom;
 
     /* 读取设置 */
     //使用xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
@@ -97,7 +91,7 @@ public class Main implements IXposedHookLoadPackage{
          *  2.1 如果当前日期已经改变，则必须重新计算农历
          *  2.2 如果当前日期未改变，则只需要重新用已经缓存的文本写入TextView */
             //判断日期是否改变，不改变则不更新内容，改变则重新计算农历
-        if (!nDate.equals(lDate)) {
+        if (!nDate.contains(lunarText) && !nDate.equals(lDate)) {
             //获取时间
             lunar.init(System.currentTimeMillis());
 
@@ -123,62 +117,10 @@ public class Main implements IXposedHookLoadPackage{
                 _layout_run = true;
             }
 
-            //判断是否是公里节日
-            if (_solar && (!"".equals(lunar.getSFestivalName()))){
-                sfest = " " + lunar.getSFestivalName();
-            }else{
-                sfest = "";
-            }
-
-            //判断是否是农历节日
-            if (_fest && (!"".equals(lunar.getLFestivalName()))){
-                fest = " " + lunar.getLFestivalName();
-            }else{
-                fest = "";
-            }
-
-            //判断是否是二十四节气
-            if (_term && (!"".equals(lunar.getTermString()))){
-                term = " " + lunar.getTermString();
-            }else{
-                term = "";
-            }
-
-            //判断是否是自定义农历节日
-            if (_custom && (!"".equals(lunar.getCLFestivalName()))){
-                custom = "，" + lunar.getCLFestivalName();
-            }else{
-                custom = "";
-            }
-
-            //判断是否是自定义公历节日
-            if (_solar_custom && (!"".equals(lunar.getCSFestivalName()))){
-                sfest_custom = "，" + lunar.getCSFestivalName();
-            }else{
-                sfest_custom = "";
-            }
-
-            //根据设置设置年份
-            switch(_year){
-                case 1:  year = lunar.getAnimalString() + "年";
-                    break;
-                case 2:  year = lunar.getLunarYearString() + "年";
-                    break;
-                case 3:  year = "";
-                    break;
-                case 4:  year = lunar.getLunarYearString() + lunar.getAnimalString() + "年";
-                    break;               
-            }
-
-            //组合农历文本
-            if(_lang != 3){
-                lunarText =  year + lunar.getLunarMonthString() + "月" + lunar.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
-            }else{
-                lunarText = "[" + lunar.getLunarDay() + "/" + lunar.getLunarMonth() + "]";
-            }
-
             //更新记录的日期
             lDate = nDate;
+            
+            lunarText = lunar.getComboText();
             //输出到最终字符串
             finalText = nDate + breaklineText + lunarText;
             //如果需要去换行
