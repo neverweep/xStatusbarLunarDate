@@ -36,18 +36,17 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
 
         lp = (ListPreference)findPreference("lockscreen_layout");
         lp.setSummary(lp.getEntry());
-        
-    	_lp = (ListPreference)findPreference("lockscreen_alignment");
-        if(lp.getValue().toString().equals("1")){
-        	_lp.setEnabled(false);
-        }else{
-        	_lp.setEnabled(true);
-        }
 
+    	_lp = (ListPreference)findPreference("lockscreen_alignment");
         if(Build.VERSION.SDK_INT < 17){
         	_lp.setSummary(getString(R.string.lockscreen_alignment_disable));
         	_lp.setEnabled(false);
         }else{
+            if(lp.getValue().toString().equals("1")){
+            	_lp.setEnabled(false);
+            }else{
+            	_lp.setEnabled(true);
+            }
         	_lp.setSummary(_lp.getEntry());
         }
 
@@ -81,20 +80,25 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             lp.setSummary(lp.getEntry());
             return;
         }
+        if(key.equals("lockscreen_alignment")){
+            lp = (ListPreference)findPreference("lockscreen_alignment");
+            lp.setSummary(lp.getEntry());
+            return;
+        }
         if(key.equals("lockscreen_layout")){
             lp = (ListPreference)findPreference("lockscreen_layout");
             lp.setSummary(lp.getEntry());
         	_lp = (ListPreference)findPreference("lockscreen_alignment");
-            if(lp.getValue().toString().equals("1")){
+            if(Build.VERSION.SDK_INT < 17){
+            	_lp.setSummary(getString(R.string.lockscreen_alignment_disable));
             	_lp.setEnabled(false);
             }else{
-            	_lp.setEnabled(true);
+	            if(lp.getValue().toString().equals("1")){
+	            	_lp.setEnabled(false);
+	            }else{
+	            	_lp.setEnabled(true);
+	            }
             }
-            return;
-        }
-        if(key.equals("lockscreen_alignment")){
-            lp = (ListPreference)findPreference("lockscreen_alignment");
-            lp.setSummary(lp.getEntry());
             return;
         }
     }

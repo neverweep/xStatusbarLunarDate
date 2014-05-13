@@ -4,7 +4,7 @@
     <string name="settings">设置</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-    <string name="display_category">显示</string>
+    <string name="display_category">状态栏日期</string>
     <string name="breakline">换行显示</string>
     <string name="breakline_summary_on">另起一行显示农历日期</string>
     <string name="breakline_summay_off">在同一行显示农历日期</string>
@@ -31,7 +31,7 @@
     <string name="lang">显示语言和内置节日</string>
     <string name="lang_option_1">简体中文（中国大陆）</string>
     <string name="lang_option_6">繁體中文（中國大陸）</string>
-    <string name="lang_option_2">繁體中文（臺灣）</string>
+    <string name="lang_option_2">繁體中文（台灣）</string>
     <string name="lang_option_4">繁體中文（香港）</string>
     <string name="lang_option_5">繁體中文（澳門）</string>
     <string name="lang_option_3">English (Only digits)</string>
@@ -42,7 +42,6 @@
     <string name="year_option_3">隐藏年份</string>
     <string name="year_option_4">显示为属相和天干地支纪年</string>
     <string name="year_dialogue_title">选择符合喜好的年份选项</string>
-    <string name="layout_category">布局</string>
     <string name="layout_enable">布局调整</string>
     <string name="layout_enable_summary_on">为某些 ROM 的日期文字更改输出布局</string>
     <string name="layout_enable_summary_off">仅在 ROM 无法正确输出日期文字时打开</string>
@@ -85,6 +84,7 @@
     <string name="solar">公历节日</string>
     <string name="solar_summary_on">在农历日期后显示公历节日</string>
     <string name="solar_summary_off">不显示公历节日</string>
+    <string name="lockscreen_category">锁屏日期</string>
     <string name="lockscreen_layout">锁屏日期布局</string>
     <string name="lockscreen_layout_option_1">不修改</string>
     <string name="lockscreen_layout_option_2">前面加换行</string>
