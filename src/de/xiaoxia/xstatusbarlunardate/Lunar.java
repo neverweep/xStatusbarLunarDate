@@ -165,8 +165,8 @@ public class Lunar {
 
         //自定义农历
         if(Main._custom){
-            for (int i=0; i<Main._clf.length; i++) {
-                m = Lunar.sFreg.matcher(Main._clf[i]);
+            for (int i=0; i<Main.clf.length; i++) {
+                m = Lunar.sFreg.matcher(Main.clf[i]);
                 if (m.find()) {
                     if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
                         this.clFestivalName = m.group(3);
@@ -178,8 +178,8 @@ public class Lunar {
 
         //自定义公历
         if(Main._solar_custom){
-            for (int i=0; i<Main._csf.length; i++) {
-                m = Lunar.sFreg.matcher(Main._csf[i]);
+            for (int i=0; i<Main.csf.length; i++) {
+                m = Lunar.sFreg.matcher(Main.csf[i]);
                 if (m.find()) {
                     if (sM == Lunar.toInt(m.group(1)) && sD == Lunar.toInt(m.group(2))) {
                         this.csFestivalName = m.group(3);

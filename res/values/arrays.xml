@@ -50,4 +50,28 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+    <string-array name="lockscreen_layout_options">
+        <item>@string/lockscreen_layout_option_1</item>
+        <item>@string/lockscreen_layout_option_2</item>
+        <item>@string/lockscreen_layout_option_3</item>
+        <item>@string/lockscreen_layout_option_4</item>
+    </string-array>
+    <string-array name="lockscreen_layout_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="lockscreen_alignment_options">
+        <item>@string/lockscreen_alignment_option_1</item>
+        <item>@string/lockscreen_alignment_option_2</item>
+        <item>@string/lockscreen_alignment_option_3</item>
+        <item>@string/lockscreen_alignment_option_4</item>
+    </string-array>
+    <string-array name="lockscreen_alignment_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 </resources> 

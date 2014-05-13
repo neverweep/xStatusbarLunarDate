@@ -85,4 +85,15 @@
     <string name="solar">公历节日</string>
     <string name="solar_summary_on">在农历日期后显示公历节日</string>
     <string name="solar_summary_off">不显示公历节日</string>
+    <string name="lockscreen_layout">锁屏日期布局</string>
+    <string name="lockscreen_layout_option_1">不修改</string>
+    <string name="lockscreen_layout_option_2">前面加换行</string>
+    <string name="lockscreen_layout_option_3">后面加换行</string>
+    <string name="lockscreen_layout_option_4">前后都加换行</string>
+    <string name="lockscreen_alignment">锁屏日期对齐</string>
+    <string name="lockscreen_alignment_disable">仅在  Android 4.2+ 有效</string>
+    <string name="lockscreen_alignment_option_1">不修改</string>
+    <string name="lockscreen_alignment_option_2">左</string>
+    <string name="lockscreen_alignment_option_3">右</string>
+    <string name="lockscreen_alignment_option_4">中</string>
 </resources>

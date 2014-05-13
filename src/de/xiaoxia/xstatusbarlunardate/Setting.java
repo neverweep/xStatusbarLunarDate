@@ -1,5 +1,6 @@
 package de.xiaoxia.xstatusbarlunardate;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
@@ -10,6 +11,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 public class Setting extends PreferenceActivity implements OnSharedPreferenceChangeListener{
 
     ListPreference lp;
+	ListPreference _lp;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -18,6 +20,8 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         addPreferencesFromResource(R.xml.setting);
 
         //找到设置，并将其概括修改为当前设置option_name
+        
+        
         lp = (ListPreference)findPreference("minor");
         lp.setSummary(lp.getEntry());
 
@@ -30,6 +34,23 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         lp = (ListPreference)findPreference("rom");
         lp.setSummary(lp.getEntry());
 
+        lp = (ListPreference)findPreference("lockscreen_layout");
+        lp.setSummary(lp.getEntry());
+        
+    	_lp = (ListPreference)findPreference("lockscreen_alignment");
+        if(lp.getValue().toString().equals("1")){
+        	_lp.setEnabled(false);
+        }else{
+        	_lp.setEnabled(true);
+        }
+
+        if(Build.VERSION.SDK_INT < 17){
+        	_lp.setSummary(getString(R.string.lockscreen_alignment_disable));
+        	_lp.setEnabled(false);
+        }else{
+        	_lp.setSummary(_lp.getEntry());
+        }
+
         //监听sharedPreferences变化
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
@@ -38,6 +59,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     @SuppressWarnings("deprecation")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+    	
         //设置发生变化时，设置summary为option_name
         if(key.equals("minor")){
             lp = (ListPreference)findPreference("minor");
@@ -56,6 +78,22 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         }
         if(key.equals("rom")){
             lp = (ListPreference)findPreference("rom");
+            lp.setSummary(lp.getEntry());
+            return;
+        }
+        if(key.equals("lockscreen_layout")){
+            lp = (ListPreference)findPreference("lockscreen_layout");
+            lp.setSummary(lp.getEntry());
+        	_lp = (ListPreference)findPreference("lockscreen_alignment");
+            if(lp.getValue().toString().equals("1")){
+            	_lp.setEnabled(false);
+            }else{
+            	_lp.setEnabled(true);
+            }
+            return;
+        }
+        if(key.equals("lockscreen_alignment")){
+            lp = (ListPreference)findPreference("lockscreen_alignment");
             lp.setSummary(lp.getEntry());
             return;
         }

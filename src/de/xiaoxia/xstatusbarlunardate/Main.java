@@ -23,7 +23,7 @@ public class Main implements IXposedHookLoadPackage{
     private static String lDate = "LAST"; //上次记录的日期
     private static String nDate;
     private static String finalText; //最终输出文本
-    private static Boolean _layout_run = false; //判断是否设置过singleLine属性
+    private static Boolean layout_run = false; //判断是否设置过singleLine属性
     private final static Pattern reg = Pattern.compile("\\n");
     private static TextView textview;
 
@@ -45,7 +45,9 @@ public class Main implements IXposedHookLoadPackage{
     protected final static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue();
     protected final static int _year = Integer.valueOf(prefs.getString("year", "1")).intValue();
     protected final static int _rom = Integer.valueOf(prefs.getString("rom", "1")).intValue();
-    protected final static String[] _clf = {
+    protected final static int _lockscreen_layout = Integer.valueOf(prefs.getString("lockscreen_layout", "1")).intValue();
+    protected final static int _lockscreen_alignment = Integer.valueOf(prefs.getString("lockscreen_alignment", "1")).intValue();
+    protected final static String[] clf = {
         prefs.getString("custom_lunar_item_0", "").trim(),
         prefs.getString("custom_lunar_item_1", "").trim(),
         prefs.getString("custom_lunar_item_2", "").trim(),
@@ -63,7 +65,7 @@ public class Main implements IXposedHookLoadPackage{
         prefs.getString("custom_lunar_item_14", "").trim(),
         prefs.getString("custom_lunar_item_15", "").trim()
     };
-    protected final static String[] _csf = {
+    protected final static String[] csf = {
         prefs.getString("custom_solar_item_0", "").trim(),
         prefs.getString("custom_solar_item_1", "").trim(),
         prefs.getString("custom_solar_item_2", "").trim(),
@@ -96,7 +98,7 @@ public class Main implements IXposedHookLoadPackage{
             lunar.init(System.currentTimeMillis());
 
             //修正layout的singleLine属性
-            if(!_layout_run){
+            if(!layout_run){
                 //去掉singleLine属性
                 if(prefs.getBoolean("layout_line", false)){
                     textview.setSingleLine(false);
@@ -114,7 +116,7 @@ public class Main implements IXposedHookLoadPackage{
                     layoutParams.width = -1;
                     textview.setLayoutParams(layoutParams);
                 }
-                _layout_run = true;
+                layout_run = true;
             }
 
             //更新记录的日期
@@ -144,7 +146,7 @@ public class Main implements IXposedHookLoadPackage{
 
         //如果打开了调整布局，则允许进入调整布局步骤
         if(!_layout_enable){
-            _layout_run = true;
+            layout_run = true;
         }
 
 

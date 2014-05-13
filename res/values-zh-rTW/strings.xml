@@ -85,4 +85,15 @@
     <string name="solar">西曆節日</string>
     <string name="solar_summary_on">在農曆日期後顯示西曆節日</string>
     <string name="solar_summary_off">不顯示西曆節日</string>
+    <string name="lockscreen_layout">鎖屏日期佈局</string>
+    <string name="lockscreen_layout_option_1">不修改</string>
+    <string name="lockscreen_layout_option_2">前面加換行</string>
+    <string name="lockscreen_layout_option_3">後面加換行</string>
+    <string name="lockscreen_layout_option_4">前後都加換行</string>
+    <string name="lockscreen_alignment">鎖屏日期對齊</string>
+    <string name="lockscreen_alignment_disable">僅在  Android 4.2+ 有效</string>
+    <string name="lockscreen_alignment_option_1">不修改</string>
+    <string name="lockscreen_alignment_option_2">左</string>
+    <string name="lockscreen_alignment_option_3">右</string>
+    <string name="lockscreen_alignment_option_4">中</string>
 </resources>

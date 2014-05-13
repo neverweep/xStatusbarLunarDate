@@ -85,4 +85,16 @@
     <string name="solar">Solar festivals</string>
     <string name="solar_summary_on">Show solar festivals after lunar date</string>
     <string name="solar_summary_off">Hide solar fesivals</string>
+    <string name="lockscreen_category">Lockscreen date</string>
+    <string name="lockscreen_layout">Lockscreen date layout</string>
+    <string name="lockscreen_layout_option_1">Do not change</string>
+    <string name="lockscreen_layout_option_2">Add a line feed at start</string>
+    <string name="lockscreen_layout_option_3">Add a line feed at end</string>
+    <string name="lockscreen_layout_option_4">Both</string>
+    <string name="lockscreen_alignment">Lockscreen date alignment</string>
+    <string name="lockscreen_alignment_disable">Only works on Android 4.2+</string>
+    <string name="lockscreen_alignment_option_1">Do not change</string>
+    <string name="lockscreen_alignment_option_2">Left</string>
+    <string name="lockscreen_alignment_option_3">Right</string>
+    <string name="lockscreen_alignment_option_4">Center</string>
 </resources>
