@@ -8,9 +8,9 @@
     <string name="breakline">换行显示</string>
     <string name="breakline_summary_on">另起一行显示农历日期</string>
     <string name="breakline_summay_off">在同一行显示农历日期</string>
-    <string name="description">"在状态栏下拉和锁屏界面（目前添加至锁屏仅支持 AOSP）显示的日期处增加一行农历时间，遇到农历节日或二十四节气时也有显示。
+    <string name="description">"在状态栏下拉和锁屏界面显示的日期处增加一行农历时间，遇到农历节日或二十四节气时也有显示。
 [点击这里进入设置，重启后生效]"</string>
-    <string name="content_category">内容</string>
+    <string name="content_category">显示内容</string>
     <string name="term">二十四节气</string>
     <string name="term_summray_on">在农历日期后显示二十四节气</string>
     <string name="term_summray_off">不显示二十四节气</string>
@@ -22,7 +22,6 @@
     <string name="minor_year_option_1">腊月廿三（大部分北方地区）</string>
     <string name="minor_year_option_2">腊月廿四（大部分南方地区）</string>
     <string name="minor_year_option_3">腊月廿五（个别地区）</string>
-    <string name="about_category">关于</string>
     <string name="about">关于 X 状态栏农历日期</string>
 	<string name="about_msg"><b>欢迎使用这个 Xposed 模块\n希望能给你带来一点方便：）</b>\n\n我的博客: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n说明、报错、建议:\n <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\n捐贈：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
     <string name="remove">删除换行</string>

@@ -5,6 +5,12 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
@@ -101,5 +107,27 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             }
             return;
         }
+    }
+
+    //创建ActionBar右上角按钮
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.about, menu);
+        return true;
+    }
+
+    //按钮点击行为，因为没有二级按钮，不需要判断点击内容
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        LayoutInflater inflater = LayoutInflater.from(this);
+        final View textEntryView = inflater.inflate(R.layout.about, null);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.ic_launcher);
+        builder.setTitle(R.string.about);
+        builder.setView(textEntryView);
+        builder.setPositiveButton(R.string.ok, null);
+        builder.show(); 
+        return true;
     }
 }

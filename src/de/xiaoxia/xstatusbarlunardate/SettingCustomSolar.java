@@ -17,6 +17,9 @@ public class SettingCustomSolar extends PreferenceActivity implements OnSharedPr
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting_custom_solar);
 
+        //设置返回按钮
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         //找到设置，并将其概括修改为当前设置option_name
         for(int i = 0; i < 15; i++){
             lp = (EditTextPreference)findPreference("custom_solar_item_" + i);

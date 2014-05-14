@@ -17,12 +17,16 @@
         <meta-data android:name="xposedminversion" android:value="30"/>
         <activity android:name="Setting">
             <intent-filter>
-            	<action android:name="android.intent.action.MAIN" />
-             	<category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
-             	<category android:name="android.xposed.category.MODULE_SETTINGS" />
-        	</intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
+                <category android:name="android.xposed.category.MODULE_SETTINGS" />
+            </intent-filter>
         </activity>
-        <activity android:name="SettingCustomLunar"></activity>
-        <activity android:name="SettingCustomSolar"></activity>
+        <activity android:name="SettingCustomLunar" android:parentActivityName="Setting">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="Setting" />
+        </activity>
+        <activity android:name="SettingCustomSolar" android:parentActivityName="Setting">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="Setting" />
+        </activity>
     </application>
 </manifest>

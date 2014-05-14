@@ -76,6 +76,11 @@ public class Lunar {
         catch(Exception e) { return -1; }
     }
     private synchronized void findFestival() {
+    	//是纯数字显示就直接返回，不计算节日
+        if(Main._lang == 3)
+        	return;
+        
+
         int sM = this.getSolarMonth();
         int sD = this.getSolarDay();
         int sY = this.getSolarYear();
@@ -804,55 +809,53 @@ public class Lunar {
      */
     public String getComboText(){
         String sfest, fest, term, custom, sfest_custom, year = "", lunarText;
-        //判断是否是公历节日
-        if (Main._solar && (!"".equals(this.getSFestivalName()))){
-            sfest = " " + this.getSFestivalName();
-        }else{
-            sfest = "";
-        }
-
-        //判断是否是农历节日
-        if (Main._fest && (!"".equals(this.getLFestivalName()))){
-            fest = " " + this.getLFestivalName();
-        }else{
-            fest = "";
-        }
-
-        //判断是否是二十四节气
-        if (Main._term && (!"".equals(this.getTermString()))){
-            term = " " + this.getTermString();
-        }else{
-            term = "";
-        }
-
-        //判断是否是自定义农历节日
-        if (Main._custom && (!"".equals(this.getCLFestivalName()))){
-            custom = "，" + this.getCLFestivalName();
-        }else{
-            custom = "";
-        }
-
-        //判断是否是自定义公历节日
-        if (Main._solar_custom && (!"".equals(this.getCSFestivalName()))){
-            sfest_custom = "，" + this.getCSFestivalName();
-        }else{
-            sfest_custom = "";
-        }
-
-        //根据设置设置年份
-        switch(Main._year){
-            case 1:  year = this.getAnimalString() + "年";
-                break;
-            case 2:  year = this.getLunarYearString() + "年";
-                break;
-            case 3:  year = "";
-                break;
-            case 4:  year = this.getLunarYearString() + this.getAnimalString() + "年";
-                break;               
-        }
-
-        //组合农历文本
         if(Main._lang != 3){
+	        //判断是否是公历节日
+	        if (Main._solar && (!"".equals(this.getSFestivalName()))){
+	            sfest = " " + this.getSFestivalName();
+	        }else{
+	            sfest = "";
+	        }
+	
+	        //判断是否是农历节日
+	        if (Main._fest && (!"".equals(this.getLFestivalName()))){
+	            fest = " " + this.getLFestivalName();
+	        }else{
+	            fest = "";
+	        }
+	
+	        //判断是否是二十四节气
+	        if (Main._term && (!"".equals(this.getTermString()))){
+	            term = " " + this.getTermString();
+	        }else{
+	            term = "";
+	        }
+	
+	        //判断是否是自定义农历节日
+	        if (Main._custom && (!"".equals(this.getCLFestivalName()))){
+	            custom = "，" + this.getCLFestivalName();
+	        }else{
+	            custom = "";
+	        }
+	
+	        //判断是否是自定义公历节日
+	        if (Main._solar_custom && (!"".equals(this.getCSFestivalName()))){
+	            sfest_custom = "，" + this.getCSFestivalName();
+	        }else{
+	            sfest_custom = "";
+	        }
+	
+	        //根据设置设置年份
+	        switch(Main._year){
+	            case 1:  year = this.getAnimalString() + "年";
+	                break;
+	            case 2:  year = this.getLunarYearString() + "年";
+	                break;
+	            case 3:  year = "";
+	                break;
+	            case 4:  year = this.getLunarYearString() + this.getAnimalString() + "年";
+	                break;               
+	        }
             lunarText = year + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
         }else{
             lunarText = "[" + this.getLunarDay() + "/" + this.getLunarMonth() + "]";
