@@ -25,21 +25,22 @@ public class Lockscreen implements IXposedHookLoadPackage{
     private TextView textview;
 
 
-    //获取农历字符串子程序
+    /*获取农历字符串子程序*/
     private String returnDate(String nDate){
         //判断日期是否发生变更，没有变更则直接返回缓存
         if(!nDate.equals(lDate)){
             lunar.init(System.currentTimeMillis());
-            lunarText = lunar.getComboText().trim();
+            lunarText = lunar.getComboText();
+            //根据锁屏布局选项设置输出文本
             switch(Main._lockscreen_layout){
-            	case 1: lunarText = nDate + " - " + lunarText;
-            		break;
-            	case 2: lunarText = nDate.trim() + "\n" + lunarText;
-            		break;
-            	case 3: lunarText = nDate + " - " + lunarText + "\n";
-            		break;
-            	case 4: lunarText = nDate.trim() + "\n" + lunarText + "\n";
-            		break;
+                case 1: lunarText = nDate + " - " + lunarText;
+                    break;
+                case 2: lunarText = nDate.trim() + "\n" + lunarText;
+                    break;
+                case 3: lunarText = nDate + " - " + lunarText + "\n";
+                    break;
+                case 4: lunarText = nDate.trim() + "\n" + lunarText + "\n";
+                    break;
             }
             lDate = nDate;
             //XposedBridge.log("Calculating lunar date: @" + System.currentTimeMillis());
@@ -47,7 +48,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
         return lunarText;
     }
 
-    //替换日期函数
+    /*替换日期函数*/
     public void handleLoadPackage(final LoadPackageParam lpparam){  
         if(Main._lockscreen){
             switch(Main._rom){
@@ -67,7 +68,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                         textview = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
                                         nDate = (String) textview.getText().toString();
                                         if(Main._lockscreen_layout > 1){
-                                        	textview.setSingleLine(false);
+                                            textview.setSingleLine(false);
                                         }
                                         textview.setText(returnDate(nDate));
                                         //XposedBridge.log("Hooking lunar date: @" + System.currentTimeMillis());
@@ -77,16 +78,16 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                 //XposedBridge.log("SDK 17-18");
                                 Class<?> hookClass = XposedHelpers.findClass("com.android.internal.policy.impl.keyguard.KeyguardStatusView", null);
                                 XposedHelpers.findAndHookMethod(hookClass, "refreshDate", new XC_MethodHook() {
-                                	
-                                	@SuppressLint("NewApi")
+                                    
+                                    @SuppressLint("NewApi")
                                     @Override
                                     protected void afterHookedMethod(final MethodHookParam param){
                                         textview = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
                                         if(Main._lockscreen_layout > 1){
-                                        	textview.setSingleLine(false);
-                                        	if(Main._lockscreen_alignment > 1){
-                                        		textview.setTextAlignment(Main._lockscreen_alignment);
-                                        	}
+                                            textview.setSingleLine(false);
+                                            if(Main._lockscreen_alignment > 1){
+                                                textview.setTextAlignment(Main._lockscreen_alignment);
+                                            }
                                         }
                                         nDate = (String) textview.getText().toString();
                                         textview.setText(returnDate(nDate));
@@ -106,12 +107,13 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                 @SuppressLint("NewApi")
                                 @Override
                                 protected void afterHookedMethod(final MethodHookParam param){
+                                    //4.4新增了TextClock类
                                     textclock = (TextClock) XposedHelpers.getObjectField(param.thisObject, "mDateView");
                                     if(Main._lockscreen_layout > 1){
-                                    	textclock.setSingleLine(false);
-                                    	if(Main._lockscreen_alignment > 1){
-                                    		textview.setTextAlignment(Main._lockscreen_alignment);
-                                    	}
+                                        textclock.setSingleLine(false);
+                                        if(Main._lockscreen_alignment > 1){
+                                            textview.setTextAlignment(Main._lockscreen_alignment);
+                                        }
                                     }
                                     nDate = (String) textclock.getText().toString();
                                     textclock.setText(returnDate(nDate));

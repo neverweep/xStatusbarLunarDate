@@ -17,7 +17,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 public class Setting extends PreferenceActivity implements OnSharedPreferenceChangeListener{
 
     ListPreference lp;
-	ListPreference _lp;
+    ListPreference _lp;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -43,17 +43,21 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         lp = (ListPreference)findPreference("lockscreen_layout");
         lp.setSummary(lp.getEntry());
 
-    	_lp = (ListPreference)findPreference("lockscreen_alignment");
+        _lp = (ListPreference)findPreference("lockscreen_alignment");
         if(Build.VERSION.SDK_INT < 17){
-        	_lp.setSummary(getString(R.string.lockscreen_alignment_disable));
-        	_lp.setEnabled(false);
+            //Android SDK 版本小于4.2时，显示summary为不可用，并将其设为不可用
+            _lp.setSummary(getString(R.string.lockscreen_alignment_disable));
+            _lp.setEnabled(false);
         }else{
+            //否则...
             if(lp.getValue().toString().equals("1")){
-            	_lp.setEnabled(false);
+                //如果lockscreen_layout值不为“1”，即不为不调整布局，则对齐选项设为不可用
+                _lp.setEnabled(false);
             }else{
-            	_lp.setEnabled(true);
+                //否则设为可用
+                _lp.setEnabled(true);
             }
-        	_lp.setSummary(_lp.getEntry());
+            _lp.setSummary(_lp.getEntry());
         }
 
         //监听sharedPreferences变化
@@ -64,7 +68,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     @SuppressWarnings("deprecation")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-    	
+        
         //设置发生变化时，设置summary为option_name
         if(key.equals("minor")){
             lp = (ListPreference)findPreference("minor");
@@ -94,16 +98,16 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         if(key.equals("lockscreen_layout")){
             lp = (ListPreference)findPreference("lockscreen_layout");
             lp.setSummary(lp.getEntry());
-        	_lp = (ListPreference)findPreference("lockscreen_alignment");
+            _lp = (ListPreference)findPreference("lockscreen_alignment");
             if(Build.VERSION.SDK_INT < 17){
-            	_lp.setSummary(getString(R.string.lockscreen_alignment_disable));
-            	_lp.setEnabled(false);
+                _lp.setSummary(getString(R.string.lockscreen_alignment_disable));
+                _lp.setEnabled(false);
             }else{
-	            if(lp.getValue().toString().equals("1")){
-	            	_lp.setEnabled(false);
-	            }else{
-	            	_lp.setEnabled(true);
-	            }
+                if(lp.getValue().toString().equals("1")){
+                    _lp.setEnabled(false);
+                }else{
+                    _lp.setEnabled(true);
+                }
             }
             return;
         }

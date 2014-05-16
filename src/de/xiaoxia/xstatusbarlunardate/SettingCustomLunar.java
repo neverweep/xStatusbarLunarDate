@@ -9,6 +9,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 public class SettingCustomLunar extends PreferenceActivity implements OnSharedPreferenceChangeListener{
 
+	//初始化对象 lp
     EditTextPreference lp;
 
     @SuppressWarnings("deprecation")
@@ -35,14 +36,17 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
 
     @SuppressWarnings("deprecation")
     @Override
+    //监听到sharedPreferences变化后的处理
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         //设置发生变化时，设置summary为option_name
         for(int i = 0; i < 15; i++){
             if(key.equals("custom_lunar_item_" + i)){
                 lp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
                 if(!"".equals(lp.getText()) && lp.getText() != null){
+                	//如果该选项储存值不为空字符串，且不为空，则将其summary设置为储存的内容
                     lp.setSummary(lp.getText());
                 }else{
+                	//否则显示“未设置”
                     lp.setSummary(getString(R.string.custom_lunar_summary));
                 }
                 break;
