@@ -1,4 +1,4 @@
-package de.xiaoxia.xstatusbarlunardate;
+ï»¿package de.xiaoxia.xstatusbarlunardate;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -9,7 +9,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 public class SettingCustomLunar extends PreferenceActivity implements OnSharedPreferenceChangeListener{
 
-	//³õÊ¼»¯¶ÔÏó lp
+	//åˆå§‹åŒ–å¯¹è±¡ lp
     EditTextPreference lp;
 
     @SuppressWarnings("deprecation")
@@ -18,10 +18,10 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting_custom_lunar);
 
-        //ÉèÖÃ·µ»Ø°´Å¥
+        //è®¾ç½®è¿”å›æŒ‰é’®
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //ÕÒµ½ÉèÖÃ£¬²¢½«Æä¸ÅÀ¨ĞŞ¸ÄÎªµ±Ç°ÉèÖÃoption_name
+        //æ‰¾åˆ°è®¾ç½®ï¼Œå¹¶å°†å…¶æ¦‚æ‹¬ä¿®æ”¹ä¸ºå½“å‰è®¾ç½®option_name
         for(int i = 0; i < 15; i++){
             lp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
             if(!"".equals(lp.getText()) && lp.getText() != null)
@@ -29,24 +29,24 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
             lp.setTitle(getString(R.string.custom_lunar) + " " + (i + 1));
         }
 
-        //¼àÌısharedPreferences±ä»¯
+        //ç›‘å¬sharedPreferenceså˜åŒ–
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @SuppressWarnings("deprecation")
     @Override
-    //¼àÌıµ½sharedPreferences±ä»¯ºóµÄ´¦Àí
+    //ç›‘å¬åˆ°sharedPreferenceså˜åŒ–åçš„å¤„ç†
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        //ÉèÖÃ·¢Éú±ä»¯Ê±£¬ÉèÖÃsummaryÎªoption_name
+        //è®¾ç½®å‘ç”Ÿå˜åŒ–æ—¶ï¼Œè®¾ç½®summaryä¸ºoption_name
         for(int i = 0; i < 15; i++){
             if(key.equals("custom_lunar_item_" + i)){
                 lp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
                 if(!"".equals(lp.getText()) && lp.getText() != null){
-                	//Èç¹û¸ÃÑ¡Ïî´¢´æÖµ²»Îª¿Õ×Ö·û´®£¬ÇÒ²»Îª¿Õ£¬Ôò½«ÆäsummaryÉèÖÃÎª´¢´æµÄÄÚÈİ
+                	//å¦‚æœè¯¥é€‰é¡¹å‚¨å­˜å€¼ä¸ä¸ºç©ºå­—ç¬¦ä¸²ï¼Œä¸”ä¸ä¸ºç©ºï¼Œåˆ™å°†å…¶summaryè®¾ç½®ä¸ºå‚¨å­˜çš„å†…å®¹
                     lp.setSummary(lp.getText());
                 }else{
-                	//·ñÔòÏÔÊ¾¡°Î´ÉèÖÃ¡±
+                	//å¦åˆ™æ˜¾ç¤ºâ€œæœªè®¾ç½®â€
                     lp.setSummary(getString(R.string.custom_lunar_summary));
                 }
                 break;

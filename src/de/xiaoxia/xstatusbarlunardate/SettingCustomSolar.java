@@ -1,4 +1,4 @@
-package de.xiaoxia.xstatusbarlunardate;
+﻿package de.xiaoxia.xstatusbarlunardate;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;

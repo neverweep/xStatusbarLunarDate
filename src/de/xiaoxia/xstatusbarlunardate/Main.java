@@ -1,4 +1,4 @@
-package de.xiaoxia.xstatusbarlunardate;
+ï»¿package de.xiaoxia.xstatusbarlunardate;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-//µ¼Èëxposed»ù±¾Àà
+//å¯¼å…¥xposedåŸºæœ¬ç±»
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
@@ -17,52 +17,52 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 /* Main */
 public class Main implements IXposedHookLoadPackage{
 
-    /* ³õÊ¼±äÁ¿ */
-    private static String lunarText = "LUNAR"; //¼ÇÂ¼×îºó¸üĞÂÊ±µÄÎÄ×Ö×Ö·û´®
-    private static String breaklineText = "\n"; //ÊÇ·ñ»»ĞĞµÄÎÄ±¾
-    private static String lDate = "LAST"; //ÉÏ´Î¼ÇÂ¼µÄÈÕÆÚ
+    /* åˆå§‹å˜é‡ */
+    private static String lunarText = "LUNAR"; //è®°å½•æœ€åæ›´æ–°æ—¶çš„æ–‡å­—å­—ç¬¦ä¸²
+    private static String breaklineText = "\n"; //æ˜¯å¦æ¢è¡Œçš„æ–‡æœ¬
+    private static String lDate = "LAST"; //ä¸Šæ¬¡è®°å½•çš„æ—¥æœŸ
     private static String nDate;
-    private static String finalText; //×îÖÕÊä³öÎÄ±¾
-    private static Boolean layout_run = false; //ÅĞ¶ÏÊÇ·ñÉèÖÃ¹ısingleLineÊôĞÔ
-    private final static Pattern reg = Pattern.compile("\\n");
+    private static String finalText; //æœ€ç»ˆè¾“å‡ºæ–‡æœ¬
+    private static Boolean layout_run = false; //åˆ¤æ–­æ˜¯å¦è®¾ç½®è¿‡singleLineå±æ€§
+    private final static Pattern reg = Pattern.compile("\\n"); //å»é™¤æ¢è¡Œçš„æ­£åˆ™è¡¨è¾¾å¼
     private static TextView textview;
 
-    /* ¶ÁÈ¡ÉèÖÃ */
-    //Ê¹ÓÃxposedÌá¹©µÄXSharedPreferences·½·¨À´¶ÁÈ¡androidÄÚÖÃµÄSharedPreferencesÉèÖÃ
+    /* è¯»å–è®¾ç½® */
+    //ä½¿ç”¨Xposedæä¾›çš„XSharedPreferencesæ–¹æ³•æ¥è¯»å–androidå†…ç½®çš„SharedPreferencesè®¾ç½®
     private final static XSharedPreferences prefs = new XSharedPreferences(Main.class.getPackage().getName());
 
-    /* ½«ÉèÖÃ±£´æµ½±äÁ¿ÖĞ */
-    //É¾³ı»»ĞĞ
+    /* å°†è®¾ç½®ä¿å­˜åˆ°å˜é‡ä¸­ï¼Œä»¥å¤‡åç”¨ */
+    //åˆ é™¤æ¢è¡Œ
     protected final static Boolean _remove = prefs.getBoolean("remove", true);
-    //ÏÔÊ¾½ÚÆø
+    //æ˜¾ç¤ºèŠ‚æ°”
     protected final static Boolean _term = prefs.getBoolean("term", true);
-    //ÏÔÊ¾Å©Àú½ÚÈÕ
+    //æ˜¾ç¤ºå†œå†èŠ‚æ—¥
     protected final static Boolean _fest = prefs.getBoolean("fest", true);
-    //ÏÔÊ¾×Ô¶¨ÒåÅ©Àú½ÚÈÕ
+    //æ˜¾ç¤ºè‡ªå®šä¹‰å†œå†èŠ‚æ—¥
     protected final static Boolean _custom = prefs.getBoolean("custom", false);
-    //ÏÔÊ¾¹«Àú½ÚÈÕ
+    //æ˜¾ç¤ºå…¬å†èŠ‚æ—¥
     protected final static Boolean _solar = prefs.getBoolean("solar", true);
-    //ÏÔÊ¾×Ô¶¨Òå¹«Àú½ÚÈÕ
+    //æ˜¾ç¤ºè‡ªå®šä¹‰å…¬å†èŠ‚æ—¥
     protected final static Boolean _solar_custom = prefs.getBoolean("solar_cutom", true);
-    //ÁíÆğÒ»ĞĞ
+    //å¦èµ·ä¸€è¡Œ
     protected final static Boolean _breakline = prefs.getBoolean("breakline", true);
-    //ÔÊĞí²¼¾Öµ÷Õû
+    //å…è®¸å¸ƒå±€è°ƒæ•´
     protected final static Boolean _layout_enable = prefs.getBoolean("layout_enable", false);
-    //¿ªÆôÌí¼Óµ½ËøÆÁ
+    //å¼€å¯æ·»åŠ åˆ°é”å±
     protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
-    //Ğ¡ÄêÑ¡Ïî£¬½«×Ö·û´®ĞÍ×ª»»ÎªÕûÊıĞÍ
+    //å°å¹´é€‰é¡¹ï¼Œå°†å­—ç¬¦ä¸²å‹è½¬æ¢ä¸ºæ•´æ•°å‹
     protected final static int _minor = Integer.valueOf(prefs.getString("minor", "1")).intValue();
-    //ÓïÑÔÑ¡Ïî£¬½«×Ö·û´®ĞÍ×ª»»ÎªÕûÊıĞÍ
+    //è¯­è¨€é€‰é¡¹ï¼Œå°†å­—ç¬¦ä¸²å‹è½¬æ¢ä¸ºæ•´æ•°å‹
     protected final static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue();
-    //Äê·İÏÔÊ¾Ñ¡Ïî£¬½«×Ö·û´®ĞÍ×ª»»ÎªÕûÊıĞÍ
+    //å¹´ä»½æ˜¾ç¤ºé€‰é¡¹ï¼Œå°†å­—ç¬¦ä¸²å‹è½¬æ¢ä¸ºæ•´æ•°å‹
     protected final static int _year = Integer.valueOf(prefs.getString("year", "1")).intValue();
-    //ÏµÍ³ÀàĞÍÑ¡Ïî£¬½«×Ö·û´®ĞÍ×ª»»ÎªÕûÊıĞÍ
+    //ç³»ç»Ÿç±»å‹é€‰é¡¹ï¼Œå°†å­—ç¬¦ä¸²å‹è½¬æ¢ä¸ºæ•´æ•°å‹
     protected final static int _rom = Integer.valueOf(prefs.getString("rom", "1")).intValue();
-    //ËøÆÁ²¼¾Ö£¬½«×Ö·û´®ĞÍ×ª»»ÎªÕûÊıĞÍ
+    //é”å±å¸ƒå±€ï¼Œå°†å­—ç¬¦ä¸²å‹è½¬æ¢ä¸ºæ•´æ•°å‹
     protected final static int _lockscreen_layout = Integer.valueOf(prefs.getString("lockscreen_layout", "1")).intValue();
-    //ËøÆÁ¶ÔÆë£¬½«×Ö·û´®ĞÍ×ª»»ÎªÕûÊıĞÍ
+    //é”å±å¯¹é½ï¼Œå°†å­—ç¬¦ä¸²å‹è½¬æ¢ä¸ºæ•´æ•°å‹
     protected final static int _lockscreen_alignment = Integer.valueOf(prefs.getString("lockscreen_alignment", "1")).intValue();
-    //¶ÁÈ¡×Ô¶¨ÒåÅ©Àú¼ÍÄîÈÕ£¬²¢·ÅÈëµ½Ò»¸öÊı×éÖĞ
+    //è¯»å–è‡ªå®šä¹‰å†œå†çºªå¿µæ—¥ï¼Œå¹¶æ”¾å…¥åˆ°ä¸€ä¸ªæ•°ç»„ä¸­
     protected final static String[] clf = {
         prefs.getString("custom_lunar_item_0", "").trim(),
         prefs.getString("custom_lunar_item_1", "").trim(),
@@ -81,7 +81,7 @@ public class Main implements IXposedHookLoadPackage{
         prefs.getString("custom_lunar_item_14", "").trim(),
         prefs.getString("custom_lunar_item_15", "").trim()
     };
-    //¶ÁÈ¡×Ô¶¨Òå¹«Àú¼ÍÄîÈÕ£¬²¢·ÅÈëµ½Ò»¸öÊı×éÖĞ
+    //è¯»å–è‡ªå®šä¹‰å…¬å†çºªå¿µæ—¥ï¼Œå¹¶æ”¾å…¥åˆ°ä¸€ä¸ªæ•°ç»„ä¸­
     protected final static String[] csf = {
         prefs.getString("custom_solar_item_0", "").trim(),
         prefs.getString("custom_solar_item_1", "").trim(),
@@ -99,89 +99,88 @@ public class Main implements IXposedHookLoadPackage{
         prefs.getString("custom_solar_item_13", "").trim(),
         prefs.getString("custom_solar_item_14", "").trim()
     };
-    //³õÊ¼»¯LunarÀà
+    //åˆå§‹åŒ–Lunarç±»
     private static Lunar lunar = new Lunar(_lang);
 
-    /* »ñÈ¡Å©Àú×Ö·û´®×Ó³ÌĞò */
+    /* è·å–å†œå†å­—ç¬¦ä¸²å­ç¨‹åº */
     private String returnDate(String nDate){
-        /* ÅĞ¶Ïµ±Ç°ÈÕÆÚÀ¸ÊÇ·ñ°üº¬ÉÏ´Î¸üĞÂºóµÄÈÕÆÚÎÄ±¾
-         * 1 Èç¹û°üº¬,ÔòËµÃ÷Ô­ÉúupdateClock()Ã»ÓĞ±»Ö´ĞĞ£¬²»ÓÃÔÙÈ¥²Ù×÷
-         * 2 Èç¹û²»°üº¬£¬ÔòËµÃ÷ĞèÒªÖØĞÂĞ´ÈëTextView
-         *  2.1 Èç¹ûµ±Ç°ÈÕÆÚÒÑ¾­¸Ä±ä£¬Ôò±ØĞëÖØĞÂ¼ÆËãÅ©Àú
-         *  2.2 Èç¹ûµ±Ç°ÈÕÆÚÎ´¸Ä±ä£¬ÔòÖ»ĞèÒªÖØĞÂÓÃÒÑ¾­»º´æµÄÎÄ±¾Ğ´ÈëTextView */
-        //ÅĞ¶ÏÈÕÆÚÊÇ·ñ¸Ä±ä£¬²»¸Ä±äÔò²»¸üĞÂÄÚÈİ£¬¸Ä±äÔòÖØĞÂ¼ÆËãÅ©Àú
+        /* åˆ¤æ–­å½“å‰æ—¥æœŸæ æ˜¯å¦åŒ…å«ä¸Šæ¬¡æ›´æ–°åçš„æ—¥æœŸæ–‡æœ¬
+         * å¦‚æœå½“å‰æ—¥æœŸå·²ç»æ”¹å˜ï¼Œåˆ™å¿…é¡»é‡æ–°è®¡ç®—å†œå†
+         * å¦‚æœå½“å‰æ—¥æœŸæœªæ”¹å˜ï¼Œåˆ™åªéœ€è¦é‡æ–°ç”¨å·²ç»ç¼“å­˜çš„æ–‡æœ¬å†™å…¥TextView */
+        //åˆ¤æ–­æ—¥æœŸæ˜¯å¦æ”¹å˜ï¼Œä¸æ”¹å˜åˆ™ä¸æ›´æ–°å†…å®¹ï¼Œæ”¹å˜åˆ™é‡æ–°è®¡ç®—å†œå†
         if (!nDate.contains(lunarText) && !nDate.equals(lDate)) {
-            //»ñÈ¡Ê±¼ä
+            //è·å–æ—¶é—´
             lunar.init(System.currentTimeMillis());
 
-            //ĞŞÕılayoutµÄsingleLineÊôĞÔ
+            //ä¿®æ­£layoutçš„singleLineå±æ€§
             if(!layout_run){
-                //È¥µôsingleLineÊôĞÔ
+                //å»æ‰singleLineå±æ€§
                 if(prefs.getBoolean("layout_line", false)){
-                    textview.setSingleLine(false); //È¥³ısingleLineÊôĞÔ
+                    textview.setSingleLine(false); //å»é™¤singleLineå±æ€§
                 }
-                //È¥µôalign_baseline£¬²¢½«ÆäÉèÖÃÎªcenter_vertical
+                //å»æ‰align_baselineï¼Œå¹¶å°†å…¶è®¾ç½®ä¸ºcenter_vertical
                 if(prefs.getBoolean("layout_align", false)){
+                    //ä¸€èˆ¬æœºå‹çš„çŠ¶æ€æ éƒ½æ˜¯RelativeLayoutï¼Œå°‘æ•°ä¸ºLinearLayoutï¼Œä½†ä¼¼ä¹å½±å“ä¸å¤§
                     RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
-                    layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //È¥³ıbaseline¶ÔÆëÊôĞÔ
-                    layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //²¢½«ÆäÉèÖÃÎª¾ø¶Ô¾ÓÖĞ
-                    textview.setLayoutParams(layoutParams); 
+                    layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //å»é™¤baselineå¯¹é½å±æ€§
+                    layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //å¹¶å°†å…¶è®¾ç½®ä¸ºç»å¯¹å±…ä¸­
+                    textview.setLayoutParams(layoutParams); //è®¾ç½®å¸ƒå±€å‚æ•°
                 }
-                //ÉèÖÃ¿í¶ÈÎªfill_parent
+                //è®¾ç½®å®½åº¦ä¸ºfill_parent
                 if(prefs.getBoolean("layout_width", false)){
                     RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
-                    layoutParams.width = -1;
+                    layoutParams.width = -1; //å–æ¶ˆå®½åº¦é™åˆ¶
                     textview.setLayoutParams(layoutParams);
                 }
-                layout_run = true; //ÒÑ¾­Ö´ĞĞ¹ı²¼¾ÖµÄ´¦Àí²½Öè£¬ÏÂ´Î²»ÔÙÖ´ĞĞ
+                layout_run = true; //å·²ç»æ‰§è¡Œè¿‡å¸ƒå±€çš„å¤„ç†æ­¥éª¤ï¼Œä¸‹æ¬¡ä¸å†æ‰§è¡Œ
             }
 
-            //¸üĞÂ¼ÇÂ¼µÄÈÕÆÚ
+            //æ›´æ–°è®°å½•çš„æ—¥æœŸ
             lDate = nDate;
-            
+            //ä»Lunarç±»ä¸­è·å¾—ç»„åˆå¥½çš„å†œå†æ—¥æœŸå­—ç¬¦ä¸²ï¼ˆåŒ…æ‹¬å„èŠ‚æ—¥ï¼‰
             lunarText = lunar.getComboText();
-            //Êä³öµ½×îÖÕ×Ö·û´®
+            //è¾“å‡ºåˆ°æœ€ç»ˆå­—ç¬¦ä¸²
             finalText = nDate + breaklineText + lunarText;
-            //Èç¹ûĞèÒªÈ¥»»ĞĞ
+            //å¦‚æœéœ€è¦å»æ¢è¡Œ
             if(_remove){
                 Matcher mat = reg.matcher(finalText);
-                finalText = mat.replaceFirst(" "); //½öĞèÒª»»µôµÚÒ»¸ö»»ĞĞ·û£¬Ìæ»»³ÉÒ»¸ö¿Õ¸ñ±£³ÖÃÀ¹ÛºÍ¿É¶ÁĞÔ
+                finalText = mat.replaceFirst(" "); //ä»…éœ€è¦æ¢æ‰ç¬¬ä¸€ä¸ªæ¢è¡Œç¬¦ï¼Œæ›¿æ¢æˆä¸€ä¸ªç©ºæ ¼ä¿æŒç¾è§‚å’Œå¯è¯»æ€§
             }
         }
         return finalText;
     }
 
-    /* Ìæ»»ÈÕÆÚº¯Êı */
+    /* æ›¿æ¢æ—¥æœŸå‡½æ•° */
     public void handleLoadPackage(final LoadPackageParam lpparam){
         if (!lpparam.packageName.equals("com.android.systemui"))
             return;
 
-        //½«¾ö¶¨ÊÇ·ñ»»ĞĞµÄÎÄ±¾Êä³öµ½×Ö·û´®ÖĞ
+        //å°†å†³å®šæ˜¯å¦æ¢è¡Œçš„æ–‡æœ¬è¾“å‡ºåˆ°å­—ç¬¦ä¸²ä¸­
         if(!_breakline){
             breaklineText = " ";
         }
 
-        //Èç¹û´ò¿ªÁËµ÷Õû²¼¾Ö£¬ÔòÔÊĞí½øÈëµ÷Õû²¼¾Ö²½Öè
+        //å¦‚æœæ‰“å¼€äº†è°ƒæ•´å¸ƒå±€ï¼Œåˆ™å…è®¸è¿›å…¥è°ƒæ•´å¸ƒå±€æ­¥éª¤
         if(!_layout_enable){
             layout_run = true;
         }
 
-
-        //¸ù¾İÓÃ»§Ñ¡ÔñµÄromÀàĞÍ½øÈëÏàÓ¦µÄhook²½Öè
+        //æ ¹æ®ç”¨æˆ·è®¾ç½®çš„romç±»å‹è¿›å…¥ç›¸åº”çš„hookæ­¥éª¤
         switch(_rom){
             case 1: 
                 try{
                     //For most android roms
-                    //¹´ÔÚcom.android.systemui.statusbar.policy.DateViewÀïÃæµÄupdateClock()Ö®ºó
+                    //å‹¾åœ¨com.android.systemui.statusbar.policy.DateViewé‡Œé¢çš„updateClock()ä¹‹å
+                    //è¿™çš„å‡½æ•°å¯ä»¥å‚è€ƒ https://github.com/rovo89/XposedBridge/wiki/Development-tutorialï¼Œæ¯”è¾ƒç®€å•
                     findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "updateClock", new XC_MethodHook() {
                         @Override
-                        //ÔÚÔ­º¯ÊıÖ´ĞĞÍêÖ®ºóÔÙÖ´ĞĞ×Ô¶¨Òå³ÌĞò
+                        //åœ¨åŸå‡½æ•°æ‰§è¡Œå®Œä¹‹åå†æ‰§è¡Œè‡ªå®šä¹‰ç¨‹åº
                         protected void afterHookedMethod(MethodHookParam param){
-                            //»ñÈ¡Ô­ÎÄ×Ö
-                            textview = (TextView) param.thisObject;
-                            //È¡textviewÖĞµÄ×Ö·û´®
+                            //è·å–åŸæ–‡å­—ï¼Œcom.android.systemui.statusbar.policy.DateViewç±»æ˜¯extendsäºTextViewã€‚
+                            textview = (TextView) param.thisObject; //æ‰€ä»¥ç›´æ¥è·å–è¿™ä¸ªå¯¹è±¡
+                            //å–textviewä¸­çš„å­—ç¬¦ä¸²
                             nDate = textview.getText().toString();
-                            //½»¸øreturnDate´¦Àíºó£¬ÔÙsetTextÏÔÊ¾³öÀ´
+                            //äº¤ç»™returnDateå¤„ç†åï¼Œå†setTextæ˜¾ç¤ºå‡ºæ¥
                             textview.setText(returnDate(nDate));
                         }
                     });
@@ -192,7 +191,7 @@ public class Main implements IXposedHookLoadPackage{
             case 2:
                 try{
                     //For Miui
-                	//Miui 4.4 Ö®Ç°µÄÏµÍ³¸üĞÂÊ±¼äµÄº¯ÊıÃû³ÆÎª¡°a¡±
+                	//Miui 4.4 ä¹‹å‰çš„ç³»ç»Ÿæ›´æ–°æ—¶é—´çš„å‡½æ•°åç§°ä¸ºâ€œaâ€
                     findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "a", new XC_MethodHook() {
                         @Override
                         protected void afterHookedMethod(MethodHookParam param){

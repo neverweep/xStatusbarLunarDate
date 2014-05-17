@@ -1,4 +1,4 @@
-package de.xiaoxia.xstatusbarlunardate;
+ï»¿package de.xiaoxia.xstatusbarlunardate;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Ìá¹©Ò»Ğ©Å©ÀúÏà¹ØĞÅÏ¢
+ * æä¾›ä¸€äº›å†œå†ç›¸å…³ä¿¡æ¯
  * @mod xiaoxia.de
  * @author joyphper.net
  */
@@ -35,7 +35,7 @@ public class Lunar {
     private String csFestivalName;
 
     private final static int[] lunarInfo = {
-        //2000~2037µÄÅ©ÀúĞÅÏ¢
+        //2000~2037çš„å†œå†ä¿¡æ¯
         0xc960,0xd954,0xd4a0,0xda50,0x7552,0x56a0,0xabb7,0x25d0,0x92d0,0xcab5,
         0xa950,0xb4a0,0xbaa4,0xad50,0x55d9,0x4ba0,0xa5b0,0x5176,0x52bf,0xa930,
         0x7954,0x6aa0,0xad50,0x5b52,0x4b60,0xa6e6,0xa4e0,0xd260,0xea65,0xd530,
@@ -47,10 +47,10 @@ public class Lunar {
         353350, 375494, 397447, 419210, 440795, 462224, 483532, 504758
     };
     private final static String[] Tianan = {
-        "¼×", "ÒÒ", "±û", "¶¡", "Îì", "¼º", "¸ı", "ĞÁ", "ÈÉ", "¹ï"
+        "ç”²", "ä¹™", "ä¸™", "ä¸", "æˆŠ", "å·±", "åºš", "è¾›", "å£¬", "ç™¸"
     };
     private final static String[] lunarString1 = {
-        "Áã", "Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù", "Æß", "°Ë", "¾Å"
+        "é›¶", "ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­", "ä¸ƒ", "å…«", "ä¹"
     };
     private static String[] lunarString2;
     private static String[] Deqi;
@@ -70,7 +70,7 @@ public class Lunar {
         catch(Exception e) { return -1; }
     }
     private synchronized void findFestival() {
-        //ÊÇ´¿Êı×ÖÏÔÊ¾¾ÍÖ±½Ó·µ»Ø£¬²»¼ÆËã½ÚÈÕ
+        //æ˜¯çº¯æ•°å­—æ˜¾ç¤ºå°±ç›´æ¥è¿”å›ï¼Œä¸è®¡ç®—èŠ‚æ—¥
         if(Main._lang == 3)
             return;
         
@@ -82,7 +82,7 @@ public class Lunar {
         int lD = this.getLunarDay();
         Matcher m;
 
-        //¹«Àú½ÚÈÕ¼ÆËã
+        //å…¬å†èŠ‚æ—¥è®¡ç®—
         if(Main._solar){
             for (int i=0; i<Lunar.sFtv.length; i++) {
                 m = Lunar.sFreg.matcher(Lunar.sFtv[i]);
@@ -93,7 +93,7 @@ public class Lunar {
                     }
                 }
             }
-            
+            //æŸ¥æ‰¾æœˆå‘¨èŠ‚æ—¥
             int w, d;
             for (int i=0; i<Lunar.wFtv.length; i++) {
                 m = Lunar.wFreg.matcher(Lunar.wFtv[i]);
@@ -109,7 +109,7 @@ public class Lunar {
                 }
             }
             
-            //¼ÆËã¸´»î½Ú
+            //è®¡ç®—å¤æ´»èŠ‚
             if(Main._lang == 4 || Main._lang == 5){
                 int a = sY % 19;
                 int b = (int) Math.floor(sY / 100);
@@ -124,14 +124,14 @@ public class Lunar {
                 int l = (32 + 2 * e + 2 * i - h - k) % 7;
                 int z = (int) Math.floor((a + 11 * h + 22 * l) / 451);
                 if(sM == (int) Math.floor((h + l - 7 * z + 114) / 31) && sD == ((h + l - 7 * z + 114) % 31) + 1){
-                    this.sFestivalName += " " + "Í»î¹" ;
+                    this.sFestivalName += " " + "å¾©æ´»ç¯€" ;
                 }
             }
             
             this.sFestivalName = this.sFestivalName.replaceFirst("^\\s", "");
         }
 
-        //Å©Àú
+        //å†œå†
         if(Main._fest){
             for (int i=0; i<Lunar.lFtv.length; i++) {
                 m = Lunar.sFreg.matcher(Lunar.lFtv[i]);
@@ -141,14 +141,14 @@ public class Lunar {
                         break;
                     }
                     if(lM == 12 && lD == 29 && Lunar.getLunarMonthDays(this.lunarYear, lM) == 29){
-                        this.lFestivalName = "³ıÏ¦";
+                        this.lFestivalName = "é™¤å¤•";
                         break;
                     }
                 }
             }
         }
 
-        //×Ô¶¨ÒåÅ©Àú
+        //è‡ªå®šä¹‰å†œå†
         if(Main._custom){
             for (int i=0; i<Main.clf.length; i++) {
                 m = Lunar.sFreg.matcher(Main.clf[i]);
@@ -161,7 +161,7 @@ public class Lunar {
             }
         }
 
-        //×Ô¶¨Òå¹«Àú
+        //è‡ªå®šä¹‰å…¬å†
         if(Main._solar_custom){
             for (int i=0; i<Main.csf.length; i++) {
                 m = Lunar.sFreg.matcher(Main.csf[i]);
@@ -176,74 +176,74 @@ public class Lunar {
     }
 
     /**
-     * ·µ»ØÅ©ÀúÄêÈòÔÂÔÂ·İ
+     * è¿”å›å†œå†å¹´é—°æœˆæœˆä»½
      * @param lunarYear
-     *            Ö¸¶¨Å©ÀúÄê·İ(Êı×Ö)
-     * @return ¸ÃÅ©ÀúÄêÈòÔÂµÄÔÂ·İ(Êı×Ö,Ã»Èò·µ»Ø0)
+     *            æŒ‡å®šå†œå†å¹´ä»½(æ•°å­—)
+     * @return è¯¥å†œå†å¹´é—°æœˆçš„æœˆä»½(æ•°å­—,æ²¡é—°è¿”å›0)
      */
     private static int getLunarLeapMonth(int lunarYear) {
-        // Êı¾İ±íÖĞ,Ã¿¸öÅ©ÀúÄêÓÃ16bitÀ´±íÊ¾,
-        // Ç°12bit·Ö±ğ±íÊ¾12¸öÔÂ·İµÄ´óĞ¡ÔÂ,×îºó4bit±íÊ¾ÈòÔÂ
-        // Èô4bitÈ«Îª1»òÈ«Îª0,±íÊ¾Ã»Èò, ·ñÔò4bitµÄÖµÎªÈòÔÂÔÂ·İ
+        // æ•°æ®è¡¨ä¸­,æ¯ä¸ªå†œå†å¹´ç”¨16bitæ¥è¡¨ç¤º,
+        // å‰12bitåˆ†åˆ«è¡¨ç¤º12ä¸ªæœˆä»½çš„å¤§å°æœˆ,æœ€å4bitè¡¨ç¤ºé—°æœˆ
+        // è‹¥4bitå…¨ä¸º1æˆ–å…¨ä¸º0,è¡¨ç¤ºæ²¡é—°, å¦åˆ™4bitçš„å€¼ä¸ºé—°æœˆæœˆä»½
         int leapMonth = Lunar.lunarInfo[lunarYear - 2000] & 0xf;
         leapMonth = (leapMonth == 0xf ? 0 : leapMonth);
         return leapMonth;
     }
 
     /**
-     * ·µ»ØÅ©ÀúÄêÈòÔÂµÄÌìÊı
+     * è¿”å›å†œå†å¹´é—°æœˆçš„å¤©æ•°
      * 
-     * @param lunarYear Ö¸¶¨Å©ÀúÄê·İ(Êı×Ö)
-     * @return ¸ÃÅ©ÀúÄêÈòÔÂµÄÌìÊı(Êı×Ö)
+     * @param lunarYear æŒ‡å®šå†œå†å¹´ä»½(æ•°å­—)
+     * @return è¯¥å†œå†å¹´é—°æœˆçš„å¤©æ•°(æ•°å­—)
      */
     private static int getLunarLeapDays(int lunarYear) {
-        // ÏÂÒ»Äê×îºó4bitÎª1111,·µ»Ø30(´óÔÂ)
-        // ÏÂÒ»Äê×îºó4bit²»Îª1111,·µ»Ø29(Ğ¡ÔÂ)
-        // Èô¸ÃÄêÃ»ÓĞÈòÔÂ,·µ»Ø0
+        // ä¸‹ä¸€å¹´æœ€å4bitä¸º1111,è¿”å›30(å¤§æœˆ)
+        // ä¸‹ä¸€å¹´æœ€å4bitä¸ä¸º1111,è¿”å›29(å°æœˆ)
+        // è‹¥è¯¥å¹´æ²¡æœ‰é—°æœˆ,è¿”å›0
         return Lunar.getLunarLeapMonth(lunarYear) > 0 ? ((Lunar.lunarInfo[lunarYear - 1999] & 0xf) == 0xf ? 30 : 29) : 0;
     }
 
     /**
-     * ·µ»ØÅ©ÀúÄêµÄ×ÜÌìÊı
-     * @param lunarYear Ö¸¶¨Å©ÀúÄê·İ(Êı×Ö)
-     * @return ¸ÃÅ©ÀúÄêµÄ×ÜÌìÊı(Êı×Ö)
+     * è¿”å›å†œå†å¹´çš„æ€»å¤©æ•°
+     * @param lunarYear æŒ‡å®šå†œå†å¹´ä»½(æ•°å­—)
+     * @return è¯¥å†œå†å¹´çš„æ€»å¤©æ•°(æ•°å­—)
      */
     private static int getLunarYearDays(int lunarYear) {
-        // °´Ğ¡ÔÂ¼ÆËã,Å©ÀúÄê×îÉÙÓĞ12 * 29 = 348Ìì
+        // æŒ‰å°æœˆè®¡ç®—,å†œå†å¹´æœ€å°‘æœ‰12 * 29 = 348å¤©
         int daysInLunarYear = 348;
-        // Êı¾İ±íÖĞ,Ã¿¸öÅ©ÀúÄêÓÃ16bitÀ´±íÊ¾,
-        // Ç°12bit·Ö±ğ±íÊ¾12¸öÔÂ·İµÄ´óĞ¡ÔÂ,×îºó4bit±íÊ¾ÈòÔÂ
-        // Ã¿¸ö´óÔÂÀÛ¼ÓÒ»Ìì
+        // æ•°æ®è¡¨ä¸­,æ¯ä¸ªå†œå†å¹´ç”¨16bitæ¥è¡¨ç¤º,
+        // å‰12bitåˆ†åˆ«è¡¨ç¤º12ä¸ªæœˆä»½çš„å¤§å°æœˆ,æœ€å4bitè¡¨ç¤ºé—°æœˆ
+        // æ¯ä¸ªå¤§æœˆç´¯åŠ ä¸€å¤©
         for (int i = 0x8000; i > 0x8; i >>= 1) {
             daysInLunarYear += ((Lunar.lunarInfo[lunarYear - 2000] & i) != 0) ? 1
                     : 0;
         }
-        // ¼ÓÉÏÈòÔÂÌìÊı
+        // åŠ ä¸Šé—°æœˆå¤©æ•°
         daysInLunarYear += Lunar.getLunarLeapDays(lunarYear);
 
         return daysInLunarYear;
     }
 
     /**
-     * ·µ»ØÅ©ÀúÄêÕı³£ÔÂ·İµÄ×ÜÌìÊı
+     * è¿”å›å†œå†å¹´æ­£å¸¸æœˆä»½çš„æ€»å¤©æ•°
      * @param lunarYear
-     *            Ö¸¶¨Å©ÀúÄê·İ(Êı×Ö)
+     *            æŒ‡å®šå†œå†å¹´ä»½(æ•°å­—)
      * @param lunarMonth
-     *            Ö¸¶¨Å©ÀúÔÂ·İ(Êı×Ö)
-     * @return ¸ÃÅ©ÀúÄêÈòÔÂµÄÔÂ·İ(Êı×Ö,Ã»Èò·µ»Ø0)
+     *            æŒ‡å®šå†œå†æœˆä»½(æ•°å­—)
+     * @return è¯¥å†œå†å¹´é—°æœˆçš„æœˆä»½(æ•°å­—,æ²¡é—°è¿”å›0)
      */
     private static int getLunarMonthDays(int lunarYear, int lunarMonth) {
-        // Êı¾İ±íÖĞ,Ã¿¸öÅ©ÀúÄêÓÃ16bitÀ´±íÊ¾,
-        // Ç°12bit·Ö±ğ±íÊ¾12¸öÔÂ·İµÄ´óĞ¡ÔÂ,×îºó4bit±íÊ¾ÈòÔÂ
+        // æ•°æ®è¡¨ä¸­,æ¯ä¸ªå†œå†å¹´ç”¨16bitæ¥è¡¨ç¤º,
+        // å‰12bitåˆ†åˆ«è¡¨ç¤º12ä¸ªæœˆä»½çš„å¤§å°æœˆ,æœ€å4bitè¡¨ç¤ºé—°æœˆ
         int daysInLunarMonth = ((Lunar.lunarInfo[lunarYear - 2000] & (0x10000 >> lunarMonth)) != 0) ? 30
                 : 29;
         return daysInLunarMonth;
     }
     /**
-     * È¡ Date ¶ÔÏóÖĞÓÃÈ«Çò±ê×¼Ê±¼ä (UTC) ±íÊ¾µÄÈÕÆÚ
+     * å– Date å¯¹è±¡ä¸­ç”¨å…¨çƒæ ‡å‡†æ—¶é—´ (UTC) è¡¨ç¤ºçš„æ—¥æœŸ
      * 
-     * @param date Ö¸¶¨ÈÕÆÚ
-     * @return UTC È«Çò±ê×¼Ê±¼ä (UTC) ±íÊ¾µÄÈÕÆÚ
+     * @param date æŒ‡å®šæ—¥æœŸ
+     * @return UTC å…¨çƒæ ‡å‡†æ—¶é—´ (UTC) è¡¨ç¤ºçš„æ—¥æœŸ
      */
     public static synchronized int getUTCDay(Date date) {
             Lunar.makeUTCCalendar();
@@ -260,14 +260,14 @@ public class Lunar {
         }
     }
     /**
-     * ·µ»ØÈ«Çò±ê×¼Ê±¼ä (UTC) (»ò GMT) µÄ 1970 Äê 1 ÔÂ 1 ÈÕµ½ËùÖ¸¶¨ÈÕÆÚÖ®¼äËù¼ä¸ôµÄºÁÃëÊı¡£
-     * @param y Ö¸¶¨Äê·İ
-     * @param m Ö¸¶¨ÔÂ·İ
-     * @param d Ö¸¶¨ÈÕÆÚ
-     * @param h Ö¸¶¨Ğ¡Ê±
-     * @param min Ö¸¶¨·ÖÖÓ
-     * @param sec Ö¸¶¨ÃëÊı
-     * @return È«Çò±ê×¼Ê±¼ä (UTC) (»ò GMT) µÄ 1970 Äê 1 ÔÂ 1 ÈÕµ½ËùÖ¸¶¨ÈÕÆÚÖ®¼äËù¼ä¸ôµÄºÁÃëÊı
+     * è¿”å›å…¨çƒæ ‡å‡†æ—¶é—´ (UTC) (æˆ– GMT) çš„ 1970 å¹´ 1 æœˆ 1 æ—¥åˆ°æ‰€æŒ‡å®šæ—¥æœŸä¹‹é—´æ‰€é—´éš”çš„æ¯«ç§’æ•°ã€‚
+     * @param y æŒ‡å®šå¹´ä»½
+     * @param m æŒ‡å®šæœˆä»½
+     * @param d æŒ‡å®šæ—¥æœŸ
+     * @param h æŒ‡å®šå°æ—¶
+     * @param min æŒ‡å®šåˆ†é’Ÿ
+     * @param sec æŒ‡å®šç§’æ•°
+     * @return å…¨çƒæ ‡å‡†æ—¶é—´ (UTC) (æˆ– GMT) çš„ 1970 å¹´ 1 æœˆ 1 æ—¥åˆ°æ‰€æŒ‡å®šæ—¥æœŸä¹‹é—´æ‰€é—´éš”çš„æ¯«ç§’æ•°
      */
     public static synchronized long UTC(int y, int m, int d, int h, int min, int sec) {
         Lunar.makeUTCCalendar();
@@ -279,10 +279,10 @@ public class Lunar {
     }
 
     /**
-     * ·µ»Ø¹«ÀúÄê½ÚÆøµÄÈÕÆÚ
-     * @param solarYear Ö¸¶¨¹«ÀúÄê·İ(Êı×Ö)
-     * @param index Ö¸¶¨½ÚÆøĞòºÅ(Êı×Ö,0´ÓĞ¡º®ËãÆğ)
-     * @return ÈÕÆÚ(Êı×Ö,ËùÔÚÔÂ·İµÄµÚ¼¸Ìì)
+     * è¿”å›å…¬å†å¹´èŠ‚æ°”çš„æ—¥æœŸ
+     * @param solarYear æŒ‡å®šå…¬å†å¹´ä»½(æ•°å­—)
+     * @param index æŒ‡å®šèŠ‚æ°”åºå·(æ•°å­—,0ä»å°å¯’ç®—èµ·)
+     * @return æ—¥æœŸ(æ•°å­—,æ‰€åœ¨æœˆä»½çš„ç¬¬å‡ å¤©)
      */
     private static int getSolarTermDay(int solarYear, int index) {
         long l = (long)31556925974.7 * (solarYear - 2000) + solarTermInfo[index] * 60000L;
@@ -291,85 +291,86 @@ public class Lunar {
     }
 
     public Lunar(int lang) {
-        //ÔÚÕâÀïÉèÖÃÓïÑÔ
+        //åœ¨è¿™é‡Œè®¾ç½®è¯­è¨€
         switch(lang){
-            //´óÂ½¼òÖĞ
+            //å¤§é™†ç®€ä¸­
             case 1:
                 Lunar.lFtv = new String[]{
                     "",
-                    "0101´º½Ú", "0115ÔªÏü", "0202ÁúÍ·",
-                    "0505¶ËÎç", "0707ÆßÏ¦", "0715ÖĞÔª",
-                    "0815ÖĞÇï", "0909ÖØÑô", "1208À°°Ë", 
-                    "1230³ıÏ¦"
+                    "0101æ˜¥èŠ‚", "0115å…ƒå®µ", "0202é¾™å¤´",
+                    "0505ç«¯åˆ", "0707ä¸ƒå¤•", "0715ä¸­å…ƒ",
+                    "0815ä¸­ç§‹", "0909é‡é˜³", "1208è…Šå…«", 
+                    "1230é™¤å¤•"
                 };
                 Lunar.sFtv = new String[]{
-                    "0101Ôªµ©", "0214ÇéÈË½Ú", "0308¸¾Å®½Ú", "0312Ö²Ê÷½Ú", 
-                    "0401ÓŞÈË½Ú", "0501ÀÍ¶¯½Ú", "0504ÇàÄê½Ú", "0601¶ùÍ¯½Ú", 
-                    "0701½¨µ³½Ú", "0801½¨¾ü½Ú", "0910½ÌÊ¦½Ú", "1001¹úÇì½Ú", 
-                    "1031ÍòÊ¥½Ú", "1225Ê¥µ®½Ú"
+                    "0101å…ƒæ—¦", "0214æƒ…äººèŠ‚", "0308å¦‡å¥³èŠ‚", "0312æ¤æ ‘èŠ‚", 
+                    "0401æ„šäººèŠ‚", "0501åŠ³åŠ¨èŠ‚", "0504é’å¹´èŠ‚", "0601å„¿ç«¥èŠ‚", 
+                    "0701å»ºå…šèŠ‚", "0801å»ºå†›èŠ‚", "0910æ•™å¸ˆèŠ‚", "1001å›½åº†èŠ‚", 
+                    "1031ä¸‡åœ£èŠ‚", "1225åœ£è¯èŠ‚"
                 };
                 break;
-            //Ì¨Íå·±ÖĞ
+            //å°æ¹¾ç¹ä¸­
             case 2:
                 Lunar.lFtv = new String[]{
                     "",
-                    "0101´º¹", "0115ÔªÏü", "0202ıˆî^",
-                    "0505¶ËÎç", "0707ÆßÏ¦", "0715ÖĞÔª",
-                    "0815ÖĞÇï", "0909ÖØê–", "1208ÅD°Ë", 
-                    "1230³ıÏ¦"
+                    "0101æ˜¥ç¯€", "0115å…ƒå®µ", "0202é¾é ­",
+                    "0505ç«¯åˆ", "0707ä¸ƒå¤•", "0715ä¸­å…ƒ",
+                    "0815ä¸­ç§‹", "0909é‡é™½", "1208è‡˜å…«", 
+                    "1230é™¤å¤•"
                 };
                 Lunar.sFtv = new String[]{
-                    "0101Ôªµ©", "0214ÇéÈË¹", "0228ºÍÆ½¼oÄîÈÕ", "0308‹DÅ®¹",
-                    "0404ƒºÍ¯¹",    "0401ÓŞÈË¹", "0501„Ú„Ó¹", "0903ÜŠÈË¹", 
-                    "0928½ÌŸ¹",    "1010‡ø‘cÈÕ", "1031ÈfÂ}¹", "1225Ò®ÕQ¹"
+                    "0101å…ƒæ—¦", "0214æƒ…äººç¯€", "0228å’Œå¹³ç´€å¿µæ—¥", "0308å©¦å¥³ç¯€",
+                    "0404å…’ç«¥ç¯€",    "0401æ„šäººç¯€", "0501å‹å‹•ç¯€", "0903è»äººç¯€", 
+                    "0928æ•™å¸«ç¯€",    "1010åœ‹æ…¶æ—¥", "1031è¬è–ç¯€", "1225è€¶èª•ç¯€"
                 };
                 break;
-            //Ïã¸Û·±ÖĞ
+            //é¦™æ¸¯ç¹ä¸­
             case 4:
                 Lunar.lFtv = new String[]{
                     "",
-                    "0101´º¹", "0115ÔªÏü", "0202ıˆî^",
-                    "0505¶ËÎç", "0707ÆßÏ¦", "0715ÖĞÔª",
-                    "0815ÖĞÇï", "0909ÖØê–", "1208ÅD°Ë", 
-                    "1230³ıÏ¦", "0408·ğµ®"
+                    "0101æ˜¥ç¯€", "0115å…ƒå®µ", "0202é¾é ­",
+                    "0505ç«¯åˆ", "0707ä¸ƒå¤•", "0715ä¸­å…ƒ",
+                    "0815ä¸­ç§‹", "0909é‡é™½", "1208è‡˜å…«", 
+                    "1230é™¤å¤•", "0408ä½›è¯"
                 };
                 Lunar.sFtv = new String[]{
-                    "0101Ôªµ©", "0214ÇéÈË¹", "0308‹DÅ®¹", "0401ÓŞÈË¹",
-                    "0501„Ú„Ó¹", "0701ÌØ…^¼oÄîÈÕ", "0910½ÌŸ¹", "1001‡ø‘cÈÕ",
-                    "1031ÈfÂ}¹", "1225Â}ÕQ¹"
+                    "0101å…ƒæ—¦", "0214æƒ…äººç¯€", "0308å©¦å¥³ç¯€", "0401æ„šäººç¯€",
+                    "0501å‹å‹•ç¯€", "0701ç‰¹å€ç´€å¿µæ—¥", "0910æ•™å¸«ç¯€", "1001åœ‹æ…¶æ—¥",
+                    "1031è¬è–ç¯€", "1225è–èª•ç¯€"
                 };
                 break;
-            //°ÄÃÅ·±ÖĞ
+            //æ¾³é—¨ç¹ä¸­
             case 5:
                 Lunar.lFtv = new String[]{
                     "",
-                    "0101´º¹", "0115ÔªÏü", "0202ıˆî^",
-                    "0505¶ËÎç", "0707ÆßÏ¦", "0715ÖĞÔª",
-                    "0815ÖĞÇï", "0909ÖØê–", "1208ÅD°Ë", 
-                    "1230³ıÏ¦", "0408·ğµ®"
+                    "0101æ˜¥ç¯€", "0115å…ƒå®µ", "0202é¾é ­",
+                    "0505ç«¯åˆ", "0707ä¸ƒå¤•", "0715ä¸­å…ƒ",
+                    "0815ä¸­ç§‹", "0909é‡é™½", "1208è‡˜å…«", 
+                    "1230é™¤å¤•", "0408ä½›è¯"
                 };
                 Lunar.sFtv = new String[]{
-                    "0101Ôªµ©", "0214ÇéÈË¹", "0308‹DÅ®¹", "0401ÓŞÈË¹",
-                    "0501„Ú„Ó¹", "0910½ÌŸ¹", "1001‡ø‘cÈÕ", "1031ÈfÂ}¹", 
-                    "1102×·Ë¼¹", "1208Â}Ä¸ŸoÔ­×ïÈÕ", "1220ÌØ…^¼oÄîÈÕ", "1225Â}ÕQ¹"
+                    "0101å…ƒæ—¦", "0214æƒ…äººç¯€", "0308å©¦å¥³ç¯€", "0401æ„šäººç¯€",
+                    "0501å‹å‹•ç¯€", "0910æ•™å¸«ç¯€", "1001åœ‹æ…¶æ—¥", "1031è¬è–ç¯€", 
+                    "1102è¿½æ€ç¯€", "1208è–æ¯ç„¡åŸç½ªæ—¥", "1220ç‰¹å€ç´€å¿µæ—¥", "1225è–èª•ç¯€"
                 };
                 break;
-            //´óÂ½·±ÖĞ
+            //å¤§é™†ç¹ä¸­
             case 6:
                 Lunar.lFtv = new String[]{
                     "",
-                    "0101´º¹", "0115ÔªÏü", "0202ıˆî^",
-                    "0505¶ËÎç", "0707ÆßÏ¦", "0715ÖĞÔª",
-                    "0815ÖĞÇï", "0909ÖØê–", "1208ÅD°Ë", 
-                    "1230³ıÏ¦"
+                    "0101æ˜¥ç¯€", "0115å…ƒå®µ", "0202é¾é ­",
+                    "0505ç«¯åˆ", "0707ä¸ƒå¤•", "0715ä¸­å…ƒ",
+                    "0815ä¸­ç§‹", "0909é‡é™½", "1208è‡˜å…«", 
+                    "1230é™¤å¤•"
                 };
                 Lunar.sFtv = new String[]{
-                    "0101Ôªµ©", "0214ÇéÈË¹", "0308‹DÅ®¹", "0312Ö²˜ä¹", 
-                    "0401ÓŞÈË¹", "0501„Ú„Ó¹", "0504ÇàÄê¹", "0601ƒºÍ¯¹", 
-                    "0701½¨üh¹", "0801½¨ÜŠ¹", "0910½ÌŸ¹", "1001‡ø‘cÈÕ", 
-                    "1031ÈfÂ}¹", "1225Ò®ÕQ¹"
+                    "0101å…ƒæ—¦", "0214æƒ…äººç¯€", "0308å©¦å¥³ç¯€", "0312æ¤æ¨¹ç¯€", 
+                    "0401æ„šäººç¯€", "0501å‹å‹•ç¯€", "0504é’å¹´ç¯€", "0601å…’ç«¥ç¯€", 
+                    "0701å»ºé»¨ç¯€", "0801å»ºè»ç¯€", "0910æ•™å¸«ç¯€", "1001åœ‹æ…¶æ—¥", 
+                    "1031è¬è–ç¯€", "1225è€¶èª•ç¯€"
                 };
                 break;
+            //è‹±æ–‡ï¼Œçº¯æ•°å­—ï¼Œåˆå§‹åŒ–ç©ºå­—ç¬¦ä¸²æ•°ç»„
             case 3:
                 Lunar.Deqi = new String[]{"","","","","","","","","","","",""};
                 Lunar.Animals = new String[]{"","","","","","","","","","","",""};
@@ -385,53 +386,53 @@ public class Lunar {
                 Lunar.wFtv = new String[]{};
                 break;
         }
-        //Èç¹û²»ÊÇÓ¢Óï
+        //å¦‚æœä¸æ˜¯è‹±è¯­
         if(lang != 3){
-            //Ñ¡ÔñĞ¡ÄêÈÕÆÚ
+            //é€‰æ‹©å°å¹´æ—¥æœŸ
             switch(Main._minor){
-                case 1: Lunar.lFtv[0] = "1223 Ğ¡Äê";break;
-                case 2: Lunar.lFtv[0] = "1224 Ğ¡Äê";break;
-                case 3: Lunar.lFtv[0] = "1225 Ğ¡Äê";break;
+                case 1: Lunar.lFtv[0] = "1223 å°å¹´";break;
+                case 2: Lunar.lFtv[0] = "1224 å°å¹´";break;
+                case 3: Lunar.lFtv[0] = "1225 å°å¹´";break;
             }
-            //³õÊ¼»¯¼òÌåÖĞÎÄµÄÍ¨ÓÃ×Ö·û´®
+            //åˆå§‹åŒ–ç®€ä½“ä¸­æ–‡çš„é€šç”¨å­—ç¬¦ä¸²
             if(lang == 1){
                 Lunar.Deqi = new String[]{
-                    "×Ó", "³ó", "Òú", "Ã®", "³½", "ËÈ", "Îç", "Î´", "Éê", "ÓÏ", "Ğç", "º¥"
+                    "å­", "ä¸‘", "å¯…", "å¯", "è¾°", "å·³", "åˆ", "æœª", "ç”³", "é…‰", "æˆŒ", "äº¥"
                 };
                 Lunar.Animals = new String[]{
-                    "Êó", "Å£", "»¢", "ÍÃ", "Áú", "Éß", "Âí", "Ñò", "ºï", "¼¦", "¹·", "Öí"
+                    "é¼ ", "ç‰›", "è™", "å…”", "é¾™", "è›‡", "é©¬", "ç¾Š", "çŒ´", "é¸¡", "ç‹—", "çŒª"
                 };
                 Lunar.solarTerm = new String[]{
-                    "Ğ¡º®", "´óº®", "Á¢´º", "ÓêË®", "¾ªÕİ", "´º·Ö",
-                    "ÇåÃ÷", "¹ÈÓê", "Á¢ÏÄ", "Ğ¡Âú", "Ã¢ÖÖ", "ÏÄÖÁ",
-                    "Ğ¡Êî", "´óÊî", "Á¢Çï", "´¦Êî", "°×Â¶", "Çï·Ö",
-                    "º®Â¶", "Ëª½µ", "Á¢¶¬", "Ğ¡Ñ©", "´óÑ©", "¶¬ÖÁ"
+                    "å°å¯’", "å¤§å¯’", "ç«‹æ˜¥", "é›¨æ°´", "æƒŠè›°", "æ˜¥åˆ†",
+                    "æ¸…æ˜", "è°·é›¨", "ç«‹å¤", "å°æ»¡", "èŠ’ç§", "å¤è‡³",
+                    "å°æš‘", "å¤§æš‘", "ç«‹ç§‹", "å¤„æš‘", "ç™½éœ²", "ç§‹åˆ†",
+                    "å¯’éœ²", "éœœé™", "ç«‹å†¬", "å°é›ª", "å¤§é›ª", "å†¬è‡³"
                 };
                 Lunar.lunarString2 = new String[]{
-                    "³õ", "Ê®", "Ø¥", "Ø¦", "Õı", "¶¬", "À°", "Èò"
+                    "åˆ", "å", "å»¿", "å…", "æ­£", "å†¬", "è…Š", "é—°"
                 };
                 Lunar.wFtv = new String[]{
-                    "0521Ä¸Ç×½Ú", "0631¸¸Ç×½Ú", "1145¸Ğ¶÷½Ú"
+                    "0521æ¯äº²èŠ‚", "0631çˆ¶äº²èŠ‚", "1145æ„Ÿæ©èŠ‚"
                 };
-            //³õÊ¼»¯·±ÌåÖĞÎÄµÄÍ¨ÓÃ×Ö·û´®
+            //åˆå§‹åŒ–ç¹ä½“ä¸­æ–‡çš„é€šç”¨å­—ç¬¦ä¸²
             }else{
                 Lunar.Deqi = new String[]{
-                    "×Ó", "áh", "Òú", "Ã®", "³½", "ËÈ", "Îç", "Î´", "Éê", "ÓÏ", "Ğç", "º¥"
+                    "å­", "é†œ", "å¯…", "å¯", "è¾°", "å·³", "åˆ", "æœª", "ç”³", "é…‰", "æˆŒ", "äº¥"
                 };
                 Lunar.Animals = new String[]{
-                    "Êó", "Å£", "»¢", "ÍÃ", "ıˆ", "Éß", "ñR", "Ñò", "ºï", "ëu", "¹·", "Øi"
+                    "é¼ ", "ç‰›", "è™", "å…”", "é¾", "è›‡", "é¦¬", "ç¾Š", "çŒ´", "é›", "ç‹—", "è±¬"
                 };
                 Lunar.solarTerm = new String[]{
-                    "Ğ¡º®", "´óº®", "Á¢´º", "ÓêË®", "ó@ÏU", "´º·Ö",
-                    "ÇåÃ÷", "·YÓê", "Á¢ÏÄ", "Ğ¡M", "Ã¢·N", "ÏÄÖÁ",
-                    "Ğ¡Êî", "´óÊî", "Á¢Çï", "ÌÊî", "°×Â¶", "Çï·Ö",
-                    "º®Â¶", "Ëª½µ", "Á¢¶¬", "Ğ¡Ñ©", "´óÑ©", "¶¬ÖÁ"
+                    "å°å¯’", "å¤§å¯’", "ç«‹æ˜¥", "é›¨æ°´", "é©šèŸ„", "æ˜¥åˆ†",
+                    "æ¸…æ˜", "ç©€é›¨", "ç«‹å¤", "å°æ»¿", "èŠ’ç¨®", "å¤è‡³",
+                    "å°æš‘", "å¤§æš‘", "ç«‹ç§‹", "è™•æš‘", "ç™½éœ²", "ç§‹åˆ†",
+                    "å¯’éœ²", "éœœé™", "ç«‹å†¬", "å°é›ª", "å¤§é›ª", "å†¬è‡³"
                 };
                 Lunar.lunarString2 = new String[]{
-                    "³õ", "Ê®", "Ø¥", "Ø¦", "Õı", "¶¬", "ÅD", "éc"
+                    "åˆ", "å", "å»¿", "å…", "æ­£", "å†¬", "è‡˜", "é–"
                 };
                 Lunar.wFtv = new String[]{
-                    "0521Ä¸ÓH¹", "0631¸¸ÓH¹", "1145¸Ğ¶÷¹"
+                    "0521æ¯è¦ªç¯€", "0631çˆ¶è¦ªç¯€", "1145æ„Ÿæ©ç¯€"
                 };
             }
         }
@@ -448,32 +449,32 @@ public class Lunar {
         this.solar.setTimeInMillis(TimeInMillis);
         Calendar baseDate = new GregorianCalendar(2000, 1, 5);
         long offset = (TimeInMillis - baseDate.getTimeInMillis()) / 86400000;
-        // °´Å©ÀúÄêµİ¼õÃ¿ÄêµÄÅ©ÀúÌìÊı£¬È·¶¨Å©ÀúÄê·İ
+        // æŒ‰å†œå†å¹´é€’å‡æ¯å¹´çš„å†œå†å¤©æ•°ï¼Œç¡®å®šå†œå†å¹´ä»½
         this.lunarYear = 2000;
         int daysInLunarYear = Lunar.getLunarYearDays(this.lunarYear);
         while (this.lunarYear < 2037 && offset >= daysInLunarYear) {
             offset -= daysInLunarYear;
             daysInLunarYear = Lunar.getLunarYearDays(++this.lunarYear);
         }
-        // Å©ÀúÄêÊı×Ö
+        // å†œå†å¹´æ•°å­—
 
-        // °´Å©ÀúÔÂµİ¼õÃ¿ÔÂµÄÅ©ÀúÌìÊı£¬È·¶¨Å©ÀúÔÂ·İ
+        // æŒ‰å†œå†æœˆé€’å‡æ¯æœˆçš„å†œå†å¤©æ•°ï¼Œç¡®å®šå†œå†æœˆä»½
         int lunarMonth = 1;
-        // ËùÔÚÅ©ÀúÄêÈòÄÄ¸öÔÂ,ÈôÃ»ÓĞ·µ»Ø0
+        // æ‰€åœ¨å†œå†å¹´é—°å“ªä¸ªæœˆ,è‹¥æ²¡æœ‰è¿”å›0
         int leapMonth = Lunar.getLunarLeapMonth(this.lunarYear);
-        // ÊÇ·ñÈòÄê
+        // æ˜¯å¦é—°å¹´
         this.isLeapYear = leapMonth > 0;
-        // ÈòÔÂÊÇ·ñµİ¼õ
+        // é—°æœˆæ˜¯å¦é€’å‡
         boolean leapDec = false;
         boolean isLeap = false;
         int daysInLunarMonth = 0;
         while (lunarMonth<13 && offset>0) {
-            if (isLeap && leapDec) { // Èç¹ûÊÇÈòÄê,²¢ÇÒÊÇÈòÔÂ
-                // ËùÔÚÅ©ÀúÄêÈòÔÂµÄÌìÊı
+            if (isLeap && leapDec) { // å¦‚æœæ˜¯é—°å¹´,å¹¶ä¸”æ˜¯é—°æœˆ
+                // æ‰€åœ¨å†œå†å¹´é—°æœˆçš„å¤©æ•°
                 daysInLunarMonth = Lunar.getLunarLeapDays(this.lunarYear);
                 leapDec = false;
             } else {
-                // ËùÔÚÅ©ÀúÄêÖ¸¶¨ÔÂµÄÌìÊı
+                // æ‰€åœ¨å†œå†å¹´æŒ‡å®šæœˆçš„å¤©æ•°
                 daysInLunarMonth = Lunar.getLunarMonthDays(this.lunarYear, lunarMonth);
             }
             if (offset < daysInLunarMonth) {
@@ -482,48 +483,48 @@ public class Lunar {
             offset -= daysInLunarMonth;
 
             if (leapMonth == lunarMonth && isLeap == false) {
-                // ÏÂ¸öÔÂÊÇÈòÔÂ
+                // ä¸‹ä¸ªæœˆæ˜¯é—°æœˆ
                 leapDec = true;
                 isLeap = true;
             } else {
-                // ÔÂ·İµİÔö
+                // æœˆä»½é€’å¢
                 lunarMonth++;
             }
         }
-        // Å©ÀúÔÂÊı×Ö
+        // å†œå†æœˆæ•°å­—
         this.lunarMonth = lunarMonth;
-        // ÊÇ·ñÈòÔÂ
+        // æ˜¯å¦é—°æœˆ
         this.isLeap = (lunarMonth == leapMonth && isLeap);
-        // Å©ÀúÈÕÊı×Ö
+        // å†œå†æ—¥æ•°å­—
         this.lunarDay = (int) offset + 1;
-        // È¡µÃ¸ÉÖ§Àú
+        // å–å¾—å¹²æ”¯å†
         this.getCyclicalData();
 
         findFestival();
     }
 
     /**
-     * È¡µÃ¹«Àú½ÚÈÕÃû³Æ
-     * @return ¹«Àú½ÚÈÕÃû³Æ,Èç¹û²»ÊÇ½ÚÈÕ·µ»Ø¿Õ´®
+     * å–å¾—å…¬å†èŠ‚æ—¥åç§°
+     * @return å…¬å†èŠ‚æ—¥åç§°,å¦‚æœä¸æ˜¯èŠ‚æ—¥è¿”å›ç©ºä¸²
      */
     public String getSFestivalName() {
         return this.sFestivalName;
     }
 
     /**
-     * È¡¸ÉÖ§Àú ²»ÊÇÀúÄê£¬ÀúÔÂ¸ÉÖ§£¬¶øÊÇÖĞ¹úµÄ´ÓÁ¢´º½ÚÆø¿ªÊ¼µÄ½ÚÔÂ£¬ÊÇÖĞ¹úµÄÌ«ÑôÊ®¶ş¹¬£¬ÑôÀúµÄ¡£
-     * @param cncaData ÈÕÀú¶ÔÏó(Tcnca)
+     * å–å¹²æ”¯å† ä¸æ˜¯å†å¹´ï¼Œå†æœˆå¹²æ”¯ï¼Œè€Œæ˜¯ä¸­å›½çš„ä»ç«‹æ˜¥èŠ‚æ°”å¼€å§‹çš„èŠ‚æœˆï¼Œæ˜¯ä¸­å›½çš„å¤ªé˜³åäºŒå®«ï¼Œé˜³å†çš„ã€‚
+     * @param cncaData æ—¥å†å¯¹è±¡(Tcnca)
      */
     private void getCyclicalData() {
         this.solarYear = this.solar.get(Calendar.YEAR);
         this.solarMonth = this.solar.get(Calendar.MONTH);
         this.solarDay = this.solar.get(Calendar.DAY_OF_MONTH);
-        // ¸ÉÖ§Àú
+        // å¹²æ”¯å†
         int cyclicalYear = 0;
 
-        // ¸ÉÖ§Äê2000ÄêÁ¢´ººóÎª¸ı³½Äê(60½øÖÆ16)
-        int term2 = Lunar.getSolarTermDay(solarYear, 2); // Á¢´ºÈÕÆÚ
-        // ÒÀ½ÚÆøµ÷Õû¶şÔÂ·ÖµÄÄêÖù, ÒÔÁ¢´ºÎª½ç
+        // å¹²æ”¯å¹´2000å¹´ç«‹æ˜¥åä¸ºåºšè¾°å¹´(60è¿›åˆ¶16)
+        int term2 = Lunar.getSolarTermDay(solarYear, 2); // ç«‹æ˜¥æ—¥æœŸ
+        // ä¾èŠ‚æ°”è°ƒæ•´äºŒæœˆåˆ†çš„å¹´æŸ±, ä»¥ç«‹æ˜¥ä¸ºç•Œ
         if (solarMonth < 1 || (solarMonth == 1 && solarDay < term2)) {
             cyclicalYear = (solarYear - 2000 + 16 - 1) % 60;
         } else {
@@ -534,19 +535,19 @@ public class Lunar {
     }
 
     /**
-     * È¡Å©ÀúÄêÉúĞ¤
-     * @return Å©ÀúÄêÉúĞ¤(Àı:Áú)
+     * å–å†œå†å¹´ç”Ÿè‚–
+     * @return å†œå†å¹´ç”Ÿè‚–(ä¾‹:é¾™)
      */
     public String getAnimalString() {
         return Lunar.Animals[(this.lunarYear - 4) % 12];
     }
 
     /**
-     * ·µ»Ø¹«ÀúÈÕÆÚµÄ½ÚÆø×Ö·û´®
-     * @return ¶şÊ®ËÄ½ÚÆø×Ö·û´®,Èô²»ÊÇ½ÚÆøÈÕ,·µ»Ø¿Õ´®(Àı:¶¬ÖÁ)
+     * è¿”å›å…¬å†æ—¥æœŸçš„èŠ‚æ°”å­—ç¬¦ä¸²
+     * @return äºŒåå››èŠ‚æ°”å­—ç¬¦ä¸²,è‹¥ä¸æ˜¯èŠ‚æ°”æ—¥,è¿”å›ç©ºä¸²(ä¾‹:å†¬è‡³)
      */
     public String getTermString() {
-        // ¶şÊ®ËÄ½ÚÆø
+        // äºŒåå››èŠ‚æ°”
         if("".equals(this.termString)){
             this.termString = "";
             if (Lunar.getSolarTermDay(solarYear, solarMonth * 2) == solarDay) {
@@ -559,213 +560,213 @@ public class Lunar {
     }
 
     /**
-     * Äê·İÌì¸É
-     * @return Äê·İÌì¸É
+     * å¹´ä»½å¤©å¹²
+     * @return å¹´ä»½å¤©å¹²
      */
     public int getTiananY() {
         return Lunar.getTianan(this.cyclicalYear);
     }
 
     /**
-     * ÔÂ·İÌì¸É
-     * @return ÔÂ·İÌì¸É
+     * æœˆä»½å¤©å¹²
+     * @return æœˆä»½å¤©å¹²
      */
     public int getTiananM() {
         return Lunar.getTianan(this.cyclicalMonth);
     }
 
     /**
-     * ÈÕÆÚÌì¸É
-     * @return ÈÕÆÚÌì¸É
+     * æ—¥æœŸå¤©å¹²
+     * @return æ—¥æœŸå¤©å¹²
      */
     public int getTiananD() {
         return Lunar.getTianan(this.cyclicalDay);
     }
 
     /**
-     * Äê·İµØÖ§
-     * @return Äê·ÖµØÖ§
+     * å¹´ä»½åœ°æ”¯
+     * @return å¹´åˆ†åœ°æ”¯
      */
     public int getDeqiY() {
         return Lunar.getDeqi(this.cyclicalYear);
     }
 
     /**
-     * ÔÂ·İµØÖ§
-     * @return ÔÂ·İµØÖ§
+     * æœˆä»½åœ°æ”¯
+     * @return æœˆä»½åœ°æ”¯
      */
     public int getDeqiM() {
         return Lunar.getDeqi(this.cyclicalMonth);
     }
 
     /**
-     * ÈÕÆÚµØÖ§
-     * @return ÈÕÆÚµØÖ§
+     * æ—¥æœŸåœ°æ”¯
+     * @return æ—¥æœŸåœ°æ”¯
      */
     public int getDeqiD() {
         return Lunar.getDeqi(this.cyclicalDay);
     }
 
     /**
-     * È¡µÃ¸ÉÖ§Äê×Ö·û´®
-     * @return ¸ÉÖ§Äê×Ö·û´®
+     * å–å¾—å¹²æ”¯å¹´å­—ç¬¦ä¸²
+     * @return å¹²æ”¯å¹´å­—ç¬¦ä¸²
      */
     public String getCyclicaYear() {
         return this.getCyclicalString(this.cyclicalYear);
     }
 
     /**
-     * ·µ»ØÅ©ÀúÈÕÆÚ×Ö·û´®
-     * @return Å©ÀúÈÕÆÚ×Ö·û´®
+     * è¿”å›å†œå†æ—¥æœŸå­—ç¬¦ä¸²
+     * @return å†œå†æ—¥æœŸå­—ç¬¦ä¸²
      */
     public String getLunarDayString() {
         return this.getLunarDayString(this.lunarDay);
     }
 
     /**
-     * ·µ»ØÅ©ÀúÈÕÆÚ×Ö·û´®
-     * @return Å©ÀúÈÕÆÚ×Ö·û´®
+     * è¿”å›å†œå†æ—¥æœŸå­—ç¬¦ä¸²
+     * @return å†œå†æ—¥æœŸå­—ç¬¦ä¸²
      */
     public String getLunarMonthString() {
         return (this.isLeap() ? Lunar.lunarString2[7] : "") + this.getLunarMonthString(this.lunarMonth);
     }
 
     /**
-     * ·µ»ØÅ©ÀúÈÕÆÚ×Ö·û´®
-     * @return Å©ÀúÈÕÆÚ×Ö·û´®
+     * è¿”å›å†œå†æ—¥æœŸå­—ç¬¦ä¸²
+     * @return å†œå†æ—¥æœŸå­—ç¬¦ä¸²
      */
     public String getLunarYearString() {
         return this.getLunarYearString(this.lunarYear);
     }
 
     /**
-     * Å©ÀúÄêÊÇ·ñÊÇÈòÔÂ
-     * @return Å©ÀúÄêÊÇ·ñÊÇÈòÔÂ
+     * å†œå†å¹´æ˜¯å¦æ˜¯é—°æœˆ
+     * @return å†œå†å¹´æ˜¯å¦æ˜¯é—°æœˆ
      */
     public boolean isLeap() {
         return isLeap;
     }
 
     /**
-     * Å©ÀúÄêÊÇ·ñÊÇÈòÄê
-     * @return Å©ÀúÄêÊÇ·ñÊÇÈòÄê
+     * å†œå†å¹´æ˜¯å¦æ˜¯é—°å¹´
+     * @return å†œå†å¹´æ˜¯å¦æ˜¯é—°å¹´
      */
     public boolean isLeapYear() {
         return isLeapYear;
     }
 
     /**
-     * Å©ÀúÈÕÆÚ
-     * @return Å©ÀúÈÕÆÚ
+     * å†œå†æ—¥æœŸ
+     * @return å†œå†æ—¥æœŸ
      */
     public int getLunarDay() {
         return lunarDay;
     }
 
     /**
-     * Å©ÀúÔÂ·İ
-     * @return Å©ÀúÔÂ·İ
+     * å†œå†æœˆä»½
+     * @return å†œå†æœˆä»½
      */
     public int getLunarMonth() {
         return lunarMonth;
     }
 
     /**
-     * Å©ÀúÄê·İ
-     * @return Å©ÀúÄê·İ
+     * å†œå†å¹´ä»½
+     * @return å†œå†å¹´ä»½
      */
     public int getLunarYear() {
         return lunarYear;
     }
 
     /**
-     * È¡µÃÅ©Àú½ÚÈÕÃû³Æ
-     * @return Å©Àú½ÚÈÕÃû³Æ,Èç¹û²»ÊÇ½ÚÈÕ·µ»Ø¿Õ´®
+     * å–å¾—å†œå†èŠ‚æ—¥åç§°
+     * @return å†œå†èŠ‚æ—¥åç§°,å¦‚æœä¸æ˜¯èŠ‚æ—¥è¿”å›ç©ºä¸²
      */
     public String getLFestivalName() {
         return this.lFestivalName;
     }
 
     /**
-     * È¡µÃ×Ô¶¨ÒåÅ©Àú½ÚÈÕÃû³Æ
-     * @return Å©Àú½ÚÈÕÃû³Æ,Èç¹û²»ÊÇ½ÚÈÕ·µ»Ø¿Õ´®
+     * å–å¾—è‡ªå®šä¹‰å†œå†èŠ‚æ—¥åç§°
+     * @return å†œå†èŠ‚æ—¥åç§°,å¦‚æœä¸æ˜¯èŠ‚æ—¥è¿”å›ç©ºä¸²
      */
     public String getCLFestivalName() {
         return this.clFestivalName;
     }
 
     /**
-     * È¡µÃ×Ô¶¨Òå¹«Àú½ÚÈÕÃû³Æ
-     * @return ¹«Àú½ÚÈÕÃû³Æ,Èç¹û²»ÊÇ½ÚÈÕ·µ»Ø¿Õ´®
+     * å–å¾—è‡ªå®šä¹‰å…¬å†èŠ‚æ—¥åç§°
+     * @return å…¬å†èŠ‚æ—¥åç§°,å¦‚æœä¸æ˜¯èŠ‚æ—¥è¿”å›ç©ºä¸²
      */
     public String getCSFestivalName() {
         return this.csFestivalName;
     }
 
     /**
-     * ¹«ÀúÈÕÆÚ
-     * @return ¹«ÀúÈÕÆÚ
+     * å…¬å†æ—¥æœŸ
+     * @return å…¬å†æ—¥æœŸ
      */
     public int getSolarDay() {
         return solarDay;
     }
 
     /**
-     * ¹«ÀúÔÂ·İ
-     * @return ¹«ÀúÔÂ·İ (²»ÊÇ´Ó0ËãÆğ)
+     * å…¬å†æœˆä»½
+     * @return å…¬å†æœˆä»½ (ä¸æ˜¯ä»0ç®—èµ·)
      */
     public int getSolarMonth() {
         return solarMonth+1;
     }
 
     /**
-     * ¹«ÀúÄê·İ
-     * @return ¹«ÀúÄê·İ
+     * å…¬å†å¹´ä»½
+     * @return å…¬å†å¹´ä»½
      */
     public int getSolarYear() {
         return solarYear;
     }
 
     /**
-     * ¸ÉÖ§×Ö·û´®
-     * @param cyclicalNumber Ö¸¶¨¸ÉÖ§Î»ÖÃ(Êı×Ö,0Îª¼××Ó)
-     * @return ¸ÉÖ§×Ö·û´®
+     * å¹²æ”¯å­—ç¬¦ä¸²
+     * @param cyclicalNumber æŒ‡å®šå¹²æ”¯ä½ç½®(æ•°å­—,0ä¸ºç”²å­)
+     * @return å¹²æ”¯å­—ç¬¦ä¸²
      */
     private String getCyclicalString(int cyclicalNumber) {
         return Lunar.Tianan[Lunar.getTianan(cyclicalNumber)] + Lunar.Deqi[Lunar.getDeqi(cyclicalNumber)];
     }
 
     /**
-     * »ñµÃµØÖ§
+     * è·å¾—åœ°æ”¯
      * @param cyclicalNumber
-     * @return µØÖ§ (Êı×Ö)
+     * @return åœ°æ”¯ (æ•°å­—)
      */
     private static int getDeqi(int cyclicalNumber) {
          return cyclicalNumber % 12;
     }
 
     /**
-     * »ñµÃÌì¸É
+     * è·å¾—å¤©å¹²
      * @param cyclicalNumber
-     * @return Ìì¸É (Êı×Ö)
+     * @return å¤©å¹² (æ•°å­—)
      */
     private static int getTianan(int cyclicalNumber) {
          return cyclicalNumber % 10;
     }
 
     /**
-     * ·µ»ØÖ¸¶¨Êı×ÖµÄÅ©ÀúÄê·İ±íÊ¾×Ö·û´®
-     * @param lunarYear Å©ÀúÄê·İ(Êı×Ö,0Îª¼××Ó)
-     * @return Å©ÀúÄê·İ×Ö·û´®
+     * è¿”å›æŒ‡å®šæ•°å­—çš„å†œå†å¹´ä»½è¡¨ç¤ºå­—ç¬¦ä¸²
+     * @param lunarYear å†œå†å¹´ä»½(æ•°å­—,0ä¸ºç”²å­)
+     * @return å†œå†å¹´ä»½å­—ç¬¦ä¸²
      */
     private String getLunarYearString(int lunarYear) {
         return this.getCyclicalString(lunarYear - 2000 + 16);
     }
 
     /**
-     * ·µ»ØÖ¸¶¨Êı×ÖµÄÅ©ÀúÔÂ·İ±íÊ¾×Ö·û´®
-     * @param lunarMonth Å©ÀúÔÂ·İ(Êı×Ö)
-     * @return Å©ÀúÔÂ·İ×Ö·û´® (Àı:Õı)
+     * è¿”å›æŒ‡å®šæ•°å­—çš„å†œå†æœˆä»½è¡¨ç¤ºå­—ç¬¦ä¸²
+     * @param lunarMonth å†œå†æœˆä»½(æ•°å­—)
+     * @return å†œå†æœˆä»½å­—ç¬¦ä¸² (ä¾‹:æ­£)
      */
     private String getLunarMonthString(int lunarMonth) {
         String lunarMonthString = "";
@@ -782,9 +783,9 @@ public class Lunar {
     }
 
     /**
-     * ·µ»ØÖ¸¶¨Êı×ÖµÄÅ©ÀúÈÕ±íÊ¾×Ö·û´®
-     * @param lunarDay Å©ÀúÈÕ(Êı×Ö)
-     * @return Å©ÀúÈÕ×Ö·û´® (Àı: Ø¥Ò»)
+     * è¿”å›æŒ‡å®šæ•°å­—çš„å†œå†æ—¥è¡¨ç¤ºå­—ç¬¦ä¸²
+     * @param lunarDay å†œå†æ—¥(æ•°å­—)
+     * @return å†œå†æ—¥å­—ç¬¦ä¸² (ä¾‹: å»¿ä¸€)
      */
     private String getLunarDayString(int lunarDay) {
         if (lunarDay<1 || lunarDay>30) return "";
@@ -798,59 +799,64 @@ public class Lunar {
     }
     
     /**
-     * ·µ»Ø×éºÏÎÄ±¾
-     * @return ×éºÏÎÄ±¾
+     * è¿”å›ç»„åˆæ–‡æœ¬
+     * @return ç»„åˆæ–‡æœ¬
      */
     public String getComboText(){
         String sfest, fest, term, custom, sfest_custom, year = "", lunarText;
+        //ä»…åœ¨ä¸ä¸ºè‹±æ–‡æ—¶æŸ¥æ‰¾èŠ‚æ—¥
         if(Main._lang != 3){
-            //ÅĞ¶ÏÊÇ·ñÊÇ¹«Àú½ÚÈÕ
+            //åˆ¤æ–­æ˜¯å¦æ˜¯å…¬å†èŠ‚æ—¥
             if (Main._solar && (!"".equals(this.getSFestivalName()))){
                 sfest = " " + this.getSFestivalName();
             }else{
                 sfest = "";
             }
     
-            //ÅĞ¶ÏÊÇ·ñÊÇÅ©Àú½ÚÈÕ
+            //åˆ¤æ–­æ˜¯å¦æ˜¯å†œå†èŠ‚æ—¥
             if (Main._fest && (!"".equals(this.getLFestivalName()))){
                 fest = " " + this.getLFestivalName();
             }else{
                 fest = "";
             }
     
-            //ÅĞ¶ÏÊÇ·ñÊÇ¶şÊ®ËÄ½ÚÆø
+            //åˆ¤æ–­æ˜¯å¦æ˜¯äºŒåå››èŠ‚æ°”
             if (Main._term && (!"".equals(this.getTermString()))){
                 term = " " + this.getTermString();
             }else{
                 term = "";
             }
     
-            //ÅĞ¶ÏÊÇ·ñÊÇ×Ô¶¨ÒåÅ©Àú½ÚÈÕ
+            //åˆ¤æ–­æ˜¯å¦æ˜¯è‡ªå®šä¹‰å†œå†èŠ‚æ—¥
             if (Main._custom && (!"".equals(this.getCLFestivalName()))){
-                custom = "£¬" + this.getCLFestivalName();
+                custom = "ï¼Œ" + this.getCLFestivalName();
             }else{
                 custom = "";
             }
     
-            //ÅĞ¶ÏÊÇ·ñÊÇ×Ô¶¨Òå¹«Àú½ÚÈÕ
+            //åˆ¤æ–­æ˜¯å¦æ˜¯è‡ªå®šä¹‰å…¬å†èŠ‚æ—¥
             if (Main._solar_custom && (!"".equals(this.getCSFestivalName()))){
-                sfest_custom = "£¬" + this.getCSFestivalName();
+                sfest_custom = "ï¼Œ" + this.getCSFestivalName();
             }else{
                 sfest_custom = "";
             }
     
-            //¸ù¾İÉèÖÃÉèÖÃÄê·İ
+            //æ ¹æ®è®¾ç½®è®¾ç½®å¹´ä»½
             switch(Main._year){
-                case 1:  year = this.getAnimalString() + "Äê";
+                //å±ç›¸
+                case 1:  year = this.getAnimalString() + "å¹´";
                     break;
-                case 2:  year = this.getLunarYearString() + "Äê";
+                //å¤©å¹²åœ°æ”¯
+                case 2:  year = this.getLunarYearString() + "å¹´";
                     break;
+                //ä¸æ˜¾ç¤ºå¹´ä»½
                 case 3:  year = "";
                     break;
-                case 4:  year = this.getLunarYearString() + this.getAnimalString() + "Äê";
+                //å¤©å¹²åœ°æ”¯+å±ç›¸
+                case 4:  year = this.getLunarYearString() + this.getAnimalString() + "å¹´";
                     break;
             }
-            lunarText = year + this.getLunarMonthString() + "ÔÂ" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
+            lunarText = year + this.getLunarMonthString() + "æœˆ" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
         }else{
             lunarText = "[" + this.getLunarDay() + "/" + this.getLunarMonth() + "]";
         }

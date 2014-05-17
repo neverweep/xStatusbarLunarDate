@@ -1,11 +1,11 @@
-package de.xiaoxia.xstatusbarlunardate;
+﻿package de.xiaoxia.xstatusbarlunardate;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.widget.TextClock;
 import android.widget.TextView;
 
-//����xposed������
+//导入xposed基本类
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
@@ -16,8 +16,8 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 /* Main */
 public class Lockscreen implements IXposedHookLoadPackage{
 
-    /* ��ʼ���� */
-    private String lunarText = "LUNAR"; //��¼������ʱ�������ַ���
+    /* 初始变量 */
+    private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
     private String lDate = "LAST";
     private String nDate;
     private Lunar lunar = new Lunar(Main._lang);
@@ -25,20 +25,26 @@ public class Lockscreen implements IXposedHookLoadPackage{
     private TextView textview;
 
 
-    /*��ȡũ���ַ����ӳ���*/
+    /*获取农历字符串子程序*/
     private String returnDate(String nDate){
-        //�ж������Ƿ��������û�б����ֱ�ӷ��ػ���
+        //判断日期是否发生变更，没有变更则直接返回缓存
         if(!nDate.equals(lDate)){
+            //初始化时间
             lunar.init(System.currentTimeMillis());
+            //Lunar类中的返回农历文本组合
             lunarText = lunar.getComboText();
-            //������������ѡ����������ı�
+            //根据锁屏布局选项设置输出文本
             switch(Main._lockscreen_layout){
+                //不换行
                 case 1: lunarText = nDate + " - " + lunarText;
                     break;
+                //前换行
                 case 2: lunarText = nDate.trim() + "\n" + lunarText;
                     break;
+                //后换行
                 case 3: lunarText = nDate + " - " + lunarText + "\n";
                     break;
+                //前后都换行
                 case 4: lunarText = nDate.trim() + "\n" + lunarText + "\n";
                     break;
             }
@@ -48,25 +54,32 @@ public class Lockscreen implements IXposedHookLoadPackage{
         return lunarText;
     }
 
-    /*�滻���ں���*/
-    public void handleLoadPackage(final LoadPackageParam lpparam){  
+    /*替换日期函数*/
+    public void handleLoadPackage(final LoadPackageParam lpparam){
+        //如果打开了锁屏农历
         if(Main._lockscreen){
             switch(Main._rom){
-                //�����androidϵͳ
+                //大多数android系统
                 case 1:
                     //XposedBridge.log(lpparam.packageName);
-                    //4.4֮ǰ��keyguard��android.policy.odex����
+                    //4.4之前的keyguard在android.policy.odex里面，即系统进程“android”中
                     if(lpparam.packageName.equals("android")){
                         try{
                             if(Build.VERSION.SDK_INT <= 16) {
                                 //XposedBridge.log("SDK 15-16");
+                                //4.1和之前的锁屏界面日期更新程序放在 /com/android/internal/policy/impl/KeyguardStatusViewManager.java(smali)里面
+                                //在android进程中查找该类
                                 Class<?> hookClass = XposedHelpers.findClass("com.android.internal.policy.impl.KeyguardStatusViewManager", null);
-                                XposedHelpers.findAndHookMethod(hookClass, "refreshDate", new XC_MethodHook() {
+                                //Hook 这个类中的 refreshDate 函数
+                                findAndHookMethod(hookClass, "refreshDate", new XC_MethodHook() {
 
                                     @Override
+                                    //在该函数执行后执行
                                     protected void afterHookedMethod(final MethodHookParam param){
+                                        //从该类中获取该类已经定义好的变量，这里的mDateView即是KeyguardStatusViewManager.java中定义好的显示日期的TextView控件，以下的操作和Main.java中的操作类似
                                         textview = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
                                         nDate = (String) textview.getText().toString();
+                                        //如果修改锁屏布局，则先将其的singleLine属性去除
                                         if(Main._lockscreen_layout > 1){
                                             textview.setSingleLine(false);
                                         }
@@ -76,8 +89,9 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                 });
                             }else if(Build.VERSION.SDK_INT <= 18){
                                 //XposedBridge.log("SDK 17-18");
+                                //4.2 4.3的锁屏界面日期更新程序放在 /com/android/internal/policy/impl/keyguard/KeyguardStatusView.java(smali)里面
                                 Class<?> hookClass = XposedHelpers.findClass("com.android.internal.policy.impl.keyguard.KeyguardStatusView", null);
-                                XposedHelpers.findAndHookMethod(hookClass, "refreshDate", new XC_MethodHook() {
+                                findAndHookMethod(hookClass, "refreshDate", new XC_MethodHook() {
                                     
                                     @SuppressLint("NewApi")
                                     @Override
@@ -85,6 +99,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                         textview = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
                                         if(Main._lockscreen_layout > 1){
                                             textview.setSingleLine(false);
+                                            //如果修改锁屏对其，则设置对齐（setTextAlignment仅在Android4.2+上有效）
                                             if(Main._lockscreen_alignment > 1){
                                                 textview.setTextAlignment(Main._lockscreen_alignment);
                                             }
@@ -98,7 +113,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                         }catch(Exception e){
                             //Do nothing
                         }
-                    //4.4֮��keyguard����Ϊһ��apk
+                    //4.4之后keyguard独立为一个apk，所以不再查找“android”核心进程，去匹配包名“com.android.keyguard”
                     }else if(lpparam.packageName.equals("com.android.keyguard")){
                         try{
                             //XposedBridge.log("SDK 19");
@@ -107,7 +122,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                 @SuppressLint("NewApi")
                                 @Override
                                 protected void afterHookedMethod(final MethodHookParam param){
-                                    //4.4������TextClock��
+                                    //4.4新增了TextClock控件
                                     textclock = (TextClock) XposedHelpers.getObjectField(param.thisObject, "mDateView");
                                     if(Main._lockscreen_layout > 1){
                                         textclock.setSingleLine(false);
@@ -128,7 +143,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                 case 2:
                     break;
             }
-            /* Samsung touchwiz 4.4 hook ���ҵ������Ǹ��޷���ʾ
+            /* Samsung touchwiz 4.4 hook 能找到，但是更无法显示
             if(lpparam.packageName.equals("com.android.keyguard")){
                 try{
                     findAndHookMethod("com.android.keyguard.sec.SecKeyguardClock", lpparam.classLoader, "updateClock", new XC_MethodHook() {

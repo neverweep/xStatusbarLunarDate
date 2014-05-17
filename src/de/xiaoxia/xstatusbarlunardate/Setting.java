@@ -1,4 +1,4 @@
-package de.xiaoxia.xstatusbarlunardate;
+ï»¿package de.xiaoxia.xstatusbarlunardate;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting);
 
-        //ÕÒµ½ÉèÖÃ£¬²¢½«Æä¸ÅÀ¨ĞŞ¸ÄÎªµ±Ç°ÉèÖÃoption_name
+        //æ‰¾åˆ°è®¾ç½®ï¼Œå¹¶å°†å…¶æ¦‚æ‹¬ä¿®æ”¹ä¸ºå½“å‰è®¾ç½®option_name
         
         
         lp = (ListPreference)findPreference("minor");
@@ -45,23 +45,24 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
 
         _lp = (ListPreference)findPreference("lockscreen_alignment");
         if(Build.VERSION.SDK_INT < 17){
-            //Android SDK °æ±¾Ğ¡ÓÚ4.2Ê±£¬ÏÔÊ¾summaryÎª²»¿ÉÓÃ£¬²¢½«ÆäÉèÎª²»¿ÉÓÃ
+            //Android SDK ç‰ˆæœ¬å°äº4.2æ—¶ï¼Œæ˜¾ç¤ºsummaryä¸ºä¸å¯ç”¨ï¼Œå¹¶å°†å…¶è®¾ä¸ºä¸å¯ç”¨
             _lp.setSummary(getString(R.string.lockscreen_alignment_disable));
             _lp.setEnabled(false);
         }else{
-            //·ñÔò...
+            //å¦åˆ™...
             if(lp.getValue().toString().equals("1")){
-                //Èç¹ûlockscreen_layoutÖµ²»Îª¡°1¡±£¬¼´²»Îª²»µ÷Õû²¼¾Ö£¬Ôò¶ÔÆëÑ¡ÏîÉèÎª²»¿ÉÓÃ
+                //å¦‚æœlockscreen_layoutå€¼ä¸ä¸ºâ€œ1â€ï¼Œå³ä¸ä¸ºä¸è°ƒæ•´å¸ƒå±€ï¼Œåˆ™å¯¹é½é€‰é¡¹è®¾ä¸ºä¸å¯ç”¨
                 _lp.setEnabled(false);
             }else{
-                //·ñÔòÉèÎª¿ÉÓÃ
+                //å¦åˆ™è®¾ä¸ºå¯ç”¨
                 _lp.setEnabled(true);
             }
             _lp.setSummary(_lp.getEntry());
         }
 
-        //¼àÌısharedPreferences±ä»¯
+        //ç›‘å¬sharedPreferenceså˜åŒ–
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //æ³¨å†Œç›‘å¬äº‹ä»¶
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -69,7 +70,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         
-        //ÉèÖÃ·¢Éú±ä»¯Ê±£¬ÉèÖÃsummaryÎªoption_name
+        //è®¾ç½®å‘ç”Ÿå˜åŒ–æ—¶ï¼Œè®¾ç½®summaryä¸ºoption_name
         if(key.equals("minor")){
             lp = (ListPreference)findPreference("minor");
             lp.setSummary(lp.getEntry());
@@ -113,25 +114,26 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         }
     }
 
-    //´´½¨ActionBarÓÒÉÏ½Ç°´Å¥
+    //åˆ›å»ºActionBarå³ä¸Šè§’æŒ‰é’®
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.about, menu);
+        inflater.inflate(R.menu.about, menu); //èœå•é€‰é¡¹è°ƒç”¨ /menu/about.xml
         return true;
     }
 
-    //°´Å¥µã»÷ĞĞÎª£¬ÒòÎªÃ»ÓĞ¶ş¼¶°´Å¥£¬²»ĞèÒªÅĞ¶Ïµã»÷ÄÚÈİ
+    //æŒ‰é’®ç‚¹å‡»è¡Œä¸ºï¼Œå› ä¸ºæ²¡æœ‰äºŒçº§æŒ‰é’®ï¼Œä¸éœ€è¦åˆ¤æ–­ç‚¹å‡»å†…å®¹
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
+        //ç‚¹å‡»InfoæŒ‰é’®åï¼Œæ–°å»ºä¸€ä¸ªAlertDialogæ˜¾ç¤ºå…³äºä¿¡æ¯
         LayoutInflater inflater = LayoutInflater.from(this);
-        final View textEntryView = inflater.inflate(R.layout.about, null);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setIcon(R.drawable.ic_launcher);
-        builder.setTitle(R.string.about);
-        builder.setView(textEntryView);
-        builder.setPositiveButton(R.string.ok, null);
-        builder.show(); 
+        final View textEntryView = inflater.inflate(R.layout.about, null); //ä½¿ç”¨ /layout/about.xml ä½œä¸ºè¾“å‡ºå¸ƒå±€
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this); //å»ºç«‹å¯¹è¯æ¡†
+        builder.setIcon(R.drawable.ic_launcher); //å›¾æ ‡èµ„æºè°ƒç”¨ /drawable/ic_launcher.png
+        builder.setTitle(R.string.about); //æ ‡é¢˜è®¾ä¸º @string/about
+        builder.setView(textEntryView); //è®¾ç½®å¸ƒå±€
+        builder.setPositiveButton(R.string.ok, null); //è®¾ç½®æŒ‰é’®ï¼Œä»…è®¾ç½®ä¸€ä¸ªç¡®å®šæŒ‰é’®
+        builder.show(); //æ˜¾ç¤ºå¯¹è¯æ¡†
         return true;
     }
 }
