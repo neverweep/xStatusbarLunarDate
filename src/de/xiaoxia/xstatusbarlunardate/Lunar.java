@@ -1,4 +1,19 @@
-﻿package de.xiaoxia.xstatusbarlunardate;
+﻿/**
+ * Copyright (C) 2014 xiaoxia.de
+ * 
+ * @author joyphper.net
+ * @modified by xiaoxia.de
+ * @date 2014
+ * @license MIT
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ * 
+ */
+
+// 自定义农历界面
+
+package de.xiaoxia.xstatusbarlunardate;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -7,11 +22,6 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * 提供一些农历相关信息
- * @mod xiaoxia.de
- * @author joyphper.net
- */
 public class Lunar {
 
 

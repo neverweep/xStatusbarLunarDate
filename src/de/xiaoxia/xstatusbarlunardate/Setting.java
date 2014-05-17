@@ -1,4 +1,18 @@
-﻿package de.xiaoxia.xstatusbarlunardate;
+﻿/**
+ * Copyright (C) 2014 xiaoxia.de
+ * 
+ * @author by xiaoxia.de
+ * @date 2014
+ * @license MIT
+ *
+ * This file is subject to the terms and conditions defined in
+ * file 'LICENSE.txt', which is part of this source code package.
+ * 
+ */
+
+// 主设置界面
+
+package de.xiaoxia.xstatusbarlunardate;
 
 import android.os.Build;
 import android.os.Bundle;
