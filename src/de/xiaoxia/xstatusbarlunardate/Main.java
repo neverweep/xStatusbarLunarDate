@@ -153,13 +153,13 @@ public class Main implements IXposedHookLoadPackage{
             lDate = nDate;
             //从Lunar类中获得组合好的农历日期字符串（包括各节日）
             lunarText = lunar.getComboText();
-            //输出到最终字符串
-            finalText = nDate + breaklineText + lunarText;
             //如果需要去换行
             if(_remove){
-                Matcher mat = reg.matcher(finalText);
-                finalText = mat.replaceFirst(" "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
+                Matcher mat = reg.matcher(nDate);
+                nDate = mat.replaceFirst(" "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
             }
+            //输出到最终字符串
+            finalText = nDate + breaklineText + lunarText;
         }
         return finalText;
     }

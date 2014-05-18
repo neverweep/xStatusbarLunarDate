@@ -104,15 +104,15 @@ public class Lunar {
                 }
             }
             //查找月周节日
-            int w, d;
+            int fw, fd;
             for (int i=0; i<Lunar.wFtv.length; i++) {
                 m = Lunar.wFreg.matcher(Lunar.wFtv[i]);
                 if (m.find()) {
                     if (this.getSolarMonth() == Lunar.toInt(m.group(1))) {
-                        w = Lunar.toInt(m.group(2));
-                        d = Lunar.toInt(m.group(3));
-                        if (this.solar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == w &&
-                                this.solar.get(Calendar.DAY_OF_WEEK) == d) {
+                        fw = Lunar.toInt(m.group(2));
+                        fd = Lunar.toInt(m.group(3));
+                        if (this.solar.get(Calendar.DAY_OF_WEEK_IN_MONTH) == fw &&
+                                this.solar.get(Calendar.DAY_OF_WEEK) == fd) {
                             this.sFestivalName += " " + m.group(4);
                         }
                     }
@@ -122,18 +122,18 @@ public class Lunar {
             //计算复活节
             if(Main._lang == 4 || Main._lang == 5){
                 int a = sY % 19;
-                int b = (int) Math.floor(sY / 100);
+                int b = sY / 100;
                 int c = sY % 100;
-                int d1 = (int) Math.floor(b / 4);
+                int d = b / 4;
                 int e = b % 4;
-                int f = (int) Math.floor((b + 8) / 25);
-                int g = (int) Math.floor((b - f + 1) / 3);
-                int h = (19 * a + b - d1 - g + 15) % 30;
-                int i = (int) Math.floor(c / 4);
+                int f = (b + 8) / 25;
+                int g = (b - f + 1) / 3;
+                int h = (19 * a + b - d - g + 15) % 30;
+                int i = c / 4;
                 int k = c % 4;
                 int l = (32 + 2 * e + 2 * i - h - k) % 7;
-                int z = (int) Math.floor((a + 11 * h + 22 * l) / 451);
-                if(sM == (int) Math.floor((h + l - 7 * z + 114) / 31) && sD == ((h + l - 7 * z + 114) % 31) + 1){
+                int z = (a + 11 * h + 22 * l) / 451;
+                if(sM == (h + l - 7 * z + 114) / 31 && sD == ((h + l - 7 * z + 114) % 31) + 1){
                     this.sFestivalName += " " + "復活節" ;
                 }
             }
@@ -419,7 +419,7 @@ public class Lunar {
                     "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
                 };
                 Lunar.lunarString2 = new String[]{
-                    "初", "十", "廿", "卅", "正", "冬", "腊", "闰"
+                    "初", "十", "廿", "正", "冬", "腊", "闰"
                 };
                 Lunar.wFtv = new String[]{
                     "0521母亲节", "0631父亲节", "1145感恩节"
@@ -439,7 +439,7 @@ public class Lunar {
                     "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
                 };
                 Lunar.lunarString2 = new String[]{
-                    "初", "十", "廿", "卅", "正", "冬", "臘", "閏"
+                    "初", "十", "廿", "正", "冬", "臘", "閏"
                 };
                 Lunar.wFtv = new String[]{
                     "0521母親節", "0631父親節", "1145感恩節"
@@ -638,7 +638,7 @@ public class Lunar {
      * @return 农历日期字符串
      */
     public String getLunarMonthString() {
-        return (this.isLeap() ? Lunar.lunarString2[7] : "") + this.getLunarMonthString(this.lunarMonth);
+        return (this.isLeap() ? Lunar.lunarString2[6] : "") + this.getLunarMonthString(this.lunarMonth);
     }
 
     /**
@@ -781,11 +781,11 @@ public class Lunar {
     private String getLunarMonthString(int lunarMonth) {
         String lunarMonthString = "";
         if (lunarMonth == 1) {
-            lunarMonthString = Lunar.lunarString2[4];
+            lunarMonthString = Lunar.lunarString2[3];
         }else if(lunarMonth == 10){
             lunarMonthString += Lunar.lunarString2[1];
         }else if(lunarMonth > 10){
-            lunarMonthString += Lunar.lunarString2[lunarMonth % 10 + 4];
+            lunarMonthString += Lunar.lunarString2[lunarMonth % 10 + 3];
         }else if(lunarMonth % 10 > 0){
             lunarMonthString += Lunar.lunarString1[lunarMonth % 10];
         }
@@ -803,8 +803,13 @@ public class Lunar {
         int i2 = lunarDay % 10;
         String c1 = Lunar.lunarString2[i1];
         String c2 = Lunar.lunarString1[i2];
-        if (lunarDay < 11) c1 = Lunar.lunarString2[0];
-        if (i2 == 0) c2 = Lunar.lunarString2[1];
+        if (lunarDay < 11){
+            c1 = Lunar.lunarString2[0];
+            if(i2 == 0) c2 = Lunar.lunarString2[1];
+        }else if (i2 == 0){
+            c2 = Lunar.lunarString2[1];
+            c1 = Lunar.lunarString1[i1];
+        }
         return c1 + c2;
     }
     
