@@ -82,7 +82,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         }else{
             //否则...
             //如果lockscreen_layout值不为“1”，即不为不调整布局，则对齐选项设为不可用
-            _lp.setEnabled(lp.getValue().toString().equals("1"));
+            _lp.setEnabled(!lp.getValue().toString().equals("1"));
             _lp.setSummary(_lp.getEntry());
         }
 
