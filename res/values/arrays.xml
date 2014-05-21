@@ -10,10 +10,6 @@
         <item>2</item>
         <item>3</item>
     </string-array>
-    <string-array name="about_options">
-    </string-array>
-    <string-array name="about_values">
-    </string-array>
     <string-array name="lang_options">
         <item>@string/lang_option_1</item>
         <item>@string/lang_option_6</item>
@@ -30,17 +26,19 @@
         <item>5</item>
         <item>3</item>
     </string-array>
-    <string-array name="year_options">
-        <item>@string/year_option_1</item>
-        <item>@string/year_option_2</item>
-        <item>@string/year_option_4</item>
-        <item>@string/year_option_3</item>
+    <string-array name="format_options">
+        <item>@string/format_option_1</item>
+        <item>@string/format_option_2</item>
+        <item>@string/format_option_4</item>
+        <item>@string/format_option_3</item>
+        <item>@string/format_option_5</item>
     </string-array>
-    <string-array name="year_values">
+    <string-array name="format_values">
         <item>1</item>
         <item>2</item>
         <item>4</item>
         <item>3</item>
+        <item>5</item>
     </string-array>
     <string-array name="rom_options">
         <item>@string/rom_option_1</item>

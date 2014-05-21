@@ -23,8 +23,8 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 public class SettingCustomLunar extends PreferenceActivity implements OnSharedPreferenceChangeListener{
 
-	//初始化对象 lp
-    EditTextPreference lp;
+	//初始化对象 etp
+    EditTextPreference etp;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -37,10 +37,10 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
 
         //找到设置，并将其概括修改为当前设置option_name
         for(int i = 0; i < 15; i++){
-            lp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
-            if(!"".equals(lp.getText()) && lp.getText() != null)
-                lp.setSummary(lp.getText());
-            lp.setTitle(getString(R.string.custom_lunar) + " " + (i + 1));
+            etp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
+            if(!"".equals(etp.getText()) && etp.getText() != null)
+                etp.setSummary(etp.getText());
+            etp.setTitle(getString(R.string.custom_lunar) + " " + (i + 1));
         }
 
         //监听sharedPreferences变化
@@ -55,13 +55,13 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
         //设置发生变化时，设置summary为option_name
         for(int i = 0; i < 15; i++){
             if(key.equals("custom_lunar_item_" + i)){
-                lp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
-                if(!"".equals(lp.getText()) && lp.getText() != null){
+                etp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
+                if(!"".equals(etp.getText()) && etp.getText() != null){
                 	//如果该选项储存值不为空字符串，且不为空，则将其summary设置为储存的内容
-                    lp.setSummary(lp.getText());
+                    etp.setSummary(etp.getText());
                 }else{
                 	//否则显示“未设置”
-                    lp.setSummary(getString(R.string.custom_lunar_summary));
+                    etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
                 }
                 break;
             }

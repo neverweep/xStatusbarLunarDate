@@ -1,14 +1,14 @@
 ﻿/**
  * Copyright (C) 2014 xiaoxia.de
- * 
+ *
  * @author joyphper.net
- * @modified by xiaoxia.de
+ * @modified xiaoxia.de
  * @date 2014
  * @license MIT
  *
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
- * 
+ *
  */
 
 // 自定义农历界面
@@ -83,7 +83,7 @@ public class Lunar {
         //是纯数字显示就直接返回，不计算节日
         if(Main._lang == 3)
             return;
-        
+
 
         int sM = this.getSolarMonth();
         int sD = this.getSolarDay();
@@ -118,7 +118,7 @@ public class Lunar {
                     }
                 }
             }
-            
+
             //计算复活节
             if(Main._lang == 4 || Main._lang == 5){
                 int a = sY % 19;
@@ -137,7 +137,7 @@ public class Lunar {
                     this.sFestivalName += " " + "復活節" ;
                 }
             }
-            
+
             this.sFestivalName = this.sFestivalName.replaceFirst("^\\s", "");
         }
 
@@ -202,7 +202,7 @@ public class Lunar {
 
     /**
      * 返回农历年闰月的天数
-     * 
+     *
      * @param lunarYear 指定农历年份(数字)
      * @return 该农历年闰月的天数(数字)
      */
@@ -251,7 +251,7 @@ public class Lunar {
     }
     /**
      * 取 Date 对象中用全球标准时间 (UTC) 表示的日期
-     * 
+     *
      * @param date 指定日期
      * @return UTC 全球标准时间 (UTC) 表示的日期
      */
@@ -309,13 +309,13 @@ public class Lunar {
                     "",
                     "0101春节", "0115元宵", "0202龙头",
                     "0505端午", "0707七夕", "0715中元",
-                    "0815中秋", "0909重阳", "1208腊八", 
+                    "0815中秋", "0909重阳", "1208腊八",
                     "1230除夕"
                 };
                 Lunar.sFtv = new String[]{
-                    "0101元旦", "0214情人节", "0308妇女节", "0312植树节", 
-                    "0401愚人节", "0501劳动节", "0504青年节", "0601儿童节", 
-                    "0701建党节", "0801建军节", "0910教师节", "1001国庆节", 
+                    "0101元旦", "0214情人节", "0308妇女节", "0312植树节",
+                    "0401愚人节", "0501劳动节", "0504青年节", "0601儿童节",
+                    "0701建党节", "0801建军节", "0910教师节", "1001国庆节",
                     "1031万圣节", "1225圣诞节"
                 };
                 break;
@@ -325,12 +325,12 @@ public class Lunar {
                     "",
                     "0101春節", "0115元宵", "0202龍頭",
                     "0505端午", "0707七夕", "0715中元",
-                    "0815中秋", "0909重陽", "1208臘八", 
+                    "0815中秋", "0909重陽", "1208臘八",
                     "1230除夕"
                 };
                 Lunar.sFtv = new String[]{
                     "0101元旦", "0214情人節", "0228和平紀念日", "0308婦女節",
-                    "0404兒童節",    "0401愚人節", "0501勞動節", "0903軍人節", 
+                    "0404兒童節",    "0401愚人節", "0501勞動節", "0903軍人節",
                     "0928教師節",    "1010國慶日", "1031萬聖節", "1225耶誕節"
                 };
                 break;
@@ -340,7 +340,7 @@ public class Lunar {
                     "",
                     "0101春節", "0115元宵", "0202龍頭",
                     "0505端午", "0707七夕", "0715中元",
-                    "0815中秋", "0909重陽", "1208臘八", 
+                    "0815中秋", "0909重陽", "1208臘八",
                     "1230除夕", "0408佛诞"
                 };
                 Lunar.sFtv = new String[]{
@@ -355,12 +355,12 @@ public class Lunar {
                     "",
                     "0101春節", "0115元宵", "0202龍頭",
                     "0505端午", "0707七夕", "0715中元",
-                    "0815中秋", "0909重陽", "1208臘八", 
+                    "0815中秋", "0909重陽", "1208臘八",
                     "1230除夕", "0408佛诞"
                 };
                 Lunar.sFtv = new String[]{
                     "0101元旦", "0214情人節", "0308婦女節", "0401愚人節",
-                    "0501勞動節", "0910教師節", "1001國慶日", "1031萬聖節", 
+                    "0501勞動節", "0910教師節", "1001國慶日", "1031萬聖節",
                     "1102追思節", "1208聖母無原罪日", "1220特區紀念日", "1225聖誕節"
                 };
                 break;
@@ -370,13 +370,13 @@ public class Lunar {
                     "",
                     "0101春節", "0115元宵", "0202龍頭",
                     "0505端午", "0707七夕", "0715中元",
-                    "0815中秋", "0909重陽", "1208臘八", 
+                    "0815中秋", "0909重陽", "1208臘八",
                     "1230除夕"
                 };
                 Lunar.sFtv = new String[]{
-                    "0101元旦", "0214情人節", "0308婦女節", "0312植樹節", 
-                    "0401愚人節", "0501勞動節", "0504青年節", "0601兒童節", 
-                    "0701建黨節", "0801建軍節", "0910教師節", "1001國慶日", 
+                    "0101元旦", "0214情人節", "0308婦女節", "0312植樹節",
+                    "0401愚人節", "0501勞動節", "0504青年節", "0601兒童節",
+                    "0701建黨節", "0801建軍節", "0910教師節", "1001國慶日",
                     "1031萬聖節", "1225耶誕節"
                 };
                 break;
@@ -531,6 +531,8 @@ public class Lunar {
         this.solarDay = this.solar.get(Calendar.DAY_OF_MONTH);
         // 干支历
         int cyclicalYear = 0;
+        int cyclicalMonth = 0;
+        int cyclicalDay = 0;
 
         // 干支年2000年立春后为庚辰年(60进制16)
         int term2 = Lunar.getSolarTermDay(solarYear, 2); // 立春日期
@@ -540,8 +542,24 @@ public class Lunar {
         } else {
             cyclicalYear = (solarYear - 2000 + 16) % 60;
         }
-        
+
+        // 干支月 2000年1月小寒以前为 丙子月(60进制12)
+        int firstNode = Lunar.getSolarTermDay(solarYear, solarMonth * 2); // 传回当月「节」为几日开始
+        // 依节气月柱, 以「节」为界
+        if (solarDay < firstNode) {
+            cyclicalMonth = ((solarYear - 2000) * 12 + solarMonth + 12) % 60;
+        } else {
+            cyclicalMonth = ((solarYear - 2000) * 12 + solarMonth + 13) % 60;
+        }
+
+        // 当月一日与 1900/1/1 相差天数
+        // 1900/1/1与 1970/1/1 相差25567日, 1900/1/1 日柱为甲戌日(60进制10)
+        cyclicalDay = (int) (Lunar.UTC(solarYear, solarMonth, solarDay, 0, 0, 0) / 86400000 + 25567 + 10) % 60;
+
         this.cyclicalYear = cyclicalYear;
+        this.cyclicalMonth = cyclicalMonth;
+        this.cyclicalDay = cyclicalDay;
+
     }
 
     /**
@@ -623,6 +641,22 @@ public class Lunar {
      */
     public String getCyclicaYear() {
         return this.getCyclicalString(this.cyclicalYear);
+    }
+
+    /**
+     * 取得干支月字符串
+     * @return 干支月字符串
+     */
+    public String getCyclicaMonth() {
+        return this.getCyclicalString(this.cyclicalMonth);
+    }
+
+    /**
+     * 取得干支日字符串
+     * @return 干支日字符串
+     */
+    public String getCyclicaDay() {
+        return this.getCyclicalString(this.cyclicalDay);
     }
 
     /**
@@ -812,13 +846,17 @@ public class Lunar {
         }
         return c1 + c2;
     }
-    
+
     /**
-     * 返回组合文本
-     * @return 组合文本
+     * 返回格式化日期文本
+     * @param t 自定义格式字符串
+     * @param f 格式选项
+     * @return 格式化日期文本
      */
-    public String getComboText(){
-        String sfest, fest, term, custom, sfest_custom, year = "", lunarText;
+
+    public String getFormattedDate(String t, int f){
+        String sfest, fest, term, custom, sfest_custom, lunarText = "";
+
         //仅在不为英文时查找节日
         if(Main._lang != 3){
             //判断是否是公历节日
@@ -827,54 +865,69 @@ public class Lunar {
             }else{
                 sfest = "";
             }
-    
+
             //判断是否是农历节日
             if (Main._fest && (!"".equals(this.getLFestivalName()))){
                 fest = " " + this.getLFestivalName();
             }else{
                 fest = "";
             }
-    
+
             //判断是否是二十四节气
             if (Main._term && (!"".equals(this.getTermString()))){
                 term = " " + this.getTermString();
             }else{
                 term = "";
             }
-    
+
             //判断是否是自定义农历节日
             if (Main._custom && (!"".equals(this.getCLFestivalName()))){
                 custom = "，" + this.getCLFestivalName();
             }else{
                 custom = "";
             }
-    
+
             //判断是否是自定义公历节日
             if (Main._solar_custom && (!"".equals(this.getCSFestivalName()))){
                 sfest_custom = "，" + this.getCSFestivalName();
             }else{
                 sfest_custom = "";
             }
-    
-            //根据设置设置年份
-            switch(Main._year){
+
+            //根据设置设置显示格式
+            switch(f){
                 //属相
-                case 1:  year = this.getAnimalString() + "年";
+                case 1:
+                    lunarText = this.getAnimalString() + "年" + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
                     break;
                 //天干地支
-                case 2:  year = this.getLunarYearString() + "年";
+                case 2:
+                    lunarText = this.getLunarYearString() + "年" + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
                     break;
                 //不显示年份
-                case 3:  year = "";
+                case 3:
+                    lunarText = this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
                     break;
                 //天干地支+属相
-                case 4:  year = this.getLunarYearString() + this.getAnimalString() + "年";
+                case 4:
+                    lunarText = this.getLunarYearString() + this.getAnimalString() + "年" + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
+                    break;
+                //自定义
+                case 5:
+                    t = t.replace("YY", this.getLunarYearString());
+                    t = t.replace("yy", this.getAnimalString());
+                    t = t.replace("mm", this.getLunarMonthString());
+                    t = t.replace("dd", this.getLunarDayString());
+                    t = t.replace("MM", this.getCyclicaMonth());
+                    t = t.replace("DD", this.getCyclicaDay());
+                    lunarText = t.replace("ff", term + fest + custom + sfest + sfest_custom);
                     break;
             }
-            lunarText = year + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
         }else{
             lunarText = "[" + this.getLunarDay() + "/" + this.getLunarMonth() + "]";
         }
+
         return lunarText;
+
     }
 }

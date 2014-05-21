@@ -1,13 +1,13 @@
 ﻿/**
  * Copyright (C) 2014 xiaoxia.de
- * 
- * @author by xiaoxia.de
+ *
+ * @author xiaoxia.de
  * @date 2014
  * @license MIT
  *
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
- * 
+ *
  */
 
 // 主设置界面
@@ -16,6 +16,7 @@ package de.xiaoxia.xstatusbarlunardate;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -32,6 +33,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
 
     ListPreference lp;
     ListPreference _lp;
+    EditTextPreference etp;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -40,16 +42,31 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         addPreferencesFromResource(R.xml.setting);
 
         //找到设置，并将其概括修改为当前设置option_name
-        
-        
         lp = (ListPreference)findPreference("minor");
         lp.setSummary(lp.getEntry());
 
         lp = (ListPreference)findPreference("lang");
         lp.setSummary(lp.getEntry());
 
-        lp = (ListPreference)findPreference("year");
+        lp = (ListPreference)findPreference("format");
         lp.setSummary(lp.getEntry());
+        etp = (EditTextPreference)findPreference("custom_format");
+        etp.setEnabled(lp.getValue().toString().equals("5"));
+        if(!"".equals(etp.getText()) && etp.getText() != null){
+            etp.setSummary(etp.getText());
+        }else{
+            etp.setSummary(getString(R.string.custom_solar_summary));
+        }
+
+        lp = (ListPreference)findPreference("lockscreen_format");
+        lp.setSummary(lp.getEntry());
+        etp = (EditTextPreference)findPreference("lockscreen_custom_format");
+        etp.setEnabled(lp.getValue().toString().equals("5"));
+        if(!"".equals(etp.getText()) && etp.getText() != null){
+            etp.setSummary(etp.getText());
+        }else{
+            etp.setSummary(getString(R.string.custom_solar_summary));
+        }
 
         lp = (ListPreference)findPreference("rom");
         lp.setSummary(lp.getEntry());
@@ -64,13 +81,8 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             _lp.setEnabled(false);
         }else{
             //否则...
-            if(lp.getValue().toString().equals("1")){
-                //如果lockscreen_layout值不为“1”，即不为不调整布局，则对齐选项设为不可用
-                _lp.setEnabled(false);
-            }else{
-                //否则设为可用
-                _lp.setEnabled(true);
-            }
+            //如果lockscreen_layout值不为“1”，即不为不调整布局，则对齐选项设为不可用
+            _lp.setEnabled(lp.getValue().toString().equals("1"));
             _lp.setSummary(_lp.getEntry());
         }
 
@@ -83,7 +95,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     @SuppressWarnings("deprecation")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        
+
         //设置发生变化时，设置summary为option_name
         if(key.equals("minor")){
             lp = (ListPreference)findPreference("minor");
@@ -95,9 +107,18 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             lp.setSummary(lp.getEntry());
             return;
         }
-        if(key.equals("year")){
-            lp = (ListPreference)findPreference("year");
+        if(key.equals("format")){
+            lp = (ListPreference)findPreference("format");
             lp.setSummary(lp.getEntry());
+            etp = (EditTextPreference)findPreference("custom_format");
+            etp.setEnabled(lp.getValue().toString().equals("5"));
+            return;
+        }
+        if(key.equals("lockscreen_format")){
+            lp = (ListPreference)findPreference("lockscreen_format");
+            lp.setSummary(lp.getEntry());
+            etp = (EditTextPreference)findPreference("lockscreen_custom_format");
+            etp.setEnabled(lp.getValue().toString().equals("5"));
             return;
         }
         if(key.equals("rom")){
@@ -118,11 +139,25 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
                 _lp.setSummary(getString(R.string.lockscreen_alignment_disable));
                 _lp.setEnabled(false);
             }else{
-                if(lp.getValue().toString().equals("1")){
-                    _lp.setEnabled(false);
-                }else{
-                    _lp.setEnabled(true);
-                }
+                _lp.setEnabled(!lp.getValue().toString().equals("1"));
+            }
+            return;
+        }
+        if(key.equals("custom_format")){
+            etp = (EditTextPreference)findPreference("custom_format");
+            if(!"".equals(etp.getText()) && etp.getText() != null){
+                etp.setSummary(etp.getText());
+            }else{
+                etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
+            }
+            return;
+        }
+        if(key.equals("lockscreen_custom_format")){
+            etp = (EditTextPreference)findPreference("lockscreen_custom_format");
+            if(!"".equals(etp.getText()) && etp.getText() != null){
+                etp.setSummary(etp.getText());
+            }else{
+                etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
             }
             return;
         }

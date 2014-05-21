@@ -1,7 +1,7 @@
 ﻿/**
  * Copyright (C) 2014 xiaoxia.de
  * 
- * @author by xiaoxia.de
+ * @author xiaoxia.de
  * @date 2014
  * @license MIT
  *
@@ -33,30 +33,29 @@ public class Lockscreen implements IXposedHookLoadPackage{
     /* 初始变量 */
     private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
     private String lDate = "LAST";
-    private String nDate;
     private Lunar lunar = new Lunar(Main._lang);
     private TextClock textclock;
     private TextView textview;
 
 
     /*获取农历字符串子程序*/
-    private String returnDate(String nDate){
+    private String returnText(String nDate){
         //判断日期是否发生变更，没有变更则直接返回缓存
         if(!nDate.equals(lDate)){
             //初始化时间
             lunar.init(System.currentTimeMillis());
             //Lunar类中的返回农历文本组合
-            lunarText = lunar.getComboText();
+            lunarText = lunar.getFormattedDate(Main._lockscreen_custom_format, Main._lockscreen_format);
             //根据锁屏布局选项设置输出文本
             switch(Main._lockscreen_layout){
                 //不换行
-                case 1: lunarText = nDate + " - " + lunarText;
+                case 1: lunarText = nDate + " " + lunarText;
                     break;
                 //前换行
                 case 2: lunarText = nDate.trim() + "\n" + lunarText;
                     break;
                 //后换行
-                case 3: lunarText = nDate + " - " + lunarText + "\n";
+                case 3: lunarText = nDate + " " + lunarText + "\n";
                     break;
                 //前后都换行
                 case 4: lunarText = nDate.trim() + "\n" + lunarText + "\n";
@@ -92,12 +91,11 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                     protected void afterHookedMethod(final MethodHookParam param){
                                         //从该类中获取该类已经定义好的变量，这里的mDateView即是KeyguardStatusViewManager.java中定义好的显示日期的TextView控件，以下的操作和Main.java中的操作类似
                                         textview = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
-                                        nDate = (String) textview.getText().toString();
                                         //如果修改锁屏布局，则先将其的singleLine属性去除
                                         if(Main._lockscreen_layout > 1){
                                             textview.setSingleLine(false);
                                         }
-                                        textview.setText(returnDate(nDate));
+                                        textview.setText(returnText(textview.getText().toString()));
                                         //XposedBridge.log("Hooking lunar date: @" + System.currentTimeMillis());
                                     }
                                 });
@@ -118,8 +116,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                                 textview.setTextAlignment(Main._lockscreen_alignment);
                                             }
                                         }
-                                        nDate = (String) textview.getText().toString();
-                                        textview.setText(returnDate(nDate));
+                                        textview.setText(returnText(textview.getText().toString()));
                                         //XposedBridge.log("Hooking lunar date: @" + System.currentTimeMillis());
                                     }
                                 });
@@ -144,8 +141,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                             textview.setTextAlignment(Main._lockscreen_alignment);
                                         }
                                     }
-                                    nDate = (String) textclock.getText().toString();
-                                    textclock.setText(returnDate(nDate));
+                                    textclock.setText(returnText(textclock.getText().toString()));
                                     //XposedBridge.log("Hooking lunar date: @" + System.currentTimeMillis());
                                 }
                             });

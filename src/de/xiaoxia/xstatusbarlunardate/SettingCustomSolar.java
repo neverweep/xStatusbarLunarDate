@@ -23,7 +23,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 public class SettingCustomSolar extends PreferenceActivity implements OnSharedPreferenceChangeListener{
 
-    EditTextPreference lp;
+    EditTextPreference etp;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -34,10 +34,10 @@ public class SettingCustomSolar extends PreferenceActivity implements OnSharedPr
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         for(int i = 0; i < 15; i++){
-            lp = (EditTextPreference)findPreference("custom_solar_item_" + i);
-            if(!"".equals(lp.getText()) && lp.getText() != null)
-                lp.setSummary(lp.getText());
-            lp.setTitle(getString(R.string.custom_solar) + " " + (i + 1));
+            etp = (EditTextPreference)findPreference("custom_solar_item_" + i);
+            if(!"".equals(etp.getText()) && etp.getText() != null)
+                etp.setSummary(etp.getText());
+            etp.setTitle(getString(R.string.custom_solar) + " " + (i + 1));
         }
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -49,11 +49,11 @@ public class SettingCustomSolar extends PreferenceActivity implements OnSharedPr
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         for(int i = 0; i < 15; i++){
             if(key.equals("custom_solar_item_" + i)){
-                lp = (EditTextPreference)findPreference("custom_solar_item_" + i);
-                if(!"".equals(lp.getText()) && lp.getText() != null){
-                    lp.setSummary(lp.getText());
+                etp = (EditTextPreference)findPreference("custom_solar_item_" + i);
+                if(!"".equals(etp.getText()) && etp.getText() != null){
+                    etp.setSummary(etp.getText());
                 }else{
-                    lp.setSummary(getString(R.string.custom_solar_summary));
+                    etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
                 }
                 break;
             }

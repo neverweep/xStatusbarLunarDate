@@ -1,13 +1,13 @@
 ﻿/**
  * Copyright (C) 2014 xiaoxia.de
- * 
- * @author by xiaoxia.de
+ *
+ * @author xiaoxia.de
  * @date 2014
  * @license MIT
  *
  * This file is subject to the terms and conditions defined in
  * file 'LICENSE.txt', which is part of this source code package.
- * 
+ *
  */
 
 // 状态栏日期，主程序
@@ -62,20 +62,28 @@ public class Main implements IXposedHookLoadPackage{
     protected final static Boolean _breakline = prefs.getBoolean("breakline", true);
     //允许布局调整
     protected final static Boolean _layout_enable = prefs.getBoolean("layout_enable", false);
-    //开启添加到锁屏
-    protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
+    //自定义状态栏字符串
+    protected final static String _custom_format = prefs.getString("custom_format", "");
     //小年选项，将字符串型转换为整数型
     protected final static int _minor = Integer.valueOf(prefs.getString("minor", "1")).intValue();
     //语言选项，将字符串型转换为整数型
     protected final static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue();
-    //年份显示选项，将字符串型转换为整数型
-    protected final static int _year = Integer.valueOf(prefs.getString("year", "1")).intValue();
+    //显示格式选项，将字符串型转换为整数型
+    protected final static int _format = Integer.valueOf(prefs.getString("format", "1")).intValue();
     //系统类型选项，将字符串型转换为整数型
     protected final static int _rom = Integer.valueOf(prefs.getString("rom", "1")).intValue();
+
+    //开启添加到锁屏
+    protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
     //锁屏布局，将字符串型转换为整数型
     protected final static int _lockscreen_layout = Integer.valueOf(prefs.getString("lockscreen_layout", "1")).intValue();
     //锁屏对齐，将字符串型转换为整数型
     protected final static int _lockscreen_alignment = Integer.valueOf(prefs.getString("lockscreen_alignment", "1")).intValue();
+    //显示格式选项，将字符串型转换为整数型
+    protected final static int _lockscreen_format = Integer.valueOf(prefs.getString("lockscreen_format", "1")).intValue();
+    //自定义锁屏字符串
+    protected final static String _lockscreen_custom_format = prefs.getString("lockscreen_custom_format", "");
+
     //读取自定义农历纪念日，并放入到一个数组中
     protected final static String[] clf = {
         prefs.getString("custom_lunar_item_0", "").trim(),
@@ -117,51 +125,53 @@ public class Main implements IXposedHookLoadPackage{
     private static Lunar lunar = new Lunar(_lang);
 
     /* 获取农历字符串子程序 */
-    private String returnDate(String nDate){
+    private void setText(TextView textview){
         /* 判断当前日期栏是否包含上次更新后的日期文本
          * 如果当前日期已经改变，则必须重新计算农历
          * 如果当前日期未改变，则只需要重新用已经缓存的文本写入TextView */
         //判断日期是否改变，不改变则不更新内容，改变则重新计算农历
-        if (!nDate.contains(lunarText) && !nDate.equals(lDate)) {
-            //获取时间
-            lunar.init(System.currentTimeMillis());
+        nDate = textview.getText().toString();
+        if(!nDate.contains(lunarText)){
+            if (!nDate.equals(lDate)) {
+                //获取时间
+                lunar.init(System.currentTimeMillis());
+                //修正layout的singleLine属性
+                if(!layout_run){
+                    //去掉singleLine属性
+                    if(prefs.getBoolean("layout_line", false)){
+                        textview.setSingleLine(false); //去除singleLine属性
+                    }
+                    //去掉align_baseline，并将其设置为center_vertical
+                    if(prefs.getBoolean("layout_align", false)){
+                        //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
+                        layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
+                        layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
+                        textview.setLayoutParams(layoutParams); //设置布局参数
+                    }
+                    //设置宽度为fill_parent
+                    if(prefs.getBoolean("layout_width", false)){
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
+                        layoutParams.width = -1; //取消宽度限制
+                        textview.setLayoutParams(layoutParams);
+                    }
+                    layout_run = true; //已经执行过布局的处理步骤，下次不再执行
+                }
 
-            //修正layout的singleLine属性
-            if(!layout_run){
-                //去掉singleLine属性
-                if(prefs.getBoolean("layout_line", false)){
-                    textview.setSingleLine(false); //去除singleLine属性
+                //更新记录的日期
+                lDate = nDate;
+                //从Lunar类中获得组合好的农历日期字符串（包括各节日）
+                lunarText = lunar.getFormattedDate(_custom_format, _format);
+                //如果需要去换行
+                if(_remove){
+                    Matcher mat = reg.matcher(nDate);
+                    nDate = mat.replaceFirst(" "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
                 }
-                //去掉align_baseline，并将其设置为center_vertical
-                if(prefs.getBoolean("layout_align", false)){
-                    //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
-                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
-                    layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
-                    layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
-                    textview.setLayoutParams(layoutParams); //设置布局参数
-                }
-                //设置宽度为fill_parent
-                if(prefs.getBoolean("layout_width", false)){
-                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
-                    layoutParams.width = -1; //取消宽度限制
-                    textview.setLayoutParams(layoutParams);
-                }
-                layout_run = true; //已经执行过布局的处理步骤，下次不再执行
+                //输出到最终字符串
+                finalText = nDate + breaklineText + lunarText;
             }
-
-            //更新记录的日期
-            lDate = nDate;
-            //从Lunar类中获得组合好的农历日期字符串（包括各节日）
-            lunarText = lunar.getComboText();
-            //如果需要去换行
-            if(_remove){
-                Matcher mat = reg.matcher(nDate);
-                nDate = mat.replaceFirst(" "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
-            }
-            //输出到最终字符串
-            finalText = nDate + breaklineText + lunarText;
+            textview.setText(finalText);
         }
-        return finalText;
     }
 
     /* 替换日期函数 */
@@ -181,7 +191,7 @@ public class Main implements IXposedHookLoadPackage{
 
         //根据用户设置的rom类型进入相应的hook步骤
         switch(_rom){
-            case 1: 
+            case 1:
                 try{
                     //For most android roms
                     //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
@@ -192,10 +202,8 @@ public class Main implements IXposedHookLoadPackage{
                         protected void afterHookedMethod(MethodHookParam param){
                             //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView。
                             textview = (TextView) param.thisObject; //所以直接获取这个对象
-                            //取textview中的字符串
-                            nDate = textview.getText().toString();
-                            //交给returnDate处理后，再setText显示出来
-                            textview.setText(returnDate(nDate));
+                            //交给setText处理
+                            setText(textview);
                         }
                     });
                 }catch(Exception e){
@@ -205,13 +213,12 @@ public class Main implements IXposedHookLoadPackage{
             case 2:
                 try{
                     //For Miui
-                	//Miui 4.4 之前的系统更新时间的函数名称为“a”
+                    //Miui 4.4 之前的系统更新时间的函数名称为“a”
                     findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "a", new XC_MethodHook() {
                         @Override
                         protected void afterHookedMethod(MethodHookParam param){
-                            textview = (TextView) param.thisObject;    
-                            nDate = textview.getText().toString();
-                            textview.setText(returnDate(nDate));
+                            textview = (TextView) param.thisObject;
+                            setText(textview);
                         }
                     });
                 }catch(Exception e){

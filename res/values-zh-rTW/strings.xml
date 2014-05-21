@@ -35,12 +35,6 @@
     <string name="lang_option_5">繁體中文（澳門）</string>
     <string name="lang_option_3">English (Only digits)</string>
     <string name="lang_dialogue_title">選擇顯示的語言</string>
-    <string name="year">年份顯示選項</string>
-    <string name="year_option_1">顯示為屬相紀年</string>
-    <string name="year_option_2">顯示為天干地支紀年</string>
-    <string name="year_option_3">隱藏年份</string>
-    <string name="year_option_4">顯示為屬相和天干地支紀年</string>
-    <string name="year_dialogue_title">選擇符合偏好的年份選項</string>
     <string name="layout_enable">佈局調整</string>
     <string name="layout_enable_summary_on">為某些 ROM 的日期文字更改輸出佈局</string>
     <string name="layout_enable_summary_off">僅在 ROM 無法正確輸出日期文字時打開</string>
@@ -61,7 +55,7 @@
     <string name="setting_custom_lunar_item">自訂農曆紀念日</string>
     <string name="setting_custom_lunar_item_summary">未設置</string>
     <string name="setting_custom_lunar_item_hint">0101春節</string>
-    <string name="setting_custom_lunar_howtodo_msg">輸入“月月日日名稱”來設置。範例：“0509生日”。\n\n注意：4 位日期是農曆日期。\n\n留空則取消此項。</string>
+    <string name="setting_custom_lunar_howtodo_msg">輸入“月月日日名稱”來設置，如“0509生日”。\n注意：4 位日期是農曆日期。\n留空則取消此項。</string>
     <string name="custom_lunar">自訂農曆紀念日</string>
     <string name="custom_lunar_summary">設置自訂農曆紀念日</string>
     <string name="custom_lunar_summary_on">在農曆日期後顯示自訂農曆紀念日</string>
@@ -71,15 +65,15 @@
     <string name="setting_custom_solar_item">自訂西曆紀念日</string>
     <string name="setting_custom_solar_item_summary">未設置</string>
     <string name="setting_custom_solar_item_hint">0101元旦</string>
-    <string name="setting_custom_solar_howtodo_msg">輸入“月月日日名稱”來設置。範例：“0509生日”。\n\n注意：4 位日期是西曆日期。\n\n留空則取消此項。</string>
+    <string name="setting_custom_solar_howtodo_msg">輸入“月月日日名稱”來設置，如“0509生日”。\n注意：4 位日期是西曆日期。\n留空則取消此項。</string>
     <string name="custom_solar">自訂西曆紀念日</string>
     <string name="custom_solar_summary">設置自訂西曆紀念日</string>
     <string name="custom_solar_summary_on">在農曆日期後顯示自訂西曆紀念日</string>
     <string name="custom_solar_summary_off">不顯示自訂西曆紀念日</string>
     <string name="system_category">系統</string>
     <string name="rom">選擇系統類型</string>
-    <string name="rom_option_1">大多數 Android 或 Miui（Kitkat）</string>
-    <string name="rom_option_2">Miui（Jelly Bean 或更早版本）</string>
+    <string name="rom_option_1">大多數 Android 或 Miui（4.4）</string>
+    <string name="rom_option_2">Miui（4.3 或更早版本）</string>
     <string name="solar">西曆節日</string>
     <string name="solar_summary_on">在農曆日期後顯示西曆節日</string>
     <string name="solar_summary_off">不顯示西曆節日</string>
@@ -95,4 +89,13 @@
     <string name="lockscreen_alignment_option_2">左</string>
     <string name="lockscreen_alignment_option_3">右</string>
     <string name="lockscreen_alignment_option_4">中</string>
+    <string name="format">顯示格式選項</string>
+    <string name="format_option_1">屬相紀年和月日</string>
+    <string name="format_option_2">天干地支紀年和月日</string>
+    <string name="format_option_3">僅月日</string>
+    <string name="format_option_4">天干地支 + 屬相紀年和月日</string>
+    <string name="format_option_5">自訂格式</string>
+    <string name="format_dialogue_title">設置符合喜好的日期格式</string>
+    <string name="custom_format_title">自訂格式</string>
+    <string name="custom_format_howtodo_msg">在這裡自訂顯示格式，如:\n~~ 農曆：YY（yy）年mm月dd ff ~~\n\nYY = 天干地支年份（如“甲子”）\nyy = 屬相年份（如“兔”）\nMM = 天干地支月份（如“甲戌”）\nmm = 農曆月（如“九”）\nDD = 天干地支日（如“辛酉”）\ndd = 農曆日（如“初九”）\nff = 節日（如“春節”）</string>
 </resources>
