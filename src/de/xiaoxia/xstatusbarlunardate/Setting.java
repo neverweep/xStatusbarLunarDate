@@ -55,7 +55,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         if(!"".equals(etp.getText()) && etp.getText() != null){
             etp.setSummary(etp.getText());
         }else{
-            etp.setSummary(getString(R.string.custom_solar_summary));
+            etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
         }
 
         lp = (ListPreference)findPreference("lockscreen_format");
@@ -65,7 +65,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         if(!"".equals(etp.getText()) && etp.getText() != null){
             etp.setSummary(etp.getText());
         }else{
-            etp.setSummary(getString(R.string.custom_solar_summary));
+            etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
         }
 
         lp = (ListPreference)findPreference("rom");
