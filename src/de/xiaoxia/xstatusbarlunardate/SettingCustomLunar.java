@@ -36,7 +36,7 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //找到设置，并将其概括修改为当前设置option_name
-        for(int i = 0; i < 15; i++){
+        for(int i = 0; i < 20; i++){
             etp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
             if(!"".equals(etp.getText()) && etp.getText() != null)
                 etp.setSummary(etp.getText());
@@ -53,7 +53,7 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
     //监听到sharedPreferences变化后的处理
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         //设置发生变化时，设置summary为option_name
-        for(int i = 0; i < 15; i++){
+        for(int i = 0; i < 20; i++){
             if(key.equals("custom_lunar_item_" + i)){
                 etp = (EditTextPreference)findPreference("custom_lunar_item_" + i);
                 if(!"".equals(etp.getText()) && etp.getText() != null){

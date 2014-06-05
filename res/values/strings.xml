@@ -93,5 +93,5 @@
     <string name="format_option_5">Custom format</string>
     <string name="format_dialogue_title">Set prefer fomat option</string>
     <string name="custom_format_title">Custom format</string>
-    <string name="custom_format_howtodo_msg">YY = Chinese era year\nyy = Animal year\nMM = Chinese era month\nmm = Lunar month\nDD = Chinese era day\ndd = Lunar day\nff = Festivals</string>
+    <string name="custom_format_howtodo_msg">YY = Chinese era year\nyy = Animal year\nMM = Chinese era month\nmm = Lunar month\nDD = Chinese era day\ndd = Lunar day\nff = Festivals\nww = Day of week\nNN = Line feed</string>
 </resources>

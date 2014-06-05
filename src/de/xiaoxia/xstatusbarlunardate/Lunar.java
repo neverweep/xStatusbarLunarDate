@@ -62,6 +62,9 @@ public class Lunar {
     private final static String[] lunarString1 = {
         "零", "一", "二", "三", "四", "五", "六", "七", "八", "九"
     };
+    private final static String[] weekString = {
+        "日", "一", "二", "三", "四", "五", "六"
+    };
     private static String[] lunarString2;
     private static String[] Deqi;
     private static String[] Animals;
@@ -920,6 +923,8 @@ public class Lunar {
                     t = t.replace("dd", this.getLunarDayString());
                     t = t.replace("MM", this.getCyclicaMonth());
                     t = t.replace("DD", this.getCyclicaDay());
+                    t = t.replace("NN", "\n");
+                    t = t.replace("ww", weekString[this.solar.get(Calendar.DAY_OF_WEEK) - 1]);
                     lunarText = t.replace("ff", term + fest + custom + sfest + sfest_custom);
                     break;
             }

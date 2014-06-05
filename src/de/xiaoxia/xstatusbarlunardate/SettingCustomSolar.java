@@ -33,7 +33,7 @@ public class SettingCustomSolar extends PreferenceActivity implements OnSharedPr
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        for(int i = 0; i < 15; i++){
+        for(int i = 0; i < 20; i++){
             etp = (EditTextPreference)findPreference("custom_solar_item_" + i);
             if(!"".equals(etp.getText()) && etp.getText() != null)
                 etp.setSummary(etp.getText());
@@ -47,7 +47,7 @@ public class SettingCustomSolar extends PreferenceActivity implements OnSharedPr
     @SuppressWarnings("deprecation")
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        for(int i = 0; i < 15; i++){
+        for(int i = 0; i < 20; i++){
             if(key.equals("custom_solar_item_" + i)){
                 etp = (EditTextPreference)findPreference("custom_solar_item_" + i);
                 if(!"".equals(etp.getText()) && etp.getText() != null){

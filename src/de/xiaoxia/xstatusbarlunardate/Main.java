@@ -101,7 +101,11 @@ public class Main implements IXposedHookLoadPackage{
         prefs.getString("custom_lunar_item_12", "").trim(),
         prefs.getString("custom_lunar_item_13", "").trim(),
         prefs.getString("custom_lunar_item_14", "").trim(),
-        prefs.getString("custom_lunar_item_15", "").trim()
+        prefs.getString("custom_lunar_item_15", "").trim(),
+        prefs.getString("custom_lunar_item_16", "").trim(),
+        prefs.getString("custom_lunar_item_17", "").trim(),
+        prefs.getString("custom_lunar_item_18", "").trim(),
+        prefs.getString("custom_lunar_item_19", "").trim()
     };
     //读取自定义公历纪念日，并放入到一个数组中
     protected final static String[] csf = {
@@ -119,7 +123,12 @@ public class Main implements IXposedHookLoadPackage{
         prefs.getString("custom_solar_item_11", "").trim(),
         prefs.getString("custom_solar_item_12", "").trim(),
         prefs.getString("custom_solar_item_13", "").trim(),
-        prefs.getString("custom_solar_item_14", "").trim()
+        prefs.getString("custom_solar_item_14", "").trim(),
+        prefs.getString("custom_solar_item_15", "").trim(),
+        prefs.getString("custom_solar_item_16", "").trim(),
+        prefs.getString("custom_solar_item_17", "").trim(),
+        prefs.getString("custom_solar_item_18", "").trim(),
+        prefs.getString("custom_solar_item_19", "").trim()
     };
     //初始化Lunar类
     private static Lunar lunar = new Lunar(_lang);
