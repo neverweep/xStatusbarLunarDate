@@ -11,7 +11,7 @@
             <intent android:action="android.intent.action.VIEW" android:targetPackage="de.xiaoxia.xstatusbarlunardate" android:targetClass="de.xiaoxia.xstatusbarlunardate.SettingCustomLunar" />
         </Preference>
         <CheckBoxPreference android:key="solar" android:summaryOn="@string/solar_summary_on" android:summaryOff="@string/solar_summary_off" android:title="@string/solar" android:defaultValue="true" />
-        <CheckBoxPreference android:summaryOn="@string/custom_solar_summary_on" android:key="custom_solar" android:summaryOff="@string/custom_solar_summary_off" android:title="@string/custom_solar" android:defaultValue="true" />
+        <CheckBoxPreference android:summaryOn="@string/custom_solar_summary_on" android:key="custom_solar" android:summaryOff="@string/custom_solar_summary_off" android:title="@string/custom_solar" android:defaultValue="false" />
         <Preference android:key="setting_custom_solar" android:summary="@string/custom_solar_summary" android:title="@string/custom_solar" android:dependency="custom_solar">
             <intent android:action="android.intent.action.VIEW" android:targetPackage="de.xiaoxia.xstatusbarlunardate" android:targetClass="de.xiaoxia.xstatusbarlunardate.SettingCustomSolar" />
         </Preference>
@@ -26,7 +26,6 @@
         <CheckBoxPreference android:defaultValue="false" android:key="layout_line" android:summaryOff="@string/layout_line_summary_off" android:summaryOn="@string/layout_line_summary_on" android:title="@string/layout_line" android:dependency="layout_enable" />
         <CheckBoxPreference android:key="layout_align" android:summaryOff="@string/layout_align_summary_off" android:title="@string/layout_align" android:summaryOn="@string/layout_align_summary_on" android:dependency="layout_enable" android:defaultValue="false" />
         <CheckBoxPreference android:key="layout_width" android:title="@string/layout_width" android:summaryOff="@string/layout_width_summary_off" android:summaryOn="@string/layout_width_summary_on" android:defaultValue="false" android:dependency="layout_enable" />
-        
     </PreferenceCategory>
 
     <PreferenceCategory android:key="@string/lockscreen_category" android:title="@string/lockscreen_category" android:order="3">
