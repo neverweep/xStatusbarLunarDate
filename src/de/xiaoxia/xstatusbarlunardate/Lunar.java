@@ -299,7 +299,7 @@ public class Lunar {
      */
     private static int getSolarTermDay(int solarYear, int index) {
         long l = (long)31556925974.7 * (solarYear - 2000) + solarTermInfo[index] * 60000L;
-        l = l + Lunar.UTC(2000,0,6,9,1,0);
+        l = l + Lunar.UTC(2000,0,6,0,0,0); //这里可能导致时区不同出现的计算结果错误
         return Lunar.getUTCDay(new Date(l));
     }
 

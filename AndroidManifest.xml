@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.xiaoxia.xstatusbarlunardate"
-    android:versionCode="18"
-    android:versionName="0.12.3" >
+    android:versionCode="19"
+    android:versionName="0.12.4" >
 
     <uses-sdk
         android:minSdkVersion="14"
