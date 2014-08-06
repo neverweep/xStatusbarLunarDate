@@ -74,6 +74,12 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         lp = (ListPreference)findPreference("lockscreen_layout");
         lp.setSummary(lp.getEntry());
 
+        lp = (ListPreference)findPreference("notify");
+        lp.setSummary(lp.getEntry());
+
+        lp = (ListPreference)findPreference("notify_times");
+        lp.setSummary(lp.getEntry());
+
         _lp = (ListPreference)findPreference("lockscreen_alignment");
         if(Build.VERSION.SDK_INT < 17){
             //Android SDK 版本小于4.2时，显示summary为不可用，并将其设为不可用
@@ -123,6 +129,16 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         }
         if(key.equals("rom")){
             lp = (ListPreference)findPreference("rom");
+            lp.setSummary(lp.getEntry());
+            return;
+        }
+        if(key.equals("notify")){
+            lp = (ListPreference)findPreference("notify");
+            lp.setSummary(lp.getEntry());
+            return;
+        }
+        if(key.equals("notify_times")){
+            lp = (ListPreference)findPreference("notify_times");
             lp.setSummary(lp.getEntry());
             return;
         }

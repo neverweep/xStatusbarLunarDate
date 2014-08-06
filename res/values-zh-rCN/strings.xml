@@ -98,4 +98,16 @@
     <string name="format_dialogue_title">设置符合喜好的日期格式</string>
     <string name="custom_format_title">自定义格式</string>
     <string name="custom_format_howtodo_msg">在这里自定义显示格式，如:\n~~ 农历：YY（yy）年mm月dd ff ~~\n\nYY = 天干地支年份（如“甲子”）\nyy = 属相年份（如“兔”）\nMM = 天干地支月份（如“甲戌”）\nmm = 农历月（如“九”）\nDD = 天干地支日（如“辛酉”）\ndd = 农历日（如“初九”）\nff = 节日（如“春节”）\nww = 星期几（如“一”）\nNN = 换行（不保证有效）</string>
+    <string name="notify">解锁屏幕吐司通知</string>
+    <string name="notify_category">吐司通知设置</string>
+    <string name="notify_option_1">无</string>
+    <string name="notify_option_2">总是弹出吐司</string>
+    <string name="notify_option_3">仅在有节日时弹出吐司</string>
+    <string name="notify_dialogue_title">设置符合喜好的吐司通知设置</string>
+    <string name="notify_times">吐司次数（每日）</string>
+    <string name="notify_times_option_1">1 次</string>
+    <string name="notify_times_option_2">3 次</string>
+    <string name="notify_times_option_3">5 次</string>
+    <string name="notify_times_option_4">总是弹出吐司</string>
+    <string name="notify_times_dialogue_title">设置符合喜好的吐司通知次数</string>
 </resources>

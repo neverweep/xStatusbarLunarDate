@@ -28,7 +28,12 @@
         <CheckBoxPreference android:key="layout_width" android:title="@string/layout_width" android:summaryOff="@string/layout_width_summary_off" android:summaryOn="@string/layout_width_summary_on" android:defaultValue="false" android:dependency="layout_enable" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="@string/lockscreen_category" android:title="@string/lockscreen_category" android:order="3">
+    <PreferenceCategory android:key="@string/notify_category" android:title="@string/notify_category" android:order="3">
+        <ListPreference android:key="notify" android:title="@string/notify" android:defaultValue="1" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/notify_dialogue_title" android:entryValues="@array/notify_values" android:entries="@array/notify_options" />
+        <ListPreference android:key="notify_times" android:title="@string/notify_times" android:defaultValue="3" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/notify_times_dialogue_title" android:entryValues="@array/notify_times_values" android:entries="@array/notify_times_options" android:dependency="notify"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="@string/lockscreen_category" android:title="@string/lockscreen_category" android:order="4">
         <CheckBoxPreference android:key="lockscreen" android:summaryOff="@string/lockscreen_summary_off" android:defaultValue="false" android:title="@string/lockscreen" android:summaryOn="@string/lockscreen_summary_on" />
         <ListPreference android:key="lockscreen_format" android:title="@string/format" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:entries="@array/format_options" android:dialogTitle="@string/format_dialogue_title" android:entryValues="@array/format_values" android:defaultValue="1" android:dependency="lockscreen"/>
         <EditTextPreference android:singleLine="true" android:key="lockscreen_custom_format" android:title="@string/custom_format_title" android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:summary="@string/setting_custom_solar_item_summary" android:dialogMessage="@string/custom_format_howtodo_msg" android:dependency="lockscreen"/>
@@ -36,7 +41,7 @@
         <ListPreference android:key="lockscreen_alignment" android:title="@string/lockscreen_alignment" android:dependency="lockscreen_layout" android:entries="@array/lockscreen_alignment_options" android:negativeButtonText="@string/cancel" android:entryValues="@array/lockscreen_alignment_values" android:positiveButtonText="@string/ok" android:defaultValue="1"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/system_category" android:key="@string/system_category" android:order="4">
+    <PreferenceCategory android:title="@string/system_category" android:key="@string/system_category" android:order="5">
         <ListPreference android:key="rom" android:title="@string/rom" android:dialogTitle="@string/rom" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:entryValues="@array/rom_values" android:defaultValue="1" android:entries="@array/rom_options"/>
     </PreferenceCategory>
 

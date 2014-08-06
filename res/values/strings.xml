@@ -94,4 +94,16 @@
     <string name="format_dialogue_title">Set prefer fomat option</string>
     <string name="custom_format_title">Custom format</string>
     <string name="custom_format_howtodo_msg">YY = Chinese era year\nyy = Animal year\nMM = Chinese era month\nmm = Lunar month\nDD = Chinese era day\ndd = Lunar day\nff = Festivals\nww = Day of week\nNN = Line feed</string>
+    <string name="notify">Unlock screen notification</string>
+    <string name="notify_category">Toast options</string>
+    <string name="notify_option_1">None</string>
+    <string name="notify_option_2">Always popup toast</string>
+    <string name="notify_option_3">Only in festivals</string>
+    <string name="notify_dialogue_title">Set prefer notification option</string>
+    <string name="notify_times">Notification times(Everyday)</string>
+    <string name="notify_times_option_1">1</string>
+    <string name="notify_times_option_2">3</string>
+    <string name="notify_times_option_3">5</string>
+    <string name="notify_times_option_4">Always</string>
+    <string name="notify_times_dialogue_title">Set prefer notify option</string>
 </resources>

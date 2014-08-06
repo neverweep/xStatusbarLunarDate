@@ -17,9 +17,14 @@ package de.xiaoxia.xstatusbarlunardate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import android.widget.Toast;
 //导入xposed基本类
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import de.robv.android.xposed.IXposedHookLoadPackage;
@@ -37,9 +42,11 @@ public class Main implements IXposedHookLoadPackage{
     private static String lDate = "LAST"; //上次记录的日期
     private static String nDate;
     private static String finalText; //最终输出文本
+    private static String lunarTextToast = ""; //最终输出文本仅节日
     private static Boolean layout_run = false; //判断是否设置过singleLine属性
     private final static Pattern reg = Pattern.compile("\\n"); //去除换行的正则表达式
     private static TextView textview;
+    public static Context mContext;
 
     /* 读取设置 */
     //使用Xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
@@ -72,6 +79,11 @@ public class Main implements IXposedHookLoadPackage{
     protected final static int _format = Integer.valueOf(prefs.getString("format", "1")).intValue();
     //系统类型选项，将字符串型转换为整数型
     protected final static int _rom = Integer.valueOf(prefs.getString("rom", "1")).intValue();
+
+    //通知方法
+    protected final static int _notify = Integer.valueOf(prefs.getString("notify", "1")).intValue();
+    //通知次数
+    protected static int _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
 
     //开启添加到锁屏
     protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
@@ -142,6 +154,8 @@ public class Main implements IXposedHookLoadPackage{
         nDate = textview.getText().toString();
         if(!nDate.contains(lunarText)){
             if (!nDate.equals(lDate)) {
+                //重置提醒次数
+                _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
                 //获取时间
                 lunar.init(System.currentTimeMillis());
                 //修正layout的singleLine属性
@@ -171,6 +185,12 @@ public class Main implements IXposedHookLoadPackage{
                 lDate = nDate;
                 //从Lunar类中获得组合好的农历日期字符串（包括各节日）
                 lunarText = lunar.getFormattedDate(_custom_format, _format);
+                if(_notify > 1)
+                    if(!"".equals(lunar.getFormattedDate("ff", 5).trim())){
+                        lunarTextToast = lunarText;
+                    }else{
+                        lunarTextToast = "";
+                    }
                 //如果需要去换行
                 if(_remove){
                     Matcher mat = reg.matcher(nDate);
@@ -211,6 +231,7 @@ public class Main implements IXposedHookLoadPackage{
                         protected void afterHookedMethod(MethodHookParam param){
                             //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView。
                             textview = (TextView) param.thisObject; //所以直接获取这个对象
+                            registerReceiver(textview);
                             //交给setText处理
                             setText(textview);
                         }
@@ -227,6 +248,7 @@ public class Main implements IXposedHookLoadPackage{
                         @Override
                         protected void afterHookedMethod(MethodHookParam param){
                             textview = (TextView) param.thisObject;
+                            registerReceiver(textview);
                             setText(textview);
                         }
                     });
@@ -236,4 +258,24 @@ public class Main implements IXposedHookLoadPackage{
             break;
         }
     }
+
+    private void registerReceiver(TextView textview){
+        if(mContext == null && _notify > 1){
+            mContext = textview.getContext();
+            IntentFilter intent = new IntentFilter();
+            intent.addAction(Intent.ACTION_USER_PRESENT);
+            mContext.registerReceiver(xReceiver, intent);
+        }
+    }
+
+    private BroadcastReceiver xReceiver = new BroadcastReceiver() {
+        @Override  
+        public void onReceive(Context context, Intent intent) {
+            context = Main.mContext;
+            if(intent.getAction().equals(Intent.ACTION_USER_PRESENT) && !"".equals(Main.lunarTextToast)){
+                if(_notify_times-- > 0)
+                    Toast.makeText(context, Main.lunarTextToast, Toast.LENGTH_LONG).show();
+            }
+        }
+    };
 }
