@@ -17,11 +17,13 @@ package de.xiaoxia.xstatusbarlunardate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.XModuleResources;
+import android.os.PowerManager;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,11 +36,16 @@ import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
+import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 /* Main */
 public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXposedHookInitPackageResources{
+
+    private static String MODULE_PATH = null;
+    private static String PACKAGE_NAME = "com.android.systemui";
+    private static String HOOK_CLASS = "com.android.systemui.statusbar.policy.DateView";
 
     /* 初始变量 */
     private static String lunarText = "LUNAR"; //记录最后更新时的文字字符串
@@ -49,8 +56,9 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static String lunarTextToast = ""; //最终输出文本仅节日
     private static Boolean layout_run = false; //判断是否设置过singleLine属性
     private final static Pattern reg = Pattern.compile("\\n"); //去除换行的正则表达式
-    private static TextView textview;
-    public static Context mContext;
+    private static TextView mDateView;
+    private static Context mContext;
+    private static Boolean isFest = false;
 
     /* 读取设置 */
     //使用Xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
@@ -155,24 +163,26 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     //初始化Lunar类
     private static Lunar lunar = new Lunar(_lang);
 
-
-    private static String MODULE_PATH = null;
-    private static int icon_id;
+    //这里将自带的图标资源插入到systemui中，并获取到一个资源id
+    private static int iconNormal_id;
+    private static int iconFest_id;
     @Override
-    public void initZygote(StartupParam startupParam) throws Throwable {
+    public void initZygote(StartupParam startupParam){
         MODULE_PATH = startupParam.modulePath;
     }
 
-    public void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable {
-        if (!resparam.packageName.equals("com.android.systemui"))
+    public void handleInitPackageResources(InitPackageResourcesParam resparam){
+        if (!resparam.packageName.equals(PACKAGE_NAME))
             return;
 
         XModuleResources modRes = XModuleResources.createInstance(MODULE_PATH, resparam.res);
-        icon_id = resparam.res.addResource(modRes, R.drawable.ic_toast);
+        iconNormal_id = resparam.res.addResource(modRes, R.drawable.ic_toast);
+        iconFest_id   = resparam.res.addResource(modRes, R.drawable.ic_toast_fest);
+
     }
     /* 替换日期函数 */
     public void handleLoadPackage(final LoadPackageParam lpparam){
-        if (!lpparam.packageName.equals("com.android.systemui"))
+        if (!lpparam.packageName.equals(PACKAGE_NAME))
             return;
 
         //将决定是否换行的文本输出到字符串中
@@ -188,76 +198,73 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
         //根据用户设置的rom类型进入相应的hook步骤
         switch(_rom){
             case 1:
-                try{
-                    //For most android roms
-                    //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
-                    //这的函数可以参考 https://github.com/rovo89/XposedBridge/wiki/Development-tutorial，比较简单
-                    findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "updateClock", new XC_MethodHook() {
-                        @Override
-                        //在原函数执行完之后再执行自定义程序
-                        protected void afterHookedMethod(MethodHookParam param){
-                            //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView。
-                            textview = (TextView) param.thisObject; //所以直接获取这个对象
-                            registerReceiver(textview);
+                //For most android roms
+                //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
+                //这的函数可以参考 https://github.com/rovo89/XposedBridge/wiki/Development-tutorial，比较简单
+                findAndHookMethod(HOOK_CLASS, lpparam.classLoader, "updateClock", new XC_MethodHook() {
+                    @Override
+                    //在原函数执行完之后再执行自定义程序
+                    protected void afterHookedMethod(MethodHookParam param){
+                        //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView。
+                        if(mDateView == null)
+                            mDateView = (TextView) param.thisObject; //所以直接获取这个对象
+                        if(mDateView != null){
+                            //注册接收器
+                            registerReceiver();
                             //交给setText处理
-                            setText(textview);
+                            setText();
                         }
-                    });
-                }catch(Exception e){
-                    //Do nothing
-                }
+                    }
+                });
                 break;
             case 2:
-                try{
-                    //For Miui
-                    //Miui 4.4 之前的系统更新时间的函数名称为“a”
-                    findAndHookMethod("com.android.systemui.statusbar.policy.DateView", lpparam.classLoader, "a", new XC_MethodHook() {
-                        @Override
-                        protected void afterHookedMethod(MethodHookParam param){
-                            textview = (TextView) param.thisObject;
-                            registerReceiver(textview);
-                            setText(textview);
+                //For Miui
+                //Miui 4.4 之前的系统更新时间的函数名称为“a”
+                findAndHookMethod(HOOK_CLASS, lpparam.classLoader, "a", new XC_MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param){
+                        if(mDateView == null)
+                            mDateView = (TextView) param.thisObject;
+                        if(mDateView != null){
+                            registerReceiver();
+                            setText();
                         }
-                    });
-                }catch(Exception e){
-                    //Do nothing
-                }
+                    }
+                });
             break;
         }
     }
 
     /* 获取农历字符串子程序 */
-    private void setText(TextView textview){
+    private void setText(){
         /* 判断当前日期栏是否包含上次更新后的日期文本
          * 如果当前日期已经改变，则必须重新计算农历
          * 如果当前日期未改变，则只需要重新用已经缓存的文本写入TextView */
         //判断日期是否改变，不改变则不更新内容，改变则重新计算农历
-        nDate = textview.getText().toString();
+        nDate = mDateView.getText().toString();
         if(!nDate.contains(lunarText)){
             if (!nDate.equals(lDate)) {
-                //重置提醒次数
-                _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
                 //获取时间
                 lunar.init(System.currentTimeMillis());
                 //修正layout的singleLine属性
                 if(!layout_run){
                     //去掉singleLine属性
                     if(prefs.getBoolean("layout_line", false)){
-                        textview.setSingleLine(false); //去除singleLine属性
+                        mDateView.setSingleLine(false); //去除singleLine属性
                     }
                     //去掉align_baseline，并将其设置为center_vertical
                     if(prefs.getBoolean("layout_align", false)){
                         //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
-                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
                         layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
                         layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
-                        textview.setLayoutParams(layoutParams); //设置布局参数
+                        mDateView.setLayoutParams(layoutParams); //设置布局参数
                     }
                     //设置宽度为fill_parent
                     if(prefs.getBoolean("layout_width", false)){
-                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
                         layoutParams.width = -1; //取消宽度限制
-                        textview.setLayoutParams(layoutParams);
+                        mDateView.setLayoutParams(layoutParams);
                     }
                     layout_run = true; //已经执行过布局的处理步骤，下次不再执行
                 }
@@ -266,12 +273,18 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 lDate = nDate;
                 //从Lunar类中获得组合好的农历日期字符串（包括各节日）
                 lunarText = lunar.getFormattedDate(_custom_format, _format);
-                if(_notify > 1)
-                    if(!"".equals(lunar.getFormattedDate("ff", 5).trim())){
+
+                //重置提醒次数
+                _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
+                if(_notify > 1){
+                    //当天是否是节日
+                    isFest = !"".equals(lunar.getFormattedDate("ff", 5).trim());
+                    if(isFest || _notify == 2){
                         lunarTextToast = _format == 5 ? lunar.getFormattedDate("", 3) : lunarText;
                     }else{
                         lunarTextToast = "";
                     }
+                }
                 //如果需要去换行
                 if(_remove){
                     Matcher mat = reg.matcher(nDate);
@@ -282,36 +295,54 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 //输出到最终字符串
                 finalText = nDate + breaklineText + lunarText;
             }
-            textview.setText(finalText);
+            mDateView.setText(finalText);
         }
     }
 
-    private void registerReceiver(TextView textview){
+    private void makeToast(Context context){
+        Toast toast = Toast.makeText(context, lunarTextToast, Toast.LENGTH_LONG);
+        if(_notify_center)
+            toast.setGravity(Gravity.CENTER, 0, 0);
+        if(_notify_icon){
+            LinearLayout toastView = (LinearLayout) toast.getView();
+            ImageView imageview = new ImageView(context.getApplicationContext());
+            imageview.setImageResource(isFest ? iconFest_id : iconNormal_id);
+            imageview.setPadding(0, 10, 0, 20);
+            toastView.addView(imageview, 0);
+        }
+        toast.show();
+    }
+    //注册接收器
+    private void registerReceiver(){
         if(mContext == null && _notify > 1){
-            mContext = textview.getContext();
-            IntentFilter intent = new IntentFilter();
-            intent.addAction(Intent.ACTION_USER_PRESENT);
-            mContext.registerReceiver(xReceiver, intent);
+            mContext = mDateView.getContext();
+            if(mContext != null){
+                IntentFilter intent = new IntentFilter();
+                intent.addAction(Intent.ACTION_USER_PRESENT);
+                intent.addAction(Intent.ACTION_DATE_CHANGED);
+                mContext.registerReceiver(xReceiver, intent);
+            }
         }
     }
 
+    //广播接收
     private BroadcastReceiver xReceiver = new BroadcastReceiver() {
         @Override  
         public void onReceive(Context context, Intent intent) {
             context = mContext;
-            if(intent.getAction().equals(Intent.ACTION_USER_PRESENT) && !"".equals(Main.lunarTextToast)){
-                if(_notify_times-- > 0){
-                    Toast toast = Toast.makeText(context, lunarTextToast, Toast.LENGTH_LONG);
-                    if(_notify_center)
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                    if(_notify_icon){
-                        LinearLayout toastView = (LinearLayout) toast.getView();
-                        ImageView imageview = new ImageView(context.getApplicationContext());
-                        imageview.setImageResource(icon_id);
-                        imageview.setPadding(0, 0, 0, 20);
-                        toastView.addView(imageview, 0);
-                    }
-                    toast.show();
+            //如果用户解锁屏幕
+            if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
+                if(_notify_times > 0 && !"".equals(Main.lunarTextToast)){
+                    makeToast(context);
+                    _notify_times--;
+                }
+            //如果用日期变更且用户处于亮屏状态
+            }else if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
+                XposedHelpers.callMethod(mDateView, "updateClock");
+                PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+                KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
+                if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast)){
+                    makeToast(context);
                 }
             }
         }
