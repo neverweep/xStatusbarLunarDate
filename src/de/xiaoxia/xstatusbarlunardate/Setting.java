@@ -16,6 +16,7 @@ package de.xiaoxia.xstatusbarlunardate;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
@@ -34,6 +35,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     ListPreference lp;
     ListPreference _lp;
     EditTextPreference etp;
+    CheckBoxPreference cbp;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -79,6 +81,15 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
 
         lp = (ListPreference)findPreference("notify_times");
         lp.setSummary(lp.getEntry());
+
+        lp = (ListPreference)findPreference("notify");
+        lp.setSummary(lp.getEntry());
+        _lp = (ListPreference)findPreference("notify_times");
+        _lp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+        cbp = (CheckBoxPreference)findPreference("notify_center");
+        cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+        cbp = (CheckBoxPreference)findPreference("notify_icon");
+        cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
 
         _lp = (ListPreference)findPreference("lockscreen_alignment");
         if(Build.VERSION.SDK_INT < 17){
@@ -135,6 +146,12 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         if(key.equals("notify")){
             lp = (ListPreference)findPreference("notify");
             lp.setSummary(lp.getEntry());
+            _lp = (ListPreference)findPreference("notify_times");
+            _lp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+            cbp = (CheckBoxPreference)findPreference("notify_center");
+            cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+            cbp = (CheckBoxPreference)findPreference("notify_icon");
+            cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             return;
         }
         if(key.equals("notify_times")){

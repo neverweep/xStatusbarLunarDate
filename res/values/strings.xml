@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">X Statusbar Lunar Date</string>
     <string name="settings">Settings</string>
     <string name="ok">OK</string>
@@ -7,27 +6,27 @@
     <string name="display_category">Statusbar Date</string>
     <string name="breakline">Breakline</string>
     <string name="breakline_summary_on">Display the lunar date in a new line</string>
-    <string name="breakline_summay_off">Display the lunar date in the last line</string>
+    <string name="breakline_summary_off">Display the lunar date in the last line</string>
     <string name="description">"Display Chinese lunar calendar date, festivals and solar terms in drop-down statusbar and lockscreen.
 [Touch here for settings. Reboot to apply.]</string>
     <string name="content_category">Content</string>
-    <string name="term">Solar terms</string>
+    <string name="term">Solar Terms</string>
     <string name="term_summray_on">Show 24 solar terms after lunar date</string>
     <string name="term_summray_off">Hide 24 solar terms</string>
-    <string name="fest">Lunar festivals</string>
+    <string name="fest">Lunar Festivals</string>
     <string name="fest_summary_on">Show lunar festivals after lunar date</string>
     <string name="fest_summary_off">Hide lunar fesivals</string>
-    <string name="minor">Date of the minor year</string>
+    <string name="minor">Date Of The Minor Year</string>
     <string name="minor_dialogue_title">Set prefer date of the minor year</string>
     <string name="minor_year_option_1">12.23 (Most of Northern China)</string>
     <string name="minor_year_option_2">12.24 (Most of Southern China)</string>
     <string name="minor_year_option_3">12.25 (Minority areas of China)</string>
     <string name="about">About X Statusbar Lunar Date</string>
-	<string name="about_msg"><b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual, bug report: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\nDonate：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
-	<string name="remove">Remove original line feed</string>
+    <string name="about_msg"><b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual, bug report: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\nDonate：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
+    <string name="remove">Remove Original Line Feed</string>
     <string name="remove_summary_on">Remove line feed in original date</string>
     <string name="remove_summary_off">Keep line feed original</string>
-    <string name="lang">Language and built-in festivals</string>
+    <string name="lang">Language And Built-in Festivals</string>
     <string name="lang_option_1">Simp-Chinese(Mainland China)</string>
     <string name="lang_option_6">Trad-Chinese(Mainland China)</string>
     <string name="lang_option_2">Trad-Chinese(Taiwan)</string>
@@ -35,19 +34,19 @@
     <string name="lang_option_5">Trad-Chinese(Macau)</string>
     <string name="lang_option_3">English (Only Digits)</string>
     <string name="lang_dialogue_title">Set prefer language to display</string>
-    <string name="layout_enable">Layout fix</string>
+    <string name="layout_enable">Layout Fix</string>
     <string name="layout_enable_summary_on">Fix layout for some roms</string>
     <string name="layout_enable_summary_off">Only check if date text displays wrong</string>
-    <string name="layout_line">Single line fix</string>
+    <string name="layout_line">Single Line Fix</string>
     <string name="layout_line_summary_on">Change textview to multi line</string>
     <string name="layout_line_summary_off">Only check if date text displays wrong</string>
-    <string name="layout_align">Align fix</string>
+    <string name="layout_align">Align Fix</string>
     <string name="layout_align_summary_on">Change alignment to center</string>
     <string name="layout_align_summary_off">Only check if date text displays wrong</string>
-    <string name="layout_width">Width fix</string>
+    <string name="layout_width">Width Fix</string>
     <string name="layout_width_summary_on">Change width to fill parent</string>
     <string name="layout_width_summary_off">Only check if date text displays wrong</string>
-    <string name="lockscreen">Append to lockscreen (BETA)</string>
+    <string name="lockscreen">Append To Lockscreen (BETA)</string>
     <string name="lockscreen_summary_on">Append lunar date to lockscreen</string>
     <string name="lockscreen_summary_off">Tested on AOSP 4.1.2, 4.2.2 and 4.4.2</string>
     <string name="setting_custom_lunar_item">Custom lunar date of commemoration</string>
@@ -67,25 +66,25 @@
     <string name="custom_solar_summary_on">Show your own solar customed date of commemoration</string>
     <string name="custom_solar_summary_off">Hide your own solar customed date of commemoration</string>
     <string name="system_category">System</string>
-    <string name="rom">Select type of system</string>
+    <string name="rom">Select Type Of System</string>
     <string name="rom_option_1">Most Android or Miui(4.4)</string>
     <string name="rom_option_2">Miui(4.3 or earlier)</string>
-    <string name="solar">Solar festivals</string>
+    <string name="solar">Solar Festivals</string>
     <string name="solar_summary_on">Show solar festivals after lunar date</string>
     <string name="solar_summary_off">Hide solar fesivals</string>
     <string name="lockscreen_category">Lockscreen date</string>
-    <string name="lockscreen_layout">Lockscreen date layout</string>
+    <string name="lockscreen_layout">Lockscreen Date Layout</string>
     <string name="lockscreen_layout_option_1">Do not change</string>
     <string name="lockscreen_layout_option_2">Add a line feed at start</string>
     <string name="lockscreen_layout_option_3">Add a line feed at end</string>
     <string name="lockscreen_layout_option_4">Both</string>
-    <string name="lockscreen_alignment">Lockscreen date alignment</string>
+    <string name="lockscreen_alignment">Lockscreen Date Alignment</string>
     <string name="lockscreen_alignment_disable">Only works on Android 4.2+</string>
     <string name="lockscreen_alignment_option_1">Do not change</string>
     <string name="lockscreen_alignment_option_2">Left</string>
     <string name="lockscreen_alignment_option_3">Right</string>
     <string name="lockscreen_alignment_option_4">Center</string>
-    <string name="format">Format options</string>
+    <string name="format">Format Options</string>
     <string name="format_option_1">Animal YYMMDD</string>
     <string name="format_option_2">Chinese era YYMMDD</string>
     <string name="format_option_3">Only MMDD</string>
@@ -94,16 +93,25 @@
     <string name="format_dialogue_title">Set prefer fomat option</string>
     <string name="custom_format_title">Custom format</string>
     <string name="custom_format_howtodo_msg">YY = Chinese era year\nyy = Animal year\nMM = Chinese era month\nmm = Lunar month\nDD = Chinese era day\ndd = Lunar day\nff = Festivals\nww = Day of week\nNN = Line feed</string>
-    <string name="notify">Unlock screen notification</string>
+    <string name="notify">Unlock Screen Notification</string>
     <string name="notify_category">Toast options</string>
     <string name="notify_option_1">None</string>
     <string name="notify_option_2">Always popup toast</string>
     <string name="notify_option_3">Only in festivals</string>
     <string name="notify_dialogue_title">Set prefer notification option</string>
-    <string name="notify_times">Notification times(Everyday)</string>
+    <string name="notify_times">Notification Times(Everyday)</string>
     <string name="notify_times_option_1">1</string>
     <string name="notify_times_option_2">3</string>
     <string name="notify_times_option_3">5</string>
     <string name="notify_times_option_4">Always</string>
     <string name="notify_times_dialogue_title">Set prefer notify option</string>
+    <string name="remove_all">Remove Original Date Text</string>
+    <string name="remove_all_summary_on">Use user custom format instead</string>
+    <string name="remove_all_summary_off">No operation</string>
+    <string name="notify_center">Toast Position</string>
+    <string name="notify_center_summary_on">Center of screen</string>
+    <string name="notify_center_summary_off">System default</string>
+    <string name="notify_icon">Toast Icon</string>
+    <string name="notify_icon_summary_on">Hard to miss toast with an icon</string>
+    <string name="notify_icon_summary_off">No operation</string>
 </resources>

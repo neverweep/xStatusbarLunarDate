@@ -21,20 +21,24 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.XModuleResources;
+import android.view.Gravity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import android.widget.Toast;
-//导入xposed基本类
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
+import de.robv.android.xposed.IXposedHookInitPackageResources;
 import de.robv.android.xposed.IXposedHookLoadPackage;
+import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
-//import de.robv.android.xposed.XposedBridge;
+import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 /* Main */
-public class Main implements IXposedHookLoadPackage{
+public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXposedHookInitPackageResources{
 
     /* 初始变量 */
     private static String lunarText = "LUNAR"; //记录最后更新时的文字字符串
@@ -53,6 +57,8 @@ public class Main implements IXposedHookLoadPackage{
     private final static XSharedPreferences prefs = new XSharedPreferences(Main.class.getPackage().getName());
 
     /* 将设置保存到变量中，以备后用 */
+    //允许布局调整
+    protected final static Boolean _remove_all = prefs.getBoolean("remove_all", false);
     //删除换行
     protected final static Boolean _remove = prefs.getBoolean("remove", true);
     //显示节气
@@ -84,6 +90,10 @@ public class Main implements IXposedHookLoadPackage{
     protected final static int _notify = Integer.valueOf(prefs.getString("notify", "1")).intValue();
     //通知次数
     protected static int _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
+    //通知居中
+    protected final static Boolean _notify_center = prefs.getBoolean("notify_center", false);
+    //显示图标
+    protected final static Boolean _notify_icon = prefs.getBoolean("notify_icon", false);
 
     //开启添加到锁屏
     protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
@@ -145,64 +155,21 @@ public class Main implements IXposedHookLoadPackage{
     //初始化Lunar类
     private static Lunar lunar = new Lunar(_lang);
 
-    /* 获取农历字符串子程序 */
-    private void setText(TextView textview){
-        /* 判断当前日期栏是否包含上次更新后的日期文本
-         * 如果当前日期已经改变，则必须重新计算农历
-         * 如果当前日期未改变，则只需要重新用已经缓存的文本写入TextView */
-        //判断日期是否改变，不改变则不更新内容，改变则重新计算农历
-        nDate = textview.getText().toString();
-        if(!nDate.contains(lunarText)){
-            if (!nDate.equals(lDate)) {
-                //重置提醒次数
-                _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
-                //获取时间
-                lunar.init(System.currentTimeMillis());
-                //修正layout的singleLine属性
-                if(!layout_run){
-                    //去掉singleLine属性
-                    if(prefs.getBoolean("layout_line", false)){
-                        textview.setSingleLine(false); //去除singleLine属性
-                    }
-                    //去掉align_baseline，并将其设置为center_vertical
-                    if(prefs.getBoolean("layout_align", false)){
-                        //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
-                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
-                        layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
-                        layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
-                        textview.setLayoutParams(layoutParams); //设置布局参数
-                    }
-                    //设置宽度为fill_parent
-                    if(prefs.getBoolean("layout_width", false)){
-                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
-                        layoutParams.width = -1; //取消宽度限制
-                        textview.setLayoutParams(layoutParams);
-                    }
-                    layout_run = true; //已经执行过布局的处理步骤，下次不再执行
-                }
 
-                //更新记录的日期
-                lDate = nDate;
-                //从Lunar类中获得组合好的农历日期字符串（包括各节日）
-                lunarText = lunar.getFormattedDate(_custom_format, _format);
-                if(_notify > 1)
-                    if(!"".equals(lunar.getFormattedDate("ff", 5).trim())){
-                        lunarTextToast = lunarText;
-                    }else{
-                        lunarTextToast = "";
-                    }
-                //如果需要去换行
-                if(_remove){
-                    Matcher mat = reg.matcher(nDate);
-                    nDate = mat.replaceFirst(" "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
-                }
-                //输出到最终字符串
-                finalText = nDate + breaklineText + lunarText;
-            }
-            textview.setText(finalText);
-        }
+    private static String MODULE_PATH = null;
+    private static int icon_id;
+    @Override
+    public void initZygote(StartupParam startupParam) throws Throwable {
+        MODULE_PATH = startupParam.modulePath;
     }
 
+    public void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable {
+        if (!resparam.packageName.equals("com.android.systemui"))
+            return;
+
+        XModuleResources modRes = XModuleResources.createInstance(MODULE_PATH, resparam.res);
+        icon_id = resparam.res.addResource(modRes, R.drawable.ic_toast);
+    }
     /* 替换日期函数 */
     public void handleLoadPackage(final LoadPackageParam lpparam){
         if (!lpparam.packageName.equals("com.android.systemui"))
@@ -259,6 +226,66 @@ public class Main implements IXposedHookLoadPackage{
         }
     }
 
+    /* 获取农历字符串子程序 */
+    private void setText(TextView textview){
+        /* 判断当前日期栏是否包含上次更新后的日期文本
+         * 如果当前日期已经改变，则必须重新计算农历
+         * 如果当前日期未改变，则只需要重新用已经缓存的文本写入TextView */
+        //判断日期是否改变，不改变则不更新内容，改变则重新计算农历
+        nDate = textview.getText().toString();
+        if(!nDate.contains(lunarText)){
+            if (!nDate.equals(lDate)) {
+                //重置提醒次数
+                _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
+                //获取时间
+                lunar.init(System.currentTimeMillis());
+                //修正layout的singleLine属性
+                if(!layout_run){
+                    //去掉singleLine属性
+                    if(prefs.getBoolean("layout_line", false)){
+                        textview.setSingleLine(false); //去除singleLine属性
+                    }
+                    //去掉align_baseline，并将其设置为center_vertical
+                    if(prefs.getBoolean("layout_align", false)){
+                        //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
+                        layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
+                        layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
+                        textview.setLayoutParams(layoutParams); //设置布局参数
+                    }
+                    //设置宽度为fill_parent
+                    if(prefs.getBoolean("layout_width", false)){
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)textview.getLayoutParams();
+                        layoutParams.width = -1; //取消宽度限制
+                        textview.setLayoutParams(layoutParams);
+                    }
+                    layout_run = true; //已经执行过布局的处理步骤，下次不再执行
+                }
+
+                //更新记录的日期
+                lDate = nDate;
+                //从Lunar类中获得组合好的农历日期字符串（包括各节日）
+                lunarText = lunar.getFormattedDate(_custom_format, _format);
+                if(_notify > 1)
+                    if(!"".equals(lunar.getFormattedDate("ff", 5).trim())){
+                        lunarTextToast = _format == 5 ? lunar.getFormattedDate("", 3) : lunarText;
+                    }else{
+                        lunarTextToast = "";
+                    }
+                //如果需要去换行
+                if(_remove){
+                    Matcher mat = reg.matcher(nDate);
+                    nDate = mat.replaceFirst(" "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
+                }
+                if(_remove_all)
+                    nDate = breaklineText = "";
+                //输出到最终字符串
+                finalText = nDate + breaklineText + lunarText;
+            }
+            textview.setText(finalText);
+        }
+    }
+
     private void registerReceiver(TextView textview){
         if(mContext == null && _notify > 1){
             mContext = textview.getContext();
@@ -271,10 +298,21 @@ public class Main implements IXposedHookLoadPackage{
     private BroadcastReceiver xReceiver = new BroadcastReceiver() {
         @Override  
         public void onReceive(Context context, Intent intent) {
-            context = Main.mContext;
+            context = mContext;
             if(intent.getAction().equals(Intent.ACTION_USER_PRESENT) && !"".equals(Main.lunarTextToast)){
-                if(_notify_times-- > 0)
-                    Toast.makeText(context, Main.lunarTextToast, Toast.LENGTH_LONG).show();
+                if(_notify_times-- > 0){
+                    Toast toast = Toast.makeText(context, lunarTextToast, Toast.LENGTH_LONG);
+                    if(_notify_center)
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                    if(_notify_icon){
+                        LinearLayout toastView = (LinearLayout) toast.getView();
+                        ImageView imageview = new ImageView(context.getApplicationContext());
+                        imageview.setImageResource(icon_id);
+                        imageview.setPadding(0, 0, 0, 20);
+                        toastView.addView(imageview, 0);
+                    }
+                    toast.show();
+                }
             }
         }
     };

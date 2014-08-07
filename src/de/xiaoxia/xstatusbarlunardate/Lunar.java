@@ -15,6 +15,8 @@
 
 package de.xiaoxia.xstatusbarlunardate;
 
+import android.annotation.SuppressLint;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -22,8 +24,8 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressLint("SimpleDateFormat")
 public class Lunar {
-
 
     private Calendar solar;
     private int lunarYear;
@@ -43,6 +45,10 @@ public class Lunar {
     private String clFestivalName;
     private String sFestivalName;
     private String csFestivalName;
+
+    private static SimpleDateFormat sdfyyyy = new SimpleDateFormat("yy");;
+    private static SimpleDateFormat sdfMMMM = new SimpleDateFormat("MM");
+    private static SimpleDateFormat sdfDDDD = new SimpleDateFormat("dd");
 
     private final static int[] lunarInfo = {
         //2000~2037的农历信息
@@ -917,6 +923,12 @@ public class Lunar {
                     break;
                 //自定义
                 case 5:
+                    t = t.replace("YYYY", String.valueOf(this.getSolarYear()));
+                    t = t.replace("MMMM", sdfMMMM.format(System.currentTimeMillis()));
+                    t = t.replace("DDDD", sdfDDDD.format(System.currentTimeMillis()));
+                    t = t.replace("yyyy", sdfyyyy.format(System.currentTimeMillis()));
+                    t = t.replace("mmmm", String.valueOf(this.getSolarMonth()));
+                    t = t.replace("dddd", String.valueOf(this.getSolarDay()));
                     t = t.replace("YY", this.getLunarYearString());
                     t = t.replace("yy", this.getAnimalString());
                     t = t.replace("mm", this.getLunarMonthString());

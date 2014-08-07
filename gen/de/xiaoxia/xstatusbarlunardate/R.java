@@ -31,6 +31,7 @@ public final class R {
     public static final class drawable {
         public static final int ic_info=0x7f020000;
         public static final int ic_launcher=0x7f020001;
+        public static final int ic_toast=0x7f020002;
     }
     public static final class id {
         public static final int about=0x7f080001;
@@ -47,8 +48,8 @@ public final class R {
         public static final int about_msg=0x7f060016;
         public static final int app_name=0x7f060000;
         public static final int breakline=0x7f060005;
+        public static final int breakline_summary_off=0x7f060007;
         public static final int breakline_summary_on=0x7f060006;
-        public static final int breakline_summay_off=0x7f060007;
         public static final int cancel=0x7f060003;
         public static final int content_category=0x7f060009;
         public static final int custom_format_howtodo_msg=0x7f06005c;
@@ -115,7 +116,13 @@ public final class R {
         public static final int minor_year_option_3=0x7f060014;
         public static final int notify=0x7f06005d;
         public static final int notify_category=0x7f06005e;
+        public static final int notify_center=0x7f06006c;
+        public static final int notify_center_summary_off=0x7f06006e;
+        public static final int notify_center_summary_on=0x7f06006d;
         public static final int notify_dialogue_title=0x7f060062;
+        public static final int notify_icon=0x7f06006f;
+        public static final int notify_icon_summary_off=0x7f060071;
+        public static final int notify_icon_summary_on=0x7f060070;
         public static final int notify_option_1=0x7f06005f;
         public static final int notify_option_2=0x7f060060;
         public static final int notify_option_3=0x7f060061;
@@ -127,20 +134,23 @@ public final class R {
         public static final int notify_times_option_4=0x7f060067;
         public static final int ok=0x7f060002;
         public static final int remove=0x7f060017;
+        public static final int remove_all=0x7f060069;
+        public static final int remove_all_summary_off=0x7f06006b;
+        public static final int remove_all_summary_on=0x7f06006a;
         public static final int remove_summary_off=0x7f060019;
         public static final int remove_summary_on=0x7f060018;
         public static final int rom=0x7f060042;
         public static final int rom_option_1=0x7f060043;
         public static final int rom_option_2=0x7f060044;
-        public static final int setting_custom_lunar_howtodo=0x7f060069;
+        public static final int setting_custom_lunar_howtodo=0x7f060072;
         public static final int setting_custom_lunar_howtodo_msg=0x7f060034;
-        public static final int setting_custom_lunar_howtodo_summary=0x7f06006a;
+        public static final int setting_custom_lunar_howtodo_summary=0x7f060073;
         public static final int setting_custom_lunar_item=0x7f060031;
         public static final int setting_custom_lunar_item_hint=0x7f060033;
         public static final int setting_custom_lunar_item_summary=0x7f060032;
-        public static final int setting_custom_solar_howtodo=0x7f06006b;
+        public static final int setting_custom_solar_howtodo=0x7f060074;
         public static final int setting_custom_solar_howtodo_msg=0x7f06003c;
-        public static final int setting_custom_solar_howtodo_summary=0x7f06006c;
+        public static final int setting_custom_solar_howtodo_summary=0x7f060075;
         public static final int setting_custom_solar_item=0x7f060039;
         public static final int setting_custom_solar_item_hint=0x7f06003b;
         public static final int setting_custom_solar_item_summary=0x7f06003a;

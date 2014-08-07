@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">X 狀態列農曆日期</string>
     <string name="settings">設置</string>
     <string name="ok">確定</string>
@@ -7,7 +6,7 @@
     <string name="display_category">狀態列日期</string>
     <string name="breakline">換行顯示</string>
     <string name="breakline_summary_on">另起一行顯示農曆日期</string>
-    <string name="breakline_summay_off">在同一行顯示農曆日期</string>
+    <string name="breakline_summary_off">在同一行顯示農曆日期</string>
     <string name="description">"在狀態列下拉和鎖屏介面顯示的日期處增加一行農曆時間，遇到農曆節日或二十四節氣時也有顯示。
 [點擊這裡進入設置，重啟後生效]"</string>
     <string name="content_category">顯示內容</string>
@@ -23,7 +22,7 @@
     <string name="minor_year_option_2">臘月廿四（大部分南方地區）</string>
     <string name="minor_year_option_3">臘月廿五（個別地區）</string>
     <string name="about">關於 X 狀態列農曆日期</string>
-	<string name="about_msg"><b>歡迎使用這個 Xposed 模組\n希望能給你帶來一點方便：）</b>\n\n我的博客: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n說明、報錯、建議:\n <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\n捐贈：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
+    <string name="about_msg"><b>歡迎使用這個 Xposed 模組\n希望能給你帶來一點方便：）</b>\n\n我的博客: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n說明、報錯、建議:\n <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\n捐贈：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
     <string name="remove">刪除換行</string>
     <string name="remove_summary_on">刪除原日期中的換行</string>
     <string name="remove_summary_off">保留原日期中的換行</string>
@@ -97,17 +96,26 @@
     <string name="format_option_5">自訂格式</string>
     <string name="format_dialogue_title">設置符合喜好的日期格式</string>
     <string name="custom_format_title">自訂格式</string>
-    <string name="custom_format_howtodo_msg">在這裡自訂顯示格式，如:\n~~ 農曆：YY（yy）年mm月dd ff ~~\n\nYY = 天干地支年份（如“甲子”）\nyy = 屬相年份（如“兔”）\nMM = 天干地支月份（如“甲戌”）\nmm = 農曆月（如“九”）\nDD = 天干地支日（如“辛酉”）\ndd = 農曆日（如“初九”）\nff = 節日（如“春節”）\nww = 星期幾（如“一”）\nNN = 換行（不保證有效）</string>
-    <string name="notify">解鎖螢幕消息通知</string>
-    <string name="notify_category">消息通知設置</string>
+    <string name="custom_format_howtodo_msg">在這裡自訂顯示格式，如:\n~~ 農曆：YY（yy）年mm月dd ff ~~\n\nYY = 天干地支年份（如“甲子”）\nyy = 屬相年份（如“兔”）\nMM = 天干地支月份（如“甲戌”）\nmm = 農曆月（如“九”）\nDD = 天干地支日（如“辛酉”）\ndd = 農曆日（如“初九”）\nff = 節日（如“春節”）\nww = 星期幾（如“一”）\nNN = 換行（不保證有效）\nYYYY [yyyy] = 年份（如“2014 [14]”）\nMMMM [mmmm] = 月份（如“04 [04]”）\nDDDD [dddd] = 日（如“08 [8]”）</string>
+    <string name="notify">解鎖螢幕彈出農曆消息</string>
+    <string name="notify_category">消息設置</string>
     <string name="notify_option_1">無</string>
     <string name="notify_option_2">總是彈出消息</string>
     <string name="notify_option_3">僅在有節日時彈出消息</string>
-    <string name="notify_dialogue_title">設置符合喜好的吐司通知設置</string>
+    <string name="notify_dialogue_title">設置符合喜好的消息設置</string>
     <string name="notify_times">消息次數（每日）</string>
     <string name="notify_times_option_1">1 次</string>
     <string name="notify_times_option_2">3 次</string>
     <string name="notify_times_option_3">5 次</string>
     <string name="notify_times_option_4">總是彈出消息</string>
-    <string name="notify_times_dialogue_title">設置符合喜好的吐司通知次數</string>
+    <string name="notify_times_dialogue_title">設置符合喜好的消息次數</string>
+    <string name="remove_all">刪除原始日期資訊</string>
+    <string name="remove_all_summary_on">使用用戶自訂日期格式替換</string>
+    <string name="remove_all_summary_off">無操作</string>
+    <string name="notify_center">消息位置</string>
+    <string name="notify_center_summary_on">顯示在螢幕中央</string>
+    <string name="notify_center_summary_off">系統預設</string>
+    <string name="notify_icon">消息圖示</string>
+    <string name="notify_icon_summary_on">加入圖示，不易錯過</string>
+    <string name="notify_icon_summary_off">無操作</string>
 </resources>
