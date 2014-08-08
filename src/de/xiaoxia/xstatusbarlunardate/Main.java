@@ -279,7 +279,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
                 if(_notify > 1){
                     //当天是否是节日
-                    isFest = !"".equals(lunar.getFormattedDate("ff", 5).trim());
+                    isFest = !"".equals(lunar.getFormattedDate("ff", 5));
                     if(isFest || _notify == 2){
                         lunarTextToast = nDate.replaceAll("\\n", " ") + "\n" + (_format == 5 ? lunar.getFormattedDate("", 3) : lunarText);
                     }else{
@@ -328,6 +328,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 IntentFilter intent = new IntentFilter();
                 intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
                 intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
+                intent.addAction(Intent.ACTION_TIMEZONE_CHANGED); //注册时区变更事件
                 mContext.registerReceiver(xReceiver, intent);
             }
         }
@@ -335,7 +336,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
 
     //广播接收
     private BroadcastReceiver xReceiver = new BroadcastReceiver() {
-        @Override  
+        @Override
         public void onReceive(Context context, Intent intent) {
             context = mContext;
             //如果用户解锁屏幕
@@ -352,6 +353,9 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast)){
                     makeToast(context);
                 }
+            }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
+                lunar = new Lunar(_lang);
+                XposedHelpers.callMethod(mDateView, "updateClock");
             }
         }
     };

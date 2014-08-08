@@ -19,7 +19,8 @@
 package de.xiaoxia.xstatusbarlunardate;
 
 import android.annotation.SuppressLint;
-import java.text.SimpleDateFormat;
+
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -42,16 +43,13 @@ public class Lunar {
     private int cyclicalYear = 0;
     private int cyclicalMonth = 0;
     private int cyclicalDay = 0;
+    private DecimalFormat dfMMDD = new DecimalFormat("00");
 
     private String lFestivalName;
     private String termString;
     private String clFestivalName;
     private String sFestivalName;
     private String csFestivalName;
-
-    private static SimpleDateFormat sdfyyyy = new SimpleDateFormat("yy");;
-    private static SimpleDateFormat sdfMMMM = new SimpleDateFormat("MM");
-    private static SimpleDateFormat sdfDDDD = new SimpleDateFormat("dd");
 
     private final static int[] lunarInfo = {
         //2000~2037的农历信息
@@ -927,9 +925,9 @@ public class Lunar {
                 //自定义
                 case 5:
                     t = t.replace("YYYY", String.valueOf(this.getSolarYear()));
-                    t = t.replace("MMMM", sdfMMMM.format(System.currentTimeMillis()));
-                    t = t.replace("DDDD", sdfDDDD.format(System.currentTimeMillis()));
-                    t = t.replace("yyyy", sdfyyyy.format(System.currentTimeMillis()));
+                    t = t.replace("MMMM", dfMMDD.format(this.getSolarMonth()));
+                    t = t.replace("DDDD", dfMMDD.format(this.getSolarDay()));
+                    t = t.replace("yyyy", String.valueOf(this.getSolarYear()).replaceFirst("\\d\\d", ""));
                     t = t.replace("mmmm", String.valueOf(this.getSolarMonth()));
                     t = t.replace("dddd", String.valueOf(this.getSolarDay()));
                     t = t.replace("YY", this.getLunarYearString());
@@ -947,7 +945,7 @@ public class Lunar {
             lunarText = "[" + this.getLunarDay() + "/" + this.getLunarMonth() + "]";
         }
 
-        return lunarText;
+        return lunarText.trim();
 
     }
 }
