@@ -1,21 +1,22 @@
-﻿/**
- * Copyright (C) 2014 xiaoxia.de
+﻿/*
+ * Copyright (C) 2014 XiaoXia(http://xiaoxia.de/)
  *
- * @author xiaoxia.de
- * @date 2014
- * @license MIT
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This file is subject to the terms and conditions defined in
- * file 'LICENSE.txt', which is part of this source code package.
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 // 状态栏日期，主程序
 
 package de.xiaoxia.xstatusbarlunardate;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
@@ -55,7 +56,6 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static String finalText; //最终输出文本
     private static String lunarTextToast = ""; //最终输出文本仅节日
     private static Boolean layout_run = false; //判断是否设置过singleLine属性
-    private final static Pattern reg = Pattern.compile("\\n"); //去除换行的正则表达式
     private static TextView mDateView;
     private static Context mContext;
     private static Boolean isFest = false;
@@ -97,7 +97,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     //通知方法
     protected final static int _notify = Integer.valueOf(prefs.getString("notify", "1")).intValue();
     //通知次数
-    protected static int _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
+    protected static int _notify_times = Integer.valueOf(prefs.getString("notify_times", "1")).intValue();
     //通知居中
     protected final static Boolean _notify_center = prefs.getBoolean("notify_center", false);
     //显示图标
@@ -163,7 +163,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     //初始化Lunar类
     private static Lunar lunar = new Lunar(_lang);
 
-    //这里将自带的图标资源插入到systemui中，并获取到一个资源id
+    /* 向Systemui注入图标 */
     private static int iconNormal_id;
     private static int iconFest_id;
     @Override
@@ -175,11 +175,12 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
         if (!resparam.packageName.equals(PACKAGE_NAME))
             return;
 
+        //这里将自带的图标资源插入到systemui中，并获取到一个资源id
         XModuleResources modRes = XModuleResources.createInstance(MODULE_PATH, resparam.res);
         iconNormal_id = resparam.res.addResource(modRes, R.drawable.ic_toast);
         iconFest_id   = resparam.res.addResource(modRes, R.drawable.ic_toast_fest);
-
     }
+
     /* 替换日期函数 */
     public void handleLoadPackage(final LoadPackageParam lpparam){
         if (!lpparam.packageName.equals(PACKAGE_NAME))
@@ -280,31 +281,37 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                     //当天是否是节日
                     isFest = !"".equals(lunar.getFormattedDate("ff", 5).trim());
                     if(isFest || _notify == 2){
-                        lunarTextToast = _format == 5 ? lunar.getFormattedDate("", 3) : lunarText;
+                        lunarTextToast = nDate.replaceAll("\\n", " ") + "\n" + (_format == 5 ? lunar.getFormattedDate("", 3) : lunarText);
                     }else{
                         lunarTextToast = "";
                     }
                 }
                 //如果需要去换行
-                if(_remove){
-                    Matcher mat = reg.matcher(nDate);
-                    nDate = mat.replaceFirst(" "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
-                }
+                if(_remove)
+                    nDate = nDate.replaceAll("\\n", " "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
+                //如果需要去除原来的所有文字
                 if(_remove_all)
                     nDate = breaklineText = "";
+
                 //输出到最终字符串
                 finalText = nDate + breaklineText + lunarText;
             }
+            //向TextView设置显示的最终文字
             mDateView.setText(finalText);
         }
     }
 
+    //显示 Toast
     private void makeToast(Context context){
         Toast toast = Toast.makeText(context, lunarTextToast, Toast.LENGTH_LONG);
+        LinearLayout toastView = (LinearLayout) toast.getView();
+        TextView toastTextView = (TextView) toastView.getChildAt(0);
+        toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
+        toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
         if(_notify_center)
-            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.setGravity(Gravity.CENTER, 0, 0); //Toast在屏幕正中显示
         if(_notify_icon){
-            LinearLayout toastView = (LinearLayout) toast.getView();
+            //为Toast加入图标
             ImageView imageview = new ImageView(context.getApplicationContext());
             imageview.setImageResource(isFest ? iconFest_id : iconNormal_id);
             imageview.setPadding(0, 10, 0, 20);
@@ -312,14 +319,15 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
         }
         toast.show();
     }
+
     //注册接收器
     private void registerReceiver(){
         if(mContext == null && _notify > 1){
             mContext = mDateView.getContext();
             if(mContext != null){
                 IntentFilter intent = new IntentFilter();
-                intent.addAction(Intent.ACTION_USER_PRESENT);
-                intent.addAction(Intent.ACTION_DATE_CHANGED);
+                intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
+                intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
                 mContext.registerReceiver(xReceiver, intent);
             }
         }
@@ -338,7 +346,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 }
             //如果用日期变更且用户处于亮屏状态
             }else if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
-                XposedHelpers.callMethod(mDateView, "updateClock");
+                XposedHelpers.callMethod(mDateView, "updateClock"); //强制执行updateClock函数
                 PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
                 KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
                 if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast)){
