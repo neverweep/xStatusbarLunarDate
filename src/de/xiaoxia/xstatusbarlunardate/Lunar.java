@@ -235,8 +235,7 @@ public class Lunar {
         // 前12bit分别表示12个月份的大小月,最后4bit表示闰月
         // 每个大月累加一天
         for (int i = 0x8000; i > 0x8; i >>= 1) {
-            daysInLunarYear += ((Lunar.lunarInfo[lunarYear - 2000] & i) != 0) ? 1
-                    : 0;
+            daysInLunarYear += ((Lunar.lunarInfo[lunarYear - 2000] & i) != 0) ? 1 : 0;
         }
         // 加上闰月天数
         daysInLunarYear += Lunar.getLunarLeapDays(lunarYear);
@@ -255,10 +254,10 @@ public class Lunar {
     private static int getLunarMonthDays(int lunarYear, int lunarMonth) {
         // 数据表中,每个农历年用16bit来表示,
         // 前12bit分别表示12个月份的大小月,最后4bit表示闰月
-        int daysInLunarMonth = ((Lunar.lunarInfo[lunarYear - 2000] & (0x10000 >> lunarMonth)) != 0) ? 30
-                : 29;
+        int daysInLunarMonth = ((Lunar.lunarInfo[lunarYear - 2000] & (0x10000 >> lunarMonth)) != 0) ? 30 : 29;
         return daysInLunarMonth;
     }
+
     /**
      * 取 Date 对象中用全球标准时间 (UTC) 表示的日期
      *
@@ -266,12 +265,12 @@ public class Lunar {
      * @return UTC 全球标准时间 (UTC) 表示的日期
      */
     public static synchronized int getUTCDay(Date date) {
-            Lunar.makeUTCCalendar();
-            synchronized (utcCal) {
-                utcCal.clear();
-                utcCal.setTimeInMillis(date.getTime());
-                return utcCal.get(Calendar.DAY_OF_MONTH);
-            }
+        Lunar.makeUTCCalendar();
+        synchronized (utcCal) {
+            utcCal.clear();
+            utcCal.setTimeInMillis(date.getTime());
+            return utcCal.get(Calendar.DAY_OF_MONTH);
+        }
     }
 
     private static synchronized void makeUTCCalendar() {
@@ -466,6 +465,7 @@ public class Lunar {
         csFestivalName = "";
 
         this.solar = Calendar.getInstance();
+        this.solar.setTimeZone(TimeZone.getDefault());
         this.solar.setTimeInMillis(TimeInMillis);
         Calendar baseDate = new GregorianCalendar(2000, 1, 5);
         long offset = (TimeInMillis - baseDate.getTimeInMillis()) / 86400000;
@@ -892,14 +892,14 @@ public class Lunar {
 
             //判断是否是自定义农历节日
             if (Main._custom && (!"".equals(this.getCLFestivalName()))){
-                custom = "，" + this.getCLFestivalName();
+                custom = " " + this.getCLFestivalName();
             }else{
                 custom = "";
             }
 
             //判断是否是自定义公历节日
             if (Main._solar_custom && (!"".equals(this.getCSFestivalName()))){
-                sfest_custom = "，" + this.getCSFestivalName();
+                sfest_custom = " " + this.getCSFestivalName();
             }else{
                 sfest_custom = "";
             }
