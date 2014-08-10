@@ -86,8 +86,8 @@
     <string name="custom_solar_summary_off">不顯示自訂西曆紀念日</string>
     <string name="system_category">系統</string>
     <string name="rom">選擇系統類型</string>
-    <string name="rom_option_1">大多數 Android 或 Miui（4.4）</string>
-    <string name="rom_option_2">Miui（4.3 或更早版本）</string>
+    <string name="rom_option_1">大多數 Android</string>
+    <string name="rom_option_2">某些 Miui rom</string>
     <string name="solar">西曆節日</string>
     <string name="solar_summary_on">在農曆日期後顯示西曆節日</string>
     <string name="solar_summary_off">不顯示西曆節日</string>
@@ -133,4 +133,7 @@
     <string name="notify_icon">消息圖示</string>
     <string name="notify_icon_summary_on">加入圖示，不易錯過</string>
     <string name="notify_icon_summary_off">無操作</string>
+    <string name="notify_comp">消息美化（相容性問題）</string>
+    <string name="notify_comp_summary_on">關閉此項以保持和某些 ROM 或模組的相容性</string>
+    <string name="notify_comp_summary_off">打開此項使消息容易被注意和閱讀</string>
 </resources>

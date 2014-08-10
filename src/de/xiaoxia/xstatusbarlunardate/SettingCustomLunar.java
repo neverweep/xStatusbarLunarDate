@@ -35,6 +35,7 @@ public class SettingCustomLunar extends PreferenceActivity implements OnSharedPr
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting_custom_lunar);
+        getPreferenceManager().setSharedPreferencesMode(MODE_WORLD_READABLE);
 
         //设置返回按钮
         getActionBar().setDisplayHomeAsUpEnabled(true);

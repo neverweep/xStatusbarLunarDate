@@ -52,6 +52,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static String lunarText = "LUNAR"; //记录最后更新时的文字字符串
     private static String breaklineText = "\n"; //是否换行的文本
     private static String lDate = "LAST"; //上次记录的日期
+    private static String finalText = "FINALTEXT";
     private static String nDate;
     private static String lunarTextToast = ""; //最终输出文本仅节日
     private static Boolean layout_run = false; //判断是否设置过singleLine属性
@@ -101,6 +102,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     protected final static Boolean _notify_center = prefs.getBoolean("notify_center", false);
     //显示图标
     protected final static Boolean _notify_icon = prefs.getBoolean("notify_icon", false);
+    //兼容性
+    protected final static Boolean _notify_comp = prefs.getBoolean("notify_comp", false);
 
     //开启添加到锁屏
     protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false);
@@ -240,69 +243,74 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
          * 如果当前日期未改变，则只需要重新用已经缓存的文本写入TextView */
         //判断日期是否改变，不改变则不更新内容，改变则重新计算农历
         nDate = mDateView.getText().toString();
-        if (!nDate.equals(lDate)) {
-            //获取时间
-            lunar.init(System.currentTimeMillis());
-            //修正layout的singleLine属性
-            if(!layout_run){
-                //去掉singleLine属性
-                if(prefs.getBoolean("layout_line", false)){
-                    mDateView.setSingleLine(false); //去除singleLine属性
+        if(!nDate.contains(finalText)){
+            if (!nDate.equals(lDate)) {
+                //获取时间
+                lunar.init(System.currentTimeMillis());
+                //修正layout的singleLine属性
+                if(!layout_run){
+                    //去掉singleLine属性
+                    if(prefs.getBoolean("layout_line", false)){
+                        mDateView.setSingleLine(false); //去除singleLine属性
+                    }
+                    //去掉align_baseline，并将其设置为center_vertical
+                    if(prefs.getBoolean("layout_align", false)){
+                        //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
+                        layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
+                        layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
+                        mDateView.setLayoutParams(layoutParams); //设置布局参数
+                    }
+                    //设置宽度为fill_parent
+                    if(prefs.getBoolean("layout_width", false)){
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
+                        layoutParams.width = -1; //取消宽度限制
+                        mDateView.setLayoutParams(layoutParams);
+                    }
+                    layout_run = true; //已经执行过布局的处理步骤，下次不再执行
                 }
-                //去掉align_baseline，并将其设置为center_vertical
-                if(prefs.getBoolean("layout_align", false)){
-                    //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
-                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
-                    layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
-                    layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
-                    mDateView.setLayoutParams(layoutParams); //设置布局参数
+
+                //更新记录的日期
+                lDate = nDate;
+                //从Lunar类中获得组合好的农历日期字符串（包括各节日）
+                lunarText = lunar.getFormattedDate(_custom_format, _format);
+
+                //重置提醒次数
+                _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
+                if(_notify > 1){
+                    //当天是否是节日
+                    isFest = !"".equals(lunar.getFormattedDate("ff", 5));
+                    if(isFest || _notify == 2){
+                        lunarTextToast = nDate.trim().replaceAll("\\n", " ") + "\n" + (_format == 5 ? lunar.getFormattedDate("", 3) : lunarText);
+                    }else{
+                        lunarTextToast = "";
+                    }
                 }
-                //设置宽度为fill_parent
-                if(prefs.getBoolean("layout_width", false)){
-                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
-                    layoutParams.width = -1; //取消宽度限制
-                    mDateView.setLayoutParams(layoutParams);
-                }
-                layout_run = true; //已经执行过布局的处理步骤，下次不再执行
             }
 
-            //更新记录的日期
-            lDate = nDate;
-            //从Lunar类中获得组合好的农历日期字符串（包括各节日）
-            lunarText = lunar.getFormattedDate(_custom_format, _format);
-
-            //重置提醒次数
-            _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
-            if(_notify > 1){
-                //当天是否是节日
-                isFest = !"".equals(lunar.getFormattedDate("ff", 5));
-                if(isFest || _notify == 2){
-                    lunarTextToast = nDate.trim().replaceAll("\\n", " ") + "\n" + (_format == 5 ? lunar.getFormattedDate("", 3) : lunarText);
-                }else{
-                    lunarTextToast = "";
-                }
-            }
+            finalText = _remove_all ? lunarText : (_remove ? nDate.trim().replaceAll("\\n", " ") : nDate) + breaklineText + lunarText;
+            //向TextView设置显示的最终文字
+            mDateView.setText(finalText);
         }
-
-        //向TextView设置显示的最终文字
-        mDateView.setText(_remove_all ? lunarText : (_remove ? nDate.trim().replaceAll("\\n", " ") : nDate) + breaklineText + lunarText);
     }
 
     //显示 Toast
     private void makeToast(Context context){
         Toast toast = Toast.makeText(context, lunarTextToast, Toast.LENGTH_LONG);
-        LinearLayout toastView = (LinearLayout) toast.getView();
-        TextView toastTextView = (TextView) toastView.getChildAt(0);
-        toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
-        toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
-        if(_notify_center)
-            toast.setGravity(Gravity.CENTER, 0, 0); //Toast在屏幕正中显示
-        if(_notify_icon){
-            //为Toast加入图标
-            ImageView imageview = new ImageView(context.getApplicationContext());
-            imageview.setImageResource(isFest ? iconFest_id : iconNormal_id);
-            imageview.setPadding(0, 10, 0, 20);
-            toastView.addView(imageview, 0);
+        if(_notify_comp){
+	        LinearLayout toastView = (LinearLayout) toast.getView();
+	        TextView toastTextView = (TextView) toastView.getChildAt(0);
+	        toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
+	        toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
+	        if(_notify_center)
+	            toast.setGravity(Gravity.CENTER, 0, 0); //Toast在屏幕正中显示
+	        if(_notify_icon){
+	            //为Toast加入图标
+	            ImageView imageView = new ImageView(context.getApplicationContext());
+	            imageView.setImageResource(isFest ? iconFest_id : iconNormal_id);
+	            imageView.setPadding(0, 10, 0, 20);
+	            toastView.addView(imageView, 0);
+	        }
         }
         toast.show();
     }
@@ -340,6 +348,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast))
                     makeToast(context);
             }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
+                finalText = lDate = "RESET";
                 lunar = new Lunar(_lang);
                 XposedHelpers.callMethod(mDateView, "updateClock");
                 if(!"".equals(Main.lunarTextToast))

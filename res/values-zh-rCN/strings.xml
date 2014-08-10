@@ -86,8 +86,8 @@
     <string name="custom_solar_summary_off">不显示自定义公历纪念日</string>
     <string name="system_category">系统</string>
     <string name="rom">选择系统类型</string>
-    <string name="rom_option_1">大多数 Android 或 Miui（4.4）</string>
-    <string name="rom_option_2">Miui（4.3 或更早版本）</string>
+    <string name="rom_option_1">大多数 Android</string>
+    <string name="rom_option_2">某些 Miui rom</string>
     <string name="solar">公历节日</string>
     <string name="solar_summary_on">在农历日期后显示公历节日</string>
     <string name="solar_summary_off">不显示公历节日</string>
@@ -133,4 +133,7 @@
     <string name="notify_icon">吐司图标</string>
     <string name="notify_icon_summary_on">加入图标，不易错过</string>
     <string name="notify_icon_summary_off">无操作</string>
+    <string name="notify_comp">吐司美化（兼容性问题）</string>
+    <string name="notify_comp_summary_on">关闭此项以保持和某些 ROM 或模块的兼容性</string>
+    <string name="notify_comp_summary_off">打开此项使消息容易被注意和阅读</string>
 </resources>

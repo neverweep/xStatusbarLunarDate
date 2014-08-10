@@ -46,6 +46,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting);
+        getPreferenceManager().setSharedPreferencesMode(MODE_WORLD_READABLE);
 
         //找到设置，并将其概括修改为当前设置option_name
         lp = (ListPreference)findPreference("minor");
@@ -90,6 +91,9 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         lp.setSummary(lp.getEntry());
         _lp = (ListPreference)findPreference("notify_times");
         _lp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+        
+        cbp = (CheckBoxPreference)findPreference("notify_comp");
+        cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
         cbp = (CheckBoxPreference)findPreference("notify_center");
         cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
         cbp = (CheckBoxPreference)findPreference("notify_icon");
@@ -155,6 +159,8 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             cbp = (CheckBoxPreference)findPreference("notify_center");
             cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             cbp = (CheckBoxPreference)findPreference("notify_icon");
+            cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+            cbp = (CheckBoxPreference)findPreference("notify_comp");
             cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             return;
         }

@@ -34,6 +34,7 @@ public class SettingCustomSolar extends PreferenceActivity implements OnSharedPr
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting_custom_solar);
+        getPreferenceManager().setSharedPreferencesMode(MODE_WORLD_READABLE);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 

@@ -82,8 +82,8 @@
     <string name="custom_solar_summary_off">Hide your own solar customed date of commemoration</string>
     <string name="system_category">System</string>
     <string name="rom">Select Type Of System</string>
-    <string name="rom_option_1">Most Android or Miui(4.4)</string>
-    <string name="rom_option_2">Miui(4.3 or earlier)</string>
+    <string name="rom_option_1">Most Android</string>
+    <string name="rom_option_2">Some Miui rom</string>
     <string name="solar">Solar Festivals</string>
     <string name="solar_summary_on">Show solar festivals after lunar date</string>
     <string name="solar_summary_off">Hide solar fesivals</string>
@@ -129,4 +129,7 @@
     <string name="notify_icon">Toast Icon</string>
     <string name="notify_icon_summary_on">Hard to miss toast with an icon</string>
     <string name="notify_icon_summary_off">No operation</string>
+    <string name="notify_comp">Toast Beautify(Compatibility)</string>
+    <string name="notify_comp_summary_on">Turn off to keep compatible with some roms or modules</string>
+    <string name="notify_comp_summary_off">Turn on to make toast easy to be noticed and read</string>
 </resources>

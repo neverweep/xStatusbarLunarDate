@@ -46,8 +46,9 @@
     <PreferenceCategory android:key="@string/notify_category" android:title="@string/notify_category" android:order="3">
         <ListPreference android:key="notify" android:title="@string/notify" android:defaultValue="1" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/notify_dialogue_title" android:entryValues="@array/notify_values" android:entries="@array/notify_options" />
         <ListPreference android:key="notify_times" android:title="@string/notify_times" android:defaultValue="1" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/notify_times_dialogue_title" android:entryValues="@array/notify_times_values" android:entries="@array/notify_times_options"/>
-        <CheckBoxPreference android:title="@string/notify_center" android:key="notify_center" android:summaryOn="@string/notify_center_summary_on" android:summaryOff="@string/notify_center_summary_off" android:defaultValue="false" />
-        <CheckBoxPreference android:title="@string/notify_icon" android:key="notify_icon" android:summaryOn="@string/notify_icon_summary_on" android:summaryOff="@string/notify_icon_summary_off" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/notify_comp" android:key="notify_comp" android:summaryOn="@string/notify_comp_summary_on" android:summaryOff="@string/notify_comp_summary_off" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/notify_center" android:key="notify_center" android:summaryOn="@string/notify_center_summary_on" android:summaryOff="@string/notify_center_summary_off" android:defaultValue="false" android:dependency="notify_comp"/>
+        <CheckBoxPreference android:title="@string/notify_icon" android:key="notify_icon" android:summaryOn="@string/notify_icon_summary_on" android:summaryOff="@string/notify_icon_summary_off" android:defaultValue="false" android:dependency="notify_comp"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:key="@string/lockscreen_category" android:title="@string/lockscreen_category" android:order="4">
