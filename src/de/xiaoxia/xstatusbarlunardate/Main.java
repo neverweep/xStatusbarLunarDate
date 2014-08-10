@@ -53,7 +53,6 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static String breaklineText = "\n"; //是否换行的文本
     private static String lDate = "LAST"; //上次记录的日期
     private static String nDate;
-    private static String finalText; //最终输出文本
     private static String lunarTextToast = ""; //最终输出文本仅节日
     private static Boolean layout_run = false; //判断是否设置过singleLine属性
     private static TextView mDateView;
@@ -68,7 +67,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     //允许布局调整
     protected final static Boolean _remove_all = prefs.getBoolean("remove_all", false);
     //删除换行
-    protected final static Boolean _remove = prefs.getBoolean("remove", true);
+    protected final static Boolean _remove = prefs.getBoolean("remove", false);
     //显示节气
     protected final static Boolean _term = prefs.getBoolean("term", true);
     //显示农历节日
@@ -278,21 +277,15 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 //当天是否是节日
                 isFest = !"".equals(lunar.getFormattedDate("ff", 5));
                 if(isFest || _notify == 2){
-                    lunarTextToast = nDate.replaceAll("\\n", " ") + "\n" + (_format == 5 ? lunar.getFormattedDate("", 3) : lunarText);
+                    lunarTextToast = nDate.trim().replaceAll("\\n", " ") + "\n" + (_format == 5 ? lunar.getFormattedDate("", 3) : lunarText);
                 }else{
                     lunarTextToast = "";
                 }
             }
-            //如果需要去换行
-            if(_remove)
-                nDate = nDate.replaceAll("\\n", " "); //仅需要换掉第一个换行符，替换成一个空格保持美观和可读性
-
-            //输出到返回的字符串
-            finalText = _remove_all ? lunarText :  nDate + breaklineText + lunarText;
         }
 
         //向TextView设置显示的最终文字
-        mDateView.setText(finalText);
+        mDateView.setText(_remove_all ? lunarText : (_remove ? nDate.trim().replaceAll("\\n", " ") : nDate) + breaklineText + lunarText);
     }
 
     //显示 Toast
@@ -344,13 +337,13 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 XposedHelpers.callMethod(mDateView, "updateClock"); //强制执行updateClock函数
                 PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
                 KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
-                if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast)){
+                if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast))
                     makeToast(context);
-                }
             }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
                 lunar = new Lunar(_lang);
-                lDate = "LAST";
                 XposedHelpers.callMethod(mDateView, "updateClock");
+                if(!"".equals(Main.lunarTextToast))
+                    makeToast(context);
             }
         }
     };
