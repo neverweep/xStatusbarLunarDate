@@ -22,7 +22,7 @@
     <string name="breakline">Breakline</string>
     <string name="breakline_summary_on">Display the lunar date in a new line</string>
     <string name="breakline_summary_off">Display the lunar date in the last line</string>
-    <string name="description">"Display Chinese lunar calendar date, festivals and solar terms in drop-down statusbar and lockscreen.
+    <string name="description">"Displays Chinese lunar calendar date, festivals and solar terms in drop-down statusbar and lockscreen. And also could notify user by toast.
 [Touch here for settings. Reboot to apply.]</string>
     <string name="content_category">Content</string>
     <string name="term">Solar Terms</string>

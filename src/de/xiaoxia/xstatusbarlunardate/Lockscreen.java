@@ -19,6 +19,10 @@
 package de.xiaoxia.xstatusbarlunardate;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -35,8 +39,9 @@ public class Lockscreen implements IXposedHookLoadPackage{
     private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
     private String lDate = "LAST";
     private Lunar lunar = new Lunar(Main._lang);
-    private TextClock mTextClock;
-    private TextView mTextView;
+    private TextClock mTextClock = null;
+    private TextView mTextView = null;
+    private Context mContext;
 
     /*获取农历字符串子程序*/
     private String returnText(String nDate){
@@ -88,6 +93,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                 protected void afterHookedMethod(final MethodHookParam param){
                                     //从该类中获取该类已经定义好的变量，这里的mDateView即是KeyguardStatusViewManager.java中定义好的显示日期的TextView控件，以下的操作和Main.java中的操作类似
                                     mTextView = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
+                                    registerReceiver();
                                     //如果修改锁屏布局，则先将其的singleLine属性去除
                                     if(Main._lockscreen_layout > 1){
                                         mTextView.setSingleLine(false);
@@ -103,6 +109,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                 @Override
                                 protected void afterHookedMethod(final MethodHookParam param){
                                     mTextView = (TextView) XposedHelpers.getObjectField(param.thisObject, "mDateView");
+                                    registerReceiver();
                                     if(Main._lockscreen_layout > 1){
                                         mTextView.setSingleLine(false);
                                         //如果修改锁屏对其，则设置对齐（setTextAlignment仅在Android4.2+上有效）
@@ -122,10 +129,11 @@ public class Lockscreen implements IXposedHookLoadPackage{
                             protected void afterHookedMethod(final MethodHookParam param){
                                 //4.4新增了TextClock控件
                                 mTextClock = (TextClock) XposedHelpers.getObjectField(param.thisObject, "mDateView");
+                                registerReceiver();
                                 if(Main._lockscreen_layout > 1){
                                     mTextClock.setSingleLine(false);
                                     if(Main._lockscreen_alignment > 1){
-                                        mTextView.setTextAlignment(Main._lockscreen_alignment);
+                                    	mTextClock.setTextAlignment(Main._lockscreen_alignment);
                                     }
                                 }
                                 mTextClock.setText(returnText(mTextClock.getText().toString()));
@@ -152,4 +160,32 @@ public class Lockscreen implements IXposedHookLoadPackage{
             */
         }
     }
+
+    //注册接收器
+    private void registerReceiver(){
+        if(mContext == null){
+            mContext = mTextClock != null ? mTextClock.getContext() : mTextView.getContext();
+            if(mContext != null){
+                IntentFilter intent = new IntentFilter();
+                intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
+                intent.addAction(Intent.ACTION_TIMEZONE_CHANGED); //注册时区变更事件
+                mContext.registerReceiver(xReceiver, intent);
+            }
+        }
+    }
+
+    //广播接收
+    private BroadcastReceiver xReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            context = mTextClock != null ? mTextClock.getContext() : mTextView.getContext();
+            if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
+                XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock != null ? "refreshDate" : "refresh"); //强制执行updateClock函数
+            }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
+                lunar = new Lunar(Main._lang);
+                lDate = "RESET";
+                XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock != null ? "refreshDate" : "refresh"); //强制执行updateClock函数
+            }
+        }
+    };
 }

@@ -243,7 +243,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
          * 如果当前日期未改变，则只需要重新用已经缓存的文本写入TextView */
         //判断日期是否改变，不改变则不更新内容，改变则重新计算农历
         nDate = mDateView.getText().toString();
-        if(!nDate.contains(finalText)){
+        if(!(nDate.contains(lunarText) || nDate.equals(finalText))){
             if (!nDate.equals(lDate)) {
                 //获取时间
                 lunar.init(System.currentTimeMillis());
@@ -342,6 +342,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 }
             //如果用日期变更且用户处于亮屏状态
             }else if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
+                finalText = lDate = "RESET";
                 XposedHelpers.callMethod(mDateView, "updateClock"); //强制执行updateClock函数
                 PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
                 KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);

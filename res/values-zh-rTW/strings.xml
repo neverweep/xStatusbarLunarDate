@@ -22,7 +22,7 @@
     <string name="breakline">換行顯示</string>
     <string name="breakline_summary_on">另起一行顯示農曆日期</string>
     <string name="breakline_summary_off">在同一行顯示農曆日期</string>
-    <string name="description">"在狀態列下拉和鎖屏介面顯示的日期處增加一行農曆時間，遇到農曆節日或二十四節氣時也有顯示。
+    <string name="description">"在狀態列下拉和鎖屏介面日期處顯示農曆時間和節日、節氣資訊，還可以 Toast 方式提醒。
 [點擊這裡進入設置，重啟後生效]"</string>
     <string name="content_category">顯示內容</string>
     <string name="term">二十四節氣</string>

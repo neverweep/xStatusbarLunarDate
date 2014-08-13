@@ -22,7 +22,7 @@
     <string name="breakline">换行显示</string>
     <string name="breakline_summary_on">另起一行显示农历日期</string>
     <string name="breakline_summary_off">在同一行显示农历日期</string>
-    <string name="description">"在状态栏下拉和锁屏界面显示的日期处增加一行农历时间，遇到农历节日或二十四节气时也有显示。
+    <string name="description">"在状态栏下拉和锁屏界面日期处显示农历时间和节日、节气信息，还可以 Toast 方式提醒。
 [点击这里进入设置，重启后生效]"</string>
     <string name="content_category">显示内容</string>
     <string name="term">二十四节气</string>
