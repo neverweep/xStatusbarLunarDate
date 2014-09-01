@@ -163,7 +163,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
 
     //注册接收器
     private void registerReceiver(){
-        if(mContext == null){
+        if(Main._lockscreen && mContext == null){
             mContext = mTextClock != null ? mTextClock.getContext() : mTextView.getContext();
             if(mContext != null){
                 IntentFilter intent = new IntentFilter();
@@ -180,11 +180,12 @@ public class Lockscreen implements IXposedHookLoadPackage{
         public void onReceive(Context context, Intent intent) {
             context = mTextClock != null ? mTextClock.getContext() : mTextView.getContext();
             if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
-                XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock != null ? "refreshDate" : "refresh"); //强制执行updateClock函数
+                lDate = "RESET";
+                XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock != null ? "refreshDate" : "refresh"); //强制执行refresh函数
             }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
                 lunar = new Lunar(Main._lang);
                 lDate = "RESET";
-                XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock != null ? "refreshDate" : "refresh"); //强制执行updateClock函数
+                XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock != null ? "refreshDate" : "refresh");
             }
         }
     };

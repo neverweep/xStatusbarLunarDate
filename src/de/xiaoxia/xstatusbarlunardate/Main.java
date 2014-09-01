@@ -340,7 +340,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                     makeToast(context);
                     _notify_times--;
                 }
-            //如果用日期变更且用户处于亮屏状态
+            //如果日期变更且用户处于亮屏状态
             }else if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
                 finalText = lDate = "RESET";
                 XposedHelpers.callMethod(mDateView, "updateClock"); //强制执行updateClock函数
