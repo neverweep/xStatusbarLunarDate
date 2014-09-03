@@ -59,6 +59,9 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static TextView mDateView;
     private static Context mContext;
     private static Boolean isFest = false;
+    private static String updateFunc;
+    private static KeyguardManager km;
+    private static PowerManager pm;
 
     /* 读取设置 */
     //使用Xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
@@ -198,42 +201,28 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
             layout_run = true;
         }
 
-        //根据用户设置的rom类型进入相应的hook步骤
         switch(_rom){
-            case 1:
-                //For most android roms
-                //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
-                //这的函数可以参考 https://github.com/rovo89/XposedBridge/wiki/Development-tutorial，比较简单
-                findAndHookMethod(HOOK_CLASS, lpparam.classLoader, "updateClock", new XC_MethodHook() {
-                    @Override
-                    //在原函数执行完之后再执行自定义程序
-                    protected void afterHookedMethod(MethodHookParam param){
-                        //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView。
-                        mDateView = (TextView) param.thisObject; //所以直接获取这个对象
-                        if(mDateView != null){
-                            //注册接收器
-                            registerReceiver();
-                            //交给setText处理
-                            setText();
-                        }
-                    }
-                });
-                break;
-            case 2:
-                //For Miui
-                //Miui 4.4 之前的系统更新时间的函数名称为“a”
-                findAndHookMethod(HOOK_CLASS, lpparam.classLoader, "a", new XC_MethodHook() {
-                    @Override
-                    protected void afterHookedMethod(MethodHookParam param){
-                        mDateView = (TextView) param.thisObject;
-                        if(mDateView != null){
-                            registerReceiver();
-                            setText();
-                        }
-                    }
-                });
-            break;
+            case 1: updateFunc = "updateClock"; break;
+            case 2: updateFunc = "a"; break; //Miui 4.4 之前的系统更新时间的函数名称为“a”
+            default:updateFunc = "updateClock";
         }
+
+        //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
+        //这的函数可以参考 https://github.com/rovo89/XposedBridge/wiki/Development-tutorial，比较简单
+        findAndHookMethod(HOOK_CLASS, lpparam.classLoader, updateFunc, new XC_MethodHook() {
+            @Override
+            //在原函数执行完之后再执行自定义程序
+            protected void afterHookedMethod(MethodHookParam param){
+                //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView。
+                mDateView = (TextView) param.thisObject; //所以直接获取这个对象
+                if(mDateView != null){
+                    //注册接收器
+                    registerReceiver();
+                    //交给setText处理
+                    setText();
+                }
+            }
+        });
     }
 
     /* 获取农历字符串子程序 */
@@ -247,12 +236,12 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
             if (!nDate.equals(lDate)) {
                 //获取时间
                 lunar.init(System.currentTimeMillis());
+
                 //修正layout的singleLine属性
                 if(!layout_run){
                     //去掉singleLine属性
-                    if(prefs.getBoolean("layout_line", false)){
+                    if(prefs.getBoolean("layout_line", false))
                         mDateView.setSingleLine(false); //去除singleLine属性
-                    }
                     //去掉align_baseline，并将其设置为center_vertical
                     if(prefs.getBoolean("layout_align", false)){
                         //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
@@ -298,19 +287,19 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private void makeToast(Context context){
         Toast toast = Toast.makeText(context, lunarTextToast, Toast.LENGTH_LONG);
         if(_notify_comp){
-	        LinearLayout toastView = (LinearLayout) toast.getView();
-	        TextView toastTextView = (TextView) toastView.getChildAt(0);
-	        toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
-	        toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
-	        if(_notify_center)
-	            toast.setGravity(Gravity.CENTER, 0, 0); //Toast在屏幕正中显示
-	        if(_notify_icon){
-	            //为Toast加入图标
-	            ImageView imageView = new ImageView(context.getApplicationContext());
-	            imageView.setImageResource(isFest ? iconFest_id : iconNormal_id);
-	            imageView.setPadding(0, 10, 0, 20);
-	            toastView.addView(imageView, 0);
-	        }
+            LinearLayout toastView = (LinearLayout) toast.getView();
+            TextView toastTextView = (TextView) toastView.getChildAt(0);
+            toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
+            toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
+            if(_notify_center)
+                toast.setGravity(Gravity.CENTER, 0, 0); //Toast在屏幕正中显示
+            if(_notify_icon){
+                //为Toast加入图标
+                ImageView imageView = new ImageView(context.getApplicationContext());
+                imageView.setImageResource(isFest ? iconFest_id : iconNormal_id);
+                imageView.setPadding(0, 10, 0, 20);
+                toastView.addView(imageView, 0);
+            }
         }
         toast.show();
     }
@@ -324,6 +313,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
                 intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
                 intent.addAction(Intent.ACTION_TIMEZONE_CHANGED); //注册时区变更事件
+                intent.addAction(Intent.ACTION_SCREEN_ON); //注册亮屏事件
                 mContext.registerReceiver(xReceiver, intent);
             }
         }
@@ -334,24 +324,33 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
         @Override
         public void onReceive(Context context, Intent intent) {
             context = mContext;
+
+            if(km == null)
+                km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
+            if(pm == null)
+                pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+
+            //如果用户亮屏且屏幕处于未解锁状态
+            if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
+                if(!km.inKeyguardRestrictedInputMode() && _notify_times > 0 && !"".equals(Main.lunarTextToast))
+                    makeToast(context);
+                     _notify_times--;
             //如果用户解锁屏幕
-            if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
+            }else if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
                 if(_notify_times > 0 && !"".equals(Main.lunarTextToast)){
                     makeToast(context);
                     _notify_times--;
                 }
             //如果日期变更且用户处于亮屏状态
             }else if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
-                finalText = lDate = "RESET";
-                XposedHelpers.callMethod(mDateView, "updateClock"); //强制执行updateClock函数
-                PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-                KeyguardManager km = (KeyguardManager)context.getSystemService(Context.KEYGUARD_SERVICE);
+                finalText = lDate = "RESET"; //重置记录的日期
+                XposedHelpers.callMethod(mDateView, updateFunc); //强制执行日期更新函数
                 if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast))
                     makeToast(context);
             }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
                 finalText = lDate = "RESET";
                 lunar = new Lunar(_lang);
-                XposedHelpers.callMethod(mDateView, "updateClock");
+                XposedHelpers.callMethod(mDateView, updateFunc);
                 if(!"".equals(Main.lunarTextToast))
                     makeToast(context);
             }
