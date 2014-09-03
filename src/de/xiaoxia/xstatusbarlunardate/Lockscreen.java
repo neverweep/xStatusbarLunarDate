@@ -36,9 +36,9 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 public class Lockscreen implements IXposedHookLoadPackage{
 
     /* 初始变量 */
-    private String lunarText = "LUNAR"; //记录最后更新时的文字字符串
+    private String lunarText = "LUNAR";
     private String lDate = "LAST";
-    private Lunar lunar = new Lunar(Main._lang);
+    private Lunar lunar;
     private TextClock mTextClock = null;
     private TextView mTextView = null;
     private Context mContext;
@@ -77,6 +77,9 @@ public class Lockscreen implements IXposedHookLoadPackage{
     public void handleLoadPackage(final LoadPackageParam lpparam){
         //如果打开了锁屏农历
         if(Main._lockscreen){
+
+            lunar = new Lunar(Main._lang);
+
             switch(Main._rom){
                 //大多数android系统
                 case 1:
@@ -144,20 +147,6 @@ public class Lockscreen implements IXposedHookLoadPackage{
                 case 2:
                     break;
             }
-            /* Samsung touchwiz 4.4 hook 能找到，但是更无法显示
-            if(lpparam.packageName.equals("com.android.keyguard")){
-                findAndHookMethod("com.android.keyguard.sec.SecKeyguardClock", lpparam.classLoader, "updateClock", new XC_MethodHook() {
-                    @Override
-                    protected void afterHookedMethod(final MethodHookParam param){
-                        textview = (TextView) XposedHelpers.getObjectField(param.thisObject, "mSingleDate");
-                        nDate = (String) textview.getText().toString();
-                        textview.setText(nDate + " - " + returnDate(nDate));
-                        XposedBridge.log("2");
-                        //XposedBridge.log("Hooking lunar date: @" + System.currentTimeMillis());
-                    }
-                });
-            }
-            */
         }
     }
 
