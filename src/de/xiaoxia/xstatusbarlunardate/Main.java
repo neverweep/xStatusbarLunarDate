@@ -287,16 +287,19 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
 
     //注册接收器
     private void registerReceiver(){
-        if(mContext == null && _notify > 1){
-            //仅在mContext为空且需要提醒的情况下才继续注册接收器，只需要执行一次
+        if(mContext == null){
+            //仅在mContext为空的情况下才继续注册接收器，只需要执行一次
             mContext = mDateView.getContext(); //从mDateView获取UI的上下文
             if(mContext != null){
                 //如果context不为空，则开始注册
                 IntentFilter intent = new IntentFilter();
-                intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
+                if(_notify > 1){
+                    //仅在需要提醒的情况下才注册这两个事件
+                    intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
+                    intent.addAction(Intent.ACTION_SCREEN_ON); //注册亮屏事件
+                }
                 intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
                 intent.addAction(Intent.ACTION_TIMEZONE_CHANGED); //注册时区变更事件
-                intent.addAction(Intent.ACTION_SCREEN_ON); //注册亮屏事件
                 mContext.registerReceiver(xReceiver, intent);
             }
         }
