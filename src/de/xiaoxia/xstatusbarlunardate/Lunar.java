@@ -22,7 +22,6 @@ import android.annotation.SuppressLint;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
@@ -43,6 +42,8 @@ public class Lunar {
     private int cyclicalYear = 0;
     private int cyclicalMonth = 0;
     private int cyclicalDay = 0;
+    private static int tzOffset = 0;
+    private static TimeZone tz;
     private DecimalFormat dfMMDD = new DecimalFormat("00");
 
     private String lFestivalName;
@@ -285,11 +286,11 @@ public class Lunar {
      * @param date 指定日期
      * @return UTC 全球标准时间 (UTC) 表示的日期
      */
-    public static synchronized int getUTCDay(Date date) {
+    public static synchronized int getUTCDay(Calendar date) {
         Lunar.makeUTCCalendar();
         synchronized (utcCal) {
             utcCal.clear();
-            utcCal.setTimeInMillis(date.getTime());
+            utcCal.setTimeInMillis(date.getTimeInMillis());
             return utcCal.get(Calendar.DAY_OF_MONTH);
         }
     }
@@ -327,10 +328,16 @@ public class Lunar {
     private static int getSolarTermDay(int solarYear, int index) {
         long l = (long)31556925974.7 * (solarYear - 1900) + solarTermInfo[index] * 60000L;
         l = l + Lunar.UTC(1900,0,6,2,5,0); //这里可能导致时区不同出现的计算结果错误??
-        return Lunar.getUTCDay(new Date(l));
+        Calendar date = Calendar.getInstance();
+        date.setTimeInMillis(l);
+        return Lunar.getUTCDay(date);
     }
 
     public Lunar(int lang) {
+        tz = TimeZone.getDefault();
+        tzOffset = tz.getOffset(System.currentTimeMillis());
+        tz.setRawOffset(tzOffset);
+
         //在这里设置语言
         switch(lang){
             //大陆简中
@@ -478,17 +485,22 @@ public class Lunar {
         }
     }
 
-    public void init(long TimeInMillis) {
+    public void init() {
         lFestivalName = "";
         sFestivalName = "";
         termString = "";
         clFestivalName = "";
         csFestivalName = "";
 
+        Calendar nowDate = Calendar.getInstance();
+        nowDate.set(nowDate.get(Calendar.YEAR), nowDate.get(Calendar.MONTH), nowDate.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+        Long TimeInMillis = nowDate.getTimeInMillis();
+
         this.solar = Calendar.getInstance();
-        this.solar.setTimeZone(TimeZone.getDefault());
+        this.solar.setTimeZone(tz);
         this.solar.setTimeInMillis(TimeInMillis);
-        Calendar baseDate = new GregorianCalendar(1900, 0, 31);
+        Calendar baseDate = new GregorianCalendar(1900, 0, 31, 0, 0, 0);
+        baseDate.setTimeZone(tz);
         long offset = (TimeInMillis - baseDate.getTimeInMillis()) / 86400000;
         // 按农历年递减每年的农历天数，确定农历年份
         this.lunarYear = 1900;

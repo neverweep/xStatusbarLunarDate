@@ -48,7 +48,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
         //判断日期是否发生变更，没有变更则直接返回缓存
         if(!nDate.equals(lDate)){
             //初始化时间
-            lunar.init(System.currentTimeMillis());
+            lunar.init();
             //Lunar类中的返回农历文本组合
             lunarText = lunar.getFormattedDate(Main._lockscreen_custom_format, Main._lockscreen_format);
             if("".equals(lunarText))

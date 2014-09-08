@@ -143,7 +143,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     };
 
     //初始化Lunar类
-    private static Lunar lunar = new Lunar(_lang);
+    private static Lunar lunar;
 
     /* 向Systemui注入图标 */
     private static int iconNormal_id;
@@ -168,6 +168,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     public void handleLoadPackage(final LoadPackageParam lpparam){
         if (!lpparam.packageName.equals(PACKAGE_NAME))
             return; //如果不是UI则跳过
+
+        lunar = new Lunar(Main._lang);
 
         //将决定是否换行的文本输出到字符串中
         if(!_breakline){
@@ -214,7 +216,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
         if(!(nDate.contains(lunarText) || nDate.equals(finalText))){
             if (!nDate.equals(lDate)) {
                 //获取时间
-                lunar.init(System.currentTimeMillis());
+                lunar.init();
 
                 //修正layout的singleLine属性
                 if(!layout_run){
