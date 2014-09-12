@@ -37,7 +37,7 @@
     <string name="minor_year_option_2">臘月廿四（大部分南方地區）</string>
     <string name="minor_year_option_3">臘月廿五（個別地區）</string>
     <string name="about">關於 X 狀態列農曆日期</string>
-    <string name="about_msg"><b>歡迎使用這個 Xposed 模組\n希望能給你帶來一點方便：）</b>\n\n我的部落格: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n說明、報錯、建議:\n <a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\n捐贈：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
+    <string name="about_msg"><b>歡迎使用這個 Xposed 模組\n希望能給你帶來一點方便：）</b>\n\n我的部落格：\n<a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n說明、報錯、建議：\n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\n捐贈：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
     <string name="remove">刪除換行</string>
     <string name="remove_summary_on">刪除原日期中的換行</string>
     <string name="remove_summary_off">保留原日期中的換行</string>
@@ -51,13 +51,13 @@
     <string name="lang_dialogue_title">選擇顯示的語言</string>
     <string name="layout_enable">佈局調整</string>
     <string name="layout_enable_summary_on">為某些 ROM 的日期文字更改輸出佈局</string>
-    <string name="layout_enable_summary_off">僅在 ROM 無法正確輸出日期文字時打開</string>
+    <string name="layout_enable_summary_off">大多數 Nexus 設備需要打開此項</string>
     <string name="layout_line">調整單行屬性</string>
     <string name="layout_line_summary_on">將日期文字控制項單行屬性調整為多行</string>
-    <string name="layout_line_summary_off">僅在無法輸出多行日期文字時打開</string>
+    <string name="layout_line_summary_off">大多數 Nexus 設備需要打開此項</string>
     <string name="layout_align">調整對齊屬性</string>
     <string name="layout_align_summary_on">將日期文字控制項對齊更改為居中</string>
-    <string name="layout_align_summary_off">僅在日期文字上下無法完整顯示時打開</string>
+    <string name="layout_align_summary_off">大多數 Nexus 設備需要打開此項</string>
     <string name="layout_width">調整寬度屬性</string>
     <string name="layout_width_summary_on">將日期文字控制項寬度調整為自動</string>
     <string name="layout_width_summary_off">僅在日期文字左右無法完整顯示時打開</string>

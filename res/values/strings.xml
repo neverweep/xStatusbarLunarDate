@@ -37,7 +37,7 @@
     <string name="minor_year_option_2">12.24 (Most of Southern China)</string>
     <string name="minor_year_option_3">12.25 (Minority areas of China)</string>
     <string name="about">About X Statusbar Lunar Date</string>
-    <string name="about_msg"><b>Glad to see this app on your Android &lt;3</b>\n\nBlog: <a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual, bug report: \n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\nDonate：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
+    <string name="about_msg"><b>Glad to see this app on your Android &lt;3</b>\n\nBlog:<a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual, bug report:\n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\nDonate\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
     <string name="remove">Remove Original Line Feed</string>
     <string name="remove_summary_on">Remove line feed in original date</string>
     <string name="remove_summary_off">Keep line feed original</string>
@@ -51,16 +51,16 @@
     <string name="lang_dialogue_title">Set prefer language to display</string>
     <string name="layout_enable">Layout Fix</string>
     <string name="layout_enable_summary_on">Fix layout for some roms</string>
-    <string name="layout_enable_summary_off">Only check if date text displays wrong</string>
+    <string name="layout_enable_summary_off">Most Nexus devices should turn on this</string>
     <string name="layout_line">Single Line Fix</string>
     <string name="layout_line_summary_on">Change textview to multi line</string>
-    <string name="layout_line_summary_off">Only check if date text displays wrong</string>
+    <string name="layout_line_summary_off">Most Nexus devices should turn on this</string>
     <string name="layout_align">Align Fix</string>
     <string name="layout_align_summary_on">Change alignment to center</string>
-    <string name="layout_align_summary_off">Only check if date text displays wrong</string>
+    <string name="layout_align_summary_off">Most Nexus devices should turn on this</string>
     <string name="layout_width">Width Fix</string>
     <string name="layout_width_summary_on">Change width to fill parent</string>
-    <string name="layout_width_summary_off">Only check if date text displays wrong</string>
+    <string name="layout_width_summary_off">Only turn this on if date displays wrong</string>
     <string name="lockscreen">Append To Lockscreen (BETA)</string>
     <string name="lockscreen_summary_on">Append lunar date to lockscreen</string>
     <string name="lockscreen_summary_off">Tested on AOSP 4.1.2, 4.2.2 and 4.4.2</string>
