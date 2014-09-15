@@ -24,7 +24,7 @@
     <string name="breakline">換行顯示</string>
     <string name="breakline_summary_on">另起一行顯示農曆日期</string>
     <string name="breakline_summary_off">在同一行顯示農曆日期</string>
-    <string name="description">"在狀態列下拉和鎖定螢幕界面顯示的日期處增加一行農曆時間，遇到農曆節日或二十四節氣時也有顯示。
+    <string name="description">"在狀態列下拉和鎖定畫面顯示的日期處增加一行農曆時間，遇到農曆節日或二十四節氣時也有顯示。
 [點擊這裡進入設定，重新啟動後生效]"</string>
     <string name="content_category">顯示內容</string>
     <string name="term">二十四節氣</string>
@@ -63,8 +63,8 @@
     <string name="layout_width">調整寬度屬性</string>
     <string name="layout_width_summary_on">將日期文字控制項寬度調整為自動</string>
     <string name="layout_width_summary_off">僅在日期文字左右無法完整顯示時打開</string>
-    <string name="lockscreen">添加到鎖定螢幕（BETA）</string>
-    <string name="lockscreen_summary_on">將農曆日期添加到鎖定螢幕界面</string>
+    <string name="lockscreen">添加到鎖定畫面（BETA）</string>
+    <string name="lockscreen_summary_on">將農曆日期添加到鎖定畫面</string>
     <string name="lockscreen_summary_off">僅在 AOSP 4.1.2、4.2.2、4.4.2 測試過</string>
     <string name="setting_custom_lunar_howtodo">如何添加</string>
     <string name="setting_custom_lunar_howtodo_summary">點擊檢視如何向模組添加自己的農曆紀念日</string>
@@ -93,13 +93,13 @@
     <string name="solar">西曆節日</string>
     <string name="solar_summary_on">在農曆日期後顯示西曆節日</string>
     <string name="solar_summary_off">不顯示西曆節日</string>
-    <string name="lockscreen_category">鎖定螢幕日期</string>
-    <string name="lockscreen_layout">鎖定螢幕日期佈局</string>
+    <string name="lockscreen_category">鎖定畫面日期</string>
+    <string name="lockscreen_layout">鎖定畫面日期佈局</string>
     <string name="lockscreen_layout_option_1">不修改</string>
     <string name="lockscreen_layout_option_2">前面加換行</string>
     <string name="lockscreen_layout_option_3">後面加換行</string>
     <string name="lockscreen_layout_option_4">前後都加換行</string>
-    <string name="lockscreen_alignment">鎖定螢幕日期對齊</string>
+    <string name="lockscreen_alignment">鎖定畫面日期對齊</string>
     <string name="lockscreen_alignment_disable">僅在 Android 4.2+ 有效</string>
     <string name="lockscreen_alignment_option_1">不修改</string>
     <string name="lockscreen_alignment_option_2">左</string>
