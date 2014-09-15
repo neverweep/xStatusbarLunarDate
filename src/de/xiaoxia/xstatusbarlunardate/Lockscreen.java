@@ -87,10 +87,8 @@ public class Lockscreen implements IXposedHookLoadPackage{
                     if(lpparam.packageName.equals("android")){
                         if(Build.VERSION.SDK_INT <= 16) {
                             //4.1和之前的锁屏界面日期更新程序放在 /com/android/internal/policy/impl/KeyguardStatusViewManager.java(smali)里面
-                            //在android进程中查找该类
-                            Class<?> hookClass = XposedHelpers.findClass("com.android.internal.policy.impl.KeyguardStatusViewManager", null);
                             //Hook 这个类中的 refreshDate 函数
-                            findAndHookMethod(hookClass, "refreshDate", new XC_MethodHook() {
+                            findAndHookMethod("com.android.internal.policy.impl.KeyguardStatusViewManager", lpparam.classLoader, "refreshDate", new XC_MethodHook() {
                                 @Override
                                 //在该函数执行后执行
                                 protected void afterHookedMethod(final MethodHookParam param){
@@ -106,8 +104,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                             });
                         }else if(Build.VERSION.SDK_INT <= 18){
                             //4.2 4.3的锁屏界面日期更新程序放在 /com/android/internal/policy/impl/keyguard/KeyguardStatusView.java(smali)里面
-                            Class<?> hookClass = XposedHelpers.findClass("com.android.internal.policy.impl.keyguard.KeyguardStatusView", null);
-                            findAndHookMethod(hookClass, "refreshDate", new XC_MethodHook() {
+                            findAndHookMethod("com.android.internal.policy.impl.keyguard.KeyguardStatusView", lpparam.classLoader, "refreshDate", new XC_MethodHook() {
                                 @SuppressLint("NewApi")
                                 @Override
                                 protected void afterHookedMethod(final MethodHookParam param){
@@ -136,7 +133,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                 if(Main._lockscreen_layout > 1){
                                     mTextClock.setSingleLine(false);
                                     if(Main._lockscreen_alignment > 1){
-                                    	mTextClock.setTextAlignment(Main._lockscreen_alignment);
+                                        mTextClock.setTextAlignment(Main._lockscreen_alignment);
                                     }
                                 }
                                 mTextClock.setText(returnText(mTextClock.getText().toString()));
@@ -170,11 +167,11 @@ public class Lockscreen implements IXposedHookLoadPackage{
             context = mTextClock != null ? mTextClock.getContext() : mTextView.getContext();
             if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
                 lDate = "RESET";
-                XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock != null ? "refreshDate" : "refresh"); //强制执行refresh函数
+                //XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock == null ? "refreshDate" : "refresh"); //强制执行refresh函数
             }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
                 lunar = new Lunar(Main._lang);
                 lDate = "RESET";
-                XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock != null ? "refreshDate" : "refresh");
+                //XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock == null ? "refreshDate" : "refresh");
             }
         }
     };
