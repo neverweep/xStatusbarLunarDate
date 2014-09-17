@@ -233,6 +233,15 @@ public class Lunar {
     }
 
     /**
+     * 返回此月大小月信息
+     * @param lunarYear, lunarMonth
+     * @return 大月为 true，小月为 false
+     */
+    private boolean isMajorMonth(int lunarYear, int lunarMonth) {
+        return Lunar.getLunarMonthDays(lunarYear, lunarMonth) == 30;
+    }
+
+    /**
      * 返回农历年闰月的天数
      *
      * @param lunarYear 指定农历年份(数字)
@@ -969,9 +978,11 @@ public class Lunar {
                     t = t.replace("dd", this.getLunarDayString());
                     t = t.replace("MM", this.getCyclicaMonth());
                     t = t.replace("DD", this.getCyclicaDay());
+                    t = t.replace("ZZ", this.isMajorMonth(this.getLunarYear(), this.getLunarMonth()) ? "大" : "小");
                     t = t.replace("NN", "\n");
                     t = t.replace("ww", weekString[this.solar.get(Calendar.DAY_OF_WEEK) - 1]);
-                    lunarText = t.replace("ff", term + fest + custom + sfest + sfest_custom);
+                    t = t.replace("ff", term + fest + custom + sfest + sfest_custom);
+                    lunarText = t.replaceAll(" +", " ");
                     break;
             }
         }else{
