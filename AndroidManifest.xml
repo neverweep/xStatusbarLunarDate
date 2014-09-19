@@ -16,7 +16,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.xiaoxia.xstatusbarlunardate"
     android:versionCode="26"
-    android:versionName="0.13.6" >
+    android:versionName="0.13.7" >
 
     <uses-sdk
         android:minSdkVersion="14"
