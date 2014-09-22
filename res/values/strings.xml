@@ -23,7 +23,7 @@
     <string name="breakline_summary_on">Display the lunar date in a new line</string>
     <string name="breakline_summary_off">Display the lunar date in the last line</string>
     <string name="description">"Displays Chinese lunar calendar date, festivals and solar terms in drop-down statusbar and lockscreen. And also could notify user by toast.
-[Touch here for settings. Reboot to apply.]</string>
+[Touch here for settings]</string>
     <string name="content_category">Content</string>
     <string name="term">Solar Terms</string>
     <string name="term_summray_on">Show 24 solar terms after lunar date</string>
@@ -81,13 +81,14 @@
     <string name="custom_solar_summary_on">Show your own solar customed date of commemoration</string>
     <string name="custom_solar_summary_off">Hide your own solar customed date of commemoration</string>
     <string name="system_category">System</string>
-    <string name="rom">Select Type Of System</string>
+    <string name="rom">System Type(Need reboot)</string>
     <string name="rom_option_1">Most Android</string>
     <string name="rom_option_2">Some Miui rom</string>
+    <string name="rom_option_3">Asus ZenUI</string>
     <string name="solar">Solar Festivals</string>
     <string name="solar_summary_on">Show solar festivals after lunar date</string>
     <string name="solar_summary_off">Hide solar fesivals</string>
-    <string name="lockscreen_category">Lockscreen date</string>
+    <string name="lockscreen_category">Lockscreen date(Need reboot)</string>
     <string name="lockscreen_layout">Lockscreen Date Layout</string>
     <string name="lockscreen_layout_option_1">Do not change</string>
     <string name="lockscreen_layout_option_2">Add a line feed at start</string>
@@ -126,8 +127,8 @@
     <string name="notify_center">Toast Position</string>
     <string name="notify_center_summary_on">Center of screen</string>
     <string name="notify_center_summary_off">System default</string>
-    <string name="notify_icon">Toast Icon</string>
-    <string name="notify_icon_summary_on">Hard to miss toast with an icon</string>
+    <string name="notify_icon">Toast Background</string>
+    <string name="notify_icon_summary_on">Hard to miss toast with background</string>
     <string name="notify_icon_summary_off">No operation</string>
     <string name="notify_comp">Toast Beautify(Compatibility)</string>
     <string name="notify_comp_summary_on">Turn off to keep compatible with some roms or modules</string>

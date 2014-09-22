@@ -25,7 +25,7 @@
     <string name="breakline_summary_on">另起一行顯示農曆日期</string>
     <string name="breakline_summary_off">在同一行顯示農曆日期</string>
     <string name="description">"在狀態列下拉和鎖定畫面顯示的日期處增加一行農曆時間，遇到農曆節日或二十四節氣時也有顯示。
-[點擊這裡進入設定，重新啟動後生效]"</string>
+[點擊這裡進入設定]"</string>
     <string name="content_category">顯示內容</string>
     <string name="term">二十四節氣</string>
     <string name="term_summray_on">在農曆日期後顯示二十四節氣</string>
@@ -86,14 +86,14 @@
     <string name="custom_solar_summary">設定自訂西曆紀念日</string>
     <string name="custom_solar_summary_on">在農曆日期後顯示自訂西曆紀念日</string>
     <string name="custom_solar_summary_off">不顯示自訂西曆紀念日</string>
-    <string name="system_category">系統</string>
+    <string name="system_category">系統（需要重新啟動）</string>
     <string name="rom">選擇系統類型</string>
     <string name="rom_option_1">大多數 Android</string>
     <string name="rom_option_2">某些 Miui rom</string>
     <string name="solar">西曆節日</string>
     <string name="solar_summary_on">在農曆日期後顯示西曆節日</string>
     <string name="solar_summary_off">不顯示西曆節日</string>
-    <string name="lockscreen_category">鎖定畫面日期</string>
+    <string name="lockscreen_category">鎖定畫面日期（需要重新啟動）</string>
     <string name="lockscreen_layout">鎖定畫面日期佈局</string>
     <string name="lockscreen_layout_option_1">不修改</string>
     <string name="lockscreen_layout_option_2">前面加換行</string>
@@ -132,8 +132,8 @@
     <string name="notify_center">訊息位置</string>
     <string name="notify_center_summary_on">顯示在螢幕中央</string>
     <string name="notify_center_summary_off">系統預設</string>
-    <string name="notify_icon">訊息圖示</string>
-    <string name="notify_icon_summary_on">加入圖示，不易錯過</string>
+    <string name="notify_icon">訊息背景</string>
+    <string name="notify_icon_summary_on">加入背景，不易錯過</string>
     <string name="notify_icon_summary_off">無操作</string>
     <string name="notify_comp">訊息美化（相容性問題）</string>
     <string name="notify_comp_summary_on">關閉此項以保持和某些 ROM 或模組的相容性</string>

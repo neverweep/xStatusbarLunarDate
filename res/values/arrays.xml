@@ -57,10 +57,12 @@
     <string-array name="rom_options">
         <item>@string/rom_option_1</item>
         <item>@string/rom_option_2</item>
+        <item>@string/rom_option_3</item>
     </string-array>
     <string-array name="rom_values">
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
     <string-array name="lockscreen_layout_options">
         <item>@string/lockscreen_layout_option_1</item>

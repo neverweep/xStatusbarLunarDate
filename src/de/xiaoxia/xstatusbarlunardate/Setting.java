@@ -31,6 +31,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
@@ -91,7 +92,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         lp.setSummary(lp.getEntry());
         _lp = (ListPreference)findPreference("notify_times");
         _lp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
-        
+
         cbp = (CheckBoxPreference)findPreference("notify_comp");
         cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
         cbp = (CheckBoxPreference)findPreference("notify_center");
@@ -121,39 +122,57 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
+        Intent intent = new Intent("de.xiaoxia.xstatusbarlunardate.SETTING_CHANGED");
+        if(key.equals("remove_all") || key.equals("remove") || key.equals("term") || key.equals("fest") || key.equals("custom") || key.equals("solar") || key.equals("solar_cutom") || key.equals("breakline") || key.equals("layout_enable") || key.equals("notify_center") || key.equals("notify_icon") || key.equals("notify_comp") || key.equals("lockscreen")){
+            cbp = (CheckBoxPreference)findPreference(key);
+            intent.putExtra(key, cbp.isChecked());
+            sendBroadcast(intent);
+        }
         //设置发生变化时，设置summary为option_name
         if(key.equals("minor")){
-            lp = (ListPreference)findPreference("minor");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, lp.getEntry());
+            sendBroadcast(intent);
             return;
         }
         if(key.equals("lang")){
-            lp = (ListPreference)findPreference("lang");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(intent);
             return;
         }
         if(key.equals("format")){
-            lp = (ListPreference)findPreference("format");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(intent);
             etp = (EditTextPreference)findPreference("custom_format");
             etp.setEnabled(lp.getValue().toString().equals("5"));
             return;
         }
         if(key.equals("lockscreen_format")){
-            lp = (ListPreference)findPreference("lockscreen_format");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(intent);
             etp = (EditTextPreference)findPreference("lockscreen_custom_format");
             etp.setEnabled(lp.getValue().toString().equals("5"));
             return;
         }
         if(key.equals("rom")){
-            lp = (ListPreference)findPreference("rom");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(intent);
             return;
         }
         if(key.equals("notify")){
-            lp = (ListPreference)findPreference("notify");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(intent);
             _lp = (ListPreference)findPreference("notify_times");
             _lp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             cbp = (CheckBoxPreference)findPreference("notify_center");
@@ -165,18 +184,24 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             return;
         }
         if(key.equals("notify_times")){
-            lp = (ListPreference)findPreference("notify_times");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(intent);
             return;
         }
         if(key.equals("lockscreen_alignment")){
-            lp = (ListPreference)findPreference("lockscreen_alignment");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(intent);
             return;
         }
         if(key.equals("lockscreen_layout")){
-            lp = (ListPreference)findPreference("lockscreen_layout");
+            lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
+            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(intent);
             _lp = (ListPreference)findPreference("lockscreen_alignment");
             if(Build.VERSION.SDK_INT < 17){
                 _lp.setSummary(getString(R.string.lockscreen_alignment_disable));
@@ -187,21 +212,27 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             return;
         }
         if(key.equals("custom_format")){
-            etp = (EditTextPreference)findPreference("custom_format");
+            etp = (EditTextPreference)findPreference(key);
             if(!"".equals(etp.getText()) && etp.getText() != null){
                 etp.setSummary(etp.getText());
+                intent.putExtra(key, etp.getText().toString());
             }else{
                 etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
+                intent.putExtra(key,"");
             }
+            sendBroadcast(intent);
             return;
         }
         if(key.equals("lockscreen_custom_format")){
-            etp = (EditTextPreference)findPreference("lockscreen_custom_format");
+            etp = (EditTextPreference)findPreference(key);
             if(!"".equals(etp.getText()) && etp.getText() != null){
                 etp.setSummary(etp.getText());
+                intent.putExtra(key, etp.getText().toString());
             }else{
                 etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
+                intent.putExtra(key, "");
             }
+            sendBroadcast(intent);
             return;
         }
     }

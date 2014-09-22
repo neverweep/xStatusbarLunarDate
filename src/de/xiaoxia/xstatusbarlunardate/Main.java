@@ -26,7 +26,6 @@ import android.content.IntentFilter;
 import android.content.res.XModuleResources;
 import android.os.PowerManager;
 import android.view.Gravity;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,10 +46,11 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static String MODULE_PATH = null; //模块所在路径
     private static String PACKAGE_NAME = "com.android.systemui"; //系统UI的包名
     private static String HOOK_CLASS = "com.android.systemui.statusbar.policy.DateView"; //要Hook的Class名
+    private static String UPDATE_FUNC = "updateClock"; //更新函数名
+    private static String INTENT_SETTING_CHANGED = "de.xiaoxia.xstatusbarlunardate.SETTING_CHANGED"; //更改设置事件
 
     /* 初始变量 */
     private static String lunarText = "LUNAR"; //记录最后更新时的文字字符串
-    private static String breaklineText = "\n"; //是否换行的文本
     private static String lDate = "LAST"; //上次记录的日期
     private static String finalText = "FINALTEXT"; //最终输出的文本
     private static String nDate; //当前状态栏的日期文字
@@ -59,44 +59,44 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static TextView mDateView; //状态栏日期的 TextView
     private static Context mContext; //显示Toast、注册接收器和获取系统服务所必需的context
     private static Boolean isFest = false; //今天是否为节日的标记
-    private static String updateFunc; //日期更新函数名
     private static KeyguardManager km; //锁屏管理器，用来获取锁屏状态
     private static PowerManager pm; //电源管理器，用来获取亮屏状态
+    private static int _notify_times_setting = 0; //记录设置好的提醒次数
 
     /* 读取设置 */
     //使用Xposed提供的XSharedPreferences方法来读取android内置的SharedPreferences设置
     private final static XSharedPreferences prefs = new XSharedPreferences(Main.class.getPackage().getName());
 
     /* 将设置保存到变量中，以备后用 */
-    protected final static Boolean _remove_all = prefs.getBoolean("remove_all", false); //允许布局调整
-    protected final static Boolean _remove = prefs.getBoolean("remove", false); //删除换行
-    protected final static Boolean _term = prefs.getBoolean("term", true); //显示节气
-    protected final static Boolean _fest = prefs.getBoolean("fest", true); //显示农历节日
-    protected final static Boolean _custom = prefs.getBoolean("custom", false); //显示自定义农历节日
-    protected final static Boolean _solar = prefs.getBoolean("solar", true); //显示公历节日
-    protected final static Boolean _solar_custom = prefs.getBoolean("solar_cutom", true); //显示自定义公历节日
-    protected final static Boolean _breakline = prefs.getBoolean("breakline", true); //另起一行
-    protected final static Boolean _layout_enable = prefs.getBoolean("layout_enable", false); //允许布局调整
-    protected final static String _custom_format = prefs.getString("custom_format", ""); //自定义状态栏字符串
-    protected final static int _minor = Integer.valueOf(prefs.getString("minor", "1")).intValue(); //小年选项，将字符串型转换为整数型
-    protected final static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue(); //语言选项，将字符串型转换为整数型
-    protected final static int _format = Integer.valueOf(prefs.getString("format", "1")).intValue(); //显示格式选项，将字符串型转换为整数型
-    protected final static int _rom = Integer.valueOf(prefs.getString("rom", "1")).intValue(); //系统类型选项，将字符串型转换为整数型
+    protected static Boolean _remove_all = prefs.getBoolean("remove_all", false); //允许布局调整
+    protected static Boolean _remove = prefs.getBoolean("remove", false); //删除换行
+    protected static Boolean _term = prefs.getBoolean("term", true); //显示节气
+    protected static Boolean _fest = prefs.getBoolean("fest", true); //显示农历节日
+    protected static Boolean _custom = prefs.getBoolean("custom", false); //显示自定义农历节日
+    protected static Boolean _solar = prefs.getBoolean("solar", true); //显示公历节日
+    protected static Boolean _solar_custom = prefs.getBoolean("solar_cutom", true); //显示自定义公历节日
+    protected static Boolean _breakline = prefs.getBoolean("breakline", true); //另起一行
+    protected static Boolean _layout_enable = prefs.getBoolean("layout_enable", false); //允许布局调整
+    protected static String _custom_format = prefs.getString("custom_format", ""); //自定义状态栏字符串
+    protected static int _minor = Integer.valueOf(prefs.getString("minor", "1")).intValue(); //小年选项，将字符串型转换为整数型
+    protected static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue(); //语言选项，将字符串型转换为整数型
+    protected static int _format = Integer.valueOf(prefs.getString("format", "1")).intValue(); //显示格式选项，将字符串型转换为整数型
+    protected static int _rom = Integer.valueOf(prefs.getString("rom", "1")).intValue(); //系统类型选项，将字符串型转换为整数型
 
-    protected final static int _notify = Integer.valueOf(prefs.getString("notify", "1")).intValue(); //通知方法
+    protected static int _notify = Integer.valueOf(prefs.getString("notify", "1")).intValue(); //通知方法
     protected static int _notify_times = Integer.valueOf(prefs.getString("notify_times", "1")).intValue(); //通知次数
-    protected final static Boolean _notify_center = prefs.getBoolean("notify_center", false); //通知居中
-    protected final static Boolean _notify_icon = prefs.getBoolean("notify_icon", false); //显示图标
-    protected final static Boolean _notify_comp = prefs.getBoolean("notify_comp", false); //兼容性
+    protected static Boolean _notify_center = prefs.getBoolean("notify_center", false); //通知居中
+    protected static Boolean _notify_icon = prefs.getBoolean("notify_icon", false); //显示图标
+    protected static Boolean _notify_comp = prefs.getBoolean("notify_comp", false); //兼容性
 
-    protected final static Boolean _lockscreen = prefs.getBoolean("lockscreen", false); //开启添加到锁屏
-    protected final static int _lockscreen_layout = Integer.valueOf(prefs.getString("lockscreen_layout", "1")).intValue(); //锁屏布局，将字符串型转换为整数型
-    protected final static int _lockscreen_alignment = Integer.valueOf(prefs.getString("lockscreen_alignment", "1")).intValue(); //锁屏对齐，将字符串型转换为整数型
-    protected final static int _lockscreen_format = Integer.valueOf(prefs.getString("lockscreen_format", "1")).intValue(); //显示格式选项，将字符串型转换为整数型
-    protected final static String _lockscreen_custom_format = prefs.getString("lockscreen_custom_format", ""); //自定义锁屏字符串
+    protected static Boolean _lockscreen = prefs.getBoolean("lockscreen", false); //开启添加到锁屏
+    protected static int _lockscreen_layout = Integer.valueOf(prefs.getString("lockscreen_layout", "1")).intValue(); //锁屏布局，将字符串型转换为整数型
+    protected static int _lockscreen_alignment = Integer.valueOf(prefs.getString("lockscreen_alignment", "1")).intValue(); //锁屏对齐，将字符串型转换为整数型
+    protected static int _lockscreen_format = Integer.valueOf(prefs.getString("lockscreen_format", "1")).intValue(); //显示格式选项，将字符串型转换为整数型
+    protected static String _lockscreen_custom_format = prefs.getString("lockscreen_custom_format", ""); //自定义锁屏字符串
 
     //读取自定义农历纪念日，并放入到一个数组中
-    protected final static String[] clf = {
+    protected static String[] clf = {
         prefs.getString("custom_lunar_item_0", "").trim(),
         prefs.getString("custom_lunar_item_1", "").trim(),
         prefs.getString("custom_lunar_item_2", "").trim(),
@@ -119,7 +119,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
         prefs.getString("custom_lunar_item_19", "").trim()
     };
     //读取自定义公历纪念日，并放入到一个数组中
-    protected final static String[] csf = {
+    protected static String[] csf = {
         prefs.getString("custom_solar_item_0", "").trim(),
         prefs.getString("custom_solar_item_1", "").trim(),
         prefs.getString("custom_solar_item_2", "").trim(),
@@ -146,8 +146,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static Lunar lunar;
 
     /* 向Systemui注入图标 */
-    private static int iconNormal_id;
-    private static int iconFest_id;
+    private static int ic_toast_bg_fest;
+    private static int ic_toast_bg;
 
     @Override
     public void initZygote(StartupParam startupParam){
@@ -160,8 +160,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
 
         //这里将自带的图标资源插入到systemui中，并获取到一个资源id
         XModuleResources modRes = XModuleResources.createInstance(MODULE_PATH, resparam.res); //创建一个插入资源的实例
-        iconNormal_id = resparam.res.addResource(modRes, R.drawable.ic_toast);
-        iconFest_id   = resparam.res.addResource(modRes, R.drawable.ic_toast_fest);
+        ic_toast_bg_fest   = resparam.res.addResource(modRes, R.drawable.ic_toast_bg_fest);
+        ic_toast_bg        = resparam.res.addResource(modRes, R.drawable.ic_toast_bg);
     }
 
     /* 替换日期函数 */
@@ -170,11 +170,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
             return; //如果不是UI则跳过
 
         lunar = new Lunar(Main._lang);
-
-        //将决定是否换行的文本输出到字符串中
-        if(!_breakline){
-            breaklineText = " ";
-        }
+        
+        _notify_times_setting = _notify_times;
 
         //如果打开了调整布局，则允许进入调整布局步骤
         if(!_layout_enable){
@@ -183,14 +180,16 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
 
         //根据rom类型选择正确的更新函数
         switch(_rom){
-            case 1: updateFunc = "updateClock"; break; //原生Android的日起更新函数名
-            case 2: updateFunc = "a"; break; //Miui 4.4 之前的系统更新时间的函数名称为“a”
-            default:updateFunc = "updateClock";
+            case 1: break; //原生Android的日起更新函数名
+            case 2: UPDATE_FUNC = "a";
+                    break; //Miui 4.4 之前的系统更新时间的函数名称为“a”
+            case 3: HOOK_CLASS = "com.android.systemui.statusbar.policy.QuickSettingsDateView";
+                    break; //Asus Zenfone6
         }
 
         //勾在com.android.systemui.statusbar.policy.DateView里面的updateClock()之后
         //这的函数可以参考 https://github.com/rovo89/XposedBridge/wiki/Development-tutorial，比较简单
-        findAndHookMethod(HOOK_CLASS, lpparam.classLoader, updateFunc, new XC_MethodHook() {
+        findAndHookMethod(HOOK_CLASS, lpparam.classLoader, UPDATE_FUNC, new XC_MethodHook() {
             @Override
             //在原函数执行完之后再执行自定义程序
             protected void afterHookedMethod(MethodHookParam param){
@@ -220,24 +219,26 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
 
                 //修正layout的singleLine属性
                 if(!layout_run){
-                    //去掉singleLine属性
-                    if(prefs.getBoolean("layout_line", false))
-                        mDateView.setSingleLine(false); //去除singleLine属性
-                    //去掉align_baseline，并将其设置为center_vertical
-                    if(prefs.getBoolean("layout_align", false)){
-                        //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
-                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
-                        layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
-                        layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
-                        mDateView.setLayoutParams(layoutParams); //设置布局参数
-                    }
-                    //设置宽度为fill_parent
-                    if(prefs.getBoolean("layout_width", false)){
-                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
-                        layoutParams.width = -1; //取消宽度限制
-                        mDateView.setLayoutParams(layoutParams);
-                    }
-                    layout_run = true; //已经执行过布局的处理步骤，下次不再执行
+                    try{
+                        //去掉singleLine属性
+                        if(prefs.getBoolean("layout_line", false))
+                            mDateView.setSingleLine(false); //去除singleLine属性
+                        //去掉align_baseline，并将其设置为center_vertical
+                        if(prefs.getBoolean("layout_align", false)){
+                            //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
+                            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
+                            layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
+                            layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
+                            mDateView.setLayoutParams(layoutParams); //设置布局参数
+                        }
+                        //设置宽度为fill_parent
+                        if(prefs.getBoolean("layout_width", false)){
+                            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
+                            layoutParams.width = -1; //取消宽度限制
+                            mDateView.setLayoutParams(layoutParams);
+                        }
+                        layout_run = true; //已经执行过布局的处理步骤，下次不再执行
+                    }catch(Throwable t){}
                 }
 
                 //更新记录的日期
@@ -246,7 +247,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 lunarText = lunar.getFormattedDate(_custom_format, _format);
 
                 //重置提醒次数
-                _notify_times = Integer.valueOf(prefs.getString("notify_times", "3")).intValue();
+                _notify_times = _notify_times_setting;
                 if(_notify > 1){
                     //当天是否是节日
                     isFest = !"".equals(lunar.getFormattedDate("ff", 5));
@@ -257,7 +258,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                     }
                 }
                 //组合最终显示的文字
-                finalText = _remove_all ? lunarText : (_remove ? nDate.trim().replaceAll("\\n", " ") : nDate) + breaklineText + lunarText;
+                finalText = _remove_all ? lunarText : (_remove ? nDate.trim().replaceAll("\\n", " ") : nDate) + (_breakline ? "\n" : " ") + lunarText;
             }
             //向TextView设置显示的最终文字
             mDateView.setText(finalText);
@@ -278,10 +279,11 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 toast.setGravity(Gravity.CENTER, 0, 0);
             if(_notify_icon){
                 //为Toast加入图标
-                ImageView imageView = new ImageView(context.getApplicationContext());
-                imageView.setImageResource(isFest ? iconFest_id : iconNormal_id);
-                imageView.setPadding(0, 10, 0, 20);
-                toastView.addView(imageView, 0);
+                toastView.setBackground((context.getResources().getDrawable(isFest ? ic_toast_bg_fest : ic_toast_bg)));
+                toastView.setGravity(Gravity.CENTER);
+                toastTextView.setTextColor(0xFF000000);
+                toastTextView.setPadding(0, 15, 0, 0);
+                toastTextView.setShadowLayer(0, 0, 0, 0X00FFFFFF);
             }
         }
         toast.show();
@@ -302,6 +304,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 }
                 intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
                 intent.addAction(Intent.ACTION_TIMEZONE_CHANGED); //注册时区变更事件
+                intent.addAction(INTENT_SETTING_CHANGED);
                 mContext.registerReceiver(xReceiver, intent);
             }
         }
@@ -319,7 +322,42 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
             //Intent事件判断
-            if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
+            if(intent.getAction().equals(INTENT_SETTING_CHANGED)){
+                //如果用户更改了设置
+                _remove_all = intent.getExtras().getBoolean("remove_all", _remove_all);
+                _remove = intent.getExtras().getBoolean("remove", _remove);
+                _term = intent.getExtras().getBoolean("term", _term);
+                _fest = intent.getExtras().getBoolean("fest", _fest);
+                _custom = intent.getExtras().getBoolean("custom", _custom);
+                _solar = intent.getExtras().getBoolean("solar", _solar);
+                _solar_custom = intent.getExtras().getBoolean("solar_cutom", _solar_custom);
+                _breakline = intent.getExtras().getBoolean("breakline", _breakline);
+                _layout_enable = intent.getExtras().getBoolean("layout_enable", _layout_enable);
+                _custom_format = intent.getExtras().getString("custom_format", _custom_format);
+                _minor = intent.getExtras().getInt("minor", _minor);
+                _lang = intent.getExtras().getInt("lang", _lang);
+                _format = intent.getExtras().getInt("format", _format);
+                _rom = intent.getExtras().getInt("rom", _rom);
+
+                _notify = intent.getExtras().getInt("notify", _notify);
+                _notify_times_setting = _notify_times = intent.getExtras().getInt("notify_times", _notify_times_setting);
+                _notify_center = intent.getExtras().getBoolean("notify_center", _notify_center);
+                _notify_icon = intent.getExtras().getBoolean("notify_icon", _notify_icon);
+                _notify_comp = intent.getExtras().getBoolean("notify_comp", _notify_comp);
+
+                for (int i = 0; i <= 14; i++) {
+                    clf[i] = intent.getExtras().getString("custom_lunar_item_" + i, clf[i]);
+                    csf[i] = intent.getExtras().getString("custom_solar_item_" + i, csf[i]);
+                }
+
+                //重置一些变量
+                if(!_layout_enable){
+                    layout_run = true;
+                }
+                lunarText = finalText = lDate = "RESET";
+                lunar = new Lunar(_lang);
+                XposedHelpers.callMethod(mDateView, UPDATE_FUNC); //强制执行日期更新函数
+            }else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
                 //如果用户亮屏且屏幕处于未解锁状态
                 if(!km.inKeyguardRestrictedInputMode() && _notify_times > 0 && !"".equals(Main.lunarTextToast)){
                     makeToast(context);
@@ -333,15 +371,15 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 }
             }else if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
                 //如果日期变更且用户处于亮屏状态
-                finalText = lDate = "RESET"; //重置记录的日期
-                XposedHelpers.callMethod(mDateView, updateFunc); //强制执行日期更新函数
+                lunarText = finalText = lDate = "RESET"; //重置记录的日期
+                XposedHelpers.callMethod(mDateView, UPDATE_FUNC);
                 if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast))
                     makeToast(context);
             }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
                 //如果时区变更
-                finalText = lDate = "RESET";
+                lunarText = finalText = lDate = "RESET";
                 lunar = new Lunar(_lang);
-                XposedHelpers.callMethod(mDateView, updateFunc);
+                XposedHelpers.callMethod(mDateView, UPDATE_FUNC);
                 if(!"".equals(Main.lunarTextToast))
                     makeToast(context);
             }

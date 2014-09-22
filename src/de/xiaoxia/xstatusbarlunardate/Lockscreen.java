@@ -141,8 +141,8 @@ public class Lockscreen implements IXposedHookLoadPackage{
                         });
                     }
                     break;
-                case 2:
-                    break;
+                case 2:break;
+                case 3:break;
             }
         }
     }
@@ -167,11 +167,9 @@ public class Lockscreen implements IXposedHookLoadPackage{
             context = mTextClock != null ? mTextClock.getContext() : mTextView.getContext();
             if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
                 lDate = "RESET";
-                //XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock == null ? "refreshDate" : "refresh"); //强制执行refresh函数
             }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
                 lunar = new Lunar(Main._lang);
                 lDate = "RESET";
-                //XposedHelpers.callMethod(mTextClock != null ? mTextClock : mTextView, mTextClock == null ? "refreshDate" : "refresh");
             }
         }
     };
