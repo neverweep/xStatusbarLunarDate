@@ -164,8 +164,6 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         if(key.equals("rom")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
-            sendBroadcast(intent);
             return;
         }
         if(key.equals("notify")){
@@ -193,15 +191,11 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         if(key.equals("lockscreen_alignment")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
-            sendBroadcast(intent);
             return;
         }
         if(key.equals("lockscreen_layout")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
-            sendBroadcast(intent);
             _lp = (ListPreference)findPreference("lockscreen_alignment");
             if(Build.VERSION.SDK_INT < 17){
                 _lp.setSummary(getString(R.string.lockscreen_alignment_disable));
@@ -227,12 +221,9 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             etp = (EditTextPreference)findPreference(key);
             if(!"".equals(etp.getText()) && etp.getText() != null){
                 etp.setSummary(etp.getText());
-                intent.putExtra(key, etp.getText().toString());
             }else{
                 etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
-                intent.putExtra(key, "");
             }
-            sendBroadcast(intent);
             return;
         }
     }

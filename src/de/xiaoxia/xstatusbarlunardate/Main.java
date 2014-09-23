@@ -169,9 +169,9 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
         if (!lpparam.packageName.equals(PACKAGE_NAME))
             return; //如果不是UI则跳过
 
-        lunar = new Lunar(Main._lang);
+        lunar = new Lunar(Main._lang); //初始化Lunar类
         
-        _notify_times_setting = _notify_times;
+        _notify_times_setting = _notify_times; //记录提醒次数
 
         //如果打开了调整布局，则允许进入调整布局步骤
         if(!_layout_enable){
@@ -278,7 +278,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 //Toast在屏幕正中显示
                 toast.setGravity(Gravity.CENTER, 0, 0);
             if(_notify_icon){
-                //为Toast加入图标
+                //为Toast加入背景
                 toastView.setBackground((context.getResources().getDrawable(isFest ? ic_toast_bg_fest : ic_toast_bg)));
                 toastView.setGravity(Gravity.CENTER);
                 toastTextView.setTextColor(0xFF000000);
@@ -323,7 +323,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
 
             //Intent事件判断
             if(intent.getAction().equals(INTENT_SETTING_CHANGED)){
-                //如果用户更改了设置
+                //如果用户更改了设置，从intent中读取更改过的设置
                 _remove_all = intent.getExtras().getBoolean("remove_all", _remove_all);
                 _remove = intent.getExtras().getBoolean("remove", _remove);
                 _term = intent.getExtras().getBoolean("term", _term);
@@ -337,7 +337,6 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 _minor = intent.getExtras().getInt("minor", _minor);
                 _lang = intent.getExtras().getInt("lang", _lang);
                 _format = intent.getExtras().getInt("format", _format);
-                _rom = intent.getExtras().getInt("rom", _rom);
 
                 _notify = intent.getExtras().getInt("notify", _notify);
                 _notify_times_setting = _notify_times = intent.getExtras().getInt("notify_times", _notify_times_setting);
@@ -356,6 +355,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 }
                 lunarText = finalText = lDate = "RESET";
                 lunar = new Lunar(_lang);
+
                 XposedHelpers.callMethod(mDateView, UPDATE_FUNC); //强制执行日期更新函数
             }else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
                 //如果用户亮屏且屏幕处于未解锁状态
