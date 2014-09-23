@@ -130,7 +130,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         cbp = (CheckBoxPreference)findPreference("notify_icon");
         cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
         p = findPreference("notify_show");
-        p.setEnabled(Integer.parseInt(lp.getValue()) == 2);
+        p.setEnabled(Integer.parseInt(lp.getValue()) > 1);
 
         _lp = (ListPreference)findPreference("lockscreen_alignment");
         if(Build.VERSION.SDK_INT < 17){
@@ -213,7 +213,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             cbp = (CheckBoxPreference)findPreference("notify_comp");
             cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             p = findPreference("notify_show");
-            p.setEnabled(Integer.parseInt(lp.getValue()) == 2);
+            p.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             return;
         }
         if(key.equals("notify_times")){

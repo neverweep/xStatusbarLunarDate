@@ -134,7 +134,7 @@
     <string name="notify_comp_summary_on">Turn off to keep compatible with some roms or modules</string>
     <string name="notify_comp_summary_off">Turn on to make toast easy to be noticed and read</string>
     <string name="notify_show">Preview Toast</string>
-    <string name="notify_show_summary">Compatibility and appearance(Select "Always popup toast" first)</string>
+    <string name="notify_show_summary">Test compatibility and appearance</string>
     <string name="donate_category">Donate</string>
     <string name="donate">Donate</string>
     <string name="donate_summary">Buy me a cup of coffee</string>

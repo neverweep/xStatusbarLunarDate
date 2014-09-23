@@ -198,8 +198,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
             //在原函数执行完之后再执行自定义程序
             protected void afterHookedMethod(MethodHookParam param){
                 //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView
-                mDateView = (TextView) param.thisObject; //所以直接获取这个对象
                 if(mContext == null){
+                    mDateView = (TextView) param.thisObject; //所以直接获取这个对象
                     if(mDateView != null){
                         mContext = mDateView.getContext(); //获取上下文
                         if(mContext != null)
@@ -306,11 +306,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     //注册接收器
     private void registerReceiver(Context context){
         IntentFilter intent = new IntentFilter();
-        if(_notify > 1){
-            //仅在需要提醒的情况下才注册这两个事件
-            intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
-            intent.addAction(Intent.ACTION_SCREEN_ON); //注册亮屏事件
-        }
+        intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
+        intent.addAction(Intent.ACTION_SCREEN_ON); //注册亮屏事件
         intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
         intent.addAction(Intent.ACTION_TIMEZONE_CHANGED); //注册时区变更事件
         intent.addAction(INTENT_SETTING_CHANGED); //注册设置变更事件
@@ -331,6 +328,11 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
 
             //Intent事件判断
             if(intent.getAction().equals(INTENT_SETTING_CHANGED)){
+                //某些机型rom会出现重复文字，这里修正
+                String oriString = mDateView.getText().toString();
+                if(oriString.equals(finalText))
+                    mDateView.setText(oriString.replaceAll((_breakline ? "\\n" : " ") + lunarText, ""));
+
                 //如果用户更改了设置，从intent中读取更改过的设置
                 _remove_all = intent.getExtras().getBoolean("remove_all", _remove_all);
                 _remove = intent.getExtras().getBoolean("remove", _remove);
@@ -352,7 +354,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 _notify_icon = intent.getExtras().getBoolean("notify_icon", _notify_icon);
                 _notify_comp = intent.getExtras().getBoolean("notify_comp", _notify_comp);
 
-                for (int i = 0; i <= 14; i++) {
+                for(int i = 0; i <= 14; i++){
                     clf[i] = intent.getExtras().getString("custom_lunar_item_" + i, clf[i]);
                     csf[i] = intent.getExtras().getString("custom_solar_item_" + i, csf[i]);
                 }
@@ -361,7 +363,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 if(!_layout_enable){
                     layout_run = true;
                 }
-                lunarText = finalText = lDate = "RESET";
+                lunarText = finalText = lDate = "RESET"; //重置记录的日期
                 lunar = new Lunar(_lang);
 
                 XposedHelpers.callMethod(mDateView, UPDATE_FUNC); //强制执行日期更新函数
@@ -373,28 +375,37 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 }
             }else if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
                 //如果用户解锁屏幕
-                if(_notify_times > 0 && !"".equals(Main.lunarTextToast)){
+                if(_notify_times > 0 && !"".equals(lunarTextToast)){
                     makeToast(context);
                     _notify_times--;
                 }
             }else if(intent.getAction().equals(Intent.ACTION_DATE_CHANGED)){
                 //如果日期变更且用户处于亮屏状态
                 lunarText = finalText = lDate = "RESET"; //重置记录的日期
-                XposedHelpers.callMethod(mDateView, UPDATE_FUNC);
+                XposedHelpers.callMethod(mDateView, UPDATE_FUNC); //强制执行日期更新函数
                 if(pm.isScreenOn() && !km.inKeyguardRestrictedInputMode() && !"".equals(Main.lunarTextToast))
                     makeToast(context);
             }else if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)){
                 //如果时区变更
-                lunarText = finalText = lDate = "RESET";
+                lunarText = finalText = lDate = "RESET"; //重置记录的日期
                 lunar = new Lunar(_lang);
-                XposedHelpers.callMethod(mDateView, UPDATE_FUNC);
+                XposedHelpers.callMethod(mDateView, UPDATE_FUNC); //强制执行日期更新函数
                 if(!"".equals(Main.lunarTextToast))
                     makeToast(context);
             }else if(intent.getAction().equals(INTENT_SETTING_TOAST)){
-                //如果用户点击按钮
-                if(_notify == 2){
-                    makeToast(context);
-                }
+                int _notify_temp = _notify; //设置一个临时变量记录初始状态
+                _notify = 2; //设置为总是弹出通知
+
+                //某些机型rom会出现重复文字，这里修正
+                String oriString = mDateView.getText().toString();
+                if(oriString.equals(finalText))
+                    mDateView.setText(oriString.replaceAll((_breakline ? "\\n" : " ") + lunarText, ""));
+
+                lunarText = finalText = lDate = "RESET"; //重置记录的日期
+                XposedHelpers.callMethod(mDateView, UPDATE_FUNC); //强制执行日期更新函数
+                makeToast(context);
+                _notify = _notify_temp; // 吐司通知设置复位到初始状态
+                lunarTextToast = ""; // 清空Toast文字，避免其它情况再次显示
             }
         }
     };

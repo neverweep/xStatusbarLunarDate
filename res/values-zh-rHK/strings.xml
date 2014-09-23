@@ -140,7 +140,7 @@
     <string name="notify_comp_summary_on">關閉此項以保持和某些 ROM 或模組的相容性</string>
     <string name="notify_comp_summary_off">打開此項使訊息容易被注意和閱讀</string>
     <string name="notify_show">預覽提示</string>
-    <string name="notify_show_summary">測試相容性和外觀（先選擇“總是彈出提示”）</string>
+    <string name="notify_show_summary">測試相容性和外觀</string>
     <string name="donate_category">捐贈</string>
     <string name="donate">捐贈</string>
     <string name="donate_summary">幫我買一杯咖啡</string>

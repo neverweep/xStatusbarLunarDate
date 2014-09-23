@@ -138,7 +138,7 @@
     <string name="notify_comp_summary_on">关闭此项以保持和某些 ROM 或模块的兼容性</string>
     <string name="notify_comp_summary_off">打开此项使消息容易被注意和阅读</string>
     <string name="notify_show">预览吐司</string>
-    <string name="notify_show_summary">测试兼容性和外观（先选择“总是弹出吐司”）</string>
+    <string name="notify_show_summary">测试兼容性和外观</string>
     <string name="donate_category">捐赠</string>
     <string name="donate">捐赠</string>
     <string name="donate_summary">帮我买一杯咖啡</string>
