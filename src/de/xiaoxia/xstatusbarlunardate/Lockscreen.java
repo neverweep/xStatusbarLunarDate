@@ -29,6 +29,7 @@ import android.widget.TextView;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
@@ -74,6 +75,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
     }
 
     /*替换日期函数*/
+    @Override
     public void handleLoadPackage(final LoadPackageParam lpparam){
         //如果打开了锁屏农历
         if(Main._lockscreen){
@@ -97,7 +99,12 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                     registerReceiver();
                                     //如果修改锁屏布局，则先将其的singleLine属性去除
                                     if(Main._lockscreen_layout > 1){
-                                        mTextView.setSingleLine(false);
+                                        try{
+                                            mTextView.setSingleLine(false);
+                                        }catch(Throwable t){
+                                            XposedBridge.log("xStatusBarLunarDate: Lockscreen layout fix error(API 16)");
+                                            XposedBridge.log(t);
+                                        }
                                     }
                                     mTextView.setText(returnText(mTextView.getText().toString()));
                                 }
@@ -114,7 +121,12 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                         mTextView.setSingleLine(false);
                                         //如果修改锁屏对其，则设置对齐（setTextAlignment仅在Android4.2+上有效）
                                         if(Main._lockscreen_alignment > 1){
-                                            mTextView.setTextAlignment(Main._lockscreen_alignment);
+                                            try{
+                                                mTextView.setTextAlignment(Main._lockscreen_alignment);
+                                            }catch(Throwable t){
+                                                XposedBridge.log("xStatusBarLunarDate: Lockscreen layout fix error(API 18)");
+                                                XposedBridge.log(t);
+                                            }
                                         }
                                     }
                                     mTextView.setText(returnText(mTextView.getText().toString()));
@@ -131,9 +143,14 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                 mTextClock = (TextClock) XposedHelpers.getObjectField(param.thisObject, "mDateView");
                                 registerReceiver();
                                 if(Main._lockscreen_layout > 1){
-                                    mTextClock.setSingleLine(false);
-                                    if(Main._lockscreen_alignment > 1){
-                                        mTextClock.setTextAlignment(Main._lockscreen_alignment);
+                                    try{
+                                        mTextClock.setSingleLine(false);
+                                        if(Main._lockscreen_alignment > 1){
+                                            mTextClock.setTextAlignment(Main._lockscreen_alignment);
+                                        }
+                                    }catch(Throwable t){
+                                        XposedBridge.log("xStatusBarLunarDate: Lockscreen layout fix error(API 19+)");
+                                        XposedBridge.log(t);
                                     }
                                 }
                                 mTextClock.setText(returnText(mTextClock.getText().toString()));

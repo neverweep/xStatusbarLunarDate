@@ -18,11 +18,13 @@
 
 package de.xiaoxia.xstatusbarlunardate;
 
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -37,10 +39,14 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 public class Setting extends PreferenceActivity implements OnSharedPreferenceChangeListener{
 
+	Preference p;
     ListPreference lp;
     ListPreference _lp;
     EditTextPreference etp;
     CheckBoxPreference cbp;
+    String INTENT_SETTING_CHANGED = "de.xiaoxia.xstatusbarlunardate.SETTING_CHANGED";
+    String INTENT_SETTING_TOAST = "de.xiaoxia.xstatusbarlunardate.SETTING_TOAST";
+    String DONATION_URL = "http://xiaoxia.de/upload/donation.html";
 
     @SuppressWarnings("deprecation")
     @Override
@@ -48,6 +54,30 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting);
         getPreferenceManager().setSharedPreferencesMode(MODE_WORLD_READABLE);
+
+        //发送显示Toast的intent
+        Preference notify_show = findPreference("notify_show");
+        notify_show.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent toastIntent = new Intent(INTENT_SETTING_TOAST);
+                Setting.this.sendBroadcast(toastIntent);
+                return true;
+            }
+        });
+
+        //发送显示Toast的intent
+        Preference donate = findPreference("donate");
+        donate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent openDonateUrl = new Intent();
+                openDonateUrl.setData(Uri.parse(DONATION_URL));
+                openDonateUrl.setAction(Intent.ACTION_VIEW);
+                Setting.this.startActivity(openDonateUrl);
+                return true;
+            }
+        });
 
         //找到设置，并将其概括修改为当前设置option_name
         lp = (ListPreference)findPreference("minor");
@@ -99,6 +129,8 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
         cbp = (CheckBoxPreference)findPreference("notify_icon");
         cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+        p = findPreference("notify_show");
+        p.setEnabled(Integer.parseInt(lp.getValue()) == 2);
 
         _lp = (ListPreference)findPreference("lockscreen_alignment");
         if(Build.VERSION.SDK_INT < 17){
@@ -122,32 +154,33 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-        Intent intent = new Intent("de.xiaoxia.xstatusbarlunardate.SETTING_CHANGED");
+        Intent settingChangeIntent = new Intent(INTENT_SETTING_CHANGED);
+
         if(key.equals("remove_all") || key.equals("remove") || key.equals("term") || key.equals("fest") || key.equals("custom") || key.equals("solar") || key.equals("solar_cutom") || key.equals("breakline") || key.equals("layout_enable") || key.equals("notify_center") || key.equals("notify_icon") || key.equals("notify_comp") || key.equals("lockscreen")){
             cbp = (CheckBoxPreference)findPreference(key);
-            intent.putExtra(key, cbp.isChecked());
-            sendBroadcast(intent);
+            settingChangeIntent.putExtra(key, cbp.isChecked());
+            sendBroadcast(settingChangeIntent);
         }
         //设置发生变化时，设置summary为option_name
         if(key.equals("minor")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, lp.getEntry());
-            sendBroadcast(intent);
+            settingChangeIntent.putExtra(key, lp.getEntry());
+            sendBroadcast(settingChangeIntent);
             return;
         }
         if(key.equals("lang")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
-            sendBroadcast(intent);
+            settingChangeIntent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(settingChangeIntent);
             return;
         }
         if(key.equals("format")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
-            sendBroadcast(intent);
+            settingChangeIntent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(settingChangeIntent);
             etp = (EditTextPreference)findPreference("custom_format");
             etp.setEnabled(lp.getValue().toString().equals("5"));
             return;
@@ -155,8 +188,8 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         if(key.equals("lockscreen_format")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
-            sendBroadcast(intent);
+            settingChangeIntent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(settingChangeIntent);
             etp = (EditTextPreference)findPreference("lockscreen_custom_format");
             etp.setEnabled(lp.getValue().toString().equals("5"));
             return;
@@ -169,8 +202,8 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         if(key.equals("notify")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
-            sendBroadcast(intent);
+            settingChangeIntent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(settingChangeIntent);
             _lp = (ListPreference)findPreference("notify_times");
             _lp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             cbp = (CheckBoxPreference)findPreference("notify_center");
@@ -179,13 +212,15 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             cbp = (CheckBoxPreference)findPreference("notify_comp");
             cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+            p = findPreference("notify_show");
+            p.setEnabled(Integer.parseInt(lp.getValue()) == 2);
             return;
         }
         if(key.equals("notify_times")){
             lp = (ListPreference)findPreference(key);
             lp.setSummary(lp.getEntry());
-            intent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
-            sendBroadcast(intent);
+            settingChangeIntent.putExtra(key, Integer.valueOf(lp.getValue().toString()).intValue());
+            sendBroadcast(settingChangeIntent);
             return;
         }
         if(key.equals("lockscreen_alignment")){
@@ -209,12 +244,12 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             etp = (EditTextPreference)findPreference(key);
             if(!"".equals(etp.getText()) && etp.getText() != null){
                 etp.setSummary(etp.getText());
-                intent.putExtra(key, etp.getText().toString());
+                settingChangeIntent.putExtra(key, etp.getText().toString());
             }else{
                 etp.setSummary(getString(R.string.setting_custom_solar_item_summary));
-                intent.putExtra(key,"");
+                settingChangeIntent.putExtra(key,"");
             }
-            sendBroadcast(intent);
+            sendBroadcast(settingChangeIntent);
             return;
         }
         if(key.equals("lockscreen_custom_format")){

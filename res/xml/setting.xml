@@ -15,7 +15,7 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:orderingFromXml="true" android:key="@string/settings" android:title="@string/settings" android:enabled="true">
 
-    <PreferenceCategory android:key="@string/content_category" android:title="@string/content_category" android:order="1">
+    <PreferenceCategory android:key="@string/content_category" android:title="@string/content_category" android:order="2">
         <ListPreference android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:key="lang" android:dialogTitle="@string/lang_dialogue_title" android:defaultValue="1" android:title="@string/lang" android:entries="@array/lang_options" android:entryValues="@array/lang_values" />
         <CheckBoxPreference android:summaryOff="@string/term_summray_off" android:summaryOn="@string/term_summray_on" android:title="@string/term" android:key="term" android:defaultValue="true" />
         <CheckBoxPreference android:summaryOff="@string/fest_summary_off" android:summaryOn="@string/fest_summary_on" android:title="@string/fest" android:key="fest" android:defaultValue="true" />
@@ -31,7 +31,7 @@
         </Preference>
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="@string/display_category" android:title="@string/display_category" android:order="2">
+    <PreferenceCategory android:key="@string/display_category" android:title="@string/display_category" android:order="3">
         <ListPreference android:key="format" android:title="@string/format" android:defaultValue="1" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/format_dialogue_title" android:entryValues="@array/format_values" android:entries="@array/format_options" />
         <EditTextPreference android:singleLine="true" android:key="custom_format" android:title="@string/custom_format_title" android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:summary="@string/setting_custom_solar_item_summary" android:dialogMessage="@string/custom_format_howtodo_msg"/>
         <CheckBoxPreference android:title="@string/breakline" android:key="breakline" android:summaryOn="@string/breakline_summary_on" android:summaryOff="@string/breakline_summary_off" android:defaultValue="true" />
@@ -43,15 +43,16 @@
         <CheckBoxPreference android:key="layout_width" android:title="@string/layout_width" android:summaryOff="@string/layout_width_summary_off" android:summaryOn="@string/layout_width_summary_on" android:defaultValue="false" android:dependency="layout_enable" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="@string/notify_category" android:title="@string/notify_category" android:order="3">
+    <PreferenceCategory android:key="@string/notify_category" android:title="@string/notify_category" android:order="4">
         <ListPreference android:key="notify" android:title="@string/notify" android:defaultValue="1" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/notify_dialogue_title" android:entryValues="@array/notify_values" android:entries="@array/notify_options" />
         <ListPreference android:key="notify_times" android:title="@string/notify_times" android:defaultValue="1" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:dialogTitle="@string/notify_times_dialogue_title" android:entryValues="@array/notify_times_values" android:entries="@array/notify_times_options"/>
         <CheckBoxPreference android:title="@string/notify_comp" android:key="notify_comp" android:summaryOn="@string/notify_comp_summary_on" android:summaryOff="@string/notify_comp_summary_off" android:defaultValue="false" />
         <CheckBoxPreference android:title="@string/notify_center" android:key="notify_center" android:summaryOn="@string/notify_center_summary_on" android:summaryOff="@string/notify_center_summary_off" android:defaultValue="false" android:dependency="notify_comp"/>
         <CheckBoxPreference android:title="@string/notify_icon" android:key="notify_icon" android:summaryOn="@string/notify_icon_summary_on" android:summaryOff="@string/notify_icon_summary_off" android:defaultValue="false" android:dependency="notify_comp"/>
+        <Preference android:key="notify_show" android:summary="@string/notify_show_summary" android:title="@string/notify_show" android:dependency="notify"></Preference>
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="@string/lockscreen_category" android:title="@string/lockscreen_category" android:order="4">
+    <PreferenceCategory android:key="@string/lockscreen_category" android:title="@string/lockscreen_category" android:order="5">
         <CheckBoxPreference android:key="lockscreen" android:summaryOff="@string/lockscreen_summary_off" android:defaultValue="false" android:title="@string/lockscreen" android:summaryOn="@string/lockscreen_summary_on" />
         <ListPreference android:key="lockscreen_format" android:title="@string/format" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:entries="@array/format_options" android:dialogTitle="@string/format_dialogue_title" android:entryValues="@array/format_values" android:defaultValue="1" android:dependency="lockscreen"/>
         <EditTextPreference android:singleLine="true" android:key="lockscreen_custom_format" android:title="@string/custom_format_title" android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:summary="@string/setting_custom_solar_item_summary" android:dialogMessage="@string/custom_format_howtodo_msg" android:dependency="lockscreen"/>
@@ -59,8 +60,12 @@
         <ListPreference android:key="lockscreen_alignment" android:title="@string/lockscreen_alignment" android:dependency="lockscreen_layout" android:entries="@array/lockscreen_alignment_options" android:negativeButtonText="@string/cancel" android:entryValues="@array/lockscreen_alignment_values" android:positiveButtonText="@string/ok" android:defaultValue="1"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/system_category" android:key="@string/system_category" android:order="0">
+    <PreferenceCategory android:title="@string/system_category" android:key="@string/system_category" android:order="1">
         <ListPreference android:key="rom" android:title="@string/rom" android:dialogTitle="@string/rom" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:entryValues="@array/rom_values" android:defaultValue="1" android:entries="@array/rom_options"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/donate_category" android:key="@string/donate_category" android:order="0">
+        <Preference android:key="donate" android:title="@string/donate" android:summary="@string/donate_summary"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

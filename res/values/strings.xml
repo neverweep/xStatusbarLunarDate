@@ -33,9 +33,9 @@
     <string name="fest_summary_off">Hide lunar fesivals</string>
     <string name="minor">Date Of The Minor Year</string>
     <string name="minor_dialogue_title">Set prefer date of the minor year</string>
-    <string name="minor_year_option_1">12.23 (Most of Northern China)</string>
-    <string name="minor_year_option_2">12.24 (Most of Southern China)</string>
-    <string name="minor_year_option_3">12.25 (Minority areas of China)</string>
+    <string name="minor_year_option_1">12.23(Most of Northern China)</string>
+    <string name="minor_year_option_2">12.24(Most of Southern China)</string>
+    <string name="minor_year_option_3">12.25(Minority areas of China)</string>
     <string name="about">About X Statusbar Lunar Date</string>
     <string name="about_msg"><b>Glad to see this app on your Android &lt;3</b>\n\nBlog:<a href="http://xiaoxia.de/">xiaoxia.de</a>\n\nManual, bug report:\n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\nDonate\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
     <string name="remove">Remove Original Line Feed</string>
@@ -47,7 +47,7 @@
     <string name="lang_option_2">Trad-Chinese(Taiwan)</string>
     <string name="lang_option_4">Trad-Chinese(Hong Kong)</string>
     <string name="lang_option_5">Trad-Chinese(Macau)</string>
-    <string name="lang_option_3">English (Only Digits)</string>
+    <string name="lang_option_3">English(Only Digits)</string>
     <string name="lang_dialogue_title">Set prefer language to display</string>
     <string name="layout_enable">Layout Fix</string>
     <string name="layout_enable_summary_on">Fix layout for some roms</string>
@@ -61,7 +61,7 @@
     <string name="layout_width">Width Fix</string>
     <string name="layout_width_summary_on">Change width to fill parent</string>
     <string name="layout_width_summary_off">Only turn this on if date displays wrong</string>
-    <string name="lockscreen">Append To Lockscreen (BETA)</string>
+    <string name="lockscreen">Append To Lockscreen(BETA)</string>
     <string name="lockscreen_summary_on">Append lunar date to lockscreen</string>
     <string name="lockscreen_summary_off">Tested on AOSP 4.1.2, 4.2.2 and 4.4.2</string>
     <string name="setting_custom_lunar_item">Custom lunar date of commemoration</string>
@@ -83,7 +83,7 @@
     <string name="system_category">System</string>
     <string name="rom">System Type(Need reboot)</string>
     <string name="rom_option_1">Most Android</string>
-    <string name="rom_option_2">Some Miui rom</string>
+    <string name="rom_option_2">Some MIUI rom</string>
     <string name="rom_option_3">Asus ZenUI</string>
     <string name="solar">Solar Festivals</string>
     <string name="solar_summary_on">Show solar festivals after lunar date</string>
@@ -133,4 +133,9 @@
     <string name="notify_comp">Toast Beautify(Compatibility)</string>
     <string name="notify_comp_summary_on">Turn off to keep compatible with some roms or modules</string>
     <string name="notify_comp_summary_off">Turn on to make toast easy to be noticed and read</string>
+    <string name="notify_show">Preview Toast</string>
+    <string name="notify_show_summary">Compatibility and appearance(Select "Always popup toast" first)</string>
+    <string name="donate_category">Donate</string>
+    <string name="donate">Donate</string>
+    <string name="donate_summary">Buy me a cup of coffee</string>
 </resources>

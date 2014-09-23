@@ -87,7 +87,8 @@
     <string name="system_category">系統（需要重新啟動）</string>
     <string name="rom">選擇系統類型</string>
     <string name="rom_option_1">大多數 Android</string>
-    <string name="rom_option_2">某些 Miui rom</string>
+    <string name="rom_option_2">某些 MIUI rom</string>
+    <string name="rom_option_3">華碩 ZenUI</string>
     <string name="solar">西曆節日</string>
     <string name="solar_summary_on">在農曆日期後顯示西曆節日</string>
     <string name="solar_summary_off">不顯示西曆節日</string>
@@ -136,4 +137,9 @@
     <string name="notify_comp">消息美化（相容性問題）</string>
     <string name="notify_comp_summary_on">關閉此項以保持和某些 ROM 或模組的相容性</string>
     <string name="notify_comp_summary_off">打開此項使消息容易被注意和閱讀</string>
+    <string name="notify_show">預覽提示</string>
+    <string name="notify_show_summary">測試相容性和外觀（先選擇“總是彈出提示”）</string>
+    <string name="donate_category">捐贈</string>
+    <string name="donate">捐贈</string>
+    <string name="donate_summary">幫我買一杯咖啡</string>
 </resources>

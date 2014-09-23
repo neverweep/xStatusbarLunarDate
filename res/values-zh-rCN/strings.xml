@@ -87,7 +87,8 @@
     <string name="system_category">系统（需要重启）</string>
     <string name="rom">选择系统类型</string>
     <string name="rom_option_1">大多数 Android</string>
-    <string name="rom_option_2">某些 Miui rom</string>
+    <string name="rom_option_2">某些 MIUI rom</string>
+    <string name="rom_option_3">华硕 ZenUI</string>
     <string name="solar">公历节日</string>
     <string name="solar_summary_on">在农历日期后显示公历节日</string>
     <string name="solar_summary_off">不显示公历节日</string>
@@ -136,4 +137,9 @@
     <string name="notify_comp">吐司美化（兼容性问题）</string>
     <string name="notify_comp_summary_on">关闭此项以保持和某些 ROM 或模块的兼容性</string>
     <string name="notify_comp_summary_off">打开此项使消息容易被注意和阅读</string>
+    <string name="notify_show">预览吐司</string>
+    <string name="notify_show_summary">测试兼容性和外观（先选择“总是弹出吐司”）</string>
+    <string name="donate_category">捐赠</string>
+    <string name="donate">捐赠</string>
+    <string name="donate_summary">帮我买一杯咖啡</string>
 </resources>

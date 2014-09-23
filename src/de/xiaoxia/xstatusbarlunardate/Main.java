@@ -36,6 +36,7 @@ import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
+import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
@@ -48,6 +49,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static String HOOK_CLASS = "com.android.systemui.statusbar.policy.DateView"; //要Hook的Class名
     private static String UPDATE_FUNC = "updateClock"; //更新函数名
     private static String INTENT_SETTING_CHANGED = "de.xiaoxia.xstatusbarlunardate.SETTING_CHANGED"; //更改设置事件
+    private static String INTENT_SETTING_TOAST = "de.xiaoxia.xstatusbarlunardate.SETTING_TOAST"; //显示吐司
 
     /* 初始变量 */
     private static String lunarText = "LUNAR"; //记录最后更新时的文字字符串
@@ -56,8 +58,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     private static String nDate; //当前状态栏的日期文字
     private static String lunarTextToast = ""; //最终输出文本仅节日
     private static Boolean layout_run = false; //判断是否设置过singleLine属性
-    private static TextView mDateView; //状态栏日期的 TextView
-    private static Context mContext; //显示Toast、注册接收器和获取系统服务所必需的context
+    private static TextView mDateView = null; //状态栏日期的 TextView
+    private static Context mContext = null; //显示Toast、注册接收器和获取系统服务所必需的context
     private static Boolean isFest = false; //今天是否为节日的标记
     private static KeyguardManager km; //锁屏管理器，用来获取锁屏状态
     private static PowerManager pm; //电源管理器，用来获取亮屏状态
@@ -145,7 +147,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     //初始化Lunar类
     private static Lunar lunar;
 
-    /* 向Systemui注入图标 */
+    /* 向Systemui注入图标和字符串资源*/
     private static int ic_toast_bg_fest;
     private static int ic_toast_bg;
 
@@ -154,23 +156,25 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
         MODULE_PATH = startupParam.modulePath; //获取模块实际路径
     }
 
+    @Override
     public void handleInitPackageResources(InitPackageResourcesParam resparam){
         if (!resparam.packageName.equals(PACKAGE_NAME))
             return; //如果不是UI则跳过
 
         //这里将自带的图标资源插入到systemui中，并获取到一个资源id
         XModuleResources modRes = XModuleResources.createInstance(MODULE_PATH, resparam.res); //创建一个插入资源的实例
-        ic_toast_bg_fest   = resparam.res.addResource(modRes, R.drawable.ic_toast_bg_fest);
-        ic_toast_bg        = resparam.res.addResource(modRes, R.drawable.ic_toast_bg);
+        ic_toast_bg_fest = resparam.res.addResource(modRes, R.drawable.ic_toast_bg_fest);
+        ic_toast_bg      = resparam.res.addResource(modRes, R.drawable.ic_toast_bg);
     }
 
     /* 替换日期函数 */
+    @Override
     public void handleLoadPackage(final LoadPackageParam lpparam){
         if (!lpparam.packageName.equals(PACKAGE_NAME))
             return; //如果不是UI则跳过
 
         lunar = new Lunar(Main._lang); //初始化Lunar类
-        
+
         _notify_times_setting = _notify_times; //记录提醒次数
 
         //如果打开了调整布局，则允许进入调整布局步骤
@@ -193,14 +197,16 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
             @Override
             //在原函数执行完之后再执行自定义程序
             protected void afterHookedMethod(MethodHookParam param){
-                //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView。
+                //获取原文字，com.android.systemui.statusbar.policy.DateView类是extends于TextView
                 mDateView = (TextView) param.thisObject; //所以直接获取这个对象
-                if(mDateView != null){
-                    //注册接收器
-                    registerReceiver();
-                    //交给setText处理
-                    setText();
+                if(mContext == null){
+                    if(mDateView != null){
+                        mContext = mDateView.getContext(); //获取上下文
+                        if(mContext != null)
+                            registerReceiver(mContext); //注册接收器
+                    }
                 }
+                setText();//交给setText处理
             }
         });
     }
@@ -238,7 +244,10 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                             mDateView.setLayoutParams(layoutParams);
                         }
                         layout_run = true; //已经执行过布局的处理步骤，下次不再执行
-                    }catch(Throwable t){}
+                    }catch(Throwable t){
+                        XposedBridge.log("xStatusBarLunarDate: Statusbar layout fix error:");
+                        XposedBridge.log(t);
+                    }
                 }
 
                 //更新记录的日期
@@ -268,46 +277,45 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     //显示 Toast
     private void makeToast(Context context){
         Toast toast = Toast.makeText(context, lunarTextToast, Toast.LENGTH_LONG);
-        if(_notify_comp){
-            //如果打开了美化
-            LinearLayout toastView = (LinearLayout) toast.getView();
-            TextView toastTextView = (TextView) toastView.getChildAt(0);
-            toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
-            toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
-            if(_notify_center)
-                //Toast在屏幕正中显示
-                toast.setGravity(Gravity.CENTER, 0, 0);
-            if(_notify_icon){
-                //为Toast加入背景
-                toastView.setBackground((context.getResources().getDrawable(isFest ? ic_toast_bg_fest : ic_toast_bg)));
-                toastView.setGravity(Gravity.CENTER);
-                toastTextView.setTextColor(0xFF000000);
-                toastTextView.setPadding(0, 15, 0, 0);
-                toastTextView.setShadowLayer(0, 0, 0, 0X00FFFFFF);
+        try{
+            if(_notify_comp){
+                //如果打开了美化
+                LinearLayout toastView = (LinearLayout) toast.getView();
+                TextView toastTextView = (TextView) toastView.getChildAt(0);
+                toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
+                toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
+                if(_notify_center)
+                    //Toast在屏幕正中显示
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                if(_notify_icon){
+                    //为Toast加入背景
+                    toastView.setBackground((context.getResources().getDrawable(isFest ? ic_toast_bg_fest : ic_toast_bg)));
+                    toastView.setGravity(Gravity.CENTER);
+                    toastTextView.setTextColor(0xFF000000);
+                    toastTextView.setPadding(0, 15, 0, 0);
+                    toastTextView.setShadowLayer(0, 0, 0, 0X00FFFFFF);
+                }
             }
+            toast.show();
+        }catch(Throwable t){
+            XposedBridge.log("xStatusBarLunarDate: Toast error:");
+            XposedBridge.log(t);
         }
-        toast.show();
     }
 
     //注册接收器
-    private void registerReceiver(){
-        if(mContext == null){
-            //仅在mContext为空的情况下才继续注册接收器，只需要执行一次
-            mContext = mDateView.getContext(); //从mDateView获取UI的上下文
-            if(mContext != null){
-                //如果context不为空，则开始注册
-                IntentFilter intent = new IntentFilter();
-                if(_notify > 1){
-                    //仅在需要提醒的情况下才注册这两个事件
-                    intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
-                    intent.addAction(Intent.ACTION_SCREEN_ON); //注册亮屏事件
-                }
-                intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
-                intent.addAction(Intent.ACTION_TIMEZONE_CHANGED); //注册时区变更事件
-                intent.addAction(INTENT_SETTING_CHANGED);
-                mContext.registerReceiver(xReceiver, intent);
-            }
+    private void registerReceiver(Context context){
+        IntentFilter intent = new IntentFilter();
+        if(_notify > 1){
+            //仅在需要提醒的情况下才注册这两个事件
+            intent.addAction(Intent.ACTION_USER_PRESENT); //注册解锁屏幕事件
+            intent.addAction(Intent.ACTION_SCREEN_ON); //注册亮屏事件
         }
+        intent.addAction(Intent.ACTION_DATE_CHANGED); //注册日期变更事件
+        intent.addAction(Intent.ACTION_TIMEZONE_CHANGED); //注册时区变更事件
+        intent.addAction(INTENT_SETTING_CHANGED); //注册设置变更事件
+        intent.addAction(INTENT_SETTING_TOAST); //注册显示Toast事件
+        context.registerReceiver(xReceiver, intent);
     }
 
     //广播接收处理
@@ -382,6 +390,11 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 XposedHelpers.callMethod(mDateView, UPDATE_FUNC);
                 if(!"".equals(Main.lunarTextToast))
                     makeToast(context);
+            }else if(intent.getAction().equals(INTENT_SETTING_TOAST)){
+                //如果用户点击按钮
+                if(_notify == 2){
+                    makeToast(context);
+                }
             }
         }
     };
