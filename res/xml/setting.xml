@@ -49,6 +49,7 @@
         <CheckBoxPreference android:title="@string/notify_comp" android:key="notify_comp" android:summaryOn="@string/notify_comp_summary_on" android:summaryOff="@string/notify_comp_summary_off" android:defaultValue="false" />
         <CheckBoxPreference android:title="@string/notify_center" android:key="notify_center" android:summaryOn="@string/notify_center_summary_on" android:summaryOff="@string/notify_center_summary_off" android:defaultValue="false" android:dependency="notify_comp"/>
         <CheckBoxPreference android:title="@string/notify_icon" android:key="notify_icon" android:summaryOn="@string/notify_icon_summary_on" android:summaryOff="@string/notify_icon_summary_off" android:defaultValue="false" android:dependency="notify_comp"/>
+        <CheckBoxPreference android:title="@string/notify_vibration" android:key="notify_vibration" android:summaryOn="@string/notify_vibration_summary_on" android:summaryOff="@string/notify_vibration_summary_off" android:defaultValue="false"/>
         <Preference android:key="notify_show" android:summary="@string/notify_show_summary" android:title="@string/notify_show" android:dependency="notify"></Preference>
     </PreferenceCategory>
 

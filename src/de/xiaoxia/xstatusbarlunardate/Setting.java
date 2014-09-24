@@ -129,6 +129,8 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
         cbp = (CheckBoxPreference)findPreference("notify_icon");
         cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+        cbp = (CheckBoxPreference)findPreference("notify_vibration");
+        cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
         p = findPreference("notify_show");
         p.setEnabled(Integer.parseInt(lp.getValue()) > 1);
 
@@ -156,7 +158,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
 
         Intent settingChangeIntent = new Intent(INTENT_SETTING_CHANGED);
 
-        if(key.equals("remove_all") || key.equals("remove") || key.equals("term") || key.equals("fest") || key.equals("custom") || key.equals("solar") || key.equals("solar_cutom") || key.equals("breakline") || key.equals("layout_enable") || key.equals("notify_center") || key.equals("notify_icon") || key.equals("notify_comp") || key.equals("lockscreen")){
+        if(key.equals("remove_all") || key.equals("remove") || key.equals("term") || key.equals("fest") || key.equals("custom") || key.equals("solar") || key.equals("solar_cutom") || key.equals("breakline") || key.equals("layout_enable") || key.equals("notify_center") || key.equals("notify_icon") || key.equals("notify_comp") || key.equals("notify_vibration")){
             cbp = (CheckBoxPreference)findPreference(key);
             settingChangeIntent.putExtra(key, cbp.isChecked());
             sendBroadcast(settingChangeIntent);
@@ -211,6 +213,8 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             cbp = (CheckBoxPreference)findPreference("notify_icon");
             cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             cbp = (CheckBoxPreference)findPreference("notify_comp");
+            cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
+            cbp = (CheckBoxPreference)findPreference("notify_vibration");
             cbp.setEnabled(Integer.parseInt(lp.getValue()) > 1);
             p = findPreference("notify_show");
             p.setEnabled(Integer.parseInt(lp.getValue()) > 1);

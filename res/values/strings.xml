@@ -83,7 +83,7 @@
     <string name="system_category">System</string>
     <string name="rom">System Type(Need reboot)</string>
     <string name="rom_option_1">Most Android</string>
-    <string name="rom_option_2">Some MIUI rom</string>
+    <string name="rom_option_2">Some MIUI</string>
     <string name="rom_option_3">Asus ZenUI</string>
     <string name="solar">Solar Festivals</string>
     <string name="solar_summary_on">Show solar festivals after lunar date</string>
@@ -137,5 +137,8 @@
     <string name="notify_show_summary">Test compatibility and appearance</string>
     <string name="donate_category">Donate</string>
     <string name="donate">Donate</string>
-    <string name="donate_summary">Buy me a cup of coffee</string>
+    <string name="donate_summary">Buy me a cup of coffee :-)</string>
+    <string name="notify_vibration">Vibrate On Festival</string>
+    <string name="notify_vibration_summary_off">No vibration</string>
+    <string name="notify_vibration_summary_on">Popup toast with vibration</string>
 </resources>
