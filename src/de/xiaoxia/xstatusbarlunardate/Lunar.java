@@ -982,6 +982,7 @@ public class Lunar {
                     t = t.replace("NN", "\n");
                     t = t.replace("ww", weekString[this.solar.get(Calendar.DAY_OF_WEEK) - 1]);
                     t = t.replace("ff", term + fest + custom + sfest + sfest_custom);
+                    t = t.replaceAll("\\n +", "\n");
                     lunarText = t.replaceAll(" +", " ");
                     break;
             }

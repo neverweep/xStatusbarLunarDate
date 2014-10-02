@@ -50,7 +50,7 @@
     <string name="lang_option_3">English (Only digits)</string>
     <string name="lang_dialogue_title">选择显示的语言</string>
     <string name="layout_enable">布局调整</string>
-    <string name="layout_enable_summary_on">为某些 ROM 的日期文字更改输出布局</string>
+    <string name="layout_enable_summary_on">为某些系统的日期文字更改输出布局</string>
     <string name="layout_enable_summary_off">大多数 Nexus 设备需要打开此项</string>
     <string name="layout_line">调整单行属性</string>
     <string name="layout_line_summary_on">将日期文字控件单行属性调整为多行</string>
@@ -135,7 +135,7 @@
     <string name="notify_icon_summary_on">加入背景，不易错过</string>
     <string name="notify_icon_summary_off">无操作</string>
     <string name="notify_comp">吐司美化（兼容性问题）</string>
-    <string name="notify_comp_summary_on">关闭此项以保持和某些 ROM 或模块的兼容性</string>
+    <string name="notify_comp_summary_on">关闭此项以保持和某些系统或模块的兼容性</string>
     <string name="notify_comp_summary_off">打开此项使消息容易被注意和阅读</string>
     <string name="notify_show">预览吐司</string>
     <string name="notify_show_summary">测试兼容性和外观</string>
