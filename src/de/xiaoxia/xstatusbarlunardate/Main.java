@@ -18,6 +18,7 @@
 
 package de.xiaoxia.xstatusbarlunardate;
 
+import android.app.ActionBar.LayoutParams;
 import android.app.KeyguardManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -83,6 +84,10 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
     protected static Boolean _solar_custom = prefs.getBoolean("solar_cutom", true); //显示自定义公历节日
     protected static Boolean _breakline = prefs.getBoolean("breakline", true); //另起一行
     protected static Boolean _layout_enable = prefs.getBoolean("layout_enable", false); //允许布局调整
+    protected static Boolean _layout_line = prefs.getBoolean("layout_line", false); //允许布局调整单行
+    protected static Boolean _layout_width = prefs.getBoolean("layout_width", false); //允许布局调整宽度
+    protected static Boolean _layout_height = prefs.getBoolean("layout_height", false); //允许布局调整高度
+    protected static Boolean _layout_align = prefs.getBoolean("layout_align", false); //允许布局调整对齐
     protected static String _custom_format = prefs.getString("custom_format", ""); //自定义状态栏字符串
     protected static int _minor = Integer.valueOf(prefs.getString("minor", "1")).intValue(); //小年选项，将字符串型转换为整数型
     protected static int _lang = Integer.valueOf(prefs.getString("lang", "1")).intValue(); //语言选项，将字符串型转换为整数型
@@ -229,20 +234,26 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 if(!layout_run){
                     try{
                         //去掉singleLine属性
-                        if(prefs.getBoolean("layout_line", false))
+                        if(_layout_line)
                             mDateView.setSingleLine(false); //去除singleLine属性
                         //去掉align_baseline，并将其设置为center_vertical
-                        if(prefs.getBoolean("layout_align", false)){
+                        if(_layout_align){
                             //一般机型的状态栏都是RelativeLayout，少数为LinearLayout，但似乎影响不大
                             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
                             layoutParams.addRule(RelativeLayout.ALIGN_BASELINE,0); //去除baseline对齐属性
                             layoutParams.addRule(RelativeLayout.CENTER_VERTICAL); //并将其设置为绝对居中
                             mDateView.setLayoutParams(layoutParams); //设置布局参数
                         }
-                        //设置宽度为fill_parent
-                        if(prefs.getBoolean("layout_width", false)){
+                        //设置宽度为wrap_content
+                        if(_layout_width){
                             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
-                            layoutParams.width = -1; //取消宽度限制
+                            layoutParams.width = LayoutParams.WRAP_CONTENT; //取消宽度限制
+                            mDateView.setLayoutParams(layoutParams);
+                        }
+                        //设置高度为wrap_content
+                        if(_layout_height){
+                            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)mDateView.getLayoutParams();
+                            layoutParams.height = LayoutParams.WRAP_CONTENT; //取消高度限制
                             mDateView.setLayoutParams(layoutParams);
                         }
                         layout_run = true; //已经执行过布局的处理步骤，下次不再执行
@@ -269,7 +280,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                     }
                 }
                 //组合最终显示的文字
-                finalText = _remove_all ? lunarText : (_remove ? nDate.trim().replaceAll("\\n", " ") : nDate) + (_breakline ? "\n" : " ") + lunarText;
+                finalText = _remove_all ? lunarText : (_remove ? nDate.trim().replaceAll("[\\n|\\r]", " ") : nDate) + (_breakline ? "\n" : " ") + lunarText;
             }
             //向TextView设置显示的最终文字
             mDateView.setText(finalText);
@@ -364,6 +375,10 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 _solar_custom = intent.getExtras().getBoolean("solar_cutom", _solar_custom);
                 _breakline = intent.getExtras().getBoolean("breakline", _breakline);
                 _layout_enable = intent.getExtras().getBoolean("layout_enable", _layout_enable);
+                _layout_line = intent.getExtras().getBoolean("layout_line", _layout_line);
+                _layout_width = intent.getExtras().getBoolean("layout_width", _layout_width);
+                _layout_align = intent.getExtras().getBoolean("layout_align", _layout_align);
+                _layout_height = intent.getExtras().getBoolean("layout_height", _layout_height);
                 _custom_format = intent.getExtras().getString("custom_format", _custom_format);
                 _minor = intent.getExtras().getInt("minor", _minor);
                 _lang = intent.getExtras().getInt("lang", _lang);

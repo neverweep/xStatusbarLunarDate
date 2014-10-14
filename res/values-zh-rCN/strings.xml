@@ -61,6 +61,9 @@
     <string name="layout_width">调整宽度属性</string>
     <string name="layout_width_summary_on">将日期文字控件宽度调整为自动</string>
     <string name="layout_width_summary_off">仅在日期文字左右无法完整显示时打开</string>
+    <string name="layout_height">调整高度属性</string>
+    <string name="layout_height_summary_on">将日期文字控件高度调整为自动</string>
+    <string name="layout_height_summary_off">仅在日期文字上下无法完整显示时打开</string>
     <string name="lockscreen">添加到锁屏（BETA）</string>
     <string name="lockscreen_summary_on">将农历日期添加到锁屏界面</string>
     <string name="lockscreen_summary_off">仅在 AOSP 4.1.2、4.2.2、4.4.2 测试过</string>
@@ -69,7 +72,7 @@
     <string name="setting_custom_lunar_item">自定义农历纪念日</string>
     <string name="setting_custom_lunar_item_summary">未设置</string>
     <string name="setting_custom_lunar_item_hint">0101春节</string>
-    <string name="setting_custom_lunar_howtodo_msg">输入“月月日日名称”来设置，如“0509生日”。\n注意：4 位日期是农历日期。\n留空则取消此项。</string>
+    <string name="setting_custom_lunar_howtodo_msg">输入“月月日日名称”来设置，如“0509生日”。使用“00日日名称”来表示每个月的某日。\n注意：4 位日期是农历日期。\n留空则取消此项。</string>
     <string name="custom_lunar">自定义农历纪念日</string>
     <string name="custom_lunar_summary">设置自定义农历纪念日</string>
     <string name="custom_lunar_summary_on">在农历日期后显示自定义农历纪念日</string>
@@ -79,7 +82,7 @@
     <string name="setting_custom_solar_item">自定义公历纪念日</string>
     <string name="setting_custom_solar_item_summary">未设置</string>
     <string name="setting_custom_solar_item_hint">0101元旦</string>
-    <string name="setting_custom_solar_howtodo_msg">输入“月月日日名称”来设置，如“0509生日”。\n注意：4 位日期是公历日期。\n留空则取消此项。</string>
+    <string name="setting_custom_solar_howtodo_msg">输入“月月日日名称”来设置，如“0509生日”。使用“00日日名称”来表示每个月的某日。\n注意：4 位日期是公历日期。\n留空则取消此项。</string>
     <string name="custom_solar">自定义公历纪念日</string>
     <string name="custom_solar_summary">设置自定义公历纪念日</string>
     <string name="custom_solar_summary_on">在农历日期后显示自定义公历纪念日</string>

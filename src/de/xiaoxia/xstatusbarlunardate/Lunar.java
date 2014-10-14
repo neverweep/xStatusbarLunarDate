@@ -195,7 +195,7 @@ public class Lunar {
             for (int i=0; i<Main.clf.length; i++) {
                 m = Lunar.sFreg.matcher(Main.clf[i]);
                 if (m.find()) {
-                    if (lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) {
+                    if ((lM == Lunar.toInt(m.group(1)) && lD == Lunar.toInt(m.group(2))) || (m.group(1).equals("00") && lD == Lunar.toInt(m.group(2)))) {
                         this.clFestivalName = m.group(3);
                         break;
                     }
@@ -208,7 +208,7 @@ public class Lunar {
             for (int i=0; i<Main.csf.length; i++) {
                 m = Lunar.sFreg.matcher(Main.csf[i]);
                 if (m.find()) {
-                    if (sM == Lunar.toInt(m.group(1)) && sD == Lunar.toInt(m.group(2))) {
+                    if ((sM == Lunar.toInt(m.group(1)) && sD == Lunar.toInt(m.group(2))) || (m.group(1).equals("00") && sD == Lunar.toInt(m.group(2)))) {
                         this.csFestivalName = m.group(3);
                         break;
                     }
@@ -946,23 +946,64 @@ public class Lunar {
                 sfest_custom = "";
             }
 
+            StringBuilder sb = new StringBuilder();
+
             //根据设置设置显示格式
             switch(f){
                 //属相
                 case 1:
-                    lunarText = this.getAnimalString() + "年" + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
+                    sb.append(this.getAnimalString());
+                    sb.append("年");
+                    sb.append(this.getLunarMonthString());
+                    sb.append("月");
+                    sb.append(this.getLunarDayString());
+                    sb.append(term);
+                    sb.append(fest);
+                    sb.append(custom);
+                    sb.append(sfest);
+                    sb.append(sfest_custom);
+                    lunarText = sb.toString();
                     break;
                 //天干地支
                 case 2:
-                    lunarText = this.getLunarYearString() + "年" + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
+                    sb.append(this.getLunarYearString());
+                    sb.append("年");
+                    sb.append(this.getLunarMonthString());
+                    sb.append("月");
+                    sb.append(this.getLunarDayString());
+                    sb.append(term);
+                    sb.append(fest);
+                    sb.append(custom);
+                    sb.append(sfest);
+                    sb.append(sfest_custom);
+                    lunarText = sb.toString();
                     break;
                 //不显示年份
                 case 3:
-                    lunarText = this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
+                    sb.append(this.getLunarMonthString());
+                    sb.append("月");
+                    sb.append(this.getLunarDayString());
+                    sb.append(term);
+                    sb.append(fest);
+                    sb.append(custom);
+                    sb.append(sfest);
+                    sb.append(sfest_custom);
+                    lunarText = sb.toString();
                     break;
                 //天干地支+属相
                 case 4:
-                    lunarText = this.getLunarYearString() + this.getAnimalString() + "年" + this.getLunarMonthString() + "月" + this.getLunarDayString() + term  + fest + custom + sfest + sfest_custom;
+                    sb.append(this.getLunarYearString());
+                    sb.append(this.getAnimalString());
+                    sb.append("年");
+                    sb.append(this.getLunarMonthString());
+                    sb.append("月");
+                    sb.append(this.getLunarDayString());
+                    sb.append(term);
+                    sb.append(fest);
+                    sb.append(custom);
+                    sb.append(sfest);
+                    sb.append(sfest_custom);
+                    lunarText = sb.toString();
                     break;
                 //自定义
                 case 5:

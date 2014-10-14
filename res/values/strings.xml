@@ -61,13 +61,16 @@
     <string name="layout_width">Width Fix</string>
     <string name="layout_width_summary_on">Change width to fill parent</string>
     <string name="layout_width_summary_off">Only turn this on if date displays wrong</string>
+    <string name="layout_height">Height Fix</string>
+    <string name="layout_height_summary_on">Change height to fill parent</string>
+    <string name="layout_height_summary_off">Only turn this on if date displays wrong</string>
     <string name="lockscreen">Append To Lockscreen(BETA)</string>
     <string name="lockscreen_summary_on">Append lunar date to lockscreen</string>
     <string name="lockscreen_summary_off">Tested on AOSP 4.1.2, 4.2.2 and 4.4.2</string>
     <string name="setting_custom_lunar_item">Custom lunar date of commemoration</string>
     <string name="setting_custom_lunar_item_summary">Not set</string>
     <string name="setting_custom_lunar_item_hint">0101Spring Festival</string>
-    <string name="setting_custom_lunar_howtodo_msg">Use \"MMDDname\"(eg.\"0509Birthday\").\nNote: The 4-digit-date is lunar date.\nLeave blank to turn off.</string>
+    <string name="setting_custom_lunar_howtodo_msg">Use \"MMDDname\"(eg.\"0509Birthday\"). Use \"00DDname\" to notify at a specified day every month.\nNote: The 4-digit-date is lunar date.\nLeave blank to turn off.</string>
     <string name="custom_lunar">Custom lunar date of commemoration</string>
     <string name="custom_lunar_summary">Set your own lunar date of commemoration</string>
     <string name="custom_lunar_summary_on">Show your own lunar customed date of commemoration</string>
@@ -75,7 +78,7 @@
     <string name="setting_custom_solar_item">Custom date of commemoration</string>
     <string name="setting_custom_solar_item_summary">Not set</string>
     <string name="setting_custom_solar_item_hint">0101New Year</string>
-    <string name="setting_custom_solar_howtodo_msg">Use \"MMDDname\"(eg.\"0509Birthday\").\nNote: The 4-digit-date is solar date.\nLeave blank to turn off.</string>
+    <string name="setting_custom_solar_howtodo_msg">Use \"MMDDname\"(eg.\"0509Birthday\"). Use \"00DDname\" to notify at a specified day every month.\nNote: The 4-digit-date is solar date.\nLeave blank to turn off.</string>
     <string name="custom_solar">Custom solar date of commemoration</string>
     <string name="custom_solar_summary">Set your own solar date of commemoration</string>
     <string name="custom_solar_summary_on">Show your own solar customed date of commemoration</string>

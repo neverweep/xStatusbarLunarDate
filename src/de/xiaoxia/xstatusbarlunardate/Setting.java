@@ -158,7 +158,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
 
         Intent settingChangeIntent = new Intent(INTENT_SETTING_CHANGED);
 
-        if(key.equals("remove_all") || key.equals("remove") || key.equals("term") || key.equals("fest") || key.equals("custom") || key.equals("solar") || key.equals("solar_cutom") || key.equals("breakline") || key.equals("layout_enable") || key.equals("notify_center") || key.equals("notify_icon") || key.equals("notify_comp") || key.equals("notify_vibration")){
+        if(key.equals("remove_all") || key.equals("remove") || key.equals("term") || key.equals("fest") || key.equals("custom") || key.equals("solar") || key.equals("solar_cutom") || key.equals("breakline") || key.equals("layout_enable") || key.equals("layout_align") || key.equals("layout_width") || key.equals("layout_line") || key.equals("layout_height") || key.equals("notify_center") || key.equals("notify_icon") || key.equals("notify_comp") || key.equals("notify_vibration")){
             cbp = (CheckBoxPreference)findPreference(key);
             settingChangeIntent.putExtra(key, cbp.isChecked());
             sendBroadcast(settingChangeIntent);
