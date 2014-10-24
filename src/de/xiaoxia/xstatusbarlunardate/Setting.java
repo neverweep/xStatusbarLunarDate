@@ -27,6 +27,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -66,7 +67,7 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
             }
         });
 
-        //发送显示Toast的intent
+        //发送打开捐赠连接的intent
         Preference donate = findPreference("donate");
         donate.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -75,6 +76,19 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
                 openDonateUrl.setData(Uri.parse(DONATION_URL));
                 openDonateUrl.setAction(Intent.ACTION_VIEW);
                 Setting.this.startActivity(openDonateUrl);
+                return true;
+            }
+        });
+
+        //发送打开应用信息的intent
+        Preference update = findPreference("update");
+        update.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent openAppInfo = new Intent(Intent.ACTION_VIEW);
+                openAppInfo.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                openAppInfo.setData(Uri.fromParts("package", getPackageName(), null));
+                Setting.this.startActivity(openAppInfo);
                 return true;
             }
         });

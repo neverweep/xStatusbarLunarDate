@@ -66,8 +66,9 @@
         <ListPreference android:key="rom" android:title="@string/rom" android:dialogTitle="@string/rom" android:positiveButtonText="@string/ok" android:negativeButtonText="@string/cancel" android:entryValues="@array/rom_values" android:defaultValue="1" android:entries="@array/rom_options"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/donate_category" android:key="@string/donate_category" android:order="0">
+    <PreferenceCategory android:title="@string/other_category" android:key="@string/other_category" android:order="0">
         <Preference android:key="donate" android:title="@string/donate" android:summary="@string/donate_summary"/>
+        <Preference android:key="update" android:title="@string/update" android:summary="@string/update_summary"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

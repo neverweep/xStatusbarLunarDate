@@ -37,7 +37,7 @@
     <string name="minor_year_option_2">腊月廿四（大部分南方地区）</string>
     <string name="minor_year_option_3">腊月廿五（个别地区）</string>
     <string name="about">关于 X 状态栏农历日期</string>
-    <string name="about_msg"><b>欢迎使用这个 Xposed 模块\n希望能给你带来一点方便：）</b>\n\n我的博客：\n<a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n说明、报错、建议：\n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\n捐贈：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
+    <string name="about_msg"><b>欢迎使用这个 Xposed 模块\n希望能给你带来一点方便：）</b>\n\n我的博客：\n<a href="http://xiaoxia.de/">xiaoxia.de</a>\n\n说明、报错、建议：\n<a href="http://xiaoxia.de/x-statusbar-lunar-date/">xiaoxia.de/x-statusbar-lunar-date/</a>\n\n捐赠：\n<a href="http://xiaoxia.de/upload/donation.html">xiaoxia.de/upload/donation.html</a></string>
     <string name="remove">删除换行</string>
     <string name="remove_summary_on">删除原日期中的换行</string>
     <string name="remove_summary_off">保留原日期中的换行</string>
@@ -142,10 +142,12 @@
     <string name="notify_comp_summary_off">打开此项使消息容易被注意和阅读</string>
     <string name="notify_show">预览吐司</string>
     <string name="notify_show_summary">测试兼容性和外观</string>
-    <string name="donate_category">捐赠</string>
+    <string name="other_category">其它</string>
     <string name="donate">捐赠</string>
     <string name="donate_summary">给我买一杯咖啡：）</string>
     <string name="notify_vibration">节日时震动</string>
     <string name="notify_vibration_summary_off">不震动</string>
     <string name="notify_vibration_summary_on">节日弹出吐司时震动</string>
+    <string name="update">完全不工作？</string>
+    <string name="update_summary">尝试清除数据，并重启系统</string>
 </resources>

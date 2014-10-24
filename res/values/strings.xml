@@ -138,10 +138,12 @@
     <string name="notify_comp_summary_off">Turn on to make toast easy to be noticed and read</string>
     <string name="notify_show">Preview Toast</string>
     <string name="notify_show_summary">Test compatibility and appearance</string>
-    <string name="donate_category">Donate</string>
+    <string name="other_category">Other</string>
     <string name="donate">Donate</string>
     <string name="donate_summary">Buy me a cup of coffee :-)</string>
     <string name="notify_vibration">Vibrate On Festival</string>
     <string name="notify_vibration_summary_off">No vibration</string>
     <string name="notify_vibration_summary_on">Popup toast with vibration</string>
+    <string name="update">Not Working At All?</string>
+    <string name="update_summary">Try to clear data then reboot.</string>
 </resources>

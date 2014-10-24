@@ -24,6 +24,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.TextClock;
 import android.widget.TextView;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
@@ -55,20 +57,36 @@ public class Lockscreen implements IXposedHookLoadPackage{
             if("".equals(lunarText))
                 return nDate;
             //根据锁屏布局选项设置输出文本
+            StringBuilder sb = new StringBuilder();
             switch(Main._lockscreen_layout){
                 //不换行
-                case 1: lunarText = nDate + " " + lunarText;
+                case 1:
+                    sb.append(nDate);
+                    sb.append(" ");
+                    sb.append(lunarText);
                     break;
                 //前换行
-                case 2: lunarText = nDate.trim() + "\n" + lunarText;
+                case 2:
+                    sb.append(nDate.trim());
+                    sb.append("\n");
+                    sb.append(lunarText);
                     break;
                 //后换行
-                case 3: lunarText = nDate + " " + lunarText + "\n";
+                case 3:
+                    sb.append(nDate);
+                    sb.append(" ");
+                    sb.append(lunarText);
+                    sb.append("\n");
                     break;
                 //前后都换行
-                case 4: lunarText = nDate.trim() + "\n" + lunarText + "\n";
+                case 4:
+                    sb.append(nDate.trim());
+                    sb.append("\n");
+                    sb.append(lunarText);
+                    sb.append("\n");
                     break;
             }
+            lunarText = sb.toString();
             lDate = nDate;
         }
         return lunarText;
@@ -136,11 +154,18 @@ public class Lockscreen implements IXposedHookLoadPackage{
                     //4.4之后keyguard独立为一个apk，所以不再查找“android”核心进程，去匹配包名“com.android.keyguard”
                     }else if(lpparam.packageName.equals("com.android.keyguard")){
                         findAndHookMethod("com.android.keyguard.KeyguardStatusView", lpparam.classLoader, "refresh", new XC_MethodHook() {
+                            //4.4+的TextClock变化是onTimeChanged的，所以这里监听refresh没有用，只是为了获取到mTextClock的实例对象。
                             @SuppressLint("NewApi")
                             @Override
-                            protected void afterHookedMethod(final MethodHookParam param){
+                            protected void beforeHookedMethod(final MethodHookParam param){
                                 //4.4新增了TextClock控件
                                 mTextClock = (TextClock) XposedHelpers.getObjectField(param.thisObject, "mDateView");
+                                if(mTextClock != null){
+                                    try{
+                                        mTextClock.removeTextChangedListener(textOnChanged);
+                                    } catch (Throwable t) {}
+                                    mTextClock.addTextChangedListener(textOnChanged);
+                                }
                                 registerReceiver();
                                 if(Main._lockscreen_layout > 1){
                                     try{
@@ -153,7 +178,6 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                         XposedBridge.log(t);
                                     }
                                 }
-                                mTextClock.setText(returnText(mTextClock.getText().toString()));
                             }
                         });
                     }
@@ -163,6 +187,23 @@ public class Lockscreen implements IXposedHookLoadPackage{
             }
         }
     }
+
+    //针对4.4+检测字符变化
+    private TextWatcher textOnChanged = new TextWatcher() {
+        @Override
+        public void afterTextChanged(Editable nString) {
+            String oriString = mTextClock.getText().toString();
+            if(!oriString.equals(lunarText)){
+                mTextClock.setText(returnText(oriString));
+            }
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+    };
 
     //注册接收器
     private void registerReceiver(){

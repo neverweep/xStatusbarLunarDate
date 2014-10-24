@@ -305,19 +305,36 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
             if(_notify_comp){
                 //如果打开了美化
                 LinearLayout toastView = (LinearLayout) toast.getView();
-                TextView toastTextView = (TextView) toastView.getChildAt(0);
-                toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
-                toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
+
+                //尝试寻找toastView布局中的textView节点
+                TextView toastTextView;
+                try{
+                    toastTextView = (TextView) toastView.getChildAt(0);
+                }catch(Throwable t){
+                    try {
+                        toastTextView = (TextView) toastView.getChildAt(1);
+                    } catch (Throwable tt) {
+                        toastTextView = null;
+                    }
+                }
+                if(toastTextView != null){
+                    toastTextView.setGravity(Gravity.CENTER_HORIZONTAL); //调整Toast为文字居中
+                    toastTextView.setLineSpacing(0, 1.2f); //调整Toast文字行间距为原来的1.2倍
+                }
+
                 if(_notify_center)
                     //Toast在屏幕正中显示
                     toast.setGravity(Gravity.CENTER, 0, 0);
+
                 if(_notify_icon){
                     //为Toast加入背景
                     toastView.setBackground((context.getResources().getDrawable(isFest ? ic_toast_bg_fest : ic_toast_bg)));
                     toastView.setGravity(Gravity.CENTER);
-                    toastTextView.setTextColor(0xFF000000);
-                    toastTextView.setPadding(0, 15, 0, 0);
-                    toastTextView.setShadowLayer(0, 0, 0, 0X00FFFFFF);
+                    if(toastTextView != null){
+                        toastTextView.setTextColor(0xFF000000);
+                        toastTextView.setPadding(0, 15, 0, 0);
+                        toastTextView.setShadowLayer(0, 0, 0, 0X00FFFFFF);
+                    }
                 }
             }
             toast.show();

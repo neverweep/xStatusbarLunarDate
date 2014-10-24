@@ -142,10 +142,12 @@
     <string name="notify_comp_summary_off">打開此項使消息容易被注意和閱讀</string>
     <string name="notify_show">預覽消息</string>
     <string name="notify_show_summary">測試相容性和外觀</string>
-    <string name="donate_category">捐贈</string>
+    <string name="other_category">其它</string>
     <string name="donate">捐贈</string>
     <string name="donate_summary">給我買一杯咖啡：）</string>
     <string name="notify_vibration">節日時震動</string>
     <string name="notify_vibration_summary_off">不震動</string>
     <string name="notify_vibration_summary_on">節日彈出訊息時震動</string>
+    <string name="update">完全不工作？</string>
+    <string name="update_summary">嘗試清除資料，並重啟系統</string>
 </resources>
