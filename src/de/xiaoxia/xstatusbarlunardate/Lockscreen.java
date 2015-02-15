@@ -99,7 +99,6 @@ public class Lockscreen implements IXposedHookLoadPackage{
         if(Main._lockscreen){
 
             lunar = new Lunar(Main._lang);
-            XposedBridge.log("run");
             switch(Main._rom){
                 //大多数android系统
                 case 1:

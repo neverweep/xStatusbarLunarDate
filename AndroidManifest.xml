@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.xiaoxia.xstatusbarlunardate"
+<manifest package="de.xiaoxia.xstatusbarlunardate"
     android:versionCode="31"
-    android:versionName="0.15.0" >
+    android:versionName="0.15.0" xmlns:android="http://schemas.android.com/apk/res/android">
     
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -28,7 +27,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.DeviceDefault"
+        android:theme="@style/Material"
         android:logo="@drawable/ic_launcher">
         <meta-data android:name="xposedmodule" android:value="true"/>
         <meta-data android:name="xposeddescription" android:value="@string/description" />

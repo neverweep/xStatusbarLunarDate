@@ -35,14 +35,14 @@ public final class R {
         public static final int ic_toast_bg_fest=0x7f020003;
     }
     public static final class id {
-        public static final int about=0x7f080001;
-        public static final int textView=0x7f080000;
+        public static final int about=0x7f090001;
+        public static final int textView=0x7f090000;
     }
     public static final class layout {
         public static final int about=0x7f030000;
     }
     public static final class menu {
-        public static final int about=0x7f070000;
+        public static final int about=0x7f080000;
     }
     public static final class string {
         public static final int about=0x7f060014;
@@ -189,6 +189,9 @@ public final class R {
         public static final int term_summray_on=0x7f06000a;
         public static final int update=0x7f060080;
         public static final int update_summary=0x7f060081;
+    }
+    public static final class style {
+        public static final int Material=0x7f070000;
     }
     public static final class xml {
         public static final int setting=0x7f040000;
