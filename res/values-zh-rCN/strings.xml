@@ -15,7 +15,6 @@
 -->
 <resources>
     <string name="app_name">X 状态栏农历日期</string>
-    <string name="settings">设置</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="display_category">状态栏日期</string>
@@ -150,4 +149,14 @@
     <string name="notify_vibration_summary_on">节日弹出吐司时震动</string>
     <string name="update">完全不工作？</string>
     <string name="update_summary">尝试清除数据，并重启系统</string>
+    <string name="backup_category">备份与恢复</string>
+    <string name="backup">备份</string>
+    <string name="backup_summary">备份设置到 SD 卡</string>
+    <string name="backup_failed">备份失败</string>
+    <string name="backup_ok">已备份至：</string>
+    <string name="restore">恢复</string>
+    <string name="restore_summary">从 SD 卡恢复设置</string>
+    <string name="restore_msg">需要重启系统以应用恢复的设置</string>
+    <string name="restore_failed">恢复失败</string>
+    <string name="restore_ok">设置已恢复</string>
 </resources>

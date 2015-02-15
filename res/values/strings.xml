@@ -15,7 +15,6 @@
 -->
 <resources>
     <string name="app_name">X Statusbar Lunar Date</string>
-    <string name="settings">Settings</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="display_category">Statusbar Date</string>
@@ -145,5 +144,15 @@
     <string name="notify_vibration_summary_off">No vibration</string>
     <string name="notify_vibration_summary_on">Popup toast with vibration</string>
     <string name="update">Not Working At All?</string>
-    <string name="update_summary">Try to clear data then reboot.</string>
+    <string name="update_summary">Try to clear data then reboot</string>
+    <string name="backup_category">Backup &amp; Restore</string>
+    <string name="backup">Backup</string>
+    <string name="backup_summary">Backup settings to SD</string>
+    <string name="backup_failed">Backup failed</string>
+    <string name="backup_ok">Backup to:</string>
+    <string name="restore">Restore</string>
+    <string name="restore_summary">Restore settings from SD</string>
+    <string name="restore_msg">You need to reboot to apply restored settings</string>
+    <string name="restore_failed">Restore failed</string>
+    <string name="restore_ok">Settings restored</string>
 </resources>

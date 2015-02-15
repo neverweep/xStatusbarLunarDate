@@ -18,6 +18,7 @@
 
 package de.xiaoxia.xstatusbarlunardate;
 
+import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import android.app.ActionBar.LayoutParams;
 import android.app.KeyguardManager;
 import android.app.Service;
@@ -34,7 +35,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import de.robv.android.xposed.IXposedHookInitPackageResources;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
@@ -273,7 +273,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
                 if(_notify > 1){
                     //当天是否是节日
                     isFest = !"".equals(lunar.getFormattedDate("ff", 5));
-                    if(isFest || _notify == 2){
+                    if((isFest || _notify == 2) && _lang != 3){
                         lunarTextToast = nDate.trim().replaceAll("\\n", " ") + "\n" + (_format == 5 ? lunar.getFormattedDate("", 3) : lunarText);
                     }else{
                         lunarTextToast = "";
@@ -371,7 +371,8 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit, IXpo
 
     //广播接收处理
     private BroadcastReceiver xReceiver = new BroadcastReceiver() {
-        @Override
+        @SuppressWarnings("deprecation")
+		@Override
         public void onReceive(Context context, Intent intent) {
             context = mContext;
 

@@ -15,7 +15,6 @@
 -->
 <resources>
     <string name="app_name">X 狀態列農曆日期</string>
-    <string name="settings">設置</string>
     <string name="ok">確定</string>
     <string name="cancel">取消</string>
     <string name="display_category">狀態列日期</string>
@@ -150,4 +149,14 @@
     <string name="notify_vibration_summary_on">節日彈出訊息時震動</string>
     <string name="update">完全不工作？</string>
     <string name="update_summary">嘗試清除資料，並重啟系統</string>
+    <string name="backup_category">備份與恢復</string>
+    <string name="backup">備份</string>
+    <string name="backup_summary">備份設置到 SD 卡</string>
+    <string name="backup_failed">備份失敗</string>
+    <string name="backup_ok">已備份至：</string>
+    <string name="restore">恢復</string>
+    <string name="restore_summary">從 SD 卡恢復設置</string>
+    <string name="restore_msg">需要重啟系統以應用恢復的設置</string>
+    <string name="restore_failed">恢復失敗</string>
+    <string name="restore_ok">設置已恢復</string>
 </resources>

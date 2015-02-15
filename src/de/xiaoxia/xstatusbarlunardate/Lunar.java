@@ -174,7 +174,7 @@ public class Lunar {
         }
 
         //农历
-        if(Main._fest){
+        if(Main._fest && !isLeap()){
             for (int i=0; i<Lunar.lFtv.length; i++) {
                 m = Lunar.sFreg.matcher(Lunar.lFtv[i]);
                 if (m.find()) {
@@ -191,7 +191,7 @@ public class Lunar {
         }
 
         //自定义农历
-        if(Main._custom){
+        if(Main._custom && !isLeap()){
             for (int i=0; i<Main.clf.length; i++) {
                 m = Lunar.sFreg.matcher(Main.clf[i]);
                 if (m.find()) {
@@ -736,8 +736,8 @@ public class Lunar {
     }
 
     /**
-     * 农历年是否是闰月
-     * @return 农历年是否是闰月
+     * 农历月是否是闰月
+     * @return 农历月是否是闰月
      */
     public boolean isLeap() {
         return isLeap;

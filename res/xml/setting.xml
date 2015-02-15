@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:orderingFromXml="true" android:key="@string/settings" android:title="@string/settings" android:enabled="true">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:orderingFromXml="true" android:key="settings" android:enabled="true">
 
     <PreferenceCategory android:key="@string/content_category" android:title="@string/content_category" android:order="2">
         <ListPreference android:negativeButtonText="@string/cancel" android:positiveButtonText="@string/ok" android:key="lang" android:dialogTitle="@string/lang_dialogue_title" android:defaultValue="1" android:title="@string/lang" android:entries="@array/lang_options" android:entryValues="@array/lang_values" />
@@ -68,7 +68,12 @@
 
     <PreferenceCategory android:title="@string/other_category" android:key="@string/other_category" android:order="0">
         <Preference android:key="donate" android:title="@string/donate" android:summary="@string/donate_summary"/>
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="@string/backup_category" android:key="@string/backup_category" android:order="6">
         <Preference android:key="update" android:title="@string/update" android:summary="@string/update_summary"/>
+        <Preference android:key="backup" android:title="@string/backup" android:summary="@string/backup_summary"/>
+        <Preference android:key="restore" android:title="@string/restore" android:summary="@string/restore_summary"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

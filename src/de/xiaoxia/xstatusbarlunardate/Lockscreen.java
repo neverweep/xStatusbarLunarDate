@@ -99,7 +99,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
         if(Main._lockscreen){
 
             lunar = new Lunar(Main._lang);
-
+            XposedBridge.log("run");
             switch(Main._rom){
                 //大多数android系统
                 case 1:
@@ -152,7 +152,7 @@ public class Lockscreen implements IXposedHookLoadPackage{
                             });
                         }
                     //4.4之后keyguard独立为一个apk，所以不再查找“android”核心进程，去匹配包名“com.android.keyguard”
-                    }else if(lpparam.packageName.equals("com.android.keyguard")){
+                    }else if(Build.VERSION.SDK_INT == 19 && lpparam.packageName.equals("com.android.keyguard")){
                         findAndHookMethod("com.android.keyguard.KeyguardStatusView", lpparam.classLoader, "refresh", new XC_MethodHook() {
                             //4.4+的TextClock变化是onTimeChanged的，所以这里监听refresh没有用，只是为了获取到mTextClock的实例对象。
                             @SuppressLint("NewApi")
@@ -174,7 +174,34 @@ public class Lockscreen implements IXposedHookLoadPackage{
                                             mTextClock.setTextAlignment(Main._lockscreen_alignment);
                                         }
                                     }catch(Throwable t){
-                                        XposedBridge.log("xStatusBarLunarDate: Lockscreen layout fix error(API 19+)");
+                                        XposedBridge.log("xStatusBarLunarDate: Lockscreen layout fix error(API 19)");
+                                        XposedBridge.log(t);
+                                    }
+                                }
+                            }
+                        });
+                    //5.0之后的锁屏画面并入了systemui
+                    }else if(Build.VERSION.SDK_INT >= 20 && lpparam.packageName.equals("com.android.systemui")){
+                        findAndHookMethod("com.android.keyguard.KeyguardStatusView", lpparam.classLoader, "refresh", new XC_MethodHook() {
+                            @SuppressLint("NewApi")
+                            @Override
+                            protected void beforeHookedMethod(final MethodHookParam param){
+                                mTextClock = (TextClock) XposedHelpers.getObjectField(param.thisObject, "mDateView");
+                                if(mTextClock != null){
+                                    try{
+                                        mTextClock.removeTextChangedListener(textOnChanged);
+                                    } catch (Throwable t) {}
+                                    mTextClock.addTextChangedListener(textOnChanged);
+                                }
+                                registerReceiver();
+                                if(Main._lockscreen_layout > 1){
+                                    try{
+                                        mTextClock.setSingleLine(false);
+                                        if(Main._lockscreen_alignment > 1){
+                                            mTextClock.setTextAlignment(Main._lockscreen_alignment);
+                                        }
+                                    }catch(Throwable t){
+                                        XposedBridge.log("xStatusBarLunarDate: Lockscreen layout fix error(API 20+)");
                                         XposedBridge.log(t);
                                     }
                                 }

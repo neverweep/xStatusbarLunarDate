@@ -18,9 +18,18 @@
 
 package de.xiaoxia.xstatusbarlunardate;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import de.robv.android.xposed.XposedBridge;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -33,14 +42,18 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 public class Setting extends PreferenceActivity implements OnSharedPreferenceChangeListener{
 
-	Preference p;
+    Preference p;
     ListPreference lp;
     ListPreference _lp;
     EditTextPreference etp;
@@ -49,12 +62,56 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
     String INTENT_SETTING_TOAST = "de.xiaoxia.xstatusbarlunardate.SETTING_TOAST";
     String DONATION_URL = "http://xiaoxia.de/upload/donation.html";
 
+    String APP_PREFS_DEST_DIR;
+    String APP_PREFS;
+    String APP_PREFS_DEST_FILE;
+
+
     @SuppressWarnings("deprecation")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.setting);
         getPreferenceManager().setSharedPreferencesMode(MODE_WORLD_READABLE);
+
+
+        APP_PREFS = "/data/data/" + this.getPackageName().toString() + "/shared_prefs/" + this.getPackageName().toString() + "_preferences.xml";
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())){
+            APP_PREFS_DEST_DIR = Environment.getExternalStorageDirectory().toString() + "/android/data/de.xiaoxia.xstatusbarlunardate/shared_prefs/";
+        }else{
+            APP_PREFS_DEST_DIR = "/de.xiaoxia.xstatusbarlunardate/shared_prefs/";
+        }
+        APP_PREFS_DEST_FILE = APP_PREFS_DEST_DIR + "de.xiaoxia.xstatusbarlunardate_preferences.xml";
+
+        //备份按钮
+        Preference backup = findPreference("backup");
+        backup.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                try{
+                    backup();
+                }catch(IOException e){
+                    Toast.makeText(Setting.this, R.string.backup_failed, Toast.LENGTH_LONG).show();
+                    XposedBridge.log(e);
+                }
+                return true;
+            }
+        });
+
+        //恢复按钮
+        Preference restore = findPreference("restore");
+        restore.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                try{
+                    restore();
+                }catch(IOException e){
+                    Toast.makeText(Setting.this, R.string.restore_failed, Toast.LENGTH_LONG).show();
+                    XposedBridge.log(e);
+                }
+                return true;
+            }
+        });
 
         //发送显示Toast的intent
         Preference notify_show = findPreference("notify_show");
@@ -302,5 +359,68 @@ public class Setting extends PreferenceActivity implements OnSharedPreferenceCha
         builder.setPositiveButton(R.string.ok, null); //设置按钮，仅设置一个确定按钮
         builder.show(); //显示对话框
         return true;
+    }
+
+    //备份
+    private void backup() throws IOException{
+        copyFile(APP_PREFS, APP_PREFS_DEST_FILE, APP_PREFS_DEST_DIR);
+        Toast.makeText(Setting.this, getString(R.string.backup_ok) + "\n" + APP_PREFS_DEST_FILE, Toast.LENGTH_LONG).show();
+    }
+
+    //恢复
+    private void restore() throws IOException{
+        copyFile(APP_PREFS_DEST_FILE, APP_PREFS, "/data/data/" + this.getPackageName().toString() + "/shared_prefs/");
+        Toast.makeText(Setting.this, R.string.restore_ok, Toast.LENGTH_LONG).show();
+
+        //设置对话框
+        AlertDialog.Builder builder = new Builder(Setting.this);
+        builder.setCancelable(false);
+        builder.setTitle(R.string.restore); //设置标题
+        builder.setMessage(R.string.restore_msg); //设置具体内容
+        builder.setPositiveButton(R.string.ok, new OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                //此处的内容为响应按钮按下后的动作
+                dialog.dismiss(); //销毁自身
+                android.os.Process.killProcess(android.os.Process.myPid()); //关闭自身进程
+            }
+        });
+        builder.create().show(); //显示对话框
+    }
+
+    //拷贝文件
+    public void copyFile(String source,String target,String targetDir) throws IOException{
+        File sourceFile = new File(source);
+        if(!sourceFile.exists())
+            return;
+        
+        File targetDirFile = new File(APP_PREFS_DEST_DIR);
+        if(!targetDirFile.exists())
+            targetDirFile.mkdirs();
+
+        File targetFile = new File(target);
+        
+        //新建文件输入流并对它进行缓冲
+        FileInputStream input = new FileInputStream(sourceFile);
+        BufferedInputStream inBuff=new BufferedInputStream(input);
+        
+        //新建文件输出流并对它进行缓冲
+        FileOutputStream output = new FileOutputStream(targetFile);
+        BufferedOutputStream outBuff=new BufferedOutputStream(output);
+        
+        //缓冲数组
+        byte[] b = new byte[1024 * 5];
+        int len;
+        while ((len =inBuff.read(b)) != -1) {
+            outBuff.write(b, 0, len);
+        }
+        //刷新此缓冲的输出流
+        outBuff.flush();
+        
+        //关闭流
+        inBuff.close();
+        outBuff.close();
+        output.close();
+        input.close();
     }
 }
